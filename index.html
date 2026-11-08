@@ -930,7 +930,228 @@ svg .disco{display: none;}
 @keyframes wk-b{0% { opacity: 0; } 50% { opacity: 1; } 100% { opacity: 1; }}
 @keyframes wk-bob{0%, 100% { transform: translateY(0); } 50% { transform: translateY(-0.8px); }}
 @keyframes wk-waddle{0%, 100% { transform: rotate(-5deg); } 50% { transform: rotate(5deg); }}
-@keyframes zz-up{0% { opacity: 0; transform: translate(0, 2px) scale(.5); } 25% { opacity: 1; } 100% { opacity: 0; transform: translate(3px, -4px) scale(1); }}</style>
+@keyframes zz-up{0% { opacity: 0; transform: translate(0, 2px) scale(.5); } 25% { opacity: 1; } 100% { opacity: 0; transform: translate(3px, -4px) scale(1); }}
+/* PatoCOPAR 1.5 interview area (int): header buttons, part line, client sheet, Yes / No buttons, Summary. Loads after style.css. */
+
+/* ---------- 1. header buttons: smaller to look at, still a 44 px tap area ---------- */
+/* each button keeps the width it had (44 px) as 34 px plus a 5 px margin each side, so the layout does not move and the tap area stays inside the bar */
+.appbar .iconbtn,.appbar .avatar-btn{width:34px;height:34px;position:relative;margin:0 5px}
+.appbar .iconbtn .ic,.appbar .avatar-btn .ic{width:18px;height:18px}
+.appbar .iconbtn::after,.appbar .avatar-btn::after{content:"";position:absolute;inset:-6px}
+.appbar .avatar-btn::after{inset:-5px}
+.appbar .apptop-r,body.in-client .appbar .apptop-r{gap:0}
+.appbar .ab-left{gap:5px}
+.appbar .lang-sw,body.in-client .appbar .lang-sw{height:28px;padding:0;gap:0;align-items:stretch;overflow:visible;margin:0 5px}
+.appbar .lang-sw button,body.in-client .appbar .lang-sw button,.appbar .lang-sw button[data-v="en"]{position:relative;min-height:0;height:100%;min-width:40px;padding:0 8px;font-size:11px;letter-spacing:.03em;line-height:1}
+.appbar .lang-sw button::after{content:"";position:absolute;left:-2px;right:-2px;top:-9px;bottom:-9px}
+
+/* ---------- 2. part line ---------- */
+.pbar{align-items:center}
+.pbar i.cur{height:8px;outline:2px solid var(--accent);outline-offset:1px}
+.pbl{align-items:center}
+.pbl>span{display:flex;justify-content:center;font-weight:400;color:color-mix(in srgb,var(--muted) 62%,transparent)}
+.pbl i{font-style:normal;display:inline-flex;align-items:center;gap:2px;height:20px;border-radius:10px;padding:0 4px;white-space:nowrap}
+.pbl .on{color:var(--on-accent);font-weight:700}
+.pbl .on i{background:var(--accent);color:var(--on-accent);padding:0 9px}
+.pbl .done{color:var(--ink)}
+.pbl .miss{color:var(--bad);font-weight:600}
+.pbl .ic{width:11px;height:11px}
+.pt-miss{white-space:nowrap}
+.pt-miss .mn{font-size:.78rem}
+@media (max-width:359px){.pbl i{padding:0 2px;gap:1px}.pbl .on i{padding:0 7px}}
+
+/* ---------- 3. client sheet ---------- */
+.cs-band{display:flex;align-items:center;gap:8px;margin:8px 0 0;padding:10px 12px;border:1px solid color-mix(in srgb,var(--bad) 35%,var(--line));background:var(--bad-bg);color:var(--bad);border-radius:14px;font-weight:600}
+.cs-band .ic{flex:none}
+.cs-bt{flex:1;min-width:0}
+.cs-bk{font-weight:500;font-size:.85rem;white-space:nowrap}
+.cs-list{margin:10px 0;border:1px solid var(--line);border-radius:14px;background:var(--paper);overflow:hidden}
+.cs-row{display:flex;align-items:center;gap:10px;width:100%;min-height:48px;padding:0 10px;border:0;border-top:1px solid var(--line);background:none;color:var(--ink);text-align:left;font:inherit}
+.cs-row:first-child{border-top:0}
+.cs-row:active{background:var(--hover)}
+.cs-lt{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;flex:none;background:var(--soft);color:var(--accent);font:600 .8rem var(--font-data)}
+.cs-lt.bad{background:var(--bad-bg);color:var(--bad)}
+.cs-pn{flex:1;min-width:0;font-weight:600;overflow-wrap:anywhere}
+.cs-bd{display:inline-flex;align-items:center;gap:4px;border-radius:999px;padding:2px 9px 2px 6px;background:var(--bad);color:var(--on-bad);font:600 .8rem var(--font-body)}
+.cs-ok{display:inline-flex;align-items:center;gap:4px;color:var(--ok);font-weight:600;font-size:.8rem}
+.cs-row>.ic:last-child{color:var(--muted);flex:none}
+
+/* ---------- 4. Yes / No: two separate buttons (option A) ---------- */
+.ynp{display:flex;gap:8px;height:auto;border-radius:0;background:none;overflow:visible;flex:none}
+.ynp label{min-width:58px;height:34px;padding:0 10px;display:inline-flex;align-items:center;justify-content:center;gap:4px;border:1.5px solid var(--line);border-radius:10px;background:var(--paper);color:var(--muted);font-size:.8rem}
+.ynp label .ic{display:none;flex:none}
+.ynp label:has(input:checked) .ic{display:inline-block}
+.ynp label:has(input[value="Oo"]:checked){background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+.ynp label:has(input[value="Wala"]:checked){background:var(--bad-bg);border-color:var(--bad);color:var(--bad)}
+.ynp label::before{top:-6.5px;bottom:-6.5px;left:-2px;right:-2px}
+
+/* ---------- 5. Summary ---------- */
+.sm-th{display:flex;align-items:center;gap:12px}
+.sm-th .rg{flex:none}
+.sm-tn{flex:1;min-width:0;display:grid;gap:2px}
+.sm-tn b{font-size:1.05rem;overflow-wrap:anywhere}
+.sm-tn small{color:var(--muted)}
+.sm-x{gap:2px}
+.sm-sh,.sm-c>h3{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 6px;font-size:.78rem;font-family:var(--font-data);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.sm-cnt{color:var(--bad);font:600 .9rem var(--font-data)}
+.sm-fl{display:flex;align-items:center;gap:10px;width:100%;min-height:44px;border-top:1px solid var(--line);padding:4px 0;text-align:left;font:inherit;color:var(--ink)}
+.sm-x .sm-fl:first-of-type{border-top:0}
+.sm-ft{flex:1;min-width:0;overflow-wrap:anywhere}
+.sm-gob,.sm-gl{display:inline-flex;align-items:center;gap:2px;color:var(--accent);font-weight:600;font-size:.85rem;flex:none}
+.sm-gl{border:0;background:none;min-height:44px;padding:0 0 0 8px}
+.sm-fl .lttr{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;flex:none;background:var(--bad-bg);color:var(--bad);font:600 .72rem var(--font-data)}
+.sm-hm{display:flex;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--line)}
+.sm-sh+.sm-hm{border-top:0}
+.sm-av{width:30px;height:30px;border-radius:50%;background:var(--soft);color:var(--accent);display:grid;place-items:center;flex:none;font:600 .75rem var(--font-data)}
+.sm-hn{display:grid;min-width:0;flex:1 1 auto}
+.sm-hn small{color:var(--muted)}
+.sm-tags{display:flex;flex-wrap:wrap;gap:4px;justify-content:flex-end;max-width:58%}
+.sm-tag,.sm-tg{display:inline-flex;align-items:center;border-radius:8px;padding:1px 7px;font-size:.72rem;font-weight:600;background:var(--soft);color:var(--accent);white-space:nowrap}
+.sm-tag.bad,.sm-tg.bad{background:var(--bad-bg);color:var(--bad)}
+.sm-w{display:flex;align-items:flex-start;gap:8px;padding:8px 0;border-top:1px solid var(--line)}
+.sm-sh+.sm-w{border-top:0}
+.sm-w .ic{color:var(--bad);flex:none;margin-top:2px}
+.sm-wt{flex:1;min-width:0;overflow-wrap:anywhere}
+.sm-w .sm-tg{flex:none;margin-top:2px}
+.sm-ag+.sm-ag{margin-top:10px}
+.sm-agh{display:flex;align-items:center;justify-content:space-between;gap:8px;color:var(--muted);font-size:.8rem;margin-bottom:4px}
+.sm-agh.bad{color:var(--bad)}
+.sm-chs{display:flex;flex-wrap:wrap;gap:5px}
+.sm-am{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line);border-radius:9px;padding:3px 8px;font-size:.8rem;background:var(--paper)}
+.sm-am .sm-ok{display:inline-flex;color:var(--ok)}
+.sm-am.no{color:var(--muted)}
+.sm-am.miss{border-color:color-mix(in srgb,var(--bad) 40%,var(--line));color:var(--bad)}
+.sm-c{gap:0}
+.sm-c .sm-ed{flex:none;width:36px;height:36px;min-height:0;border-radius:50%;display:grid;place-items:center;color:var(--accent);position:relative;margin:-4px -6px -4px 0}
+.sm-c .sm-ed::after{content:"";position:absolute;inset:-4px}
+.sm-c .sm-r{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:4px 12px;padding:5px 0;align-items:center}
+.sm-c .sm-r.sub{padding-left:10px}
+.sm-c .sm-r .sm-v{max-width:none;color:var(--ink);font-weight:600;text-align:right}
+.sm-c .sm-r .sm-l{color:var(--muted)}
+.sm-c .sm-r .sm-go{justify-self:end}
+
+/* PatoCOPAR 1.5: the Tally (grouped Overview, scroll stops, graphs, Final tab). Loads after style.css and pet.css. */
+
+/* ---- graph colors: the checked Male / Female pair, light and dark ---- */
+:root{--male:#00879e;--female:#b0561f}
+:root[data-theme="dark"]{--male:#2fa3b3;--female:#d9773a}
+
+/* ---- chips: Final is the last one, outlined in the accent color ---- */
+#tally-tabs .chip.fin:not([aria-pressed="true"]),#tally-tabs .vl.fin:not([aria-pressed="true"]){border-color:var(--accent);color:var(--accent)}
+
+/* ---- Overview groups ---- */
+.ovh{margin:10px 2px 0;font:600 11px var(--font-data);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.tl-body>.ovh:first-child{margin-top:2px}
+.ovh.fin-h{display:flex;align-items:center;gap:8px;font-size:12px}
+.ovh.fin-h span{display:inline-grid;place-items:center;width:20px;height:20px;border-radius:6px;background:var(--soft);color:var(--accent);font-size:11px}
+.stats{grid-template-columns:repeat(2,1fr)}
+@media (min-width:420px){.stats{grid-template-columns:repeat(4,1fr)}}
+html[data-lay]:not([data-lay="one"]) .stats>div{grid-column:span 3}
+.cov{gap:10px}
+.cov .mt{font-size:.8rem}.cov .mt b{font:600 .78rem var(--font-data)}
+
+/* ---- thin bars with 4 px rounded ends, the value printed beside the bar, text in ink ---- */
+.mt>i,.hb i,.rk i{height:8px;border-radius:4px;background:var(--hover);overflow:hidden;display:block}
+.mt u,.hb u,.rk u{border-radius:4px}
+.rk{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:3px 8px;align-items:baseline;font-size:.8rem}
+.rk span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--ink)}
+.rk b{font:600 .78rem var(--font-data);text-align:right;color:var(--ink)}
+.rk i{grid-column:1/-1}
+.rk u{display:block;height:100%;background:var(--accent)}
+/* population pyramid: the number sits at the end of its bar */
+.py{grid-template-columns:minmax(0,1fr) 58px minmax(0,1fr);gap:4px}
+.py>span{display:flex;align-items:center;gap:4px;height:16px;min-width:0}
+.py>.pl{justify-content:flex-end}
+.py b{flex:none;color:var(--ink)}
+.py u{flex:0 1 auto;min-width:2px;height:8px;border-radius:4px}
+.pl u{background:var(--male);border-radius:4px}.pr u{background:var(--female);border-radius:4px}
+/* diseases by sex: name and years of diagnosis on one line, the two bars under it */
+.pr2{grid-template-columns:minmax(0,1fr) auto;gap:3px 8px}
+.pr2>span{grid-column:1;font-weight:600;overflow-wrap:anywhere}
+.pr2>small{grid-column:2;color:var(--muted);font-size:.7rem;text-align:right;white-space:nowrap}
+.pr2>div{grid-column:1/-1}
+.pr2 u{height:8px;border-radius:4px}
+.pr2 b{color:var(--ink)}
+/* segmented bars: a segment names itself when it is wide enough */
+.sgb{height:22px;border-radius:4px;gap:2px}
+.sgb i{display:flex;align-items:center;padding:0 6px;font:600 10px var(--font-data);white-space:nowrap;overflow:hidden;min-width:4px}
+
+/* ---- Final tab ---- */
+.st{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:9px 10px;min-width:0}
+.st b{display:block;font:600 18px var(--font-data);font-variant-numeric:tabular-nums}
+.st span{display:block;font-size:11.5px;color:var(--ink)}
+.st small{display:block;font-size:.68rem;color:var(--muted)}
+.finf{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media (min-width:520px){.finf{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.finn{margin:0}
+.fgh{font:600 12px var(--font-body);color:var(--ink);margin:4px 2px -2px}
+.fcard{padding:2px 11px}
+.find{display:flex;align-items:flex-start;gap:10px;padding:2px 0;border-top:1px solid var(--line);font-size:.85rem}
+.find:first-child{border-top:0}
+.find .pct{font:600 15px var(--font-data);min-width:44px;text-align:right;font-variant-numeric:tabular-nums;padding-top:11px}
+.find .tag{margin-top:13px;flex:none}
+.tag.bad{background:var(--bad-bg);color:var(--bad)}
+.ftx{flex:1;min-width:0;text-align:left;background:none;border:0;padding:8px 0;min-height:44px;font-size:.85rem;color:var(--ink);line-height:1.35}
+.ftx.ed::after{content:" (edited)";color:var(--muted);font-size:.7rem}
+.fed{padding:8px 0}.fed .pct{padding-top:8px}
+.fe{flex:1;min-width:0;display:grid;gap:6px}
+.fcount{margin:0}.fcount b{font-family:var(--font-data)}
+.fpk{display:flex;flex-wrap:wrap;gap:6px}
+.fpk .chip{min-height:44px;border-radius:12px;white-space:normal;text-align:left;padding:6px 12px}
+.fpk .chip b{font-family:var(--font-data)}
+.fsc{gap:0}
+.fsh{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding-bottom:6px}
+.fsh b{font-size:.95rem}.fsh .pct{font:600 14px var(--font-data)}
+.fcr{display:grid;gap:5px;padding:9px 0;border-top:1px solid var(--line)}
+.fch{display:flex;justify-content:space-between;gap:8px;font-size:.85rem}.fch i{font-style:normal;color:var(--muted);font-size:.75rem}
+.sbs{display:flex;gap:6px;flex-wrap:wrap}
+.sb{min-width:44px;min-height:44px;border-radius:10px;border:1px solid var(--line);background:var(--paper);font:600 .9rem var(--font-data);color:var(--muted);display:inline-flex;align-items:center;justify-content:center}
+.sb.on{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+span.sb{min-height:36px;min-width:36px}
+.fcn{display:grid;gap:2px;font-size:.74rem;color:var(--muted)}
+.cmp{font:600 .8rem var(--font-data);color:var(--ink)}
+.fwhy{margin-top:6px;min-height:64px}
+.ftot{display:flex;justify-content:space-between;font-weight:700;border-top:1px solid var(--line);padding-top:8px;margin-top:8px}.ftot b{font-family:var(--font-data)}
+.rkt{width:100%;min-width:600px;border-collapse:collapse;font-size:.85rem}
+.rkt th,.rkt td{padding:8px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+.rkt .n{text-align:right;font-variant-numeric:tabular-nums}.rkt td.t{font-weight:700}
+.rkt .c0{min-width:150px;white-space:normal;text-align:left}
+
+/* ---- scroll stops: a Tally table eases to a stop with the next group header just under the pinned header ----
+   proximity, never mandatory, so a hard flick still passes groups. Off with Animations Off (no html.anim) and with reduced motion. */
+@media (prefers-reduced-motion:no-preference){
+  html.anim .tw{scroll-snap-type:y proximity}
+  html.anim .tw tr.grp{scroll-snap-align:start;scroll-margin-top:var(--thh,40px)}
+}
+
+/* ---------- 1.5 Profile and the welcome flow ---------- */
+/* Profile: the 12 colors are one row that slides sideways. Each tap target stays 44 px; the dot itself is 34 px. */
+.sw-row{position:relative;flex-wrap:nowrap;gap:0;overflow-x:auto;overflow-y:hidden;padding:2px 0;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.sw-row::-webkit-scrollbar{display:none;width:0;height:0}
+.sw-row:not(.at-end){-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 40px),transparent)}
+.sw-row .swb{flex:none;scroll-snap-align:start}
+.sw-row .sw-dot{width:34px;height:34px}
+#view,.pcol,.form,.field{min-width:0}
+
+/* Welcome flow: page 1 (logo, welcome, your pair) and page 2 (buddy, Start) */
+.gate .wel-pg{text-align:center;gap:10px}
+.gate .wel-h{text-align:center;font-size:1.55rem}
+.gate .wel-p{text-align:center;margin:0}
+.gate .wel-logo{width:104px;height:104px;margin-top:6px}.gate .wel-logo svg{height:80px}
+.gate-card{margin-top:auto;text-align:left;display:grid;gap:10px}
+.gate-ct{font-size:1rem}
+.gate-names{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gate-names .field{min-width:0}
+.gate-names input{width:100%;min-width:0}
+.gate-lock,.gate-show{justify-content:flex-start}
+.gate-bot{flex-direction:column;align-items:stretch;gap:10px}
+.gate-dots{display:flex;gap:6px;justify-content:center}
+.gate-dots i{width:8px;height:8px;border-radius:9px;background:var(--line)}.gate-dots i.on{width:22px;background:var(--accent)}
+.gate-mid{justify-content:center;align-items:center}
+.gate-buddy{display:grid;place-items:center;width:150px;height:150px;border-radius:50%;background:var(--logo);flex:none;margin:0 auto 6px}
+.gate-buddy svg{width:112px;height:112px}
+.gate-mid .wel-p{max-width:30ch}
+</style>
 
 <aside id="side" hidden aria-label="Parts"></aside>
 <div class="wrap"><header id="appbar" class="appbar"></header><main id="view"></main></div>
@@ -1846,6 +2067,7 @@ function normalize(h){
   ["r_sex","r_civil","r_relation","r_educ"].forEach(k=>{const v=h[k];if(v&&typeof v==="object"&&Array.isArray(v.sel))h[k]={...v,sel:v.sel[0]||""}});
   ["pair","block"].forEach(k=>{if(h[k]!=null&&typeof h[k]!=="string")h[k]=String(h[k])});
   normalizeMembers(h);
+  numberMembers(h);
   if(h.dYear!=null){const y=parseInt(h.dYear,10);if(y>=1900&&y<=2999)h.dYear=y;else delete h.dYear}
   if(h.mig!=null){if(parseInt(h.mig,10)===13)h.mig=13;else delete h.mig}
   if(h.migDone!=null){const d=[...new Set(String(h.migDone).split("").filter(c=>"rni".includes(c)))].join("");if(d&&h.mig!==13)h.migDone=d;else delete h.migDone}
@@ -1981,6 +2203,35 @@ const needList=()=>households.map(h=>[h,gaps(h)]).filter(x=>x[1].length);
 const nameOf=h=>String(h.r_name||"").trim()||L("Kliyente ","Client ")+(h.hh_no||"");
 const byName=(a,b)=>nameOf(a).localeCompare(nameOf(b),undefined,{numeric:true});
 const byNo=byName;
+/* ---------- 1.5 hidden household and member IDs: no screen shows them, only the Excel files ----------
+   Member number (m.mno): given in the order members are added, kept on the member, and never reused: the household keeps the highest number it ever gave (h.mnoc), so removing a member leaves a gap. Old records get theirs in their current order the first time they load.
+   Household ID: the family last name in capitals, letters A to Z only, worked out when the file is made (a second family with the same name becomes NAME-B, then NAME-C). Nothing here is stored. */
+function numberMembers(h){
+  const ms=realMembers(h),seen=new Set();let top=Math.max(0,parseInt(h.mnoc,10)||0);
+  ms.forEach(m=>{const n=parseInt(m.mno,10);if(n>0&&!seen.has(n)){seen.add(n);m.mno=n;if(n>top)top=n}else delete m.mno}); /* a repeated or broken number is given again */
+  ms.forEach(m=>{if(!m.mno){m.mno=++top;seen.add(top)}});
+  if(top>0)h.mnoc=top;else delete h.mnoc;
+}
+const idLetters=s=>String(s==null?"":s).normalize("NFD").replace(/[̀-ͯ]/g,"").toUpperCase().replace(/[^A-Z]/g,""); /* Peña -> PENA, Dela Cruz -> DELACRUZ */
+const ID_PART=new Set(["DE","DEL","DELA","DELAS","DELOS","DI","DA","DOS","LA","LAS","LOS","SAN","SANTA","STA","VAN","VON"]); /* words that belong to the last name before them: "Juan de la Cruz" is DELACRUZ */
+/* the family last name: the client's name follows the head of the house. "Reyes, Ana" gives REYES; "Ana Reyes" gives REYES; "Ana Dela Cruz" and "Dela Cruz" give DELACRUZ. A client with no name is CLIENT. */
+function famLast(h){
+  let n=String(h&&h.r_name||"").trim();if(!n){const hd=headOf(h||{});n=String(hd&&hd.name||"").trim()}
+  const c=n.indexOf(",");if(c>0)n=n.slice(0,c);
+  const w=n.split(/\s+/).filter(x=>idLetters(x));if(!w.length)return "CLIENT";
+  let last=idLetters(w.pop());while(w.length&&ID_PART.has(idLetters(w[w.length-1])))last=idLetters(w.pop())+last;
+  return last||"CLIENT";
+}
+const idSuffix=n=>{let i=n-1,s="";do{s=String.fromCharCode(65+i%26)+s;i=Math.floor(i/26)-1}while(i>=0);return s}; /* 2 -> B, 3 -> C ... 27 -> AA */
+/* household IDs for a set of clients (the whole export): own pair's clients first, then loaded pairs, oldest interview first; the first ABUCAY is ABUCAY, the next ABUCAY-B */
+function hhIds(list){
+  const key=h=>[isOurs(h)?0:1,String(h.date||"9999-99-99"),String(parseInt(h.hh_no,10)||0).padStart(9,"0"),String(h.id||"")];
+  const ord=[...list].sort((a,b)=>{const x=key(a),y=key(b);for(let i=0;i<4;i++){if(x[i]<y[i])return -1;if(x[i]>y[i])return 1}return 0});
+  const seen={},out=new Map();
+  ord.forEach(h=>{const b=famLast(h),n=seen[b]=(seen[b]||0)+1;out.set(h,n===1?b:b+"-"+idSuffix(n))});
+  return out;
+}
+const memberId=(hid,m)=>m&&m.mno>0?hid+String(m.mno).padStart(3,"0"):"";
 /* a hidden number links the Excel sheets and old backups together; nobody types it */
 function nextNo(){let m=0;households.forEach(h=>{const n=parseInt(h.hh_no,10);if(n>m)m=n});return String(m+1)}
 const today=()=>{const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")};
@@ -2241,8 +2492,8 @@ const lastPgOf=id=>{const o=settings.lastPg;return o&&typeof o==="object"&&Numbe
 const setLast=(id,n)=>{if(!id)return;if(!settings.lastPg||typeof settings.lastPg!=="object")settings.lastPg={};if(settings.lastPg[id]!==n){settings.lastPg[id]=n;saveSet()}};
 const pruneLast=()=>{const o=settings.lastPg;if(!o||typeof o!=="object"||!loaded)return;let ch=false;Object.keys(o).forEach(k=>{if(!households.some(h=>h.id===k)){delete o[k];ch=true}});if(ch)saveSet()}; /* entries of deleted clients go */
 function openHH(id){
-  const x=households.find(h=>h.id===id);if(!x)return;pruneLast();const g=gaps(x),pm=partMissN(x),sp=isSplit();
-  const s=openSheet(sheetHead(nameOf(x))+`<p class="note">${esc([x.purok,fmtDate(x.date),realMembers(x).length+" "+L("ka miyembro","members")].filter(Boolean).join(" · "))}</p>${g.length?`<div class="cs-tot"><span class="miss" role="img" aria-label="${L("Kulang","Missing")}: ${g.length}">${ico(IC.alert,18)}<span class="mn">${g.length}</span></span></div>`:""}<div class="cs-parts">${"ABCDEF".split("").map(k=>`<button type="button" class="cs-p" data-p="${k}" aria-label="${L("Bahin ","Part ")}${k}: ${pm[k]}"><b>${k}</b>${pm[k]?`<span class="cs-n">${pm[k]}</span>`:`<span class="cs-z">0</span>`}</button>`).join("")}</div><div class="cs-act"><button type="button" class="btn soft" data-a="continue">${L("Padayon","Continue")}</button><button type="button" class="btn ghost cs-more" data-a="more" aria-label="${L("Dugang","More")}" aria-expanded="false">${ico(IC.more,22)}</button></div><div class="cs-menu" id="cs-menu" hidden>${sp?"":`<button type="button" data-a="sum">${ico(IC.list,18)}Summary</button>`}${g.length?`<button type="button" data-a="fix">${ico(IC.check,18)}${L("Kompletoha","Mark complete")}</button>`:""}<button type="button" class="red" data-a="del">${ico(IC.bin,18)}${L("Papason","Delete")}</button></div><div id="del-c"></div>`);
+  const x=households.find(h=>h.id===id);if(!x)return;pruneLast();const g=gaps(x),pm=partMissN(x),np=Object.values(pm).filter(n=>n).length,sp=isSplit();
+  const s=openSheet(sheetHead(nameOf(x))+`<p class="note">${esc([x.purok,fmtDate(x.date),realMembers(x).length+" "+L("ka miyembro","members")].filter(Boolean).join(" · "))}</p>${g.length?`<div class="cs-tot cs-band">${ico(IC.alert,18)}<span class="cs-bt">${g.length} ${g.length===1?L("tubag ang kulang","answer missing"):L("ka tubag ang kulang","answers missing")}</span><span class="cs-bk">${L("sa "+np+" ka bahin","in "+np+" "+(np===1?"part":"parts"))}</span></div>`:""}<div class="cs-list">${"ABCDEF".split("").map(k=>{const n=pm[k],ti=PART_INFO.find(z=>z.id===k).title;return `<button type="button" class="cs-row" data-p="${k}" aria-label="${L("Bahin ","Part ")}${k}: ${esc(ti)}, ${n?n+" "+L("kulang","missing"):L("human","done")}"><span class="cs-lt${n?" bad":""}">${k}</span><span class="cs-pn">${esc(ti)}</span>${n?`<span class="cs-bd">${ico(IC.alert,14)}${n}</span>`:`<span class="cs-ok">${ico(IC.check,14)}${L("Human","Done")}</span>`}${ico(IC.chev,14)}</button>`}).join("")}</div><div class="cs-act"><button type="button" class="btn soft" data-a="continue">${L("Padayon","Continue")}</button><button type="button" class="btn ghost cs-more" data-a="more" aria-label="${L("Dugang","More")}" aria-expanded="false">${ico(IC.more,22)}</button></div><div class="cs-menu" id="cs-menu" hidden>${sp?"":`<button type="button" data-a="sum">${ico(IC.list,18)}Summary</button>`}${g.length?`<button type="button" data-a="fix">${ico(IC.check,18)}${L("Kompletoha","Mark complete")}</button>`:""}<button type="button" class="red" data-a="del">${ico(IC.bin,18)}${L("Papason","Delete")}</button></div><div id="del-c"></div>`);
   s.addEventListener("click",async e=>{
     const pc=e.target.closest("[data-p]");if(pc){closeSheet();openClient(id,false,partPage(x,pc.dataset.p));return}
     const b=e.target.closest("[data-a]");if(!b)return;const a=b.dataset.a;
@@ -2292,11 +2543,82 @@ function smMembers(x){
     return `<div class="sm-m"><div class="sm-mh">${avHTML(mm,true,true)}<b>${esc(line)}</b>${isH?`<span class="sm-head">${L("Pangulo","Head")}</span>`:""}</div>${meta?`<div class="sm-s">${esc(meta)}</div>`:""}${dx?`<div class="sm-s">${esc(dx)}</div>`:""}${ky?`<div class="sm-s">${esc(ky)}</div>`:""}${ms2.length?smMiss(isH?PG_HEAD:PG_FAMILY,ms2.length,ms2.join(", ")):""}${ks.length?smMiss(pk,ks.length,ks.join(", ")):""}</div>`;
   }).join("");
 }
+const smSH=(t,r)=>`<h3 class="sm-sh"><span>${t}</span>${r||""}</h3>`;
+const smFirst=(m,ms)=>String(m.name||"").trim().split(/\s+/)[0]||memLabel(m,ms);
+/* the Missing list: one line per missing answer, but Amenities and Disease answers (one list page each) become one line with a count */
+function smMissItems(x){
+  const out=[],seen={};
+  gaps(x).forEach(([t,pg])=>{
+    const p=PAGES[pg]||{},k=PGRP(p.part);
+    if(p.kind==="list"&&(k==="E"||k==="F")){let o=seen[pg];if(!o){o=seen[pg]={k,pg,n:0,t};out.push(o)}o.n++;return}
+    out.push({k,pg,n:1,t});
+  });
+  out.forEach(o=>{if(o.n>1)o.t=o.k==="E"?`${o.n} ${L("pasilidad","amenities")}`:`${o.n} ${L("tubag sa sakit","disease answers")}`});
+  return out;
+}
+function smMissCard(x){
+  const g=gaps(x);if(!g.length)return "";
+  const all=smMissItems(x),SHOW=6,line=o=>`<button type="button" class="sm-go sm-fl" data-pg="${o.pg}"><span class="lttr bad">${o.k}</span><span class="sm-ft">${esc(o.t)}</span><span class="sm-gob">${L("Adto","Go")}${ico(IC.chev,14)}</span></button>`;
+  const more=all.length-SHOW; /* a long list shows the first few, then one line that opens the next missing page */
+  return `<section class="card sm-x" data-sm="miss">${smSH(L("Kulang","Missing"),`<span class="sm-cnt">${g.length}</span>`)}${all.slice(0,SHOW).map(line).join("")}${more>0?`<button type="button" class="sm-go sm-fl sm-more" data-pg="${all[SHOW].pg}"><span class="sm-ft">+${more} ${L("pa","more")}</span><span class="sm-gob">${L("Adto","Go")}${ico(IC.chev,14)}</span></button>`:""}</section>`;
+}
+/* the household, one row per member: sex initial, first name, age, Head / child / baby, and tags (red: a condition or a problem; plain: a good fact) */
+function smHouse(x){
+  const ms=realMembers(x),hd=headOf(x),ord=hd?[hd,...ms.filter(m=>m!==hd)]:ms;
+  if(!ord.length)return "";
+  const rows=ord.map(m=>{
+    const isH=m===hd,mm=isH?headNamed(x,m):m,a=hasField(mm,"age")?ageNum(mm):NaN,ini=mm.sex==="Lalaki"?"M":mm.sex==="Babae"?"F":"?";
+    const lb=isH?L("Pangulo","Head"):a<=2?L("masuso","baby"):a<=8?L("bata","child"):"",kd=kidOf(m),tags=[];
+    dxOf(m).forEach(e=>{const d=DX.find(z=>z.k===e.k);if(d)tags.push([d.short+(e.k==="other"&&x.fu&&x.fu.otherDis?" ("+x.fu.otherDis+")":""),1])});
+    if(memComorb(m,x)==="Oo"&&!dxOf(m).length)tags.push([L("May sakit","Has a condition"),1]);
+    if(kd.nut==="Underweight")tags.push([L("Kulang sa timbang","Underweight"),1]);else if(kd.nut==="Overweight")tags.push([L("Sobra sa timbang","Overweight"),0]);
+    if(kd.imm==="Complete")tags.push([L("Kompleto ang bakuna","Fully immunized"),0]);else if(kd.imm==="Incomplete")tags.push([L("Kulang ang bakuna","Not fully immunized"),1]);
+    return `<div class="sm-hm"><span class="sm-av" aria-hidden="true">${ini}</span><span class="sm-hn"><b>${esc(smFirst(mm,ms))}</b><small>${esc([isNaN(a)?"":a,lb].filter(v=>v!=="").join(" · "))}</small></span>${tags.length?`<span class="sm-tags">${tags.map(t=>`<span class="sm-tag${t[1]?" bad":""}">${esc(t[0])}</span>`).join("")}</span>`:""}</div>`;
+  }).join("");
+  return `<section class="card sm-x" data-sm="house">${smSH(L("Panimalay","Household"))}${rows}</section>`;
+}
+/* answers that point to a health problem, from the answers the Tally already counts; the typology (Threat, Deficit, Crisis) follows the school's list */
+function smWatchList(x){
+  const f=[],sel=k=>selOf(x,k),has=(k,...v)=>sel(k).some(s=>v.includes(s)),ms=realMembers(x);
+  const tl=sel("toiletType");
+  if(tl.length&&!tl.some(s=>s==="Water sealed type"||s==="Flush type"))f.push([L("Walay sanitary toilet","No sanitary toilet")+(has("septic","No, goes to a canal or river")?L(" (nagaagos sa kanal o suba)"," (drains to a canal or river)"):""),"Threat"]);
+  const wl=sel("waterLevel");if(wl.length&&!wl.some(s=>s==="Level 2"||s==="Level 3"))f.push([L("Dili Level 2 o 3 ang tubig","Water supply is not Level 2 or 3"),"Threat"]);
+  const sn=sel("sanitize");if(sn.length&&!sn.some(s=>s!=="None"))f.push([L("Dili gitambalan ang tubig sa pag-inom","Water not treated before drinking"),"Threat"]);
+  if(has("sewage","None"))f.push([L("Walay drainage","No drainage"),"Threat"]);
+  const wd=sel("wasteHow");if(wd.length&&!wd.includes("Garbage collection")){const bad=wd.filter(s=>s==="Open dumping"||s==="Open burning").map(s=>s.toLowerCase());f.push([L("Dili makolekta ang basura","Garbage is not collected")+(bad.length?" ("+bad.join(", ")+")":""),"Threat"])}
+  if(has("income","Low income (10K & below)"))f.push([L("Income 10,000 ug ubos","Income 10,000 and below"),"Threat"]);
+  const ri=TALLY_AGES.imm,ik=ms.filter(m=>{const a=ageNum(m);return a>=ri[0]&&a<=ri[1]&&kidOf(m).imm==="Incomplete"}).length;
+  if(ik)f.push([ik===1?L("Usa ka bata wala ma-bakunahan og hingpit","One child not fully immunized"):L(ik+" ka bata wala ma-bakunahan og hingpit",ik+" children not fully immunized"),"Threat"]);
+  DX.forEach(d=>{
+    const who=ms.filter(m=>dxOf(m).some(e=>e.k===d.k)).map(m=>smFirst(m,ms)),nm=d.short+(d.k==="other"&&x.fu&&x.fu.otherDis?" ("+x.fu.otherDis+")":"");
+    if(who.length)f.push([nm+": "+who.join(", "),"Deficit"]);else if(A(x,d.n)==="Oo")f.push([nm+L(" (wala pa gihingalan kinsa)"," (who not named yet)"),"Deficit"]);
+  });
+  const uw=ms.filter(m=>kidOf(m).nut==="Underweight").length;
+  if(uw)f.push([uw===1?L("Usa ka bata kulang sa timbang","One child underweight"):L(uw+" ka bata kulang sa timbang",uw+" children underweight"),"Deficit"]);
+  if(has("pregnancy","Currently pregnant"))f.push([L("Naay mabdos karon","Someone is pregnant now"),"Crisis"]);
+  if(has("pregnancy","6 weeks postpartum"))f.push([L("Bag-ong nanganak (sulod sa 6 ka semana)","New baby (within 6 weeks)"),"Crisis"]);
+  if(A(x,77)==="Oo")f.push([L("Naay namatay sa pamilya sa ","A death in the family in ")+calYear(),"Crisis"]);
+  return f;
+}
+function smWatchCard(x){
+  const f=smWatchList(x);
+  return `<section class="card sm-x" data-sm="watch">${smSH(L("Bantayi","Things to watch"))}${f.length?f.map(([t,ty])=>`<div class="sm-w">${ico(IC.alert,16)}<span class="sm-wt">${esc(t)}</span><span class="sm-tg${ty==="Threat"?"":" bad"}">${ty}</span></div>`).join(""):`<p class="note">${L("Wala pay gi-flag gikan sa mga tubag.","Nothing flagged from the answers so far.")}</p>`}</section>`;
+}
+/* the amenities by name: near (Yes), not near (No), missing; a long Missing list shows the first few and "+N more" */
+function smAmenCard(x){
+  const am=ITEMS.filter(i=>i.part==="E"&&i.n&&!i.hide),nm=i=>Q(i.q),yes=am.filter(i=>A(x,i.n)==="Oo"),no=am.filter(i=>A(x,i.n)==="Wala"),un=am.filter(i=>!A(x,i.n)),SHOW=3;
+  const grp=(cls,title,list,body,go)=>list.length?`<div class="sm-ag"><div class="sm-agh ${cls}"><span>${title} (${list.length})</span>${go||""}</div><div class="sm-chs">${body}</div></div>`:"";
+  return `<section class="card sm-x" data-sm="amen">${smSH(L("Pasilidad duol sa balay","Amenities near the house"))}`
+   +grp("",L("Duol","Near"),yes,yes.map(i=>`<span class="sm-am"><span class="sm-ok">${ico(IC.check,13)}</span>${esc(nm(i))}</span>`).join(""))
+   +grp("",L("Dili duol","Not near"),no,no.map(i=>`<span class="sm-am no">${ico(IC.x,12)}${esc(nm(i))}</span>`).join(""))
+   +grp("bad",L("Kulang","Missing"),un,un.slice(0,SHOW).map(i=>`<span class="sm-am miss">${esc(nm(i))}</span>`).join("")+(un.length>SHOW?`<span class="sm-am miss">+${un.length-SHOW} ${L("pa","more")}</span>`:""),un.length?`<button type="button" class="sm-go sm-gl" data-pg="${pageOfItem(un[0])}">${L("Adto","Go")}${ico(IC.chev,14)}</button>`:"")
+   +(am.length?"":`<p class="note">${L("Walay pasilidad","No amenities")}</p>`)+`</section>`;
+}
 function summaryHTML(x,o){
-  o=o||{};const g=gaps(x),p=pctDone(x),sec=(id,body)=>{const P=PARTS.find(q=>q.id===id);return `<section class="card sm-c" data-sec="${id}"><h3>${id}. ${esc(P.short)}</h3>${body}</section>`};
+  o=o||{};const g=gaps(x),p=pctDone(x),ms=realMembers(x);
+  const sec=(id,body)=>{const P=PARTS.find(q=>q.id===id);return `<section class="card sm-c" data-sec="${id}"><h3><span>${id}. ${esc(P.short)}</span><button type="button" class="sm-go sm-ed" data-pg="${partPage(x,id)}" aria-label="${L("Usba ang bahin ","Edit part ")}${id}">${ico(IC.edit,16)}</button></h3>${body}</section>`};
   const items=id=>ITEMS.filter(i=>i.part===id&&!i.hide&&!i.fus.some(f=>f.type==="roster")&&!(id==="F"&&DX.some(d=>d.n===i.n)));
   const am=ITEMS.filter(i=>i.part==="E"&&i.n&&!i.hide),ay=am.filter(i=>A(x,i.n)==="Oo").length,an=am.filter(i=>A(x,i.n)==="Wala").length,au=am.filter(i=>!A(x,i.n));
-  const ms=realMembers(x);
   const dxr=DX.map(d=>{
     const who=ms.filter(m=>dxOf(m).some(e=>e.k===d.k)).map(m=>{const e=dxOf(m).find(z=>z.k===d.k);return memLabel(m,ms)+(e.y?", "+e.y:"")}),yes=A(x,d.n)==="Oo";
     if(!yes&&!who.length)return "";
@@ -2304,14 +2626,16 @@ function summaryHTML(x,o){
     return smRow(nm,who.length?smVal(who.join("; ")):smMiss(pageOfItem(DXITEM[d.k]),1,L("Kinsa?","Who?")));
   }).join("");
   const du=DX.filter(d=>!A(x,d.n)),notes=Object.keys(x.notes||{}).filter(k=>String(x.notes[k]||"").trim());
-  return `<section class="card sm-top">${o.split?`<div class="sm-nm"><h2>${esc(nameOf(x))}</h2><button type="button" class="btn sm" id="sm-edit-b">${L("Usba","Edit")}</button></div>`:""}<div class="sm-sub">${g.length?smMiss(g[0][1],g.length):""}<span class="note">${esc([fmtDate(x.date),p+"%"].filter(Boolean).join(" · "))}</span></div></section>`
+  const sub=[x.purok,fmtDate(x.date),ms.length+" "+(ms.length===1?L("miyembro","member"):L("ka miyembro","members"))].filter(Boolean).join(" · ");
+  return `<section class="card sm-top"><div class="sm-th">${ringSVG(p,54).replace(">"+p+"</text>",">"+p+"%</text>")}<div class="sm-tn"><b>${esc(nameOf(x))}</b><small>${esc(sub)}</small></div>${o.split?`<button type="button" class="btn sm" id="sm-edit-b">${L("Usba","Edit")}</button>`:""}</div></section>`
+   +smMissCard(x)+smHouse(x)+smWatchCard(x)+smAmenCard(x)
    +sec("A",smMembers(x)+items("A").flatMap(i=>smQ(x,i)).join(""))
    +sec("B",items("B").flatMap(i=>smQ(x,i)).join(""))
    +sec("C",items("C").flatMap(i=>smQ(x,i)).join(""))
    +sec("D",items("D").flatMap(i=>smQ(x,i)).join(""))
    +sec("E",`<div class="sm-chips"><span class="sm-y">${ay} ${L("Oo","Yes")}</span><span class="sm-n">${an} ${L("Wala","No")}</span>${au.length?smMiss(pageOfItem(au[0]),au.length):""}</div>`)
    +sec("F",(dxr||(du.length?"":`<p class="note">${L("Walay sakit nga gitaho","No disease reported")}</p>`))+items("F").flatMap(i=>smQ(x,i)).join("")+(du.length?smRow(L("Wala pa nasulayan","Not answered"),smMiss(pageOfItem(DXITEM[du[0].k]),du.length)):""))
-   +`<section class="card sm-c"><h3>Notes</h3>${notes.length?notes.map(k=>`<div class="sm-nt"><b>${esc(noteLabel(k))}</b><p>${esc(x.notes[k])}</p></div>`).join(""):`<p class="note">${L("Walay nota","No notes yet")}</p>`}</section>`;
+   +`<section class="card sm-c"><h3><span>Notes</span></h3>${notes.length?notes.map(k=>`<div class="sm-nt"><b>${esc(noteLabel(k))}</b><p>${esc(x.notes[k])}</p></div>`).join(""):`<p class="note">${L("Walay nota","No notes yet")}</p>`}</section>`;
 }
 function renderSummary(){
   const x=households.find(h=>h.id===sumId);
@@ -2373,7 +2697,7 @@ function openNote(k){
   sheetBack=()=>{const v=val.trim();cur.notes=cur.notes||{};if(v)cur.notes[k]=v;else delete cur.notes[k];if(v!==was)touch();refreshNote(k)}; /* Done, the X, the backdrop and the Back key all save */
   setTimeout(()=>{try{ta.focus()}catch(e){}},60);
 }
-const yesNoHTML=(it,a,small)=>{const o=(v,t)=>`<label><input type="radio" name="q${it.n}" value="${v}" ${a===v?"checked":""}><span>${t}</span></label>`;return `<div class="${small?"ynp":"yn"}" role="radiogroup" aria-label="${esc(Q(it.q))}">${o("Oo",QT("Oo","Yes"))}${o("Wala",QT("Wala","No"))}</div>`};
+const yesNoHTML=(it,a,small)=>{const o=(v,t)=>`<label><input type="radio" name="q${it.n}" value="${v}" ${a===v?"checked":""}>${small?ico(v==="Oo"?IC.check:IC.x,14):""}<span>${t}</span></label>`;return `<div class="${small?"ynp":"yn"}" role="radiogroup" aria-label="${esc(Q(it.q))}">${o("Oo",QT("Oo","Yes"))}${o("Wala",QT("Wala","No"))}</div>`};
 function fuHTML(it){
   const n=it.n,a=n?cur.ans[n]:null;let h="";
   it.fus.forEach(f=>{
@@ -2418,8 +2742,11 @@ function partFill(c,k){ /* the share of answered questions of a part: each item 
 }
 function partInner(){
   const p=PAGES[step],k=PGRP(p.part),c=normalize(cur),rev=k==="S",info=PART_INFO.find(x=>x.id===k),nm=rev?L("Tan-awa usab","Review"):k+" "+info.title,
-    mn=rev?0:partMissN(c)[k],show=!rev&&mn&&(openedSaved||partFill(c,k)>0),AF="ABCDEF".split("");
-  return `<span class="pt-l"><b>${esc(nm)}</b>${show?missHTML(mn,"",true):""}<span class="ptn">${step+1} / ${PAGES.length}</span></span><span class="pbar" aria-hidden="true">${AF.map(x=>`<i><s style="width:${Math.round(partFill(c,x)*100)}%"></s></i>`).join("")}</span><span class="pbl" aria-hidden="true">${AF.map(x=>`<span${x===k?' class="on"':""}>${x}</span>`).join("")}</span>`;
+    pm=partMissN(c),started=x=>openedSaved||partFill(c,x)>0,mn=rev?0:pm[k],show=!rev&&mn&&started(k),AF="ABCDEF".split("");
+  const miss=show?`<span class="miss pt-miss" role="img" aria-label="${esc(L("Kulang","Missing")+": "+mn)}">${ico(IC.alert,14)}<span class="mn">${mn} ${L("kulang","missing")}</span></span>`:"";
+  const st=x=>x===k?"on":pm[x]&&started(x)?"miss":!pm[x]&&partFill(c,x)>=1?"done":"later"; /* now / missing answers / finished / not reached */
+  const lt=x=>`<span class="${st(x)}"><i>${st(x)==="done"?ico(IC.check,11):""}${x}${st(x)==="miss"?" "+pm[x]:""}</i></span>`;
+  return `<span class="pt-l"><b>${esc(nm)}</b>${miss}<span class="ptn">${step+1} / ${PAGES.length}</span></span><span class="pbar" aria-hidden="true">${AF.map(x=>`<i${x===k?' class="cur"':""}><s style="width:${Math.round(partFill(c,x)*100)}%"></s></i>`).join("")}</span><span class="pbl" aria-hidden="true">${AF.map(lt).join("")}</span>`;
 }
 const partLine=()=>`<button type="button" class="pt" id="btn-parts" aria-label="${L("Ablihi ang tanan nga bahin","Open all parts")}">${partInner()}</button>`;
 function refreshPartLine(){const b=$("#btn-parts");if(b&&cur&&PAGES[step])b.innerHTML=partInner()}
@@ -2728,6 +3055,7 @@ async function autosave(){
   editingId=id;c.id=id;
   await ready;
   if(!c.hh_no)c.hh_no=nextNo();
+  numberMembers(c); /* 1.5: new members get their hidden number on the live client too, so a number is never given twice */
   if(!isStamped(c)&&pairOK()){c.pair=pairName();c.block=blockCode()} /* every client carries its pair and block from the first save */
   try{await putRecord(normalize({...c,members:realMembers(c),updatedAt:new Date().toISOString()}));if(cur===c&&!dirty){saved=true;failed=false;setStatus();drawSide()}}
   catch(e){dirty=true;failed=true;setStatus();toast(e&&e.code==="quota_exceeded"?L("Puno na ang storage.","Storage is full."):L("Wala na-save. Sulayi pag-usab.","Could not save. It will try again."),true)}
@@ -3194,20 +3522,23 @@ const NOANS='<p class="note">No answers yet</p>';
 const gcard=(t,s,b)=>`<section class="card sm"><h4>${esc(t)}${s?`<small>${esc(s)}</small>`:""}</h4>${b}</section>`;
 /* a question's answers over the households that answered it: base households, count per answer */
 function tl(key){let base=0;const c=new Map();households.forEach(h=>{const v=selOf(h,key);if(!v.length)return;base++;uniq(v).forEach(x=>c.set(x,(c.get(x)||0)+1))});return {base,c}}
-const sgb=(parts,total,name)=>`<div class="sgb" role="img" aria-label="${esc(name+": "+parts.map(x=>x[1]+" "+x[0]).join(", "))}">${parts.filter(x=>x[0]>0).map(([v,n,c])=>`<i style="flex:${v} 1 0;background:${c}"></i>`).join("")}</div><div class="sgl">${parts.map(([v,n,c])=>`<span><em style="background:${c}"></em>${esc(n)}<b>${v}</b><small>${pct(v,total)}</small></span>`).join("")}</div>`;
+/* 1.5: a segment names itself when it is wide enough (name and number), shows only its number when narrow, and stays blank when tiny; the list under the bar always has every name */
+const sgb=(parts,total,name)=>{const sum=parts.reduce((s,x)=>s+x[0],0)||1;return `<div class="sgb" role="img" aria-label="${esc(name+": "+parts.map(x=>x[1]+" "+x[0]).join(", "))}">${parts.filter(x=>x[0]>0).map(([v,n,c])=>{const f=v/sum,lab=f>=.34?n+" "+v:f>=.1?String(v):"";return `<i style="flex:${v} 1 0;background:${c};color:${c===R2?"var(--ink)":"var(--on-accent)"}">${esc(lab)}</i>`}).join("")}</div><div class="sgl">${parts.map(([v,n,c])=>`<span><em style="background:${c}"></em>${esc(n)}<b>${v}</b><small>${pct(v,total)}</small></span>`).join("")}</div>`};
 const colsHTML=(rows,every)=>{const mx=Math.max(1,...rows.map(r=>r[1]));return `<div class="rd" aria-live="polite">Tap a column</div><div class="vcols${rows.length>14?" dense":""}">${rows.map(([n,v,t],k)=>`<button type="button" class="cl" data-r="${esc(t)}" aria-label="${esc(t)}" aria-pressed="false"><i><em>${v}</em><u style="height:${(v/mx*74).toFixed(1)}%"></u></i><span>${k%every===0?esc(n):"&nbsp;"}</span></button>`).join("")}</div>`};
 const hbHTML=(label,v,mx,txt)=>`<div class="hb"><span title="${esc(label)}">${esc(label)}</span><i><u style="width:${mx?(v/mx*100).toFixed(2):0}%"></u></i><b>${txt}</b></div>`;
 const meterHTML=(label,v,n)=>`<div class="mt"><div><span>${esc(label)}</span><b>${n?pct(v,n):DASH}</b></div><i><u style="width:${n?(v/n*100).toFixed(2):0}%"></u></i></div>`;
-const pairHTML=rows=>{const mx=Math.max(1,...rows.map(r=>Math.max(r[1],r[2])));return `<div class="pyl"><span class="k m">Male</span><span class="k f">Female</span></div>`+rows.map(([n,m,f])=>`<div class="pr2"><span>${esc(n)}</span><div><i class="m"><u style="width:${(m/mx*100).toFixed(2)}%"></u><b>${m}</b></i><i class="f"><u style="width:${(f/mx*100).toFixed(2)}%"></u><b>${f}</b></i></div></div>`).join("")};
+/* a row is [name, male, female, years]; the years of diagnosis sit at the right of the name (1.5) and the bars leave room for their numbers */
+const pairHTML=rows=>{const mx=Math.max(1,...rows.map(r=>Math.max(r[1],r[2])));return `<div class="pyl"><span class="k m">Male</span><span class="k f">Female</span></div>`+rows.map(([n,m,f,y])=>`<div class="pr2"><span>${esc(n)}</span>${y?`<small>${esc(y)}</small>`:""}<div><i class="m"><u style="width:${(m/mx*84).toFixed(2)}%"></u><b>${m}</b></i><i class="f"><u style="width:${(f/mx*84).toFixed(2)}%"></u><b>${f}</b></i></div></div>`).join("")};
 const dayLabel=v=>{const d=new Date(v+"T00:00");return isNaN(d)?String(v):MONTHS[d.getMonth()].slice(0,3)+" "+d.getDate()};
 const INC=[["Low income (10K & below)","10,000 and below","Income 10,000 and below"],["Middle income (11K - 20K)","10,001 to 20,000","Income 10,001 to 20,000"],["High income (21K above)","Above 20,000","Income above 20,000"]]; /* the saved answers keep their old text; only the words on screen changed */
 const SAN=[["Level 2 or 3 water","waterLevel",["Level 2","Level 3"]],["Water sealed or flush toilet","toiletType",["Water sealed type","Flush type"]],["Blind drainage","sewage",["Blind drainage"]],["Garbage collection","wasteHow",["Garbage collection"]],["Boils or filters water","sanitize",["Boiling","Filtration"]]];
 /* named people per condition: [short, all, male, female], most common first, ties in DX order */
-function dxPeople(){const P=allPersons();return DX.map((d,i)=>{const l=P.filter(({m})=>dxOf(m).some(e=>e.k===d.k));return [d.short,l.length,l.filter(({m})=>sexK(m)==="M").length,l.filter(({m})=>sexK(m)==="F").length,i]}).filter(x=>x[1]).sort((a,b)=>b[1]-a[1]||a[4]-b[4])}
+function dxPeople(){const P=allPersons();return DX.map((d,i)=>{const l=P.filter(({m})=>dxOf(m).some(e=>e.k===d.k));const ys=l.map(({m})=>+dxOf(m).find(e=>e.k===d.k).y).filter(Boolean),yr=ys.length?(Math.min(...ys)===Math.max(...ys)?String(ys[0]):Math.min(...ys)+" to "+Math.max(...ys)):"";return [d.short,l.length,l.filter(({m})=>sexK(m)==="M").length,l.filter(({m})=>sexK(m)==="F").length,i,yr]}).filter(x=>x[1]).sort((a,b)=>b[1]-a[1]||a[4]-b[4])} /* [5] is the range of the years of diagnosis ("2015 to 2026", one year, or "" when none is typed) */
 function ovHTML(){
   const n=households.length,P=allPersons(),g=households.map(h=>gaps(h).length>0),t=today();
   const comp=g.filter(x=>!x).length,ip=households.filter((h,i)=>g[i]&&h.date===t).length,bk=n-comp-ip;
-  const stats=`<div class="stats"><div><b>${n}</b><small>Clients</small></div><div><b>${P.length}</b><small>People</small></div><div><b>${Math.round(comp/n*100)}%</b><small>Complete</small></div></div>`;
+  const withList=households.filter(h=>realMembers(h).length).length;
+  const stats=`<div class="stats"><div><b>${n}</b><small>Households</small></div><div><b>${P.length}</b><small>People</small></div><div><b>${withList?(P.length/withList).toFixed(1):DASH}</b><small>Per house</small></div><div><b>${Math.round(comp/n*100)}%</b><small>Complete</small></div></div>`;
   const prog=gcard("Interview progress","n = "+n,sgb([[comp,"Complete","var(--ok)"],[ip,"In progress","var(--accent)"],[bk,"Balikan","var(--bad)"]],n,"Interview progress"));
   const f=[],inc=tl("income"),sw=tl("sewage"),dp=dxPeople();
   if(inc.base){const top=INC.map(r=>[r,inc.c.get(r[0])||0]).sort((a,b)=>b[1]-a[1])[0];f.push([IC.pulse,pct(top[1],inc.base),top[0][2]])}
@@ -3217,13 +3548,36 @@ function ovHTML(){
   const dc=new Map();households.forEach(h=>{if(h.date)dc.set(h.date,(dc.get(h.date)||0)+1)});
   const days=[...dc.entries()].sort((a,b)=>String(a[0]).localeCompare(String(b[0]))).slice(-14);
   const per=gcard("Clients per day","",days.length?colsHTML(days.map(([d,c])=>[dayLabel(d),c,fmtDate(d)+": "+c+" "+(c===1?"client":"clients")]),days.length>8?3:1):NOANS);
-  return goalCards()+pairsCardHTML()+stats+`<div class="gg">${prog}${find}${per}</div>`; /* pairsCardHTML (1.4 admin, below the Load backup code) is empty unless this phone holds another pair's clients */
+  /* 1.5: the cards sit under four small headings (Goals, Population, Coverage, Charts); every card of 1.4 is still here */
+  const hd=t=>`<h3 class="ovh">${t}</h3>`;
+  return hd("Goals")+goalCards()+pairsCardHTML()+hd("Population")+stats+hd("Coverage")+covCard()+hd("Charts")+`<div class="gg">${prog}${find}${per}${gPyramid()}${gProblems()}${gSplit()}${gSex()}</div>`; /* pairsCardHTML (1.4 admin, below the Load backup code) is empty unless this phone holds another pair's clients */
 }
+/* Coverage: how much of the community has what is expected, from the same answers as the tables */
+/* [label, yes, answered] for toilet, immunized, safe water and (when a house with such a woman answered) family planning: the Overview card and the Excel Charts sheet both read this */
+function covRows(){
+  const yes=(k,o)=>{let b=0,y=0;households.forEach(h=>{const v=selOf(h,k);if(!v.length)return;b++;if(v.some(x=>o.includes(x)))y++});return [y,b]};
+  const [ty,tb]=yes("toiletType",SAN[1][2]),[wy,wb]=yes("waterLevel",SAN[0][2]),im=kidCount("imm");
+  const rows=[["Sanitary toilet",ty,tb],["Fully immunized ("+agesTo(TALLY_AGES.imm)+")",im.t.get("Complete")||0,im.base],["Safe water (Level 2 or 3)",wy,wb]];
+  let fb=0,fy=0;households.forEach(h=>{if(!womenFp(h)||!A(h,55))return;fb++;if(A(h,55)==="Oo")fy++});
+  if(fb)rows.push(["Family planning (woman "+agesTo(TALLY_AGES.fp)+")",fy,fb]); /* only when a house with such a woman has answered */
+  return rows;
+}
+function covCard(){
+  const rows=covRows();
+  return `<section class="card sm cov" aria-label="Coverage">${rows.every(r=>!r[2])?NOANS:rows.map(([l,y,b])=>meterHTML(l,y,b)).join("")}</section>`;
+}
+/* Ranked bars: the share of the group each problem touches, highest first (the same list the Final tab scores) */
+function gProblems(){
+  const P=finProblems().slice(0,6);
+  return gcard("Biggest problems","highest first",P.length?P.map(p=>`<div class="rk"><span title="${esc(p.name)}">${esc(p.name)}</span><b>${finPct(p)}</b><i><u style="width:${Math.max(1,Math.min(100,p.p)).toFixed(2)}%"></u></i></div>`).join(""):NOANS);
+}
+/* [age label, male, female] per age group: the Tally chart and the Excel Charts sheet both read this */
+function pyramidRows(){const P=allPersons();return AGE_GROUPS.map(g=>{const l=P.filter(({m})=>ageGrp(m)===g);return [ageLabel(g),l.filter(({m})=>sexK(m)==="M").length,l.filter(({m})=>sexK(m)==="F").length]})}
 function gPyramid(){
-  const P=allPersons(),rows=AGE_GROUPS.map(g=>{const l=P.filter(({m})=>ageGrp(m)===g);return [ageLabel(g),l.filter(({m})=>sexK(m)==="M").length,l.filter(({m})=>sexK(m)==="F").length]});
+  const P=allPersons(),rows=pyramidRows();
   const M=P.filter(({m})=>sexK(m)==="M").length,F=P.filter(({m})=>sexK(m)==="F").length,noage=P.filter(({m})=>sexK(m)&&!ageGrp(m)).length,mx=Math.max(1,...rows.map(r=>Math.max(r[1],r[2])));
   if(!rows.some(r=>r[1]||r[2]))return gcard("Age and sex","",NOANS);
-  return gcard("Age and sex","",`<div class="pyl"><span class="k m">Male ${M}</span><span class="k f">Female ${F}</span></div>`+rows.map(([l,m,f])=>`<div class="py"><b>${m}</b><span class="pl"><u style="width:${(m/mx*100).toFixed(2)}%"></u></span><em>${l}</em><span class="pr"><u style="width:${(f/mx*100).toFixed(2)}%"></u></span><b>${f}</b></div>`).join("")+(noage?`<p class="note">${noage} ${noage===1?"person has":"persons have"} no age, so ${noage===1?"it is":"they are"} not in the bars.</p>`:""));
+  return gcard("Age and sex","",`<div class="pyl"><span class="k m">Male ${M}</span><span class="k f">Female ${F}</span></div>`+rows.map(([l,m,f])=>`<div class="py"><span class="pl"><b>${m}</b><u style="width:${(m/mx*84).toFixed(2)}%"></u></span><em>${l}</em><span class="pr"><u style="width:${(f/mx*84).toFixed(2)}%"></u><b>${f}</b></span></div>`).join("")+(noage?`<p class="note">${noage} ${noage===1?"person has":"persons have"} no age, so ${noage===1?"it is":"they are"} not in the bars.</p>`:""));
 }
 function gDependency(){
   const ages=allPersons().filter(({m})=>m.age!==""&&m.age!=null).map(({m})=>Number(m.age));
@@ -3243,11 +3597,21 @@ function gYears(){
 }
 function gSex(){
   const dp=dxPeople().slice(0,5);
-  return gcard("Conditions by sex","people",dp.length?pairHTML(dp.map(x=>[x[0],x[2],x[3]])):NOANS);
+  return gcard("Conditions by sex","people",dp.length?pairHTML(dp.map(x=>[x[0],x[2],x[3],x[5]])):NOANS);
 }
+const incParts=t=>INC.map(([k,l],i)=>[t.c.get(k)||0,l,[R0,R1,R2][i]]);
 function gIncome(){
   const t=tl("income");if(!t.base)return gcard("Income per month","",NOANS);
-  return gcard("Income per month","n = "+t.base,sgb(INC.map(([k,l],i)=>[t.c.get(k)||0,l,[R0,R1,R2][i]]),t.base,"Income per month"));
+  return gcard("Income per month","n = "+t.base,sgb(incParts(t),t.base,"Income per month"));
+}
+/* 1.5 Overview: one card with a segmented bar for each one-answer group (water supply level, monthly income, house materials) */
+function gSplit(){
+  const out=[];
+  let b=0;const lv=[0,0,0];households.forEach(h=>{const v=selOf(h,"waterLevel");if(!v.length)return;b++;const top=["Level 3","Level 2","Level 1"].findIndex(x=>v.includes(x));if(top>=0)lv[2-top]++});
+  if(b)out.push(["Water supply (highest level)",b,sgb([[lv[0],"Level 1",R2],[lv[1],"Level 2",R1],[lv[2],"Level 3",R0]],b,"Water supply")]);
+  const inc=tl("income");if(inc.base)out.push(["Monthly income",inc.base,sgb(incParts(inc),inc.base,"Monthly income")]);
+  const hm=tl("houseType");if(hm.base)out.push(["House materials",hm.base,sgb([["Strong","Strong",R0],["Mixed","Mixed",R1],["Light","Light",R2]].map(([k,n,c])=>[hm.c.get(k)||0,n,c]),hm.base,"House materials")]);
+  return gcard("How the houses split","households",out.length?out.map(([t,n,h])=>`<p class="sl">${esc(t)} <span>n = ${n}</span></p>${h}`).join(""):NOANS);
 }
 function gSanit(){
   const r=SAN.map(([l,k,o])=>{let b=0,y=0;households.forEach(h=>{const v=selOf(h,k);if(!v.length)return;b++;if(v.some(x=>o.includes(x)))y++});return [l,y,b]});
@@ -3300,7 +3664,7 @@ function needsHTML(){
 }
 const noteLabel=k=>{const i=ITEMS.find(x=>String(x.note)===String(k));return i?Yr(i.label||(FK[k]&&FK[k].label)||k):((LEGACY.q[k])||k)};
 let tallyTab="OV",tallyMode="t"; /* the tab and the Table or Chart choice are remembered while the app is open */
-const TTABS=[["OV","Overview"],["T1","A Demographic","A. Demographic"],["T2","B Social","B. Social System"],["T3","C Health","C. Health Status"],["V","D Vital","D. Vital Statistics"],["E","E Amenities","E. Amenities"],["F","F Disease","F. Disease Prevalence"],["N","Balikan"]]; /* the letters of the Word form; Notes live in the Client summary and the Excel file */
+const TTABS=[["OV","Overview"],["T1","A Demographic","A. Demographic"],["T2","B Social","B. Social System"],["T3","C Health","C. Health Status"],["V","D Vital","D. Vital Statistics"],["E","E Amenities","E. Amenities"],["F","F Disease","F. Disease Prevalence"],["FIN","Final"]]; /* 1.5: Balikan left these chips (the tab "N" still opens from Home and Plan) and Final is the last chip; the letters of the Word form; Notes live in the Client summary and the Excel file */
 const modeSw=()=>`<div class="sg" id="tl-sw" role="group" aria-label="Table or chart">${[["t","table","Table"],["c","bars","Chart"]].map(([v,i,l])=>`<button type="button" data-sw="${v}" aria-pressed="${v===tallyMode}">${ico(IC[i],15)}${l}</button>`).join("")}</div>`;
 const avBtn=()=>`<button type="button" class="avatar-btn" id="pill-btn" aria-label="${L("Ablihi ang profile","Open profile")}">${me.photo?`<img src="${esc(me.photo)}" alt="">`:ico(IC.user)}</button>`;
 function tallyBody(){
@@ -3314,19 +3678,21 @@ function tallyBody(){
     case "V":return vitalHTML(vital(households.flatMap(realMembers)));
     case "E":return amenHTML();
     case "F":return two(diseaseHTML(),gRisk()+gYears()+gSex());
+    case "FIN":return finHTML();
     default:return needsHTML();
   }
 }
 /* the arrows over the Word table: they hide at the ends, and the whole line hides on wide screens */
 function twUp(){
   document.querySelectorAll(".tw thead").forEach(t=>{const r=t.rows[0],h=r?r.getBoundingClientRect().height:0;if(h&&t.rows[1])t.style.setProperty("--h1",Math.round(h)+"px")}); /* the second header row pins right under the first, whatever height the first one has */
+  document.querySelectorAll(".tw").forEach(w=>{const t=w.querySelector("thead"),h=t?t.getBoundingClientRect().height:0;if(h)w.style.setProperty("--thh",Math.round(h)+"px")}); /* 1.5 scroll stops: a group row stops just under the pinned header, so its scroll margin is the header height */
   document.querySelectorAll(".twh").forEach(h=>{const w=h.parentElement.querySelector(".tw"),l=h.querySelector(".sa.l"),r=h.querySelector(".sa.r");if(!w._w){w._w=1;w.addEventListener("scroll",twUp,{passive:true})}const m=w.scrollWidth-w.clientWidth,x=w.scrollLeft;h.hidden=m<=2;l.hidden=m<=2||x<=2;r.hidden=m<=2||x>=m-2})
 }
 window.addEventListener("resize",twUp);
 function renderTally(){
   bar(titleBar("Tally"),`<button type="button" class="iconbtn dl" id="btn-xlsx" aria-label="Download Excel">${ico(IC.dl,20)}</button>`+avBtn());
-  if(isSplit())$("#view").innerHTML=`<div class="sp sp-n"><div class="sp-l"><nav class="vlist" id="tally-tabs" aria-label="Tally">${TTABS.map(([id,l,n])=>`<button type="button" class="vl" data-t="${id}" aria-pressed="${id===tallyTab}">${esc(n||l)}</button>`).join("")}</nav></div><div class="sp-r"><div class="tl-body" id="tl-body">${tallyBody()}</div></div></div>`;
-  else $("#view").innerHTML=slideHTML("",TTABS.map(([id,l])=>`<button type="button" class="chip" data-t="${id}" aria-pressed="${id===tallyTab}">${esc(l)}</button>`).join(""),'id="tally-tabs"').replace('class="slide"','class="slide nar"')+`<div class="tl-body" id="tl-body">${tallyBody()}</div>`;
+  if(isSplit())$("#view").innerHTML=`<div class="sp sp-n"><div class="sp-l"><nav class="vlist" id="tally-tabs" aria-label="Tally">${TTABS.map(([id,l,n])=>`<button type="button" class="vl${id==="FIN"?" fin":""}" data-t="${id}" aria-pressed="${id===tallyTab}">${esc(n||l)}</button>`).join("")}</nav></div><div class="sp-r"><div class="tl-body" id="tl-body">${tallyBody()}</div></div></div>`;
+  else $("#view").innerHTML=slideHTML("",TTABS.map(([id,l])=>`<button type="button" class="chip${id==="FIN"?" fin":""}" data-t="${id}" aria-pressed="${id===tallyTab}">${esc(l)}</button>`).join(""),'id="tally-tabs"').replace('class="slide"','class="slide nar"')+`<div class="tl-body" id="tl-body">${tallyBody()}</div>`;
   wireSlides($("#view"));twUp();
 }
 /* a new tab or the Table and Chart switch changes only what is under the tabs: the page keeps its place and nothing plays again */
@@ -3355,6 +3721,197 @@ $("#view").addEventListener("click",e=>{
 });
 $("#appbar").addEventListener("click",e=>{if(tab==="tally"&&e.target.closest("#btn-xlsx"))downloadExcel()});
 $("#view").addEventListener("change",e=>{const k=e.target.dataset&&e.target.dataset.com;if(!k)return;if(k==="calYear"){const y=parseInt(e.target.value,10);if(!(y>=2000&&y<=2999)){e.target.value=calYear();return}community.calYear=y}else community[k]=e.target.value;lsSet(LS_COM,community);if(tab==="tally")keepPlace(renderTally)});
+
+/* ---------- Final tab (1.5): 1 Facts, 2 Findings, 3 Priority ----------
+   The school guide has the rates and the Community Problem Prioritization sheet but no wording for findings, so the sentences are written from the tally and the person can change each one.
+   What the person chooses (problems to score, scores, own sentences, justifications) is kept in settings.final, inside the existing settings record: no new storage name. */
+const FIN_CRIT=[ /* key, long name, column name, weight, highest score, choices, meaning of the choices, "Think of" hint */
+  ["nat","Nature of the problem","Nature",1,3,[3,2,1],"3 health status, 2 health resources, 1 foreseeable crisis",""],
+  ["mag","Magnitude of the problem","Magnitude",3,4,[4,3,2,1],"4 is 75 to 100%, 3 is 50 to 74%, 2 is 25 to 49%, 1 is under 25%",""],
+  ["mod","Modifiability of the problem","Modifiability",4,3,[3,2,1,0],"3 high, 2 moderate, 1 low, 0 not modifiable","knowledge and technology, resources of the families, the nurse and the community"],
+  ["prev","Preventive potential","Prevention",1,3,[3,2,1],"3 high, 2 moderate, 1 low","how serious, how long, current management, high-risk groups exposed"],
+  ["con","Salience / social concern","Concern",1,2,[2,1,0],"2 urgent, 1 not urgent, 0 not a concern",""]];
+const FIN_T12={nat:4,mag:9,mod:16,prev:4,con:6}; /* score / highest x weight, in twelfths, so a total and a rank never depend on rounding: the best possible is 120 twelfths = 10 */
+const FIN_GROUPS=[[3,"Health status"],[2,"Health resources"],[1,"Foreseeable crisis"]];
+let finEdit=null; /* the finding being edited */
+function finSt(){
+  let f=settings.final;if(!f||typeof f!=="object"||Array.isArray(f))f=settings.final={};
+  if(!Array.isArray(f.pick))f.pick=[];
+  ["tx","why","nat","mod","prev","con"].forEach(k=>{if(!f[k]||typeof f[k]!=="object"||Array.isArray(f[k]))f[k]={}});
+  return f;
+}
+const finPct=p=>p.p<1?"<1%":Math.round(p.p)+"%";
+const dxName=s=>/^[A-Z]{2,}/.test(s)?s:s.charAt(0).toLowerCase()+s.slice(1);
+/* the problems the tally shows, highest share first: {id, name, tag (Typology of Nursing Problem), nat (3 health status, 2 health resources, 1 foreseeable crisis), y of b, p (percent), rest (the sentence after the percent)} */
+function finProblems(){
+  const out=[],has=(v,a)=>v.some(x=>a.includes(x));
+  const add=(id,name,tag,nat,yb,rest)=>{const y=yb[0],b=yb[1];if(b>0&&y>0)out.push({id,name,tag,nat,y,b,p:y/b*100,rest})};
+  const cnt=(key,pred)=>{let b=0,y=0;households.forEach(h=>{const v=selOf(h,key);if(!v.length)return;b++;if(pred(v))y++});return [y,b]};
+  const yn=(n,want)=>{let b=0,y=0;households.forEach(h=>{const a=A(h,n);if(!a)return;b++;if(a===want)y++});return [y,b]};
+  add("inc","Income 10,000 and below","Threat",3,cnt("income",v=>v.includes("Low income (10K & below)")),"of households earn 10,000 and below a month.");
+  add("toilet","No sanitary toilet","Threat",3,cnt("toiletType",v=>!has(v,SAN[1][2])),"of households have no sanitary toilet.");
+  add("water","Drinking water not treated","Threat",3,cnt("sanitize",v=>!has(v,["Boiling","Filtration","Chemical disinfection"])),"of households do not treat drinking water.");
+  add("garb","Garbage dumped or burned","Threat",3,cnt("wasteHow",v=>has(v,["Open dumping","Open burning"])),"of households dump or burn their garbage.");
+  add("drain","No drainage","Threat",3,cnt("sewage",v=>v.includes("None")),"of households have no drainage.");
+  const im=kidCount("imm"),nu=kidCount("nut"),P=allPersons();
+  add("imm","Child not fully immunized","Threat",3,[im.t.get("Incomplete")||0,im.base],"of children "+agesTo(TALLY_AGES.imm)+" are not fully immunized.");
+  add("nut","Underweight child","Deficit",3,[nu.t.get("Underweight")||0,nu.base],"of children "+agesTo(TALLY_AGES.nut)+" are underweight.");
+  DX.forEach(d=>add("dx_"+d.k,d.short,"Deficit",3,[P.filter(({m})=>dxOf(m).some(e=>e.k===d.k)).length,P.length],"of people are diagnosed with "+dxName(d.short)+"."));
+  add("preg","Pregnant or new mother","Crisis",1,yn("MC","Oo"),"of households have a pregnant or newly delivered member.");
+  add("death","Death in the family","Crisis",1,yn(77,"Oo"),"of households had a death in "+calYear()+".");
+  add("prenat","No prenatal checkup","Threat",3,cnt("prenatal",v=>v.includes("Without prenatal checkup")),"of households with a mother-to-be had no prenatal checkup.");
+  add("hw","No health worker","Threat",2,cnt("manpower",v=>v.includes("None")),"of households say no health worker serves the community.");
+  add("prog","Unaware of health programs","Threat",2,cnt("programAware",v=>v.includes("Unaware")),"of households do not know the barangay health programs.");
+  [[91,"No health center or RHU","of households say there is no barangay health center or RHU nearby."],[90,"No birthing clinic","of households say there is no birthing clinic or lying-in nearby."],[92,"No hospital nearby","of households say there is no hospital nearby."]].forEach(([n,nm,t])=>add("am"+n,nm,"Threat",2,yn(n,"Wala"),t));
+  return out.sort((a,b)=>b.p-a.p);
+}
+const finSent=p=>{const t=finSt().tx[p.id];return typeof t==="string"&&t.trim()?t.trim():p.rest};
+/* 1 Facts: the rates exactly as the school guide prints them (its School guide column in D Vital) */
+function finFacts(){
+  const members=households.flatMap(realMembers),v=vital(members),r={};v.groups.forEach(([,rs])=>rs.forEach(x=>{r[x[0]]=x}));
+  const g=n=>r[n]?r[n][2]:"-",fm=n=>r[n]?r[n][1]:"";
+  return {j:julyInfo(members),rows:[
+    ["People",members.length,"in the member lists",""],["Households",households.length,"interviewed",""],
+    ["Crude birth rate",g("Crude Birth Rate"),"per 1,000",fm("Crude Birth Rate")],["Crude death rate",g("Crude Death Rate"),"per 1,000",fm("Crude Death Rate")],
+    ["Infant mortality rate",g("Infant Mortality Rate"),"guide form, per 1,000",fm("Infant Mortality Rate")],["Maternal mortality rate",g("Maternal Mortality Rate"),"guide form, per 1,000",fm("Maternal Mortality Rate")],
+    ["General fertility rate",g("General Fertility Rate"),"per 1,000",fm("General Fertility Rate")],["Population density",g("Population Density"),"guide form",fm("Population Density")],
+    ["Literacy rate (15 and up)",g("Literacy Rate"),"percent",fm("Literacy Rate")],["Dependency ratio",g("Dependency Ratio"),"per 100",fm("Dependency Ratio")]]};
+}
+const finEst=j=>j.typed?"Uses the typed July 1 population.":j.hh<j.tot?"Estimated from "+j.hh+" of "+j.tot+" houses.":"";
+const finHead=(n,t)=>`<h3 class="ovh fin-h"><span>${n}</span>${t}</h3>`;
+function finFactsHTML(){
+  const F=finFacts(),est=finEst(F.j),dens=F.rows.find(r=>r[0]==="Population density")[1]==="-";
+  return finHead(1,"Facts")+`<div class="finf">${F.rows.map(([l,v,u])=>`<div class="st"><b>${esc(v)}</b><span>${esc(l)}</span><small>${esc(u)}</small></div>`).join("")}</div><p class="note finn">${esc(est)}${est?" ":""}Rates use the guide's printed formulas.${dens?" Density needs the land area (D Vital).":""}</p>`;
+}
+/* 2 Findings */
+function finFindHTML(P){
+  if(!P.length)return finHead(2,"Findings")+`<p class="note">No findings yet. They appear as households are interviewed.</p>`;
+  const row=p=>{
+    const ed=!!(finSt().tx[p.id]&&String(finSt().tx[p.id]).trim());
+    if(finEdit===p.id)return `<div class="find fed"><span class="pct">${finPct(p)}</span><div class="fe"><textarea id="fin-ed" rows="3" maxlength="300" aria-label="Sentence: ${esc(p.name)}">${esc(finSent(p))}</textarea><div class="btnrow"><button type="button" class="btn sm" data-fs="${p.id}">Save</button><button type="button" class="btn ghost sm" data-fr="${p.id}">Reset to auto</button><button type="button" class="btn ghost sm" data-fc="1">Cancel</button></div></div></div>`;
+    return `<div class="find"><span class="pct">${finPct(p)}</span><button type="button" class="ftx${ed?" ed":""}" data-fe="${p.id}" aria-label="Edit sentence: ${esc(p.name)}">${esc(finSent(p))}</button><span class="tag${p.tag==="Deficit"?" bad":""}">${p.tag}</span></div>`;
+  };
+  return finHead(2,"Findings")+FIN_GROUPS.map(([n,t])=>{const l=P.filter(p=>p.nat===n);return l.length?`<div class="fgh">${t}</div><section class="card sm fcard">${l.map(row).join("")}</section>`:""}).join("")+`<p class="note">Tap a sentence to change it. Tags use the Typology of Nursing Problem: Wellness, Threat, Deficit, Crisis.</p>`;
+}
+/* 3 Priority: the school's Community-Based Problem Prioritization. Each score is (score / highest) x weight and the total is out of 10. */
+const finOk=(k,v)=>{const c=FIN_CRIT.find(x=>x[0]===k);return c&&c[5].includes(v)?v:undefined};
+function finScores(p){
+  const f=finSt(),g=k=>finOk(k,Number(f[k][p.id])),r=Math.round(p.p);
+  const nat=g("nat");return {nat:nat==null?p.nat:nat,mag:r>=75?4:r>=50?3:r>=25?2:1,mod:g("mod"),prev:g("prev"),con:g("con")};
+}
+const finNatNote=p=>p.nat===2?"Lack of a health resource, so health resources.":p.tag==="Crisis"?"A crisis that can be foreseen.":p.tag==="Deficit"?"A health deficit, so health status.":"A health threat, so health status.";
+const finAct=(c,v)=>v/c[4]*c[3]; /* the actual score of one criterion */
+function finRank(P){
+  const pick=finSt().pick,list=P.filter(p=>pick.includes(p.id)).map(p=>({p,s:finScores(p)}));
+  list.forEach(x=>{x.t12=FIN_CRIT.every(c=>x.s[c[0]]!=null)?FIN_CRIT.reduce((t,c)=>t+FIN_T12[c[0]]*x.s[c[0]],0):null});
+  const done=list.filter(x=>x.t12!=null);done.forEach(x=>{x.rank=1+done.filter(y=>y.t12>x.t12).length}); /* equal totals share a rank: the guide gives no tie rule */
+  return {list,sorted:[...done.sort((a,b)=>b.t12-a.t12||b.p.p-a.p.p),...list.filter(x=>x.t12==null)]};
+}
+function finCard(x){
+  const p=x.p,s=x.s,f=finSt();
+  const rows=FIN_CRIT.map(c=>{
+    const [k,long,,w,hs,opts,leg,think]=c,v=s[k];
+    const btns=k==="mag"?opts.map(o=>`<span class="sb${o===v?" on":""}">${o}</span>`).join(""):opts.map(o=>`<button type="button" class="sb${o===v?" on":""}" data-id="${p.id}" data-k="${k}" data-v="${o}" aria-pressed="${o===v}">${o}</button>`).join("");
+    const note=k==="mag"?`${finPct(p)} from the tally, filled in.`:k==="nat"?finNatNote(p):"";
+    return `<div class="fcr"><div class="fch"><b>${long}</b><i>weight ${w}</i></div><div class="sbs">${btns}</div><div class="fcn">${note?`<span>${esc(note)}</span>`:""}<span>${esc(leg)}</span>${think?`<span>Think of: ${esc(think)}.</span>`:""}<code class="cmp">${v==null?"Pick a score":v+"/"+hs+" x "+w+" = "+finAct(c,v).toFixed(2)}</code></div></div>`;
+  }).join("");
+  return `<section class="card sm fsc" aria-label="Scoring: ${esc(p.name)}"><div class="fsh"><b>${esc(p.name)}</b><span class="pct">${finPct(p)}</span></div>${rows}<textarea class="fwhy" data-why="${p.id}" rows="2" maxlength="600" aria-label="Justification for ${esc(p.name)}" placeholder="Justification (optional): why these scores">${esc(f.why[p.id]||"")}</textarea><div class="ftot"><span>Total</span><b>${x.t12==null?"-":(x.t12/12).toFixed(2)} of 10</b></div></section>`;
+}
+function finPriHTML(P){
+  const f=finSt(),R=finRank(P),n=R.list.length;
+  const pick=P.length?`<div class="fpk">${P.map(p=>`<button type="button" class="chip" data-fp="${p.id}" aria-pressed="${f.pick.includes(p.id)}"><b>${finPct(p)}</b> ${esc(p.name)}</button>`).join("")}</div>`:`<p class="note">No problems to score yet.</p>`;
+  const tb=n?`<section class="card flush"><p class="tcap">Priority ranking · ${n} ${n===1?"problem":"problems"}</p><div class="tw"><table class="rkt"><thead><tr><th class="c0">Problem</th>${FIN_CRIT.map(c=>`<th class="n">${c[2]}</th>`).join("")}<th class="n">Total</th><th class="n">Rank</th></tr></thead><tbody>${R.sorted.map(x=>`<tr><td class="c0">${esc(x.p.name)}</td>${FIN_CRIT.map(c=>x.s[c[0]]==null?`<td class="n z">${TD}</td>`:`<td class="n">${finAct(c,x.s[c[0]]).toFixed(2)}</td>`).join("")}${x.t12==null?`<td class="n z">${TD}</td><td class="n z">${TD}</td>`:`<td class="n t">${(x.t12/12).toFixed(2)}</td><td class="n t">${x.rank}</td>`}</tr>`).join("")}</tbody></table></div></section><p class="note">Highest total is rank 1. Equal totals share a rank. A problem with a missing score has no rank yet.</p>`:"";
+  return finHead(3,"Priority")+`<p class="note fcount"><b>${n}</b> ${n===1?"problem":"problems"} picked. The guide asks for at least 10.</p>${pick}${R.list.map(finCard).join("")}${tb}`;
+}
+function finHTML(){const P=finProblems();return finFactsHTML()+finFindHTML(P)+finPriHTML(P)}
+$("#view").addEventListener("click",e=>{
+  if(tab!=="tally"||tallyTab!=="FIN")return;
+  const f=finSt(),again=()=>{saveSet();keepPlace(()=>{$("#tl-body").innerHTML=tallyBody();twUp()})};let b;
+  if(b=e.target.closest("[data-fp]")){const id=b.dataset.fp,i=f.pick.indexOf(id);if(i<0)f.pick.push(id);else f.pick.splice(i,1);again();return}
+  if(b=e.target.closest("button.sb[data-k]")){const id=b.dataset.id,k=b.dataset.k,v=b.dataset.v;if(!["nat","mod","prev","con"].includes(k))return;if(String(f[k][id])===v)delete f[k][id];else f[k][id]=Number(v);again();return}
+  if(b=e.target.closest("[data-fe]")){finEdit=b.dataset.fe;again();const t=$("#fin-ed");if(t){t.focus();t.setSelectionRange(t.value.length,t.value.length)}return}
+  if(b=e.target.closest("[data-fs]")){const id=b.dataset.fs,t=$("#fin-ed"),p=finProblems().find(x=>x.id===id),v=t?t.value.trim().replace(/\s+/g," "):"";if(!v||(p&&v===p.rest))delete f.tx[id];else f.tx[id]=v;finEdit=null;again();return}
+  if(b=e.target.closest("[data-fr]")){delete f.tx[b.dataset.fr];finEdit=null;again();return}
+  if(e.target.closest("[data-fc]")){finEdit=null;again()}
+});
+$("#view").addEventListener("input",e=>{const t=e.target,id=t.dataset&&t.dataset.why;if(!id||tab!=="tally")return;const f=finSt();if(t.value.trim())f.why[id]=t.value.slice(0,600);else delete f.why[id];saveSet()}); /* the justification is saved as it is typed; the page is not redrawn, so the keyboard stays */
+/* the Final sheet: facts, findings (with tag), then each scored problem as Criteria, Computation, Actual score, Justification, the ranking, and the signature lines */
+function finSheet(add){
+  const f=finSt(),P=finProblems(),F=finFacts(),R=finRank(P),A=[],lim={},hdr=[],bold=[],nw=[],mg=[],caps=[],zr=[],pr=[],sig=[];
+  const row=(cells,n,kind)=>{const i=A.length;A.push(cells);lim[i]=n;if(kind==="h")hdr.push(i);if(kind==="b")bold.push(i);if(kind==="c")caps.push(i);return i};
+  const gap=()=>{lim[A.length]=0;A.push([])};
+  row([xlTitle()],1);row(["Final · Facts, findings and priority of community problems"],1);gap();
+  row(["1 · FACTS"],1,"b");row(["ITEM","VALUE","UNIT","GUIDE FORMULA"],4,"h");
+  F.rows.forEach(([l,v,u,fm])=>{const i=row([l,rateNum(v),u,fm],4);if(!["People","Households"].includes(l))zr.push([i,1])});
+  const est=finEst(F.j);row([(est?est+" ":"")+"Rates use the guide's printed formulas: IMR and MMR divide by the July 1 population, and density is land area x 100 / population."],1,"c");
+  gap();row(["2 · FINDINGS"],1,"b");row(["FINDING","PERCENT","TAG","GROUP"],4,"h");
+  if(!P.length)row(["No findings yet."],1,"c");
+  P.forEach(p=>{const i=row([finPct(p)+" "+finSent(p),p.y/p.b,p.tag,FIN_GROUPS.find(g=>g[0]===p.nat)[1]],4);pr.push([i,1])});
+  gap();row(["3 · PRIORITY (Community-Based Problem Prioritization)"],1,"b");
+  row([R.list.length+" "+(R.list.length===1?"problem":"problems")+" scored. The guide asks for at least 10. Actual score = score / highest score x weight; the total is out of 10."],1,"c");
+  row(["CRITERIA","COMPUTATION","ACTUAL SCORE","JUSTIFICATION"],4,"h");
+  R.list.forEach(x=>{
+    row(["Problem: "+x.p.name+" ("+finPct(x.p)+")"],4,"b");const first=A.length;
+    FIN_CRIT.forEach((c,i)=>{const v=x.s[c[0]];nw.push(A.length);const r=row([c[1]+" (weight "+c[3]+")",v==null?"-":v+"/"+c[4]+" x "+c[3]+" = "+finAct(c,v).toFixed(2),v==null?"-":finAct(c,v),i===0?(f.why[x.p.id]||""):""],4);if(v!=null)zr.push([r,2])});
+    mg.push([first,first+FIN_CRIT.length-1]);
+    const t=row(["Total Score:","",x.t12==null?"-":x.t12/12,""],4,"b");if(x.t12!=null)zr.push([t,2]);
+  });
+  gap();row(["RANKING SUMMARY"],1,"b");
+  row(["PROBLEM","NATURE","MAGNITUDE","MODIFIABILITY","PREVENTION","CONCERN","TOTAL","RANK"],8,"h");
+  R.sorted.forEach(x=>{const i=row([x.p.name,...FIN_CRIT.map(c=>x.s[c[0]]==null?"-":finAct(c,x.s[c[0]])),x.t12==null?"-":x.t12/12,x.t12==null?"-":x.rank],8);for(let c=1;c<=6;c++)zr.push([i,c])}); /* columns 1 to 6 are scores and the total (two decimals); column 7 is the rank, a whole number */
+  gap();gap();
+  [["Prepared by: ______________________________"],[(me.pairA&&me.pairB?me.pairA+" and "+me.pairB:"")+(blockCode()?" · "+blockCode():"")],[""],["Noted by: ______________________________"],["Clinical Instructor"]].forEach(c=>{sig.push(row(c,1))});
+  const ws=add(A,"Final",{hdr,bold,nw,lim,ttl:true,max:60,minc:{1:24,2:14,3:36},z:{}});
+  xlInfo(ws,caps,4);
+  ws["!merges"]=ws["!merges"]||[];
+  mg.forEach(([a,b])=>{ws["!merges"].push({s:{r:a,c:3},e:{r:b,c:3}});const c=ws[XLSX.utils.encode_cell({r:a,c:3})];if(c&&c.s)c.s={...c.s,alignment:{...c.s.alignment,vertical:"top",horizontal:"left"}}});
+  zr.forEach(([r,c])=>{const x=ws[XLSX.utils.encode_cell({r,c})];if(x&&typeof x.v==="number")x.z="0.00"});
+  pr.forEach(([r,c])=>{const x=ws[XLSX.utils.encode_cell({r,c})];if(x&&typeof x.v==="number")x.z="0.00%"});
+  sig.forEach(r=>{const x=ws[XLSX.utils.encode_cell({r,c:0})];if(x)x.s={alignment:{vertical:"center",horizontal:"left"}}});
+  return ws;
+}
+
+/* ---------- Excel Charts sheet (1.5) ----------
+   The Excel tool cannot make real charts, so each bar is a cell with =REPT("█",ROUND(value/max*20,0)); the cell also holds the computed text, so the bars show before Excel recalculates and when the file is read back.
+   Every number comes from the same functions the Tally uses (pyramidRows, finProblems, covRows, tallyDx); nothing is counted again. */
+const CH_BAR="█",CH_N=20,CH_ACC="6B4430",CH_M="00879E",CH_F="B0561F";
+function chartsSheet(add){
+  const A=[],lim={},hdr=[],bold=[],caps=[],fm=[],pc=[],free=[0,1];
+  const row=(cells,n,kind)=>{const i=A.length;A.push(cells);lim[i]=n;if(kind==="h")hdr.push(i);if(kind==="b")bold.push(i);if(kind==="c")caps.push(i);return i};
+  const gap=()=>{lim[A.length]=0;A.push([])};
+  const col=c=>String.fromCharCode(65+c);
+  const mxOf=a=>Math.max(0.000001,...a.filter(x=>typeof x==="number")); /* the same floor the formula has, so a block of zeros never divides by zero */
+  const bar=(v,mx)=>typeof v==="number"?CH_BAR.repeat(Math.round(v/mx*CH_N)):"";
+  /* a bar cell: the REPT formula over the value cell and the value range(s) of its block, plus the cached text */
+  const addBar=(r,c,valCol,v,mx,rng,color,al)=>{if(typeof v!=="number")return;fm.push({r,c,f:rng?`REPT("${CH_BAR}",ROUND(${col(valCol)}${r+1}/MAX(${rng},0.000001)*${CH_N},0))`:`REPT("${CH_BAR}",ROUND(${col(valCol)}${r+1}*${CH_N},0))` /* no range: a percent, so a full bar is 100% */,v:bar(v,mx),color,al})};
+  row([xlTitle()],1);row(["Charts · Bars drawn in cells from the Tally numbers"],1);gap();
+  /* 1 population pyramid: male bar grows to the left, female bar to the right, the same age groups as Table A */
+  row(["1 · POPULATION PYRAMID"],1,"b");row(["MALE BAR","MALE","AGE GROUP","FEMALE","FEMALE BAR"],5,"h");
+  const py=pyramidRows(),p0=A.length,p1=p0+py.length-1,pm=mxOf(py.flatMap(r=>[r[1],r[2]]));
+  py.forEach(([l,m,f],i)=>{const r=row([bar(m,pm),m,l,f,bar(f,pm)],5),rg=`B$${p0+1}:B$${p1+1},D$${p0+1}:D$${p1+1}`;addBar(r,0,1,m,pm,rg,CH_M,"right");addBar(r,4,3,f,pm,rg,CH_F,"left")});
+  gap();
+  /* 2 biggest problems: the Final findings list, highest first, with its tag */
+  row(["2 · BIGGEST PROBLEMS"],1,"b");row(["PROBLEM","% OF HOUSEHOLDS","BAR","TAG"],4,"h");
+  const P=finProblems();
+  if(!P.length)row(["No findings yet."],1,"c");
+  else{const q0=A.length,q1=q0+P.length-1,qm=mxOf(P.map(p=>p.y/p.b));P.forEach(p=>{const v=p.y/p.b,r=row([p.name,v,bar(v,1),p.tag],4);pc.push([r,1]);addBar(r,2,1,v,1,null,CH_ACC,"left")})}
+  gap();
+  /* 3 coverage: the Overview Coverage card, in the order toilet, safe water, immunized, family planning */
+  row(["3 · COVERAGE"],1,"b");row(["ITEM","%","BAR"],3,"h");
+  const cv=covRows(),ci=[0,2,1,3].map(i=>cv[i]).filter(Boolean),c0=A.length,c1=c0+ci.length-1,cvs=ci.map(([,y,b])=>b?y/b:""),cm=mxOf(cvs);
+  ci.forEach(([l,,b],i)=>{const v=cvs[i],r=row([l,v,bar(v,1)],3);if(b)pc.push([r,1]);addBar(r,2,1,v,1,null,CH_ACC,"left")});
+  gap();
+  /* 4 most common diseases: Table A2 rows with people named, by total, highest first */
+  row(["4 · MOST COMMON DISEASES"],1,"b");row(["DISEASE","MALE","FEMALE","TOTAL","BAR"],5,"h");
+  const dz=tallyDx().rows.map(([n,x],i)=>[n,x[0],x[1],x[2],i]).filter(x=>x[3]>0).sort((a,b)=>b[3]-a[3]||a[4]-b[4]);
+  if(!dz.length)row(["No diseases named yet."],1,"c");
+  else{const d0=A.length,d1=d0+dz.length-1,dm=mxOf(dz.map(x=>x[3]));dz.forEach(([n,m,f,t])=>{const r=row([n,m,f,t,bar(t,dm)],5);addBar(r,4,3,t,dm,`D$${d0+1}:D$${d1+1}`,CH_ACC,"left")})}
+  const ws=add(A,"Charts",{hdr,bold,lim,free,ttl:true,max:60,minc:{0:24,1:16,2:24,3:12,4:24}});
+  xlInfo(ws,caps,5);
+  pc.forEach(([r,c])=>{const x=ws[XLSX.utils.encode_cell({r,c})];if(x&&typeof x.v==="number")x.z="0.00%"});
+  fm.forEach(({r,c,f,v,color,al})=>{const a=XLSX.utils.encode_cell({r,c});ws[a]={t:"s",v,f,s:{font:{bold:false,color:{rgb:color}},border:XBD,alignment:{vertical:"center",wrapText:false,horizontal:al}}}});
+  return ws;
+}
 
 /* ---------- excel ---------- */
 const flat=x=>x&&typeof x==="object"?selArr(x).filter(Boolean).join("; ")+(x.other?" ("+x.other+")":""):(x??"");
@@ -3398,7 +3955,7 @@ function xlInfo(ws,rows,ncol){
 }
 /* 1.4 sheet order and names, applied to the finished workbook so the A to F sheets are built exactly as before: A to F (short names), Balikan, Pairs, Households, Members, Notes, then the rest in their old order. The importer reads Households, Members and Notes by name only, so files with the 1.3 names still load. */
 const SHEET_SHORT={"B Social System":"B Social","C Health Status":"C Health","D Vital Statistics":"D Vital","F Disease Prevalence":"F Disease"};
-const SHEET_FIRST=["A Demographic","B Social","C Health","D Vital","E Amenities","F Disease","Balikan","Pairs","Households","Members","Notes"];
+const SHEET_FIRST=["A Demographic","B Social","C Health","D Vital","E Amenities","F Disease","Final","Charts","Balikan","Pairs","Households","Members","Notes"];
 function orderBook(wb){
   wb.SheetNames=wb.SheetNames.map(n=>{const t=SHEET_SHORT[n];if(t&&!wb.Sheets[t]){wb.Sheets[t]=wb.Sheets[n];delete wb.Sheets[n];return t}return n});
   const rank=n=>{const i=SHEET_FIRST.indexOf(n);return i<0?SHEET_FIRST.length:i};
@@ -3408,6 +3965,7 @@ async function downloadExcel(){
   if(!households.length){toast(L("Dugang una og kliyente.","Add a client first."),true);return}
   if(typeof XLSX==="undefined"){toast(L("Wala na-load ang Excel tool. Sulayi pag-usab.","The Excel tool did not load. Reload and try again."),true);return}
   const members=households.flatMap(realMembers),v=vital(members),wb=XLSX.utils.book_new(),HH=[...households].sort(byNo);
+  const HID=hhIds(households); /* 1.5 hidden IDs: they show only in the Households and Members sheets */
   const cap=s=>typeof s==="string"&&s.length>32000?s.slice(0,32000):s; /* a cell holds at most 32,767 characters: a longer note is cut here so it cannot stop the whole file */
   const add=(a,n,o,ws)=>{a=a.map(r=>r.map(cap));ws=dress(ws||XLSX.utils.aoa_to_sheet(a),a,o);if(o&&o.ttl){const a1=ws.A1,a2=ws.A2;if(a1)a1.s={font:{bold:true,sz:13}};if(a2)a2.s={font:{bold:true}}}XLSX.utils.book_append_sheet(wb,ws,n);return ws};
   /* A to F first, then the data behind them. A, B and C have the rows, order, capitals and columns of the screen. */
@@ -3450,10 +4008,12 @@ async function downloadExcel(){
   const Fa=[[xlTitle()],["Table F · Disease Prevalence · Households (n = "+HN+")"],["F. DISEASE PREVALENCE","FREQUENCY","ANSWERED","PERCENTAGE"]],fb=[],ff=[0,1],fi=[];
   diseaseTables().forEach(t=>{fb.push(Fa.length);Fa.push([t.title.toUpperCase()]);if(t.multi){fi.push(Fa.length);ff.push(Fa.length);Fa.push([tinfo({unit:"Households",base:t.base,multi:true}).join(" · ")])}t.rows.forEach(([c,y,a])=>Fa.push([c,y,a,a?y/a:0]))});
   xlInfo(add(Fa,"F Disease Prevalence",{hdr:[2],bold:fb,pct:[3],free:ff,ttl:true}),fi,4);
+  finSheet(add); /* 1.5: the Final sheet, placed after the tally sheets by orderBook */
+  chartsSheet(add); /* 1.5: the Charts sheet (bars drawn in cells), right after Final */
   const nums=ITEMS.filter(i=>i.n),fk=FOLLOWS.filter(f=>f.type!=="roster");
   /* the sheets the import reads keep real blanks (dash:false), so a blank cell never turns into an answer */
-  add([["Household No.","Pair","Block","Part D year","Migration",...PROFILE.map(f=>f.old),...nums.map(i=>(typeof i.n==="number"?i.n+". ":"")+Yr(i.label)),...fk.map(f=>Yr(f.label))],...households.map(h=>[h.hh_no,h.pair||"",h.block||"",h.dYear||"",h.mig===13?"13":(h.migDone||""),...PROFILE.map(f=>flat(h[f.key])),...nums.map(i=>A(h,i.n)||""),...fk.map(f=>flat(h.fu&&h.fu[f.key]))])],"Households",{dash:false,max:40});
-  add([["Household No.","Name","Age","Sex","Civil status","Education","Occupation","Comorbidity","Religion","Conditions","Head","Weight","Nutrition","Immunization","Other religion","Pair","Block"],...households.flatMap(h=>(h.members||[]).filter(m=>m&&typeof m==="object").map(m=>{const k=kidOf(m);return [h.hh_no,m.name,numIf(m.age),m.sex,m.civil,m.educ,m.occ,memComorb(m,h),m.religion||"",dxText(m),m.head===true?"Yes":"",k.w==null?"":k.w,k.nut||"",k.imm||"",m.religionOther||"",h.pair||"",h.block||""]}))],"Members",{dash:false,max:40});
+  add([["HOUSEHOLD ID","Household No.","Pair","Block","Part D year","Migration",...PROFILE.map(f=>f.old),...nums.map(i=>(typeof i.n==="number"?i.n+". ":"")+Yr(i.label)),...fk.map(f=>Yr(f.label))],...households.map(h=>[HID.get(h),h.hh_no,h.pair||"",h.block||"",h.dYear||"",h.mig===13?"13":(h.migDone||""),...PROFILE.map(f=>flat(h[f.key])),...nums.map(i=>A(h,i.n)||""),...fk.map(f=>flat(h.fu&&h.fu[f.key]))])],"Households",{dash:false,max:40});
+  add([["Household No.","Name","Age","Sex","Civil status","Education","Occupation","Comorbidity","Religion","Conditions","Head","Weight","Nutrition","Immunization","Other religion","Pair","Block","MEMBER ID","HOUSEHOLD ID"],...households.flatMap(h=>(h.members||[]).filter(m=>m&&typeof m==="object").map(m=>{const k=kidOf(m);return [h.hh_no,m.name,numIf(m.age),m.sex,m.civil,m.educ,m.occ,memComorb(m,h),m.religion||"",dxText(m),m.head===true?"Yes":"",k.w==null?"":k.w,k.nut||"",k.imm||"",m.religionOther||"",h.pair||"",h.block||"",memberId(HID.get(h),m),HID.get(h)]}))],"Members",{dash:false,max:40});
   add([["Pair","Household No.","Name","Age","Sex","Weight","Nutrition","Immunization"],...HH.flatMap(h=>kidsOf(h).map(m=>{const k=kidOf(m);return [h.pair||"",numIf(h.hh_no),m.name||"",ageNum(m),{Lalaki:"Male",Babae:"Female"}[m.sex]||"",k.w==null?"":k.w,k.nut||"",k.imm||""]}))],"Children");
   add([["Household No.","Question No.","Question","Note"],...households.flatMap(h=>Object.keys(h.notes||{}).filter(k=>h.notes[k]).map(k=>[h.hh_no,/^\d+$/.test(k)?Number(k):k,noteLabel(k),h.notes[k]]))],"Notes",{dash:false});
   const QA=[["Part","Pangutana (Bisaya)","Question (English)","Category",...HH.map(nameOf)]];
@@ -3586,16 +4146,24 @@ const BIC={dn:'<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>',up:'<path d="M12 20V9M
 const ACCENTS=["cocoa","terracotta","teal","plum","sage","honey","rose","lavender","charcoal","ocean","indigo","olive"];
 const segHTML=(id,opts,v)=>`<div class="seg" id="${id}" role="group">${opts.map(([k,l])=>`<button type="button" data-v="${k}" aria-pressed="${String(k)===String(v)}">${esc(l)}</button>`).join("")}</div>`;
 const swHTML=(id,t,s,on)=>`<label class="switch-row" for="${id}"><span>${esc(t)}${s?`<small>${esc(s)}</small>`:""}</span><input class="switch" type="checkbox" id="${id}" ${on?"checked":""}></label>`;
+let swKeep=null; /* the color row keeps its place when the page redraws after a tap */
+function swSync(){const r=$("#s-accent");if(r)r.classList.toggle("at-end",r.scrollLeft+r.clientWidth>=r.scrollWidth-2)}
+function swSetup(keep){ /* one row that slides sideways: the picked color is brought into view, the soft edge fades out at the end */
+  const r=$("#s-accent");if(!r)return;
+  if(keep!=null)r.scrollLeft=keep;
+  else{const on=r.querySelector('[aria-pressed="true"]');if(on)r.scrollLeft=Math.max(0,on.offsetLeft-(r.clientWidth-on.offsetWidth)/2)}
+  r.addEventListener("scroll",swSync,{passive:true});swSync();
+}
 function renderProfile(){
   bar(`<button type="button" class="iconbtn" id="ab-back" aria-label="${L("Balik","Back")}">${ico(IC.back)}</button>`+titleBar("Profile"),moonBtn());
-  const bk=lsGet(LS_BK),yb=String(me.yearBlock||"").trim(),pl=pairLine();
-  $("#view").innerHTML=`<div class="pcols"><div class="pcol"><section class="idc" aria-label="${L("Imong ID","Your ID")}"><span class="wm" aria-hidden="true">ID</span><div class="id-top"><span class="id-av">${me.photo?`<img src="${esc(me.photo)}" alt="">`:ico(IC.user,34)}</span><span><b>${esc(me.name||L("Imong ngalan","Your name"))}</b>${me.nick?`<small>“${esc(me.nick)}”</small>`:""}</span></div><hr>${pl?`<div class="id-pair">${esc(pl)}</div>`:""}<div class="id-row"><span>${esc(me.school||L("Wala pay school","School not set"))}</span>${yb?`<em>${esc(yb)}</em>`:""}</div><small class="bd">Duty: ${esc(me.place||L("wala nabutang","not set"))}</small></section>
+  const bk=lsGet(LS_BK),pl=pairLine(),keepSw=swKeep;swKeep=null;
+  $("#view").innerHTML=`<div class="pcols"><div class="pcol"><section class="idc" aria-label="${L("Imong ID","Your ID")}"><span class="wm" aria-hidden="true">ID</span><div class="id-top"><span class="id-av">${me.photo?`<img src="${esc(me.photo)}" alt="">`:ico(IC.user,34)}</span><span><b>${esc(me.name||L("Imong ngalan","Your name"))}</b>${me.nick?`<small>“${esc(me.nick)}”</small>`:""}</span></div><hr>${pl?`<div class="id-pair">${esc(pl)}</div>`:""}<div class="id-row"><span>${esc(me.school||L("Wala pay school","School not set"))}</span></div><small class="bd">Duty: ${esc(me.place||L("wala nabutang","not set"))}</small></section>
   <button type="button" class="btn ghost ico-btn" id="pf-edit">${ico(IC.edit,17)}${L("Usba ang detalye","Edit details")}</button>
   <h3 class="section-title">${L("Imong COPAR buddy","Your COPAR buddy")}</h3><section class="card sm buddy"><span class="bc" data-buddy="card"></span><span class="mg"><b>COPAR buddy</b></span><button type="button" class="btn ghost sm" id="pf-buddy">${L("I-customize","Customize")}</button></section>
   <h3 class="section-title">Appearance</h3><section class="form">
    <div class="field"><span class="flabel">${L("Pinulongan sa mga pangutana","Question language")}</span>${segHTML("s-qlang",[["en","English"],["ceb","Bisaya"]],settings.qlang)}</div>
    <div class="field"><span class="flabel">Mode</span>${segHTML("s-theme",[["light","Light"],["dark","Dark"],["auto","Auto"]],settings.theme)}</div>
-   <div class="field"><span class="flabel">${L("Kolor","Color")}</span><div class="sw-row" id="s-accent" role="group">${ACCENTS.map(a=>`<button type="button" class="swb" data-v="${a}" aria-label="${a}" aria-pressed="${a===settings.accent}"><span class="sw-dot sw-${a}"></span></button>`).join("")}</div></div>
+   <div class="field"><span class="flabel">${L("Kolor","Color")}</span><div class="sw-row" id="s-accent" role="group" aria-label="${L("Kolor","Color")}">${ACCENTS.map(a=>`<button type="button" class="swb" data-v="${a}" aria-label="${a}" aria-pressed="${a===settings.accent}"><span class="sw-dot sw-${a}"></span></button>`).join("")}</div></div>
    <div class="field"><span class="flabel">${L("Mga animation","Animations")}</span>${segHTML("s-anim",[["off","Off"],["slow","Slow"],["normal","Normal"],["fast","Fast"]],settings.anim)}</div>
    <div class="field"><span class="flabel">${L("Gidak-on sa text","Text size")}</span>${segHTML("s-text",[["s","Small"],["m","Normal"],["l","Large"]],settings.text)}</div>
    <div class="field"><span class="flabel">Split screen side</span>${segHTML("s-split",[["left","Left"],["right","Right"]],settings.splitSide)}</div></section>
@@ -3607,14 +4175,15 @@ function renderProfile(){
   <h3 class="section-title" id="bk-sec">Backup</h3><section class="form">
    <div class="bk-grid"><button type="button" class="btn" id="btn-backup">${ico(BIC.dn,18)}<span>Save</span></button><button type="button" class="btn ghost" id="btn-load">${ico(BIC.up,18)}<span>Load</span></button><button type="button" class="btn ghost" id="btn-savecopy">${ico(BIC.cp,18)}<span>App copy</span></button><button type="button" class="btn ghost" id="btn-code">${ico(BIC.ky,18)}<span>Code</span></button></div>${bk&&bk.at?`<small class="bk-last">${L("Katapusang backup","Last backup")}: ${esc(new Date(bk.at).toLocaleDateString())}</small>`:""}</section>
   <section class="form"><div class="bk-grid"><button type="button" class="btn ghost" id="btn-wel">${ico(BIC.sp,18)}<span>Welcome</span></button><button type="button" class="btn ghost" id="btn-tour">${ico(BIC.rt,18)}<span>Tour</span></button></div></section>
-  </div></div><div class="foot"><div>© 2026 PatoCorps. All rights reserved.</div><div>A Project Made By B. Dela Peña</div></div>`;
+  </div></div><div class="foot"><div>© 2026 PatoCorps. All rights reserved.</div><div>Made by B. Dela Peña</div></div>`;
   paintBuddy($("#view"));
+  swSetup(keepSw);
 }
 function setOpt(k,v){settings[k]=k==="lang"?"en":v;if(k==="anim")settings.animUser=true;saveSet();applyLook()}
 $("#view").addEventListener("click",e=>{
   if(tab!=="profile")return;
   const s=e.target.closest("#s-qlang [data-v],#s-theme [data-v],#s-text [data-v],#s-accent [data-v],#s-anim [data-v],#s-goal [data-v],#s-split [data-v]");
-  if(s){const id=s.parentElement.id,v=s.dataset.v;if(id==="s-theme"){setTheme(v);return}
+  if(s){const id=s.parentElement.id,v=s.dataset.v;const sr=$("#s-accent");swKeep=sr?sr.scrollLeft:null;if(id==="s-theme"){setTheme(v);return}
     if(id==="s-qlang")setOpt("qlang",v);if(id==="s-anim")setOpt("anim",v);if(id==="s-text")setOpt("text",v);if(id==="s-accent")setOpt("accent",v);if(id==="s-goal")setOpt("goal",+v);if(id==="s-split"){setOpt("splitSide",v);layApply()}
     redraw();return}
   const id=e.target.id;
@@ -3638,7 +4207,7 @@ function openCode(){
 $("#view").addEventListener("change",e=>{const t=e.target;if(tab!=="profile")return;if(t.id==="s-wake")setOpt("wake",t.checked);if(t.id==="s-vib")setOpt("vibrate",t.checked);if(t.id==="s-swipe")setOpt("swipe",t.checked)});
 /* ---------- backup, restore, app copy ---------- */
 const stamp=()=>{const d=new Date();return String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")+"-"+d.getFullYear()};
-const backupJSON=()=>JSON.stringify({app:"copar-household-tally",version:SCHEMA_VERSION,exportedAt:new Date().toISOString(),community,profile:me,households},null,1);
+const backupJSON=()=>JSON.stringify({app:"copar-household-tally",version:SCHEMA_VERSION,exportedAt:new Date().toISOString(),community,profile:me,...(settings.final&&typeof settings.final==="object"&&!Array.isArray(settings.final)?{settings:{final:settings.final}}:{}),households},null,1); /* 1.5: the Final tab choices travel with the backup (the key is left out when there are none) */
 async function doBackup(){
   try{await saveFile(`COPAR BACKUP ${households.length} HH ${stamp()}.json`,new Blob([backupJSON()],{type:"application/json"}));lsSet(LS_BK,{at:Date.now(),n:households.length});toast(L("Na-save ang backup.","Backup file saved."));if(tab==="profile")redraw()}
   catch(e){e&&e.code==="declined"?toast(L("Gi-cancel.","Cancelled.")):toast(L("Wala na-save. Gamita ang backup code.","Could not save here. Use the backup code."),true)}
@@ -3683,11 +4252,12 @@ function fromWorkbook(wb){
   });
   const ms=wb.Sheets["Members"];if(ms){
     const mr=XLSX.utils.sheet_to_json(ms,{header:1,defval:""}),cond=(mr[0]||[]).some(x=>String(x).trim()==="Conditions"); /* sheets from older versions have no Conditions column */
-    const col=n=>(mr[0]||[]).findIndex(x=>String(x).trim().toLowerCase()===n),cH=col("head"),cW=col("weight"),cN=col("nutrition"),cI=col("immunization"),cR=col("other religion"),cP=col("pair"),cB=col("block"); /* Pair and Block (1.4) sit at the end; a 1.3 Members sheet has neither */ /* the 1.3 columns are found by name; older sheets simply do not have them */
+    const col=n=>(mr[0]||[]).findIndex(x=>String(x).trim().toLowerCase()===n),cH=col("head"),cW=col("weight"),cN=col("nutrition"),cI=col("immunization"),cR=col("other religion"),cP=col("pair"),cB=col("block"),cM=col("member id"); /* Pair and Block (1.4) sit at the end; a 1.3 Members sheet has neither */ /* the 1.3 columns are found by name; older sheets simply do not have them */
     mr.slice(1).forEach(r=>{const h=recs.find(x=>x.hh_no===String(r[0]));if(!h)return;const m={name:String(r[1]||""),age:r[2]===""?"":String(r[2]),sex:String(r[3]||""),civil:String(r[4]||""),educ:String(r[5]||""),occ:String(r[6]||""),comorb:String(r[7]||""),religion:String(r[8]||"")},dx=cond?dxParse(r[9]):[];if(dx.length)m.dx=dx;
       if(cH>=0&&/^(yes|head|true|1|x)$/i.test(String(r[cH]).trim()))m.head=true;
       const kid={},w=cW>=0&&r[cW]!==""?Number(r[cW]):NaN;if(isFinite(w)&&w>0)kid.w=w;if(cN>=0&&String(r[cN]).trim())kid.nut=String(r[cN]).trim();if(cI>=0&&String(r[cI]).trim())kid.imm=String(r[cI]).trim();if(Object.keys(kid).length)m.kid=kid;
       if(cR>=0&&String(r[cR]).trim())m.religionOther=String(r[cR]).trim();
+      if(cM>=0){const q=/(\d+)\s*$/.exec(String(r[cM]));if(q&&+q[1]>0)m.mno=+q[1]} /* 1.5: the member number comes back from MEMBER ID (ABUCAY-B002 gives 2); a file without it gets numbers in its row order */
       if(cP>=0&&!h.pair&&String(r[cP]).trim())h.pair=String(r[cP]).trim(); /* the stamp of the Households sheet wins; a client whose Households cells are blank takes it from its members */
       if(cB>=0&&!h.block&&String(r[cB]).trim())h.block=String(r[cB]).trim();
       h.members.push(m)});
@@ -3739,7 +4309,14 @@ async function importRecords(recs,st,fname){
 }
 /* a backup's profile (name, photo, school...) is taken only when it is this pair's, or an older one with no pair names at all; another pair's profile never lands on this phone */
 const profileIsOurs=pr=>{const a=typeof pr.pairA==="string"?pr.pairA.trim():"",b=typeof pr.pairB==="string"?pr.pairB.trim():"";if(!a&&!b)return true;const y=ybParse(typeof pr.yearBlock==="string"?pr.yearBlock:"");return pairOK()&&sameStamp({pair:a+" & "+b,block:y?"BSN"+y[0]+"-"+y[1]:""},pairName(),blockCode())};
-function importParsed(j,st,fname){if(j&&j.community&&typeof j.community==="object"){const jc={...j.community};delete jc.pairLoaded; /* the days other pairs were loaded on another phone say nothing about this one */if(j.profile&&typeof j.profile==="object"&&!profileIsOurs(j.profile))["julyPop","pairGoal","hhTotal","hhPct"].forEach(k=>delete jc[k]); /* another pair's typed population and goals never land on this phone */community={...jc,...community};lsSet(LS_COM,community)}if(j&&j.profile&&typeof j.profile==="object"&&!me.name&&profileIsOurs(j.profile)){const keep={pairA:me.pairA,pairB:me.pairB,...(ybParse(me.yearBlock)?{yearBlock:me.yearBlock}:{})};me={...me,...j.profile,...keep};["pairA","pairB","yearBlock"].forEach(k=>{if(typeof me[k]!=="string")me[k]=""});if(typeof me.photo!=="string")me.photo="";fixMe();lsSet(LS_ME,me)} /* another pair's names and block never replace this phone's */return importRecords(Array.isArray(j)?j:(j.households||[]),st,fname)}
+/* 1.5: the Final tab choices (settings.final) come back only from this pair's own backup, which must carry the pair's names. A file of another pair, or an old file with no names, never touches them. */
+function loadFinal(j){
+  const f=j&&j.settings&&j.settings.final,pr=j&&j.profile;
+  if(!f||typeof f!=="object"||Array.isArray(f)||!pr||typeof pr!=="object"||!profileIsOurs(pr))return;
+  if(!(typeof pr.pairA==="string"&&pr.pairA.trim())&&!(typeof pr.pairB==="string"&&pr.pairB.trim()))return;
+  settings.final=JSON.parse(JSON.stringify(f));saveSet();
+}
+function importParsed(j,st,fname){if(j&&j.community&&typeof j.community==="object"){const jc={...j.community};delete jc.pairLoaded; /* the days other pairs were loaded on another phone say nothing about this one */if(j.profile&&typeof j.profile==="object"&&!profileIsOurs(j.profile))["julyPop","pairGoal","hhTotal","hhPct"].forEach(k=>delete jc[k]); /* another pair's typed population and goals never land on this phone */community={...jc,...community};lsSet(LS_COM,community)}if(j&&j.profile&&typeof j.profile==="object"&&!me.name&&profileIsOurs(j.profile)){const keep={pairA:me.pairA,pairB:me.pairB,...(ybParse(me.yearBlock)?{yearBlock:me.yearBlock}:{})};me={...me,...j.profile,...keep};["pairA","pairB","yearBlock"].forEach(k=>{if(typeof me[k]!=="string")me[k]=""});if(typeof me.photo!=="string")me.photo="";fixMe();lsSet(LS_ME,me)} /* another pair's names and block never replace this phone's */loadFinal(j);return importRecords(Array.isArray(j)?j:(j.households||[]),st,fname)}
 const importJSON=(text,st,fname)=>importParsed(JSON.parse(text),st,fname);
 /* ---------- 1.4 admin: many files in one pick, one summary ---------- */
 async function loadFile(file,st){ /* one file, whatever it is: Excel, saved app copy, or backup */
@@ -3856,12 +4433,17 @@ const GATE_BEHIND=[".wrap","#qbar","#tabbar","#side","#sheet-root","#wel-root","
 const gateOn=()=>!!$("#gate-root").firstChild;
 function lockBehind(on){GATE_BEHIND.forEach(s=>{const e=$(s);if(!e)return;if(on){e.setAttribute("inert","");e.setAttribute("aria-hidden","true")}else{e.removeAttribute("inert");e.removeAttribute("aria-hidden")}})}
 const missIc=id=>`<span class="miss" id="${id}" role="img" aria-label="Missing" hidden>${ico(IC.alert,14)}</span>`;
+let gatePg=1; /* 1 = Welcome and your pair, 2 = the buddy and Start */
+const gateDots=n=>`<span class="gate-dots" aria-hidden="true"><i class="${n===0?"on":""}"></i><i class="${n===1?"on":""}"></i></span>`;
 function gateHTML(){
   const box=(id,lab,v)=>`<div class="field"><div class="flabrow"><label class="flabel" for="${id}">${lab}</label>${missIc(id+"-m")}</div><input type="text" id="${id}" value="${esc(v)}" autocomplete="off" autocapitalize="characters" autocorrect="off" spellcheck="false" maxlength="40" enterkeyhint="${id==="g-a"?"next":"done"}"></div>`;
-  return `<div class="wel gate" role="dialog" aria-modal="true" aria-labelledby="g-q" tabindex="-1"><div class="wel-top"><b class="gate-brand">PatoCOPAR</b></div><div class="wel-pg"><h1 class="wel-h" id="g-q">${L("Kinsa ang imong pares?","Who is your pair?")}</h1><section class="card">${box("g-a",L("Imong apelyido","Your last name"),me.pairA)}${box("g-b",L("Apelyido sa imong pares","Your partner's last name"),me.pairB)}</section><section class="card">${ybHTML(missIc("g-yb-m"))}</section><p class="gate-lock" id="g-lock">${ico(IC.lock,16)}<span>${L("Pun-a ang tanan","Fill in everything")}</span></p><p class="gate-show" id="g-show" hidden></p></div><div class="wel-bot"><button type="button" class="btn" id="g-go" aria-disabled="true">${L("Padayon","Continue")}</button></div></div>`;
+  return `<div class="wel gate" role="dialog" aria-modal="true" aria-labelledby="g-q" tabindex="-1" data-pg="1"><div class="wel-pg"><div class="wel-logo">${DUCK}</div><h1 class="wel-h" id="g-q">${L("Welcome sa PatoCOPAR","Welcome to PatoCOPAR")}</h1><p class="wel-p">${esc("CHN 3 · "+(me.place||ME_DEF.place))}</p><section class="card gate-card"><b class="gate-ct">${L("Imong pares","Your pair")}</b><div class="gate-names">${box("g-a",L("Imong apelyido","Your last name"),me.pairA)}${box("g-b",L("Apelyido sa pares","Partner's last name"),me.pairB)}</div>${ybHTML(missIc("g-yb-m"))}<p class="gate-lock" id="g-lock">${ico(IC.lock,16)}<span>${L("Pun-a ang tanan","Fill in everything")}</span></p><p class="gate-show" id="g-show" hidden></p></section></div><div class="wel-bot gate-bot">${gateDots(0)}<button type="button" class="btn" id="g-go" aria-disabled="true">${L("Sunod","Next")}</button></div></div>`;
+}
+function gate2HTML(){
+  return `<div class="wel gate" role="dialog" aria-modal="true" aria-labelledby="g-q" tabindex="-1" data-pg="2"><div class="wel-pg gate-mid"><span class="gate-buddy" data-buddy="card"></span><h1 class="wel-h" id="g-q">${L("Imong offline buddy para sa COPAR","Your offline buddy for COPAR")}</h1><p class="wel-p">${L("Mag-interview, mag-tally ug i-save sa Excel bisan walay signal. Naa ra sa phone ang mga tubag.","Interview, tally and save to Excel with no signal. Answers stay on this phone.")}</p></div><div class="wel-bot gate-bot">${gateDots(1)}<button type="button" class="btn" id="g-start">${L("Sugdan","Start")}</button></div></div>`;
 }
 function gateSync(){
-  if(!gateOn())return; /* a wheel can still report a scroll just after Continue */
+  if(!gateOn()||gatePg!==1)return; /* a wheel can still report a scroll just after Next */
   const ok=pairOK();
   ["g-a","g-b"].forEach(id=>{const e=$("#"+id),m=!e.value.trim();e.classList.toggle("is-missing",m);$("#"+id+"-m").hidden=!m});
   const yb=!ybParse(me.yearBlock);$("#gate-root .wheel").classList.toggle("is-missing",yb);$("#g-yb-m").hidden=!yb;
@@ -3873,23 +4455,34 @@ function gateYb(){ /* on this screen the dash means empty: a whole year and bloc
   else if(ybParse(me.yearBlock)){me.yearBlock="";saveMe();const n=$("#ed-ybn");if(n)n.hidden=true}
   gateSync();
 }
-function showGate(){
-  $("#gate-root").innerHTML=gateHTML();lockBehind(true);
-  bindWheel($("#w-yr"),v=>{if(!gateOn())return;edYb.y=v;gateYb()});bindWheel($("#w-bl"),v=>{if(!gateOn())return;edYb.b=v;gateYb()});
-  gateSync();try{$("#gate-root .gate").focus()}catch(e){}
+function drawGate(){
+  $("#gate-root").innerHTML=gatePg===2?gate2HTML():gateHTML();lockBehind(true);
+  if(gatePg===2)paintBuddy($("#gate-root"));
+  else{
+    bindWheel($("#w-yr"),v=>{if(!gateOn()||gatePg!==1)return;edYb.y=v;gateYb()});bindWheel($("#w-bl"),v=>{if(!gateOn()||gatePg!==1)return;edYb.b=v;gateYb()});
+    gateSync();
+  }
+  try{$("#gate-root .gate").focus()}catch(e){}
 }
+function showGate(pg){gatePg=pg===2?2:1;drawGate()}
 function endGate(){
-  $("#gate-root").innerHTML="";lockBehind(false);
+  const fresh=!settings.welcomed;
+  $("#gate-root").innerHTML="";lockBehind(false);gatePg=1;
   stampWas={pair:pairName(),block:blockCode()};keepStamp();stampUnstamped(); /* clients made before the pair screen existed become this pair's */
-  if(!settings.welcomed)showWelcome();else if(!settings.toured13)setTimeout(startTour,300); /* a 1.2 phone has been welcomed already: it sees the new tour once */
+  if(fresh){settings.welcomed=true;saveSet();tab="home";showScreen()}
+  if(!settings.toured13)setTimeout(startTour,300); /* a 1.2 phone has been welcomed already: it sees the new tour once */
 }
+{const back=window.patoBack;window.patoBack=()=>{if(gateOn()){if(gatePg===2){gatePg=1;drawGate()}return true}return back()}} /* Back on page 2 goes to page 1; on page 1 it does nothing */
 $("#gate-root").addEventListener("input",e=>{if(pairInput(e.target,e.isComposing))gateSync()});
 $("#gate-root").addEventListener("compositionend",e=>{if(pairInput(e.target))gateSync()});
 $("#gate-root").addEventListener("keydown",e=>{
   if(e.key!=="Enter")return;
   if(e.target.id==="g-a"){e.preventDefault();$("#g-b").focus()}else if(e.target.id==="g-b"){e.preventDefault();e.target.blur()}
 });
-$("#gate-root").addEventListener("click",e=>{if(e.target.closest("#g-go")&&pairOK())endGate()}); /* Continue does nothing until everything is filled in */
+$("#gate-root").addEventListener("click",e=>{
+  if(e.target.closest("#g-go")&&gatePg===1&&pairOK()){gatePg=2;drawGate()} /* Next does nothing until everything is filled in */
+  else if(e.target.closest("#g-start")&&gatePg===2&&pairOK())endGate();
+});
 document.addEventListener("focusin",e=>{if(gateOn()&&!e.target.closest("#gate-root")){const g=$("#gate-root .gate");if(g)g.focus()}}); /* for WebViews without inert */
 
 /* ---------- welcome and tour ---------- */
@@ -4007,7 +4600,7 @@ applyLook();
 try{showScreen()}catch(e){console.error(e)}
 booted=true;
 stampWas=stampFromStore();keepStamp();
-try{if(!pairOK())showGate();else if(!settings.welcomed)showWelcome()}catch(e){console.error(e)}
+try{if(!pairOK())showGate();else if(!settings.welcomed)showGate(2)}catch(e){console.error(e)}
 const timer=setTimeout(()=>{if(!loaded)toast("Can't reach saved data yet. Check your connection.",true)},10000);
 (async()=>{try{dl=await window.claude?.use?.("downloads")}catch(e){dl=null}})();
 (async()=>{
