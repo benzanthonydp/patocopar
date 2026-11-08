@@ -1119,9 +1119,13 @@ span.sb{min-height:36px;min-width:36px}
 
 /* ---- scroll stops: a Tally table eases to a stop with the next group header just under the pinned header ----
    proximity, never mandatory, so a hard flick still passes groups. Off with Animations Off (no html.anim) and with reduced motion. */
+/* the upright-phone Table A list scrolls in its own box too, so its header row (.cmh, above the box) stays on screen and the groups can stop */
+.mtw{overflow-y:auto;max-height:max(240px,min(72vh,560px));scrollbar-width:none}.mtw::-webkit-scrollbar{display:none}
 @media (prefers-reduced-motion:no-preference){
   html.anim .tw{scroll-snap-type:y proximity}
   html.anim .tw tr.grp{scroll-snap-align:start;scroll-margin-top:var(--thh,40px)}
+  html.anim .mtw{scroll-snap-type:y proximity}
+  html.anim .mtw .mgp{scroll-snap-align:start}
 }
 
 /* ---------- 1.5 Profile and the welcome flow ---------- */
@@ -3490,7 +3494,7 @@ const w8r=(l,v,f)=>`<tr${f?' class="tot"':""}><td class="c0">${esc(l)}</td>${w8x
 const tcap=t=>`<p class="tcap">${esc(t)}</p>`;
 const tA=d=>"Table A · Persons (n = "+d.persons+")";
 function demoMini(d){
-  return `<section class="card sm wmini" aria-label="Community Demographic Data">${tcap(tA(d))}<div class="cmh"><b>Community Demographic Data</b><span>With</span><span>Without</span><span>Total</span></div>${d.groups.map(g=>`<div class="mgp">${esc(g.title)}</div>`+g.rows.map(([c,v,f])=>`<button type="button" class="cmrow${f?" tot":""}" aria-expanded="false"><span class="ml">${esc(c)}</span><span class="n">${v.w}</span><span class="n">${v.wo}</span><span class="n t">${v[4]}</span></button><div class="mdet" hidden><div><b>With</b><span>Male ${v[0]}, Female ${v[1]}${v.w>v[0]+v[1]?", no sex "+(v.w-v[0]-v[1]):""}</span></div><div><b>Without</b><span>Male ${v[2]}, Female ${v[3]}${v.wo>v[2]+v[3]?", no sex "+(v.wo-v[2]-v[3]):""}</span></div></div>`).join("")).join("")}${d.unasked?`<p class="note">${esc(nosexNote({unasked:d.unasked,nosex:0}))}</p>`:""}</section><p class="note turn">Turn the phone to see the full table</p>`;
+  return `<section class="card sm wmini" aria-label="Community Demographic Data">${tcap(tA(d))}<div class="cmh"><b>Community Demographic Data</b><span>With</span><span>Without</span><span>Total</span></div><div class="mtw">${d.groups.map(g=>`<div class="mgp">${esc(g.title)}</div>`+g.rows.map(([c,v,f])=>`<button type="button" class="cmrow${f?" tot":""}" aria-expanded="false"><span class="ml">${esc(c)}</span><span class="n">${v.w}</span><span class="n">${v.wo}</span><span class="n t">${v[4]}</span></button><div class="mdet" hidden><div><b>With</b><span>Male ${v[0]}, Female ${v[1]}${v.w>v[0]+v[1]?", no sex "+(v.w-v[0]-v[1]):""}</span></div><div><b>Without</b><span>Male ${v[2]}, Female ${v[3]}${v.wo>v[2]+v[3]?", no sex "+(v.wo-v[2]-v[3]):""}</span></div></div>`).join("")).join("")}</div>${d.unasked?`<p class="note">${esc(nosexNote({unasked:d.unasked,nosex:0}))}</p>`:""}</section><p class="note turn">Turn the phone to see the full table</p>`;
 }
 function demoHTML(){
   const d=tallyDemo();
