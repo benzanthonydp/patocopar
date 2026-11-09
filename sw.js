@@ -1,7 +1,7 @@
-/* PatoCOPAR offline copy. build.py --web fills in patocopar-2.0-ae0f67baef (the version plus a short fingerprint of the app), so a new app file means a new cache.
+/* PatoCOPAR offline copy. build.py --web fills in patocopar-2.1-ae9e03d2bc (the version plus a short fingerprint of the app), so a new app file means a new cache.
    This file only touches Cache Storage. It never reads or changes localStorage or IndexedDB, so saved answers are never affected. */
 const PREFIX = "patocopar-";
-const CACHE = "patocopar-2.0-ae0f67baef";
+const CACHE = "patocopar-2.1-ae9e03d2bc";
 const FILES = ["./", "./index.html", "./manifest.webmanifest", "./apple-touch-icon.png", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", e => {
@@ -23,7 +23,9 @@ self.addEventListener("message", e => {
 
 self.addEventListener("fetch", e => {
   const r = e.request;
-  if (r.method !== "GET" || new URL(r.url).origin !== self.location.origin) return; /* fonts and other sites go straight to the network */
+  const u = new URL(r.url);
+  if (r.method !== "GET" || u.origin !== self.location.origin) return; /* fonts and other sites go straight to the network */
+  if (u.pathname.endsWith("/version.json")) return; /* "Check for update" must always ask the server, never the cache; it is not in FILES either */
   e.respondWith(
     caches.match(r, { ignoreSearch: true }).then(hit => {
       if (hit) return hit;

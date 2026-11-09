@@ -1334,6 +1334,14 @@ button.fpd{cursor:pointer;min-height:56px}
 .gate-buddy{display:grid;place-items:center;width:150px;height:150px;border-radius:50%;background:var(--logo);flex:none;margin:0 auto 6px}
 .gate-buddy svg{width:112px;height:112px}
 .gate-mid .wel-p{max-width:30ch}
+
+/* Profile > App: version row, then one note line (latest = green, can't check = amber) inside the same card */
+.up-row{display:flex;align-items:center;gap:10px}.up-row .mg{flex:1;min-width:0}.up-row .btn{flex:none}
+.up-n{display:flex;gap:8px;font-size:.9rem;line-height:1.4;padding:9px 11px;border-radius:13px;background:var(--soft);border:1px solid var(--line);color:var(--ink);overflow-wrap:anywhere}
+.up-n.ok{background:var(--ok-bg);border-color:var(--ok);color:var(--ok)}
+.up-n.warn{background:var(--note-bg);border-color:var(--note-line);color:var(--ink)}
+.up-act{display:flex;flex-wrap:wrap;gap:8px}.up-act .btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;flex:1 1 auto}
+.up-link{width:100%;min-width:0;font:.85rem var(--font-data)}
 </style>
 
 <aside id="side" hidden aria-label="Parts"></aside>
@@ -1919,6 +1927,7 @@ return {dV:dV,dK:dK,dS:dS,dT:dT,dH:dH,de:de,dU:dU,dE:dE,dp:dp,dm:dm};})();
 
 const LEGACY={"q":{"1":"Household located within the community","2":"Community divided into puroks or sitios","3":"Lived in the community 6 months or longer","4":"Member moved in (past 6 months)","5":"Member moved out (past 6 months)","9":"Household with a member currently studying","10":"All 15 and above can read and write","12":"Nuclear family","13":"More than one generation in the household","14":"Mainly uses one dialect","15":"Identifies with an ethnic or cultural group","16":"Identifies with a religious group","17":"House made mainly of strong materials (concrete)","19":"Enough space for household members","20":"Has electricity for lighting","21":"Has safe lighting during power outage","22":"Has own toilet","23":"Toilet covered or enclosed","24":"Water-sealed or flush-type toilet","25":"Toilet away from drinking water source","26":"Access to approved water supply","27":"Water available near the house","30":"Has drainage for wastewater","31":"Drainage is covered","32":"Wastewater flows without stagnant pools","33":"Has proper garbage container","34":"Regular garbage collection","38":"Practices recycling","39":"Reuses items","40":"Regular source of drinking water","43":"Treats water before drinking","46":"Illness in the household (past year)","48":"Consulted a trained health professional","50":"Took prescribed medicine","51":"Took medicine without prescription","52":"Aware of community health programs","53":"Used a community health program","54":"Knows where to access health services","55":"Currently using family planning","56":"Received family planning information","58":"Child weighed by a health worker","59":"Child's nutritional status assessed","61":"Child received routine vaccines","62":"Child has vaccination record","63":"Child completely vaccinated for age","64":"Pregnant woman in the household","65":"Received prenatal checkups","67":"Delivery attended by a health professional","68":"Community has a BHW","69":"Community has a BNS","70":"Community has a midwife","71":"Community has a nurse","72":"Community has a doctor","73":"Community has a dentist","74":"Health workers available when needed","76":"Live birth in the household (past year)","77":"Death in the household (past year)","80":"Church or chapel accessible","81":"Elementary school in or near the community","82":"Secondary school in or near the community","83":"College or tertiary school in or near the community","84":"Grocery store or market","85":"Hardware store","86":"Recreational facility","87":"Sports facility","88":"Cemetery accessible","89":"Transportation terminal accessible","90":"Birthing clinic accessible","91":"Barangay health center or RHU accessible","92":"Hospital accessible","93":"Tuberculosis","94":"Diabetes mellitus","95":"Hypertension","96":"Arthritis","97":"Glaucoma or other serious eye problem","98":"Dengue","99":"Filariasis or amoebiasis","100":"Malnutrition","101":"Cardiovascular problem","102":"Other diagnosed condition (past year)","103":"Unusually high number of cases (epidemic)","104":"Repeated cases over time (endemic)","105":"Few cases from time to time (sporadic)","110":"Accessible health services","112":"Access to emergency health services","114":"Enough health workers for basic services","PP":"Within 6 weeks postpartum","RI":"Community has a rural health inspector","CM":"Member with comorbidities","CD":"Member with a communicable disease"},"f":{"years":["single","Length of residence","Pila na ka tuig mo diri?"],"moveWhy":["text","Reason for moving out","Ngano ni-balhin?"],"illiterate":["num","Persons 15 and above who cannot read and write","Pila ang dili kahibalo mo-basa ug mo-sulat (15 years old pataas)?"],"familyType":["single","Type of family","Type of family"],"income":["single","Monthly family income","Monthly family income"],"dialect":["single","Dialect used","Unsa ang primary dialect?"],"ethnic":["single","Ethnic or cultural group","Unsa ang ethnic background?"],"religion":["multi","Religion","Unsa nga relihiyon? (pwede daghan)"],"race":["single","Race","Race"],"region":["single","Region of origin","Region of origin"],"houseType":["single","Type of materials used for house","Unsa ang materials sa balay?"],"altLight":["multi","Alternative lighting","Unsa ang gamit? (pwede daghan)"],"toiletShare":["multi","Households without own toilet","Kung wala: (pwede daghan)"],"toiletType":["multi","Types of excreta disposal","Unsa nga klase sa CR? (pwede daghan)"],"waterLevel":["multi","Water supply facility","Unsa nga level? (pwede daghan)"],"wasteHow":["multi","Types of waste disposal","Unsaon ninyo pag-dispose sa basura? (pwede daghan)"],"collectFreq":["single","Frequency of garbage collection","Pila ka beses sa usa ka semana?"],"drinkSrc":["multi","Source of drinking water","Asa gikan ang imnon nga tubig? (pwede daghan)"],"treatHow":["multi","Methods of sanitizing water","Unsaon? (pwede daghan)"],"illness":["text","Illnesses reported","Unsa nga sakit?"],"allCases":["num","Persons with illness (new and old cases)","Pila tanan ang naay sakit (bag-o ug dugay na)?"],"newCases":["num","Persons with new illness","Pila ang bag-o lang nagkasakit (new case)?"],"diagBy":["multi","Diagnosed by","Kinsa ang nag-diagnose? (pwede daghan)"],"rxBy":["multi","Prescribed by","Kinsa ang nagreseta? (pwede daghan)"],"programs":["text","Programs known","Unsa nga programs?"],"noUseWhy":["text","Reason for not using programs","Ngano wala?"],"fpMethod":["multi","Method of family planning used","Unsa nga method? (pwede daghan)"],"nutri":["multi","Nutritional status (0-6 years old)","Unsa ang resulta? (pwede daghan)"],"vaccines":["multi","Vaccines received","Unsa nga bakuna? (pwede daghan)"],"immuStatus":["multi","Immunization status","Immunization status (pwede daghan)"],"prenatalCount":["num","Number of prenatal visits","Pila ka beses?"],"delType":["multi","Type of delivery","Unsa nga klase sa pagpanganak? (pwede daghan)"],"attendant":["multi","Labor attendant","Kinsa ang nagpaanak? (pwede daghan)"],"delPlace":["multi","Place of delivery","Asa nanganak? (pwede daghan)"],"births":["num","Livebirths","Pila ka bata ang natawo?"],"deaths":["num","Deaths","Pila tanan ang namatay?"],"infant":["num","Infant deaths","Pila ang ubos sa 1 ka tuig ang edad?"],"under5":["num","Deaths below 5 years","Pila ang ubos sa 5 ka tuig ang edad?"],"maternal":["num","Maternal deaths","Pila ang inahan nga namatay tungod sa pagmabdos o pagpanganak (hangtod 42 ka adlaw human nanganak)?"],"cause":["text","Causes of death","Unsa ang hinungdan sa pagkamatay?"],"facility":["multi","Health facility used","Unsa nga health facility ang inyong ginaadtoan? (pwede daghan)"],"dz_tb":["num","Persons with Tuberculosis","Pila ka tawo?"],"dt_tb":["date","Date diagnosed: Tuberculosis","Kanus-a na-diagnose?"],"dz_dm":["num","Persons with Diabetes mellitus","Pila ka tawo?"],"dt_dm":["date","Date diagnosed: Diabetes mellitus","Kanus-a na-diagnose?"],"dz_htn":["num","Persons with Hypertension","Pila ka tawo?"],"dt_htn":["date","Date diagnosed: Hypertension","Kanus-a na-diagnose?"],"dz_arth":["num","Persons with Arthritis","Pila ka tawo?"],"dt_arth":["date","Date diagnosed: Arthritis","Kanus-a na-diagnose?"],"dz_eye":["num","Persons with Glaucoma or other serious eye problem","Pila ka tawo?"],"dt_eye":["date","Date diagnosed: Eye problem","Kanus-a na-diagnose?"],"dz_dengue":["num","Persons with Dengue","Pila ka tawo?"],"dt_dengue":["date","Date diagnosed: Dengue","Kanus-a na-diagnose?"],"dz_filam":["num","Persons with Filariasis or amoebiasis","Pila ka tawo?"],"dt_filam":["date","Date diagnosed: Filariasis or amoebiasis","Kanus-a na-diagnose?"],"dz_malnut":["num","Persons with Malnutrition","Pila ka tawo?"],"dt_malnut":["date","Date diagnosed: Malnutrition","Kanus-a na-diagnose?"],"dz_cvd":["num","Persons with Cardiovascular problem","Pila ka tawo?"],"dt_cvd":["date","Date diagnosed: Cardiovascular problem","Kanus-a na-diagnose?"],"otherDis":["text","Other diagnosed conditions","Unsa nga sakit?"],"dz_other":["num","Persons with Other diagnosed conditions","Pila ka tawo?"],"dt_other":["date","Date diagnosed: Other condition","Kanus-a na-diagnose?"],"dz_comorb":["num","Persons with Comorbidities","Pila ka tawo?"],"comorbList":["multi","Comorbidities reported","Unsa nga mga sakit ang dungan? (pwede daghan)"],"dt_comorb":["date","Date diagnosed: Comorbidities","Kanus-a na-diagnose?"],"dz_commun":["num","Persons with Communicable diseases","Pila ka tawo?"],"communList":["multi","Communicable diseases reported","Unsa nga sakit? (pwede daghan)"],"dt_commun":["date","Date diagnosed: Communicable disease","Kanus-a na-diagnose?"],"epidemicDis":["text","Epidemic diseases named","Unsa nga sakit?"]},"prof":{"Household No.":["hh_no","text"],"Purok o sitio":["purok","text"],"Petsa sa interview":["date","date"],"Interviewer":["interviewer","text"],"Pangalan o initials sa respondent":["r_name","text"],"Edad":["r_age","num"],"Sex":["r_sex","single"],"Civil status":["r_civil","single"],"Unsa man ka sa household head?":["r_relation","single"],"Educational attainment":["r_educ","single"],"Trabaho":["r_occ","text"]}}; /* questions from older versions: old backups and old Excel files still load through these */
 const DUCK=`<svg viewBox="0 0 20 30" shape-rendering="crispEdges" aria-hidden="true"><path fill="#111111" d="M5 0h5v1h-5zM4 1h1v1h-1zM10 1h1v1h-1zM3 2h1v1h-1zM11 2h1v1h-1zM3 3h1v1h-1zM11 3h1v1h-1zM3 4h1v1h-1zM11 4h1v1h-1zM3 5h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM12 5h1v1h-1zM3 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM13 6h1v1h-1zM2 7h1v1h-1zM10 7h1v1h-1zM13 7h1v1h-1zM1 8h1v1h-1zM10 8h3v1h-3zM2 9h3v1h-3zM9 9h1v1h-1zM5 10h1v1h-1zM9 10h1v1h-1zM5 11h1v1h-1zM9 11h1v1h-1zM5 12h1v1h-1zM9 12h1v1h-1zM4 13h1v1h-1zM9 13h1v1h-1zM4 14h1v1h-1zM9 14h1v1h-1zM3 15h1v1h-1zM10 15h1v1h-1zM15 15h3v1h-3zM2 16h1v1h-1zM11 16h2v1h-2zM14 16h1v1h-1zM17 16h1v1h-1zM1 17h1v1h-1zM13 17h2v1h-2zM17 17h2v1h-2zM0 18h1v1h-1zM15 18h2v1h-2zM19 18h1v1h-1zM0 19h1v1h-1zM14 19h1v1h-1zM17 19h1v1h-1zM19 19h1v1h-1zM0 20h1v1h-1zM17 20h1v1h-1zM19 20h1v1h-1zM0 21h1v1h-1zM16 21h1v1h-1zM18 21h1v1h-1zM0 22h1v1h-1zM17 22h2v1h-2zM1 23h1v1h-1zM18 23h1v1h-1zM2 24h1v1h-1zM4 24h1v1h-1zM13 24h1v1h-1zM16 24h2v1h-2zM3 25h3v1h-3zM12 25h4v1h-4zM5 26h1v1h-1zM7 26h5v1h-5zM13 26h1v1h-1zM4 27h1v1h-1zM6 27h1v1h-1zM10 27h1v1h-1zM12 27h1v1h-1zM4 28h1v1h-1zM6 28h1v1h-1zM10 28h1v1h-1zM12 28h1v1h-1zM3 29h1v1h-1zM6 29h1v1h-1zM9 29h1v1h-1zM12 29h1v1h-1z"></path><path fill="#ffffff" d="M5 1h4v1h-4zM4 2h1v1h-1zM8 2h2v1h-2zM5 4h4v1h-4zM4 5h4v1h-4zM9 5h1v1h-1zM6 6h2v1h-2zM9 6h1v1h-1zM7 7h3v1h-3zM7 8h3v1h-3zM6 9h3v1h-3zM6 10h3v1h-3zM6 11h3v1h-3zM6 12h3v1h-3zM6 13h3v1h-3zM5 14h4v1h-4zM4 15h6v1h-6zM3 16h8v1h-8zM15 16h2v1h-2zM2 17h11v1h-11zM15 17h2v1h-2zM1 18h14v1h-14zM17 18h1v1h-1zM1 19h13v1h-13zM15 19h2v1h-2zM1 20h15v1h-15zM1 21h15v1h-15zM1 22h16v1h-16zM3 23h14v1h-14zM5 24h7v1h-7z"></path><path fill="#d6d8de" d="M9 1h1v1h-1zM4 4h1v1h-1zM5 9h1v1h-1zM5 13h1v1h-1zM18 18h1v1h-1zM18 19h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM17 21h1v1h-1zM2 23h1v1h-1zM17 23h1v1h-1zM3 24h1v1h-1zM12 24h1v1h-1zM14 24h2v1h-2zM6 25h6v1h-6z"></path><path fill="#de5c26" d="M5 2h3v1h-3zM10 2h1v1h-1zM10 3h1v1h-1z"></path><path fill="#5ca0de" d="M4 3h6v1h-6zM10 4h1v1h-1z"></path><path fill="#22528c" d="M9 4h1v1h-1zM11 5h1v1h-1zM11 6h2v1h-2zM11 7h2v1h-2z"></path><path fill="#f0b642" d="M4 6h2v1h-2zM3 7h4v1h-4zM2 8h5v1h-5zM6 26h1v1h-1zM12 26h1v1h-1zM5 27h1v1h-1zM11 27h1v1h-1zM5 28h1v1h-1zM11 28h1v1h-1zM4 29h2v1h-2zM10 29h2v1h-2z"></path></svg>`;
+const APP_VERSION="2.1"; /* build.py bakes in the one version number (Profile > App shows it) */
 const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const ico=(p,s)=>`<svg class="ic" width="${s||22}" height="${s||22}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
@@ -4526,6 +4535,34 @@ function swSetup(keep){ /* one row that slides sideways: the picked color is bro
   else{const on=r.querySelector('[aria-pressed="true"]');if(on)r.scrollLeft=Math.max(0,on.offsetLeft-(r.clientWidth-on.offsetWidth)/2)}
   r.addEventListener("scroll",swSync,{passive:true});swSync();
 }
+/* ---------- Profile > App: Check for update (only when tapped; sends nothing about the student, just reads one small file) ---------- */
+let upSt={k:"idle"}; /* idle | checking | new | same | fail; kept here so a redraw of Profile keeps the result */
+const upCmp=(a,b)=>{const x=String(a).split(".").map(Number),y=String(b).split(".").map(Number);for(let i=0;i<Math.max(x.length,y.length);i++){const d=(x[i]||0)-(y[i]||0);if(d)return d<0?-1:1}return 0}; /* numbers, so 2.10 is newer than 2.9 */
+function upInner(){
+  const web=!!window.__patoWeb,kind=web?"iPhone / web":/Android/i.test(navigator.userAgent||"")?"Android app":"App file",s=upSt;
+  let note="";
+  if(s.k==="new")note=web
+    ?`<div class="up-n"><span><b>${esc(s.v)} is ready.</b> Your answers stay.</span></div><div class="up-act"><button type="button" class="btn sm" id="up-apply">Update</button></div>`
+    :`<div class="up-n"><span><b>${esc(s.v)} is out.</b> Install the new APK. Save a backup first.</span></div>${s.apk?`<div class="up-act"><a class="btn sm" id="up-get" href="${esc(s.apk)}" target="_blank" rel="noopener">Get it from Drive</a><button type="button" class="btn ghost sm" id="up-copy">Copy link</button></div>${s.show?`<input class="up-link" id="up-link" type="text" readonly value="${esc(s.apk)}" aria-label="Link">`:""}`:""}`;
+  else if(s.k==="same")note=`<div class="up-n ok"><span>You have the latest version.</span></div>`;
+  else if(s.k==="fail")note=`<div class="up-n warn"><span>Can't check now. Connect to the internet and try again.</span></div>`;
+  return `<div class="up-row"><span class="mg"><b>PatoCOPAR ${esc(APP_VERSION)}</b><small>${kind}</small></span><button type="button" class="btn ghost sm" id="up-check"${s.k==="checking"?" disabled":""}>${s.k==="checking"?"Checking…":"Check for update"}</button></div>${note}`;
+}
+function upPaint(){const c=$("#up-card");if(c)c.innerHTML=upInner()}
+async function upCheck(){
+  if(upSt.k==="checking")return;
+  upSt={k:"checking"};upPaint();
+  const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),8000);
+  try{
+    const url=(window.__patoWeb?"./version.json":"https://benzanthonydp.github.io/patocopar/version.json")+"?t="+Date.now();
+    const r=await fetch(url,{cache:"no-store",signal:ac.signal});
+    if(!r.ok)throw new Error("status");
+    const j=await r.json(),v=j&&typeof j.version==="string"?j.version.trim():"";
+    if(!/^\d+(\.\d+)*$/.test(v))throw new Error("version");
+    upSt=upCmp(v,APP_VERSION)>0?{k:"new",v,apk:typeof j.apk==="string"&&/^https:\/\//.test(j.apk)?j.apk:""}:{k:"same"};
+  }catch(e){upSt={k:"fail"}}
+  clearTimeout(tm);upPaint();
+}
 function renderProfile(){
   bar(`<button type="button" class="iconbtn" id="ab-back" aria-label="${L("Balik","Back")}">${ico(IC.back)}</button>`+titleBar("Profile"),moonBtn());
   const bk=lsGet(LS_BK),pl=pairLine(),keepSw=swKeep;swKeep=null;
@@ -4547,6 +4584,7 @@ function renderProfile(){
   <h3 class="section-title" id="bk-sec">Backup</h3><section class="form">
    <div class="bk-grid"><button type="button" class="btn" id="btn-backup">${ico(BIC.dn,18)}<span>Save</span></button><button type="button" class="btn ghost" id="btn-load">${ico(BIC.up,18)}<span>Load</span></button><button type="button" class="btn ghost" id="btn-savecopy">${ico(BIC.cp,18)}<span>App copy</span></button><button type="button" class="btn ghost" id="btn-code">${ico(BIC.ky,18)}<span>Code</span></button></div>${bk&&bk.at?`<small class="bk-last">${L("Katapusang backup","Last backup")}: ${esc(new Date(bk.at).toLocaleDateString())}</small>`:""}</section>
   <section class="form"><div class="bk-grid"><button type="button" class="btn ghost" id="btn-wel">${ico(BIC.sp,18)}<span>Welcome</span></button><button type="button" class="btn ghost" id="btn-tour">${ico(BIC.rt,18)}<span>Tour</span></button></div></section>
+  <h3 class="section-title">App</h3><section class="card sm" id="up-card">${upInner()}</section>
   </div></div><div class="foot"><div>© 2026 PatoCorps. All rights reserved.</div><div>Made by B. Dela Peña</div></div>`;
   paintBuddy($("#view"));
   swSetup(keepSw);
@@ -4567,6 +4605,9 @@ $("#view").addEventListener("click",e=>{
   if(id==="btn-wel")showWelcome();
   if(id==="btn-tour"){tab="home";showScreen();setTimeout(startTour,120)}
   if(id==="btn-code")openCode();
+  if(id==="up-check")upCheck();
+  if(id==="up-apply"){bt.disabled=true;bt.textContent="Updating…";try{window.__patoApplyUpdate()}catch(err){location.reload()}}
+  if(id==="up-copy")copyText(upSt.apk).then(ok=>{if(ok)toast("Link copied");else{upSt.show=true;upPaint();const l=$("#up-link");if(l){l.focus();l.select()}toast("Select the link and copy it")}});
 });
 /* the Code button: the backup code sheet (copy a code, or paste one to load) */
 function openCode(){
@@ -5588,6 +5629,8 @@ async function xpReportDocx(){
 (function(){
   const WEB_BUILD=true;
   if(!WEB_BUILD)return;
+  window.__patoWeb=true; /* Profile > App reads this: web build checks ./version.json and can update in place */
+  window.__patoApplyUpdate=()=>location.reload(); /* replaced below when a service worker is running */
   const sw="serviceWorker" in navigator;
   const host=location.hostname,secure=location.protocol==="https:"||(location.protocol==="http:"&&(host==="localhost"||host==="127.0.0.1"||host==="[::1]")); /* http on localhost is allowed so the test suite can run it */
   const standalone=()=>navigator.standalone===true||(window.matchMedia&&matchMedia("(display-mode: standalone)").matches);
@@ -5636,6 +5679,26 @@ async function xpReportDocx(){
       });
     };
     navigator.serviceWorker.addEventListener("controllerchange",()=>{if(reloading){reloading=false;location.reload()}});
+    /* Profile > App > Update (only after the student taps it): look for a new worker, wait up to 10 s, switch to it and reload. No new worker: just reload. */
+    window.__patoApplyUpdate=()=>{
+      const reg=window.__patoSw;
+      if(!reg){location.reload();return}
+      let done=false,timer=0;
+      const go=w=>{
+        if(done)return;done=true;clearTimeout(timer);
+        if(!w){location.reload();return}
+        reloading=true;w.postMessage({type:"SKIP_WAITING"});
+        setTimeout(()=>{if(reloading)location.reload()},2500); /* the same safety net as the bar */
+      };
+      const watch=w=>{
+        const chk=()=>{if(w.state==="installed")go(reg.waiting||w);else if(w.state==="redundant")go(null)};
+        w.addEventListener("statechange",chk);chk();
+      };
+      if(reg.waiting){go(reg.waiting);return}
+      timer=setTimeout(()=>go(reg.waiting||null),10000);
+      reg.addEventListener("updatefound",()=>{if(reg.installing)watch(reg.installing)});
+      reg.update().then(()=>{if(reg.waiting)go(reg.waiting);else if(reg.installing)watch(reg.installing);else go(null)},()=>go(null));
+    };
     window.addEventListener("load",()=>{
       navigator.serviceWorker.register("./sw.js",{scope:"./"}).then(reg=>{
         const watch=w=>{w.addEventListener("statechange",()=>{if(w.state==="installed"&&navigator.serviceWorker.controller)showBar(reg.waiting||w)})};
