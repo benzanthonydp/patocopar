@@ -1,7 +1,7 @@
-/* PatoCOPAR offline copy. build.py --web fills in patocopar-2.3-b2d5c7bb60 (the version plus a short fingerprint of the app), so a new app file means a new cache.
+/* PatoCOPAR offline copy. build.py --web fills in patocopar-2.8-4d24b2d782 (the version plus a short fingerprint of the app), so a new app file means a new cache.
    This file only touches Cache Storage. It never reads or changes localStorage or IndexedDB, so saved answers are never affected. */
 const PREFIX = "patocopar-";
-const CACHE = "patocopar-2.3-b2d5c7bb60";
+const CACHE = "patocopar-2.8-4d24b2d782";
 const FILES = ["./", "./index.html", "./manifest.webmanifest", "./apple-touch-icon.png", "./icon-192.png", "./icon-512.png"];
 
 self.addEventListener("install", e => {
