@@ -1344,6 +1344,7 @@ html[data-lay]:not([data-lay="one"]) .t30w{grid-column:1/-1}
 .t30r{display:flex;align-items:center;gap:6px;color:var(--muted);font:500 .78rem var(--font-data);flex:none}
 table.t30{table-layout:fixed}
 .t30 th:first-child{width:56%}.t30 th:nth-child(2){width:20%}.t30 th:nth-child(3){width:24%}
+.t30.sex th:first-child{width:43%}.t30.sex tr.hh td{font-style:italic;color:var(--muted)}.t30.sex th:not(:first-child){width:19%}
 .t30.k2 th:first-child{width:62%}.t30.k2 th:nth-child(2){width:38%}
 .t30.community th:first-child{width:28%}.t30.community th:nth-child(2){width:46%}.t30.community th:nth-child(3){width:26%}
 .t30.profile th:first-child{width:27%}.t30.profile th:nth-child(2){width:36%}.t30.profile th:nth-child(3){width:37%}
@@ -2067,7 +2068,7 @@ return {dV:dV,dK:dK,dS:dS,dT:dT,dH:dH,de:de,dU:dU,dE:dE,dp:dp,dm:dm};})();
 
 const LEGACY={"q":{"1":"Household located within the community","2":"Community divided into puroks or sitios","3":"Lived in the community 6 months or longer","4":"Member moved in (past 6 months)","5":"Member moved out (past 6 months)","9":"Household with a member currently studying","10":"All 15 and above can read and write","12":"Nuclear family","13":"More than one generation in the household","14":"Mainly uses one dialect","15":"Identifies with an ethnic or cultural group","16":"Identifies with a religious group","17":"House made mainly of strong materials (concrete)","19":"Enough space for household members","20":"Has electricity for lighting","21":"Has safe lighting during power outage","22":"Has own toilet","23":"Toilet covered or enclosed","24":"Water-sealed or flush-type toilet","25":"Toilet away from drinking water source","26":"Access to approved water supply","27":"Water available near the house","30":"Has drainage for wastewater","31":"Drainage is covered","32":"Wastewater flows without stagnant pools","33":"Has proper garbage container","34":"Regular garbage collection","38":"Practices recycling","39":"Reuses items","40":"Regular source of drinking water","43":"Treats water before drinking","46":"Illness in the household (past year)","48":"Consulted a trained health professional","50":"Took prescribed medicine","51":"Took medicine without prescription","52":"Aware of community health programs","53":"Used a community health program","54":"Knows where to access health services","55":"Currently using family planning","56":"Received family planning information","58":"Child weighed by a health worker","59":"Child's nutritional status assessed","61":"Child received routine vaccines","62":"Child has vaccination record","63":"Child completely vaccinated for age","64":"Pregnant woman in the household","65":"Received prenatal checkups","67":"Delivery attended by a health professional","68":"Community has a BHW","69":"Community has a BNS","70":"Community has a midwife","71":"Community has a nurse","72":"Community has a doctor","73":"Community has a dentist","74":"Health workers available when needed","76":"Live birth in the household (past year)","77":"Death in the household (past year)","80":"Church or chapel accessible","81":"Elementary school in or near the community","82":"Secondary school in or near the community","83":"College or tertiary school in or near the community","84":"Grocery store or market","85":"Hardware store","86":"Recreational facility","87":"Sports facility","88":"Cemetery accessible","89":"Transportation terminal accessible","90":"Birthing clinic accessible","91":"Barangay health center or RHU accessible","92":"Hospital accessible","93":"Tuberculosis","94":"Diabetes mellitus","95":"Hypertension","96":"Arthritis","97":"Glaucoma or other serious eye problem","98":"Dengue","99":"Filariasis or amoebiasis","100":"Malnutrition","101":"Cardiovascular problem","102":"Other diagnosed condition (past year)","103":"Unusually high number of cases (epidemic)","104":"Repeated cases over time (endemic)","105":"Few cases from time to time (sporadic)","110":"Accessible health services","112":"Access to emergency health services","114":"Enough health workers for basic services","PP":"Within 6 weeks postpartum","RI":"Community has a rural health inspector","CM":"Member with comorbidities","CD":"Member with a communicable disease"},"f":{"years":["single","Length of residence","Pila na ka tuig mo diri?"],"moveWhy":["text","Reason for moving out","Ngano ni-balhin?"],"illiterate":["num","Persons 15 and above who cannot read and write","Pila ang dili kahibalo mo-basa ug mo-sulat (15 years old pataas)?"],"familyType":["single","Type of family","Type of family"],"income":["single","Monthly family income","Monthly family income"],"dialect":["single","Dialect used","Unsa ang primary dialect?"],"ethnic":["single","Ethnic or cultural group","Unsa ang ethnic background?"],"religion":["multi","Religion","Unsa nga relihiyon? (pwede daghan)"],"race":["single","Race","Race"],"region":["single","Region of origin","Region of origin"],"houseType":["single","Type of materials used for house","Unsa ang materials sa balay?"],"altLight":["multi","Alternative lighting","Unsa ang gamit? (pwede daghan)"],"toiletShare":["multi","Households without own toilet","Kung wala: (pwede daghan)"],"toiletType":["multi","Types of excreta disposal","Unsa nga klase sa CR? (pwede daghan)"],"waterLevel":["multi","Water supply facility","Unsa nga level? (pwede daghan)"],"wasteHow":["multi","Types of waste disposal","Unsaon ninyo pag-dispose sa basura? (pwede daghan)"],"collectFreq":["single","Frequency of garbage collection","Pila ka beses sa usa ka semana?"],"drinkSrc":["multi","Source of drinking water","Asa gikan ang imnon nga tubig? (pwede daghan)"],"treatHow":["multi","Methods of sanitizing water","Unsaon? (pwede daghan)"],"illness":["text","Illnesses reported","Unsa nga sakit?"],"allCases":["num","Persons with illness (new and old cases)","Pila tanan ang naay sakit (bag-o ug dugay na)?"],"newCases":["num","Persons with new illness","Pila ang bag-o lang nagkasakit (new case)?"],"diagBy":["multi","Diagnosed by","Kinsa ang nag-diagnose? (pwede daghan)"],"rxBy":["multi","Prescribed by","Kinsa ang nagreseta? (pwede daghan)"],"programs":["text","Programs known","Unsa nga programs?"],"noUseWhy":["text","Reason for not using programs","Ngano wala?"],"fpMethod":["multi","Method of family planning used","Unsa nga method? (pwede daghan)"],"nutri":["multi","Nutritional status (0-6 years old)","Unsa ang resulta? (pwede daghan)"],"vaccines":["multi","Vaccines received","Unsa nga bakuna? (pwede daghan)"],"immuStatus":["multi","Immunization status","Immunization status (pwede daghan)"],"prenatalCount":["num","Number of prenatal visits","Pila ka beses?"],"delType":["multi","Type of delivery","Unsa nga klase sa pagpanganak? (pwede daghan)"],"attendant":["multi","Labor attendant","Kinsa ang nagpaanak? (pwede daghan)"],"delPlace":["multi","Place of delivery","Asa nanganak? (pwede daghan)"],"births":["num","Livebirths","Pila ka bata ang natawo?"],"deaths":["num","Deaths","Pila tanan ang namatay?"],"infant":["num","Infant deaths","Pila ang ubos sa 1 ka tuig ang edad?"],"under5":["num","Deaths below 5 years","Pila ang ubos sa 5 ka tuig ang edad?"],"maternal":["num","Maternal deaths","Pila ang inahan nga namatay tungod sa pagmabdos o pagpanganak (hangtod 42 ka adlaw human nanganak)?"],"cause":["text","Causes of death","Unsa ang hinungdan sa pagkamatay?"],"facility":["multi","Health facility used","Unsa nga health facility ang inyong ginaadtoan? (pwede daghan)"],"dz_tb":["num","Persons with Tuberculosis","Pila ka tawo?"],"dt_tb":["date","Date diagnosed: Tuberculosis","Kanus-a na-diagnose?"],"dz_dm":["num","Persons with Diabetes mellitus","Pila ka tawo?"],"dt_dm":["date","Date diagnosed: Diabetes mellitus","Kanus-a na-diagnose?"],"dz_htn":["num","Persons with Hypertension","Pila ka tawo?"],"dt_htn":["date","Date diagnosed: Hypertension","Kanus-a na-diagnose?"],"dz_arth":["num","Persons with Arthritis","Pila ka tawo?"],"dt_arth":["date","Date diagnosed: Arthritis","Kanus-a na-diagnose?"],"dz_eye":["num","Persons with Glaucoma or other serious eye problem","Pila ka tawo?"],"dt_eye":["date","Date diagnosed: Eye problem","Kanus-a na-diagnose?"],"dz_dengue":["num","Persons with Dengue","Pila ka tawo?"],"dt_dengue":["date","Date diagnosed: Dengue","Kanus-a na-diagnose?"],"dz_filam":["num","Persons with Filariasis or amoebiasis","Pila ka tawo?"],"dt_filam":["date","Date diagnosed: Filariasis or amoebiasis","Kanus-a na-diagnose?"],"dz_malnut":["num","Persons with Malnutrition","Pila ka tawo?"],"dt_malnut":["date","Date diagnosed: Malnutrition","Kanus-a na-diagnose?"],"dz_cvd":["num","Persons with Cardiovascular problem","Pila ka tawo?"],"dt_cvd":["date","Date diagnosed: Cardiovascular problem","Kanus-a na-diagnose?"],"otherDis":["text","Other diagnosed conditions","Unsa nga sakit?"],"dz_other":["num","Persons with Other diagnosed conditions","Pila ka tawo?"],"dt_other":["date","Date diagnosed: Other condition","Kanus-a na-diagnose?"],"dz_comorb":["num","Persons with Comorbidities","Pila ka tawo?"],"comorbList":["multi","Comorbidities reported","Unsa nga mga sakit ang dungan? (pwede daghan)"],"dt_comorb":["date","Date diagnosed: Comorbidities","Kanus-a na-diagnose?"],"dz_commun":["num","Persons with Communicable diseases","Pila ka tawo?"],"communList":["multi","Communicable diseases reported","Unsa nga sakit? (pwede daghan)"],"dt_commun":["date","Date diagnosed: Communicable disease","Kanus-a na-diagnose?"],"epidemicDis":["text","Epidemic diseases named","Unsa nga sakit?"]},"prof":{"Household No.":["hh_no","text"],"Purok o sitio":["purok","text"],"Petsa sa interview":["date","date"],"Interviewer":["interviewer","text"],"Pangalan o initials sa respondent":["r_name","text"],"Edad":["r_age","num"],"Sex":["r_sex","single"],"Civil status":["r_civil","single"],"Unsa man ka sa household head?":["r_relation","single"],"Educational attainment":["r_educ","single"],"Trabaho":["r_occ","text"]}}; /* questions from older versions: old backups and old Excel files still load through these */
 const DUCK=`<svg viewBox="0 0 20 30" shape-rendering="crispEdges" aria-hidden="true"><path fill="#111111" d="M5 0h5v1h-5zM4 1h1v1h-1zM10 1h1v1h-1zM3 2h1v1h-1zM11 2h1v1h-1zM3 3h1v1h-1zM11 3h1v1h-1zM3 4h1v1h-1zM11 4h1v1h-1zM3 5h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM12 5h1v1h-1zM3 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM13 6h1v1h-1zM2 7h1v1h-1zM10 7h1v1h-1zM13 7h1v1h-1zM1 8h1v1h-1zM10 8h3v1h-3zM2 9h3v1h-3zM9 9h1v1h-1zM5 10h1v1h-1zM9 10h1v1h-1zM5 11h1v1h-1zM9 11h1v1h-1zM5 12h1v1h-1zM9 12h1v1h-1zM4 13h1v1h-1zM9 13h1v1h-1zM4 14h1v1h-1zM9 14h1v1h-1zM3 15h1v1h-1zM10 15h1v1h-1zM15 15h3v1h-3zM2 16h1v1h-1zM11 16h2v1h-2zM14 16h1v1h-1zM17 16h1v1h-1zM1 17h1v1h-1zM13 17h2v1h-2zM17 17h2v1h-2zM0 18h1v1h-1zM15 18h2v1h-2zM19 18h1v1h-1zM0 19h1v1h-1zM14 19h1v1h-1zM17 19h1v1h-1zM19 19h1v1h-1zM0 20h1v1h-1zM17 20h1v1h-1zM19 20h1v1h-1zM0 21h1v1h-1zM16 21h1v1h-1zM18 21h1v1h-1zM0 22h1v1h-1zM17 22h2v1h-2zM1 23h1v1h-1zM18 23h1v1h-1zM2 24h1v1h-1zM4 24h1v1h-1zM13 24h1v1h-1zM16 24h2v1h-2zM3 25h3v1h-3zM12 25h4v1h-4zM5 26h1v1h-1zM7 26h5v1h-5zM13 26h1v1h-1zM4 27h1v1h-1zM6 27h1v1h-1zM10 27h1v1h-1zM12 27h1v1h-1zM4 28h1v1h-1zM6 28h1v1h-1zM10 28h1v1h-1zM12 28h1v1h-1zM3 29h1v1h-1zM6 29h1v1h-1zM9 29h1v1h-1zM12 29h1v1h-1z"></path><path fill="#ffffff" d="M5 1h4v1h-4zM4 2h1v1h-1zM8 2h2v1h-2zM5 4h4v1h-4zM4 5h4v1h-4zM9 5h1v1h-1zM6 6h2v1h-2zM9 6h1v1h-1zM7 7h3v1h-3zM7 8h3v1h-3zM6 9h3v1h-3zM6 10h3v1h-3zM6 11h3v1h-3zM6 12h3v1h-3zM6 13h3v1h-3zM5 14h4v1h-4zM4 15h6v1h-6zM3 16h8v1h-8zM15 16h2v1h-2zM2 17h11v1h-11zM15 17h2v1h-2zM1 18h14v1h-14zM17 18h1v1h-1zM1 19h13v1h-13zM15 19h2v1h-2zM1 20h15v1h-15zM1 21h15v1h-15zM1 22h16v1h-16zM3 23h14v1h-14zM5 24h7v1h-7z"></path><path fill="#d6d8de" d="M9 1h1v1h-1zM4 4h1v1h-1zM5 9h1v1h-1zM5 13h1v1h-1zM18 18h1v1h-1zM18 19h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM17 21h1v1h-1zM2 23h1v1h-1zM17 23h1v1h-1zM3 24h1v1h-1zM12 24h1v1h-1zM14 24h2v1h-2zM6 25h6v1h-6z"></path><path fill="#de5c26" d="M5 2h3v1h-3zM10 2h1v1h-1zM10 3h1v1h-1z"></path><path fill="#5ca0de" d="M4 3h6v1h-6zM10 4h1v1h-1z"></path><path fill="#22528c" d="M9 4h1v1h-1zM11 5h1v1h-1zM11 6h2v1h-2zM11 7h2v1h-2z"></path><path fill="#f0b642" d="M4 6h2v1h-2zM3 7h4v1h-4zM2 8h5v1h-5zM6 26h1v1h-1zM12 26h1v1h-1zM5 27h1v1h-1zM11 27h1v1h-1zM5 28h1v1h-1zM11 28h1v1h-1zM4 29h2v1h-2zM10 29h2v1h-2z"></path></svg>`;
-const APP_VERSION="3.0"; /* build.py bakes in the one version number (Profile > App shows it) */
+const APP_VERSION="3.3"; /* build.py bakes in the one version number (Profile > App shows it) */
 const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const ico=(p,s)=>`<svg class="ic" width="${s||22}" height="${s||22}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
@@ -4160,7 +4161,13 @@ function fpSplit(ok){
 }
 const fp30=()=>fpSplit(fpMember),fpW30=()=>fpSplit(h=>womenFp(h)>0);
 function fpOne(f,title,sub){
-  const ent=[{label:"Yes",val:"Oo",l:f.yes},{label:"No",val:"Wala",l:f.no}];
+  const ent=[{label:"Yes",val:"Oo",l:f.yes}],pb=f.yes.length,m=k=>f.yes.filter(h=>(selOf(h,"fpType")[0]||"")===k);
+  /* 3.1: under Yes, the method each household picked (fpType): Natural and Artificial always, Others and Method not given only when there are some; percent of the Yes households */
+  const oth=f.yes.filter(h=>{const v=selOf(h,"fpType")[0]||"";return v&&v!=="Natural"&&v!=="Artificial"}),none=f.yes.filter(h=>!(selOf(h,"fpType")[0]||""));
+  ent.push({label:"Natural",ind:true,pbase:pb,l:m("Natural")},{label:"Artificial",ind:true,pbase:pb,l:m("Artificial")});
+  if(oth.length)ent.push({label:"Others",ind:true,pbase:pb,l:oth});
+  if(none.length)ent.push({label:"Method not given",ind:true,pbase:pb,l:none});
+  ent.push({label:"No",val:"Wala",l:f.no});
   if(f.na.length)ent.push({label:NA,val:null,l:f.na,na:true});
   return sec30({title,key:55,tbl:tb30(),head:hd30("Family planning"),ent,miss:f.na,sub});
 }
@@ -4168,6 +4175,24 @@ function fpSec(){
   const r=agesTo(TALLY_AGES.fp);
   return [fpOne(fp30(),"Married, single or common law, "+r,"out of the households with a member aged "+r+" who is married, single or common law"),
     fpOne(fpW30(),"Women "+r,"out of the households with a woman aged "+r)];
+}
+/* 3.1: people aged exactly 18, and people aged 18 to 45 by civil status, each by sex (Male, Female, Total). Ties Table A to family planning (Table C part 1 counts households with a member 18 to 45 who is married, single or common law). */
+function ageSex30(){
+  const P=allPersons(),cnt=l=>({m:l.filter(p=>p.m.sex==="Lalaki").length,f:l.filter(p=>p.m.sex==="Babae").length,t:l.length});
+  const a18=P.filter(p=>Math.floor(ageNum(p.m))===18),band=P.filter(p=>inAges(p.m,TALLY_AGES.fp)),r=agesTo(TALLY_AGES.fp);
+  const names=TW.A.find(g=>g[0]===T_CIVIL).slice(1),pick=TA_PICK[T_CIVIL];
+  const byCivil=(L,only)=>{const m=new Map(names.map(n=>[n,[]])),na=[];
+    L.forEach(p=>{let k=pick(p.m,p.h)||"";if(!k){na.push(p);return}if(k.startsWith("Others")||(!m.has(k)&&names.includes("Others")))k="Others";if(!m.has(k))m.set(k,[]);m.get(k).push(p)});
+    const c=l=>{const x=cnt(l);return only?{m:null,f:x.f,t:x.f}:x},out=[];
+    m.forEach((l,k)=>out.push({label:k,...c(l)}));
+    if(na.length)out.push({label:NA,grey:true,...c(na)});
+    out.push({tot:true,label:"TOTAL",...c(L)});return out};
+  const women=band.filter(p=>p.m.sex==="Babae"),hh=n=>({hh:true,m:null,f:null,t:n});
+  /* the household lines match Table C family planning part 1 (fpMember) and part 2 (womenFp) */
+  const lines=[{sub:true,label:"Aged 18"},{label:"18 years old",...cnt(a18)},
+    {sub:true,label:"Aged "+r+", by civil status"},...byCivil(band),{label:"Households with a married, single or common law member "+r,...hh(households.filter(fpMember).length)},
+    {sub:true,label:"Women aged "+r+", by civil status"},...byCivil(women,true),{label:"Households with a woman aged "+r,...hh(households.filter(h=>womenFp(h)>0).length)}];
+  return {unit:"people",kind:"sex",cap:"Table A · people aged 18, and aged "+r+" (the family planning ages), by sex",cols:["CIVIL STATUS","MALE","FEMALE","TOTAL"],lines};
 }
 function profile30(){
   const HN=households.length;
@@ -4224,6 +4249,7 @@ const add30=(part,id,name,parts,fn)=>T30.push({part,id,name,parts,fn});
 const HHU=secs=>({unit:"households",secs});
 add30("A","age","Age",1,()=>({unit:"people",secs:[personSec("AGE",{fixed:true})]}));
 add30("A","civil","Civil status",1,()=>({unit:"people",secs:[personSec(T_CIVIL)]}));
+add30("A","fpages","Ages 18 to 45",2,ageSex30);
 add30("A","religion","Religion",1,()=>({unit:"people",secs:[personSec("RELIGION")]}));
 add30("A","education","Education",1,()=>({unit:"people",secs:[personSec("EDUCATIONAL ATTAINMENT",{fixed:true})]}));
 add30("A","family","Family type",1,()=>HHU([hhSec("familyType")]));
@@ -4273,6 +4299,7 @@ function secHTML30(s){
     +(s.mismatch?`<tr class="mm"><td colspan="3">${esc(s.mismatch)}</td></tr>`:"");
 }
 function linesHTML30(t){
+  if(t.kind==="sex")return t.lines.map(l=>l.sub?`<tr class="sub"><td colspan="4">${esc(l.label)}</td></tr>`:`<tr class="${l.tot?"tot":l.grey?"gy":l.hh?"hh":""}"><td>${esc(l.label)}</td>${[l.m,l.f,l.t].map(v=>`<td class="n${v==null?" z":""}">${v==null?TD:v}</td>`).join("")}</tr>`).join("");
   if(t.kind==="rates"){
     RATES30=t.lines;
     return t.lines.map((l,i)=>`<tr class="rt" data-rate="${i}" tabindex="0" role="button"><td>${esc(l.label)}</td><td class="n${l.value===TD?" z":""}">${esc(l.value)}</td></tr>`).join("");
@@ -4284,7 +4311,7 @@ function ratesCard30(){
   return `<section class="card sm rnum"><div class="gh"><span>Numbers for the rates</span><button type="button" class="link" id="rn-edit">Edit ${ico(IC.chev,16)}</button></div><p class="note">Year ${calYear()} · July 1 population ${j.pop||TD} (${j.typed?"typed":"estimate"})</p><p class="note">Land area ${land||TD} · Persons exposed ${ex||TD}</p></section>`;
 }
 function tableHTML30(t,back){
-  const two=t.cols.length===2,head=`<thead><tr>${t.cols.map((c,i)=>`<th${i===t.cols.length-1||(i&&!two&&t.kind==="sections")?' class="n"':""}>${esc(c)}</th>`).join("")}</tr></thead>`;
+  const two=t.cols.length===2,head=`<thead><tr>${t.cols.map((c,i)=>`<th${i===t.cols.length-1||(i&&!two&&(t.kind==="sections"||t.kind==="sex"))?' class="n"':""}>${esc(c)}</th>`).join("")}</tr></thead>`;
   const body=t.kind==="sections"?t.secs.map(secHTML30).join(""):linesHTML30(t);
   return `<div class="t30w">${back?`<button type="button" class="link t30b" data-tback>${ico(IC.back,16)}${esc(T_PART[t.part])}</button>`:""}<h2 class="t30h">${esc(t.name)}</h2>${t.kind==="rates"?ratesCard30():""}`
     +`<section class="card flush t30c">${tcap(t.cap)}<div class="tw"><table class="t30 k${t.cols.length}${t.kind==="sections"?(t.cols[1]==="HOUSEHOLDS"?" f":""):" "+t.kind}">${head}<tbody>${body}</tbody></table></div></section>`
@@ -4918,7 +4945,7 @@ const flat=x=>x&&typeof x==="object"?selArr(x).filter(Boolean).join("; ")+(x.oth
 const XB={style:"thin",color:{rgb:"000000"}},XBD={top:XB,bottom:XB,left:XB,right:XB};
 const xtext=c=>c==null?"":String(c);
 function dress(ws,aoa,o){
-  o=o||{};const hdr=new Set(o.hdr||[0]),bold=new Set(o.bold||[]),pc=new Set(o.pct||[]),nw=new Set(o.nw||[]),z=o.z||{},dash=o.dash!==false,dashc=new Set(o.dashc||[]);
+  o=o||{};const hdr=new Set(o.hdr||[0]),bold=new Set(o.bold||[]),pc=new Set(o.pct||[]),nop=new Set(o.nopct||[]),nw=new Set(o.nw||[]),z=o.z||{},dash=o.dash!==false,dashc=new Set(o.dashc||[]);
   const ind=new Set(o.ind||[]),lim=o.lim||{},free=new Set(o.free||[]);aoa.forEach((r,i)=>{if(!r.some(c=>xtext(c)!==""))free.add(i)}); /* spacer and caption rows get no borders */
   const nc=Math.max(1,...aoa.map(r=>r.length)),wch=[];
   for(let c=0;c<nc;c++){let m=0;aoa.forEach((r,i)=>{if(free.has(i)||nw.has(i))return;xtext(r[c]).split("\n").forEach(l=>{if(l.length>m)m=l.length})});wch.push(Math.max(o.min||7,Math.min(o.max||60,m+2)))}
@@ -4933,7 +4960,7 @@ function dress(ws,aoa,o){
       const blank=cell.v===""||cell.v==null;
       if(blank&&(dash||dashc.has(c))&&!isH&&!isB){cell.t="s";cell.v=TD} /* a blank cell is a hyphen on the right, like the screen */
       const num=typeof cell.v==="number";
-      if(num&&!isH){if(pc.has(c))cell.z="0.00%";else if(z[c])cell.z=z[c]}
+      if(num&&!isH){if(pc.has(c)&&!nop.has(i))cell.z="0.00%";else if(z[c])cell.z=z[c]}
       cell.s={font:{bold:isH||isB},border:XBD,alignment:{vertical:"center",wrapText:true,horizontal:isH?(c===0?"left":"center"):cell.v===TD?"right":(num||(o.right&&o.right(c)))?"right":"left",...(ind.has(i)&&c===0?{indent:2}:{})}};
     }
     return {hpt:Math.min(409,isH?Math.max(24,lines*15+6):Math.max(18,lines*15+3))}; /* Excel rows stop at 409.5 pt */
@@ -6010,6 +6037,7 @@ function xp30Lines(t){
   if(t.kind==="profile")t.lines.forEach(l=>out.push({k:"row",c:[l.label,l.value+(l.more?" (also "+l.more+")":""),l.of]}));
   else if(t.kind==="community")t.lines.forEach(l=>out.push({k:"row",c:[l.label,l.value,l.of]}));
   else if(t.kind==="rates")t.lines.forEach(l=>out.push({k:"row",c:[l.label,l.value],raw:l.raw}));
+  else if(t.kind==="sex")t.lines.forEach(l=>out.push(l.sub?{k:"sub",c:[l.label]}:{k:l.tot?"total":"row",c:[l.label,...[l.m,l.f,l.t].map(v=>v==null?TD:v)],grey:!!l.grey}));
   else t.secs.forEach(s=>{
     if(s.title)out.push({k:"sub",c:[s.title]});
     if(s.sub)out.push({k:"note",c:[s.sub]});
@@ -6023,7 +6051,7 @@ const xp30Num=p=>p==null?TD:+(p/100).toFixed(6); /* a real percent for the sheet
 /* one part of the Excel report (A to F) as a sheet: the title row, then each table with its name, caption, header, rows and TOTAL */
 function xp30Sheet(add,tl,part,sheet,o){
   o=o||{};
-  const aoa=[[xlTitle()]],hdr=[],bold=[],ind=[],free=[0],lim={},names=[],caps=[],pcs=[];
+  const aoa=[[xlTitle()]],hdr=[],bold=[],ind=[],free=[0],lim={},names=[],caps=[],pcs=[],nop=[];
   tl.filter(t=>t.part===part).forEach(t=>{
     const nc=t.cols.length;
     aoa.push([]);free.push(aoa.length-1);
@@ -6038,12 +6066,13 @@ function xp30Sheet(add,tl,part,sheet,o){
       if(r.k==="total")bold.push(i);
       if(r.ind)ind.push(i);
       if(t.kind==="rates"){aoa.push([r.c[0],rateNum(r.raw)]);o.rates&&o.rates.push([i,r.c[0]==="Literacy rate"]);return}
+      if(t.kind==="sex")nop.push(i); /* counts, not percents, in the third column */
       if(t.kind==="sections"){aoa.push([r.c[0],r.c[1],xp30Num(r.pct)]);pcs.push(i)}
       else aoa.push(r.c.slice());
     });
   });
   if(o.more)o.more({aoa,hdr,bold,free,lim});
-  const ws=add(aoa,sheet,{hdr,bold,ind,free,lim,pct:o.pct||[2],z:o.z,minc:o.minc||{0:24,1:10,2:10}});
+  const ws=add(aoa,sheet,{hdr,bold,ind,free,lim,nopct:nop,pct:o.pct||[2],z:o.z,minc:o.minc||{0:24,1:10,2:10}});
   ws.A1.s={font:{bold:true,sz:13}};
   names.forEach(r=>{const c=ws[XLSX.utils.encode_cell({r,c:0})];if(c)c.s={font:{bold:true,sz:12}}});
   caps.forEach(r=>{const c=ws[XLSX.utils.encode_cell({r,c:0})];if(c)c.s={font:{italic:true}}});
@@ -6182,8 +6211,8 @@ function wTable(head,rows,widths,o){
 const XP_WID={2:[6360,3000],3:[5160,2100,2100],4:[4260,1700,1700,1700],5:[3360,1500,1500,1500,1500],6:[2760,1320,1320,1320,1320,1320]};
 /* a tables30 table as a Word table: a sub heading per part, every answer (zero rows too), a TOTAL row per part, "-" in the % of a grey row */
 function xpTable30(t){
-  const L=xp30Lines(t),k=t.kind,widths=k==="rates"?XP_WID[2]:k==="profile"?[2400,4560,2400]:k==="community"?[1900,5460,2000]:XP_WID[3];
-  const rows=L.map(r=>r.k==="sub"?{span:r.c[0]}:r.k==="note"?{span:r.c[0],fill:"FFFFFF",b:false}:r.k==="total"?{cells:["TOTAL",String(r.c[1]),dpct(r.pct)],bold:true,fill:"DCE8D2"}:k==="sections"?[(r.ind?"    ":"")+r.c[0],String(r.c[1]),dpct(r.pct)]:r.c.map(String));
+  const L=xp30Lines(t),k=t.kind,widths=k==="rates"?XP_WID[2]:k==="profile"?[2400,4560,2400]:k==="community"?[1900,5460,2000]:k==="sex"?XP_WID[4]:XP_WID[3];
+  const rows=L.map(r=>r.k==="sub"?{span:r.c[0]}:r.k==="note"?{span:r.c[0],fill:"FFFFFF",b:false}:r.k==="total"?{cells:k==="sex"?r.c.map(String):["TOTAL",String(r.c[1]),dpct(r.pct)],bold:true,fill:"DCE8D2"}:k==="sections"?[(r.ind?"    ":"")+r.c[0],String(r.c[1]),dpct(r.pct)]:r.c.map(String));
   return wTable(t.cols,rows,widths,{left:k==="profile"?[1]:k==="community"?[1,2]:undefined,leftHead:k==="profile"||k==="community"});
 }
 /* the plain sentence under each part (A to F) */
@@ -6317,7 +6346,7 @@ async function xpReportDocx(){
 
 /* app6.js (3.0): Update answers and the Changes log. Joined after app5.js.
    Both screens are sub screens of the Profile tab (pfSub "update" and "changes", see app4.js); Update answers returns to the tab it was opened from.
-   Rules: only our own pair's clients can be changed, one tap changes one house, a reason is required, every change is logged with the old answer. There is no "change all". */
+   Rules: every client on this phone is listed (our pair first, then other pairs), one tap changes one house, a reason is required, every change is logged with the old answer. There is no "change all". */
 
 /* can this question be updated from a table row? True for a pick-one question with fixed choices (a retired question never). When the row's answer is given too, it must be one of those fixed choices, so an "Others: text" row is never offered. Read at run time from the question's type, so a question that is turned from multi to single works without a change here. */
 const canUpdate=(key,val)=>{const f=FK[key];if(!f||f.type!=="single"||f.hide||!Array.isArray(f.opts)||!f.opts.length)return false;return val==null||f.opts.some(o=>o===val||tlab(o)===val)};
@@ -6337,12 +6366,12 @@ function openUpdate(key,val,title){
   uqSt={key,val:String(val==null?"":val),title:String(title||""),pend:{},why:"",all:false};
   tab="profile";pfOpen("update",ret);
 }
-/* the houses of our own pair that gave this answer, and how many of other pairs did */
+/* every house that gave this answer: our own pair first, then other pairs' (each sorted by name) */
 function upHouses(){
   if(!uqSt)return {mine:[],others:0};
   const {key,val}=uqSt,hit=h=>{const a=upAns(h,key);return a===val||tlab(a)===val};
   const all=households.filter(hit);
-  return {mine:all.filter(isOurs).sort(byName),others:all.filter(h=>!isOurs(h)).length};
+  return {mine:[...all.filter(isOurs).sort(byName),...all.filter(h=>!isOurs(h)).sort(byName)],others:0};
 }
 const upCount=()=>uqSt?Object.keys(uqSt.pend).length:0;
 const SHOWN_ROWS=8;
@@ -6351,13 +6380,12 @@ function renderUpdate(){
   if(!uqSt||!canUpdate(uqSt.key)){$("#view").innerHTML=`<div class="empty">Nothing to update here.</div>`;return}
   const f=FK[uqSt.key],{mine,others}=upHouses(),n=upCount(),shown=uqSt.all?mine:mine.slice(0,SHOWN_ROWS);
   const row=h=>{const to=uqSt.pend[h.id],ch=to!=null;
-    return `<div class="uq-row${ch?" ch":""}" data-h="${esc(h.id)}"><div class="uq-who"><b>${esc(nameOf(h))}</b><small>${ch?`was ${esc(tlab(uqSt.val))}`:`Household ${esc(h.hh_no||"")}`}</small></div>
+    return `<div class="uq-row${ch?" ch":""}" data-h="${esc(h.id)}"><div class="uq-who"><b>${esc(nameOf(h))}</b><small>${ch?`was ${esc(tlab(uqSt.val))}`:`Household ${esc(h.hh_no||"")}${isOurs(h)?"":" · "+esc(String(pairFirst(h.pair)||"Another pair").toUpperCase())}`}</small></div>
      <div class="uq-seg" role="group" aria-label="${esc(nameOf(h))}">${f.opts.map(o=>`<button type="button" data-v="${esc(o)}" aria-pressed="${ch?to===o:o===uqSt.val}"${!ch&&o===uqSt.val?' class="cur"':""}>${esc(tlab(o))}</button>`).join("")}</div></div>`};
   $("#view").innerHTML=`<div class="uq-wrap"><p class="uq-title">${esc(uqSt.title)}${uqSt.title?" · ":""}${mine.length} ${mine.length===1?"household":"households"}</p>
   <section class="form"><div class="field"><span class="flabel" id="uq-wl">Why are you changing them? (needed)</span>
    <div class="chips-w" id="uq-why" role="group" aria-labelledby="uq-wl">${UP_WHY.map(w=>`<button type="button" data-why="${esc(w)}" aria-pressed="${uqSt.why===w}">${esc(w)}</button>`).join("")}</div></div></section>
-  ${mine.length?`<section class="form uq-list" id="uq-list">${shown.map(row).join("")}${shown.length<mine.length?`<button type="button" class="btn ghost sm" id="uq-more">+ ${mine.length-shown.length} more</button>`:""}</section>`:`<div class="empty">No household of your pair has this answer.</div>`}
-  ${others?`<p class="note">${others} ${others===1?"household belongs":"households belong"} to other pairs and ${others===1?"is":"are"} not listed.</p>`:""}
+  ${mine.length?`<section class="form uq-list" id="uq-list">${shown.map(row).join("")}${shown.length<mine.length?`<button type="button" class="btn ghost sm" id="uq-more">+ ${mine.length-shown.length} more</button>`:""}</section>`:`<div class="empty">No household has this answer.</div>`}
   <div class="uq-foot"><button type="button" class="btn" id="uq-save"${n>0&&uqSt.why&&!upBusy?"":" disabled"}>${n>0?`Save ${n} ${n===1?"change":"changes"}`:"Save changes"}</button></div></div>`;
 }
 pfSubs.update=renderUpdate;
@@ -6369,7 +6397,7 @@ async function upSave(){
   const at=new Date().toISOString(),recs=[],ents=[],pair=pairName();
   for(const [hid,to] of Object.entries(pend)){
     const h=households.find(x=>x.id===hid);
-    if(!h||!isOurs(h)||!f.opts.includes(to))continue; /* only our own pair's clients, only a listed choice */
+    if(!h||!f.opts.includes(to))continue; /* only a listed choice */
     const from=upAns(h,key);if(from===to)continue;
     recs.push(normalize({...h,fu:{...(h.fu||{}),[key]:{sel:to,other:""}},updatedAt:at})); /* the same record the interview saves: normalized, with a new updatedAt */
     ents.push({id:chgNewId(),hid:h.id,name:nameOf(h),key,label:f.label||key,from,to,why,at,pair});
@@ -6387,7 +6415,7 @@ $("#view").addEventListener("click",e=>{
   if(w){uqSt.why=uqSt.why===w.dataset.why?"":w.dataset.why;redraw();return}
   const b=e.target.closest("#uq-list .uq-row [data-v]");
   if(b){ /* one tap = one house */
-    const hid=b.closest(".uq-row").dataset.h,h=households.find(x=>x.id===hid);if(!h||!isOurs(h))return;
+    const hid=b.closest(".uq-row").dataset.h,h=households.find(x=>x.id===hid);if(!h)return;
     const v=b.dataset.v;
     if(v===upAns(h,uqSt.key))delete uqSt.pend[hid];else uqSt.pend[hid]=v;
     redraw();return;
