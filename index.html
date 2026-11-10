@@ -1083,6 +1083,16 @@ table.cmpt{width:100%;border-collapse:collapse;table-layout:fixed;font-size:.86r
 .pc.sel{border-color:var(--accent);background:var(--soft)}
 .pc:active{opacity:.82}
 
+/* 2.2 Other illness: a bordered row per ticked person (name, year, what illness) */
+.oth{display:grid;gap:8px}
+.orow{display:grid;gap:6px;padding:8px 10px;background:var(--paper);border:1px solid var(--line);border-radius:12px;min-width:0}
+.orow-h{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.orow-h>b{font-weight:600;font-size:.9rem;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.orow .pick{width:auto;flex:none;min-height:40px;padding:6px 9px;gap:8px;background:var(--cream);border-radius:10px}
+.orow .pick b{font-weight:500;font-size:.82rem}
+.oth-out{display:grid;gap:4px}.oth-out:empty{display:none}
+.oth-mv{margin:0;font-size:.8rem}
+
 /* PatoCOPAR 1.5: the Tally (grouped Overview, scroll stops, graphs, Final tab). Loads after style.css and pet.css. */
 
 /* ---- graph colors: the checked Male / Female pair, light and dark ---- */
@@ -1454,7 +1464,7 @@ const PARTS=[
  {id:"F",title:"Disease Prevalence",short:"Disease Prevalence",subs:[
   {t:["Naa bay miyembro nga na-diagnose og:","Has a member been diagnosed with:"],items:[
    ...[[93,"Tuberculosis (TB)","Tuberculosis (TB)","Tuberculosis","tb"],[94,"Diabetes","Diabetes","Diabetes mellitus","dm"],[95,"Hypertension (high blood)","Hypertension (high blood pressure)","Hypertension","htn"],[96,"Arthritis","Arthritis","Arthritis","arth"],[97,"Glaucoma o laing problema sa mata","Glaucoma or other eye problem","Glaucoma or other serious eye problem","eye"],[98,"Dengue","Dengue","Dengue","dengue"],[99,"Filariasis o amoebiasis","Filariasis or amoebiasis","Filariasis or amoebiasis","filam"],[100,"Malnutrition","Malnutrition","Malnutrition","malnut"],[101,"Sakit sa kasingkasing (heart problem)","Heart problem","Cardiovascular problem","cvd"]].map(([n,c,e,l,k])=>[n,[c,e],l,[F("Oo","dz_"+k,"num",["Pila ka tawo?","How many persons?"],[],{dz:l,label:"Persons with "+l,hide:true,opt:true}),F("Oo","dt_"+k,"date",["Kanus-a na-diagnose?","When diagnosed?"],[],{label:"Date diagnosed: "+(k==="eye"?"Eye problem":l),hide:true,opt:true})]]),
-   [102,["Laing sakit sa {Y}","Other illness in {Y}"],"Other diagnosed condition in {Y}",[F("Oo","otherDis","text",["Unsa nga sakit?","What illness?"],[],{label:"Other diagnosed conditions"}),F("Oo","dz_other","num",["Pila ka tawo?","How many persons?"],[],{dz:"Other diagnosed conditions",label:"Persons with Other diagnosed conditions",hide:true,opt:true}),F("Oo","dt_other","date",["Kanus-a na-diagnose?","When diagnosed?"],[],{label:"Date diagnosed: Other condition",hide:true,opt:true})]],
+   [102,["Laing sakit sa {Y}","Other illness in {Y}"],"Other diagnosed condition in {Y}",[F("Oo","otherDis","text",["Unsa nga sakit?","What illness?"],[],{label:"Other diagnosed conditions",hide:true,opt:true}),F("Oo","dz_other","num",["Pila ka tawo?","How many persons?"],[],{dz:"Other diagnosed conditions",label:"Persons with Other diagnosed conditions",hide:true,opt:true}),F("Oo","dt_other","date",["Kanus-a na-diagnose?","When diagnosed?"],[],{label:"Date diagnosed: Other condition",hide:true,opt:true})]],
    ["CD",["Laing sakit nga makatakod (communicable)","Other communicable disease"],"Member with a communicable disease",[F("Oo","dz_commun","num",["Pila ka tawo?","How many persons?"],[],{dz:"Communicable diseases",label:"Persons with Communicable diseases",hide:true,opt:true}),F("Oo","communList","multi",["Unsa nga sakit?","Which disease?"],["Pneumonia","Diarrhea","Measles (tipdas)","Chickenpox (bugas-bugas)","Leptospirosis","COVID-19","Influenza (trangkaso)"],{other:true,label:"Communicable diseases reported"}),F("Oo","dt_commun","date",["Kanus-a na-diagnose?","When diagnosed?"],[],{label:"Date diagnosed: Communicable disease",hide:true,opt:true})]],
   ]},
   {t:["Pattern sa sakit diri","Disease patterns here"],items:[
@@ -1927,7 +1937,7 @@ return {dV:dV,dK:dK,dS:dS,dT:dT,dH:dH,de:de,dU:dU,dE:dE,dp:dp,dm:dm};})();
 
 const LEGACY={"q":{"1":"Household located within the community","2":"Community divided into puroks or sitios","3":"Lived in the community 6 months or longer","4":"Member moved in (past 6 months)","5":"Member moved out (past 6 months)","9":"Household with a member currently studying","10":"All 15 and above can read and write","12":"Nuclear family","13":"More than one generation in the household","14":"Mainly uses one dialect","15":"Identifies with an ethnic or cultural group","16":"Identifies with a religious group","17":"House made mainly of strong materials (concrete)","19":"Enough space for household members","20":"Has electricity for lighting","21":"Has safe lighting during power outage","22":"Has own toilet","23":"Toilet covered or enclosed","24":"Water-sealed or flush-type toilet","25":"Toilet away from drinking water source","26":"Access to approved water supply","27":"Water available near the house","30":"Has drainage for wastewater","31":"Drainage is covered","32":"Wastewater flows without stagnant pools","33":"Has proper garbage container","34":"Regular garbage collection","38":"Practices recycling","39":"Reuses items","40":"Regular source of drinking water","43":"Treats water before drinking","46":"Illness in the household (past year)","48":"Consulted a trained health professional","50":"Took prescribed medicine","51":"Took medicine without prescription","52":"Aware of community health programs","53":"Used a community health program","54":"Knows where to access health services","55":"Currently using family planning","56":"Received family planning information","58":"Child weighed by a health worker","59":"Child's nutritional status assessed","61":"Child received routine vaccines","62":"Child has vaccination record","63":"Child completely vaccinated for age","64":"Pregnant woman in the household","65":"Received prenatal checkups","67":"Delivery attended by a health professional","68":"Community has a BHW","69":"Community has a BNS","70":"Community has a midwife","71":"Community has a nurse","72":"Community has a doctor","73":"Community has a dentist","74":"Health workers available when needed","76":"Live birth in the household (past year)","77":"Death in the household (past year)","80":"Church or chapel accessible","81":"Elementary school in or near the community","82":"Secondary school in or near the community","83":"College or tertiary school in or near the community","84":"Grocery store or market","85":"Hardware store","86":"Recreational facility","87":"Sports facility","88":"Cemetery accessible","89":"Transportation terminal accessible","90":"Birthing clinic accessible","91":"Barangay health center or RHU accessible","92":"Hospital accessible","93":"Tuberculosis","94":"Diabetes mellitus","95":"Hypertension","96":"Arthritis","97":"Glaucoma or other serious eye problem","98":"Dengue","99":"Filariasis or amoebiasis","100":"Malnutrition","101":"Cardiovascular problem","102":"Other diagnosed condition (past year)","103":"Unusually high number of cases (epidemic)","104":"Repeated cases over time (endemic)","105":"Few cases from time to time (sporadic)","110":"Accessible health services","112":"Access to emergency health services","114":"Enough health workers for basic services","PP":"Within 6 weeks postpartum","RI":"Community has a rural health inspector","CM":"Member with comorbidities","CD":"Member with a communicable disease"},"f":{"years":["single","Length of residence","Pila na ka tuig mo diri?"],"moveWhy":["text","Reason for moving out","Ngano ni-balhin?"],"illiterate":["num","Persons 15 and above who cannot read and write","Pila ang dili kahibalo mo-basa ug mo-sulat (15 years old pataas)?"],"familyType":["single","Type of family","Type of family"],"income":["single","Monthly family income","Monthly family income"],"dialect":["single","Dialect used","Unsa ang primary dialect?"],"ethnic":["single","Ethnic or cultural group","Unsa ang ethnic background?"],"religion":["multi","Religion","Unsa nga relihiyon? (pwede daghan)"],"race":["single","Race","Race"],"region":["single","Region of origin","Region of origin"],"houseType":["single","Type of materials used for house","Unsa ang materials sa balay?"],"altLight":["multi","Alternative lighting","Unsa ang gamit? (pwede daghan)"],"toiletShare":["multi","Households without own toilet","Kung wala: (pwede daghan)"],"toiletType":["multi","Types of excreta disposal","Unsa nga klase sa CR? (pwede daghan)"],"waterLevel":["multi","Water supply facility","Unsa nga level? (pwede daghan)"],"wasteHow":["multi","Types of waste disposal","Unsaon ninyo pag-dispose sa basura? (pwede daghan)"],"collectFreq":["single","Frequency of garbage collection","Pila ka beses sa usa ka semana?"],"drinkSrc":["multi","Source of drinking water","Asa gikan ang imnon nga tubig? (pwede daghan)"],"treatHow":["multi","Methods of sanitizing water","Unsaon? (pwede daghan)"],"illness":["text","Illnesses reported","Unsa nga sakit?"],"allCases":["num","Persons with illness (new and old cases)","Pila tanan ang naay sakit (bag-o ug dugay na)?"],"newCases":["num","Persons with new illness","Pila ang bag-o lang nagkasakit (new case)?"],"diagBy":["multi","Diagnosed by","Kinsa ang nag-diagnose? (pwede daghan)"],"rxBy":["multi","Prescribed by","Kinsa ang nagreseta? (pwede daghan)"],"programs":["text","Programs known","Unsa nga programs?"],"noUseWhy":["text","Reason for not using programs","Ngano wala?"],"fpMethod":["multi","Method of family planning used","Unsa nga method? (pwede daghan)"],"nutri":["multi","Nutritional status (0-6 years old)","Unsa ang resulta? (pwede daghan)"],"vaccines":["multi","Vaccines received","Unsa nga bakuna? (pwede daghan)"],"immuStatus":["multi","Immunization status","Immunization status (pwede daghan)"],"prenatalCount":["num","Number of prenatal visits","Pila ka beses?"],"delType":["multi","Type of delivery","Unsa nga klase sa pagpanganak? (pwede daghan)"],"attendant":["multi","Labor attendant","Kinsa ang nagpaanak? (pwede daghan)"],"delPlace":["multi","Place of delivery","Asa nanganak? (pwede daghan)"],"births":["num","Livebirths","Pila ka bata ang natawo?"],"deaths":["num","Deaths","Pila tanan ang namatay?"],"infant":["num","Infant deaths","Pila ang ubos sa 1 ka tuig ang edad?"],"under5":["num","Deaths below 5 years","Pila ang ubos sa 5 ka tuig ang edad?"],"maternal":["num","Maternal deaths","Pila ang inahan nga namatay tungod sa pagmabdos o pagpanganak (hangtod 42 ka adlaw human nanganak)?"],"cause":["text","Causes of death","Unsa ang hinungdan sa pagkamatay?"],"facility":["multi","Health facility used","Unsa nga health facility ang inyong ginaadtoan? (pwede daghan)"],"dz_tb":["num","Persons with Tuberculosis","Pila ka tawo?"],"dt_tb":["date","Date diagnosed: Tuberculosis","Kanus-a na-diagnose?"],"dz_dm":["num","Persons with Diabetes mellitus","Pila ka tawo?"],"dt_dm":["date","Date diagnosed: Diabetes mellitus","Kanus-a na-diagnose?"],"dz_htn":["num","Persons with Hypertension","Pila ka tawo?"],"dt_htn":["date","Date diagnosed: Hypertension","Kanus-a na-diagnose?"],"dz_arth":["num","Persons with Arthritis","Pila ka tawo?"],"dt_arth":["date","Date diagnosed: Arthritis","Kanus-a na-diagnose?"],"dz_eye":["num","Persons with Glaucoma or other serious eye problem","Pila ka tawo?"],"dt_eye":["date","Date diagnosed: Eye problem","Kanus-a na-diagnose?"],"dz_dengue":["num","Persons with Dengue","Pila ka tawo?"],"dt_dengue":["date","Date diagnosed: Dengue","Kanus-a na-diagnose?"],"dz_filam":["num","Persons with Filariasis or amoebiasis","Pila ka tawo?"],"dt_filam":["date","Date diagnosed: Filariasis or amoebiasis","Kanus-a na-diagnose?"],"dz_malnut":["num","Persons with Malnutrition","Pila ka tawo?"],"dt_malnut":["date","Date diagnosed: Malnutrition","Kanus-a na-diagnose?"],"dz_cvd":["num","Persons with Cardiovascular problem","Pila ka tawo?"],"dt_cvd":["date","Date diagnosed: Cardiovascular problem","Kanus-a na-diagnose?"],"otherDis":["text","Other diagnosed conditions","Unsa nga sakit?"],"dz_other":["num","Persons with Other diagnosed conditions","Pila ka tawo?"],"dt_other":["date","Date diagnosed: Other condition","Kanus-a na-diagnose?"],"dz_comorb":["num","Persons with Comorbidities","Pila ka tawo?"],"comorbList":["multi","Comorbidities reported","Unsa nga mga sakit ang dungan? (pwede daghan)"],"dt_comorb":["date","Date diagnosed: Comorbidities","Kanus-a na-diagnose?"],"dz_commun":["num","Persons with Communicable diseases","Pila ka tawo?"],"communList":["multi","Communicable diseases reported","Unsa nga sakit? (pwede daghan)"],"dt_commun":["date","Date diagnosed: Communicable disease","Kanus-a na-diagnose?"],"epidemicDis":["text","Epidemic diseases named","Unsa nga sakit?"]},"prof":{"Household No.":["hh_no","text"],"Purok o sitio":["purok","text"],"Petsa sa interview":["date","date"],"Interviewer":["interviewer","text"],"Pangalan o initials sa respondent":["r_name","text"],"Edad":["r_age","num"],"Sex":["r_sex","single"],"Civil status":["r_civil","single"],"Unsa man ka sa household head?":["r_relation","single"],"Educational attainment":["r_educ","single"],"Trabaho":["r_occ","text"]}}; /* questions from older versions: old backups and old Excel files still load through these */
 const DUCK=`<svg viewBox="0 0 20 30" shape-rendering="crispEdges" aria-hidden="true"><path fill="#111111" d="M5 0h5v1h-5zM4 1h1v1h-1zM10 1h1v1h-1zM3 2h1v1h-1zM11 2h1v1h-1zM3 3h1v1h-1zM11 3h1v1h-1zM3 4h1v1h-1zM11 4h1v1h-1zM3 5h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM12 5h1v1h-1zM3 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM13 6h1v1h-1zM2 7h1v1h-1zM10 7h1v1h-1zM13 7h1v1h-1zM1 8h1v1h-1zM10 8h3v1h-3zM2 9h3v1h-3zM9 9h1v1h-1zM5 10h1v1h-1zM9 10h1v1h-1zM5 11h1v1h-1zM9 11h1v1h-1zM5 12h1v1h-1zM9 12h1v1h-1zM4 13h1v1h-1zM9 13h1v1h-1zM4 14h1v1h-1zM9 14h1v1h-1zM3 15h1v1h-1zM10 15h1v1h-1zM15 15h3v1h-3zM2 16h1v1h-1zM11 16h2v1h-2zM14 16h1v1h-1zM17 16h1v1h-1zM1 17h1v1h-1zM13 17h2v1h-2zM17 17h2v1h-2zM0 18h1v1h-1zM15 18h2v1h-2zM19 18h1v1h-1zM0 19h1v1h-1zM14 19h1v1h-1zM17 19h1v1h-1zM19 19h1v1h-1zM0 20h1v1h-1zM17 20h1v1h-1zM19 20h1v1h-1zM0 21h1v1h-1zM16 21h1v1h-1zM18 21h1v1h-1zM0 22h1v1h-1zM17 22h2v1h-2zM1 23h1v1h-1zM18 23h1v1h-1zM2 24h1v1h-1zM4 24h1v1h-1zM13 24h1v1h-1zM16 24h2v1h-2zM3 25h3v1h-3zM12 25h4v1h-4zM5 26h1v1h-1zM7 26h5v1h-5zM13 26h1v1h-1zM4 27h1v1h-1zM6 27h1v1h-1zM10 27h1v1h-1zM12 27h1v1h-1zM4 28h1v1h-1zM6 28h1v1h-1zM10 28h1v1h-1zM12 28h1v1h-1zM3 29h1v1h-1zM6 29h1v1h-1zM9 29h1v1h-1zM12 29h1v1h-1z"></path><path fill="#ffffff" d="M5 1h4v1h-4zM4 2h1v1h-1zM8 2h2v1h-2zM5 4h4v1h-4zM4 5h4v1h-4zM9 5h1v1h-1zM6 6h2v1h-2zM9 6h1v1h-1zM7 7h3v1h-3zM7 8h3v1h-3zM6 9h3v1h-3zM6 10h3v1h-3zM6 11h3v1h-3zM6 12h3v1h-3zM6 13h3v1h-3zM5 14h4v1h-4zM4 15h6v1h-6zM3 16h8v1h-8zM15 16h2v1h-2zM2 17h11v1h-11zM15 17h2v1h-2zM1 18h14v1h-14zM17 18h1v1h-1zM1 19h13v1h-13zM15 19h2v1h-2zM1 20h15v1h-15zM1 21h15v1h-15zM1 22h16v1h-16zM3 23h14v1h-14zM5 24h7v1h-7z"></path><path fill="#d6d8de" d="M9 1h1v1h-1zM4 4h1v1h-1zM5 9h1v1h-1zM5 13h1v1h-1zM18 18h1v1h-1zM18 19h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM17 21h1v1h-1zM2 23h1v1h-1zM17 23h1v1h-1zM3 24h1v1h-1zM12 24h1v1h-1zM14 24h2v1h-2zM6 25h6v1h-6z"></path><path fill="#de5c26" d="M5 2h3v1h-3zM10 2h1v1h-1zM10 3h1v1h-1z"></path><path fill="#5ca0de" d="M4 3h6v1h-6zM10 4h1v1h-1z"></path><path fill="#22528c" d="M9 4h1v1h-1zM11 5h1v1h-1zM11 6h2v1h-2zM11 7h2v1h-2z"></path><path fill="#f0b642" d="M4 6h2v1h-2zM3 7h4v1h-4zM2 8h5v1h-5zM6 26h1v1h-1zM12 26h1v1h-1zM5 27h1v1h-1zM11 27h1v1h-1zM5 28h1v1h-1zM11 28h1v1h-1zM4 29h2v1h-2zM10 29h2v1h-2z"></path></svg>`;
-const APP_VERSION="2.1"; /* build.py bakes in the one version number (Profile > App shows it) */
+const APP_VERSION="2.2"; /* build.py bakes in the one version number (Profile > App shows it) */
 const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const ico=(p,s)=>`<svg class="ic" width="${s||22}" height="${s||22}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
@@ -2049,7 +2059,28 @@ const kidImmOk=m=>{if(ageNum(m)!==0)return true;const s=String(m&&m.ageMo!=null?
 /* ---------- diagnosed conditions: member.dx=[{k,y}] names who has what (y is the year or ""); h.dxOld={k:n} keeps an older household count that is higher than the people named so far ---------- */
 const DXK=new Set(DX.map(d=>d.k)),DXBY={},DXITEM={},DXLONG=[...DX].sort((a,b)=>b.short.length-a.short.length);DX.forEach(d=>{DXBY[d.k]=d;DXITEM[d.k]=ITEMS.find(i=>i.n===d.n)});
 const isYear=y=>/^\d{4}$/.test(y);
-function dxOf(m){const o=[],seen=new Set();(m&&Array.isArray(m.dx)?m.dx:[]).forEach(e=>{if(!e||typeof e!=="object"||typeof e.k!=="string"||!DXK.has(e.k)||seen.has(e.k))return;seen.add(e.k);const y=String(e.y==null?"":e.y).trim();o.push({k:e.k,y:isYear(y)?y:""})});return o}
+function dxOf(m){const o=[],seen=new Set();(m&&Array.isArray(m.dx)?m.dx:[]).forEach(e=>{if(!e||typeof e!=="object"||typeof e.k!=="string"||!DXK.has(e.k)||seen.has(e.k))return;seen.add(e.k);const y=String(e.y==null?"":e.y).trim(),r={k:e.k,y:isYear(y)?y:""};if(e.k==="other"&&typeof e.nm==="string")r.nm=e.nm.trim(); /* the illness name(s) of this person, typed with commas; no nm at all = an older record, see othRaw */o.push(r)});return o}
+/* ---------- Other illness (2.2): each person who has it carries the name(s) in their own entry {k:"other",y,nm:"Anemia, Asthma"}. An older record has one household name (fu.otherDis) and no nm: that name is used for every person ticked there, read-time only, nothing is rewritten. ---------- */
+const illCase=s=>cleanTx(s).split(" ").map(w=>/^[A-Z]{2,3}$/.test(w)?w:NM(w)).join(" "); /* Proper Case like other names; a short all-capital word (UTI, HIV) stays */
+function illList(raw){const o=[],seen=new Set();String(raw==null?"":raw).split(",").forEach(t=>{const s=cleanTx(t);if(!s)return;const n=illCase(s),k=n.toLowerCase();if(seen.has(k))return;seen.add(k);o.push(n)});return o}
+const othEntry=m=>dxOf(m).find(e=>e.k==="other");
+const othRaw=(m,h)=>{const e=othEntry(m);if(!e)return "";if(e.nm!==undefined)return e.nm;const v=h&&h.fu&&h.fu.otherDis;return typeof v==="string"?v.trim():""}; /* what the person's box shows */
+/* a typed name that is already a disease of the list is counted under that disease (read-time only, nothing is moved by itself). One table for all of it: the short names of the list plus these. */
+const DXALIAS=Object.create(null);DX.forEach(d=>{if(d.k!=="other"&&d.k!=="commun")DXALIAS[d.short.toLowerCase()]=d.k});
+[["tb",["tb","ptb","tuberculosis"]],["dm",["diabetes","diabetic","dm","diabetes mellitus"]],["htn",["hypertension","hpn","htn","high blood","highblood","high blood pressure"]],["arth",["arthritis","rayuma"]],["dengue",["dengue"]],["filam",["filariasis","amoebiasis"]],["malnut",["malnutrition"]],["cvd",["heart problem","heart disease","cardiac"]]].forEach(([k,l])=>l.forEach(a=>{DXALIAS[a]=k}));
+const illDx=nm=>DXALIAS[cleanTx(nm).toLowerCase()]||"";
+const othAll=(m,h)=>illList(othRaw(m,h)); /* every name typed for the person */
+function othNames(m,h){return othAll(m,h).filter(n=>!illDx(n))} /* the names that stay Other illness */
+/* people (each {m,h}) who have Other illness, grouped by illness name: one group per name (first spelling wins), and the people with no name left */
+function othGroups(l){const grp=new Map(),un=[];l.forEach(x=>{const ns=othNames(x.m,x.h);if(!ns.length){un.push(x);return}ns.forEach(n=>{const k=n.toLowerCase();if(!grp.has(k))grp.set(k,{nm:n,l:[]});grp.get(k).l.push(x)})});return {grp,un}}
+/* a person's diagnoses as the Tally, the Summary and the reports count them: the stored ones, plus the list disease that a typed Other-illness name matches (once, never twice), and Other illness only while a name or nothing at all is typed */
+function dxEff(m,h){
+  const a=dxOf(m),e=a.find(x=>x.k==="other");if(!e)return a;
+  const all=othAll(m,h),ks=[...new Set(all.map(illDx).filter(Boolean))];if(!ks.length)return a;
+  const o=a.filter(x=>x.k!=="other"||all.some(n=>!illDx(n)));
+  ks.forEach(k=>{if(!o.some(x=>x.k===k))o.push({k,y:""})});
+  return o;
+}
 const dxNamed=(h,k)=>realMembers(h).filter(m=>dxOf(m).some(e=>e.k===k)).length;
 const dxOldOf=(h,k)=>Number(h&&h.dxOld&&h.dxOld[k])||0;
 function dxKeepOld(h,d){if(A(h,d.n)!=="Oo")return;const n=Number(h.fu&&h.fu["dz_"+d.k]);if(isFinite(n)&&n>dxNamed(h,d.k)){h.dxOld=h.dxOld||{};h.dxOld[d.k]=Math.max(n,dxOldOf(h,d.k))}}
@@ -2076,6 +2107,7 @@ function setDxYear(h,i,k,y){const m=(h.members||[])[i];if(!m||typeof m!=="object
 function useNamedCount(h,k){if(h.dxOld)delete h.dxOld[k];syncDx(h)}
 const dxYearHint=(h,k)=>{const v=h&&h.fu&&h.fu["dt_"+k],m=/(?:^|\D)((?:19|20)\d{2})(?!\d)/.exec(String(v==null?"":v));return m?m[1]:""};
 const dxText=m=>dxOf(m).map(e=>DXBY[e.k].short+(e.y?" "+e.y:"")).join("; ");
+const dxTextN=m=>dxOf(m).map(e=>DXBY[e.k].short+(e.nm?" ("+e.nm+")":"")+(e.y?" "+e.y:"")).join("; "); /* with the other-illness names, for the compare list */
 function dxParse(s){const o=[],seen=new Set();String(s==null?"":s).split(";").forEach(t=>{t=t.trim();const d=t&&DXLONG.find(x=>t.toLowerCase().startsWith(x.short.toLowerCase()));if(!d||seen.has(d.k))return;seen.add(d.k);o.push({k:d.k,y:(/(?:^|\D)(\d{4})(?!\d)/.exec(t.slice(d.short.length))||[])[1]||""})});return o}
 function normalizeDx(h){
   h.members.forEach(m=>{if(!m||typeof m!=="object")return;const a=dxOf(m);if(a.length)m.dx=a;else delete m.dx});
@@ -2818,7 +2850,7 @@ function smHouse(x){
   const rows=ord.map(m=>{
     const isH=m===hd,mm=isH?headNamed(x,m):m,a=hasField(mm,"age")?ageNum(mm):NaN,ini=mm.sex==="Lalaki"?"M":mm.sex==="Babae"?"F":"?";
     const lb=isH?L("Pangulo","Head"):a<=2?L("masuso","baby"):a<=8?L("bata","child"):"",kd=kidOf(m),tags=[];
-    dxOf(m).forEach(e=>{const d=DX.find(z=>z.k===e.k);if(d)tags.push([d.short+(e.k==="other"&&x.fu&&x.fu.otherDis?" ("+x.fu.otherDis+")":""),1])});
+    dxEff(m,x).forEach(e=>{const d=DX.find(z=>z.k===e.k);if(!d)return;if(e.k==="other"){const ns=othNames(m,x);(ns.length?ns:[d.short]).forEach(n=>tags.push([n,1]))}else tags.push([d.short,1])}); /* each illness of Other illness is its own tag */
     if(memComorb(m,x)==="Oo"&&!dxOf(m).length)tags.push([L("May sakit","Has a condition"),1]);
     if(kd.nut==="Underweight")tags.push([L("Kulang sa timbang","Underweight"),1]);else if(kd.nut==="Overweight")tags.push([L("Sobra sa timbang","Overweight"),0]);
     if(kd.imm==="Complete")tags.push([L("Kompleto ang bakuna","Fully immunized"),0]);else if(kd.imm==="Incomplete")tags.push([L("Kulang ang bakuna","Not fully immunized"),1]);
@@ -2839,7 +2871,13 @@ function smWatchList(x){
   const ri=TALLY_AGES.imm,ik=ms.filter(m=>{const a=ageNum(m);return a>=ri[0]&&a<=ri[1]&&kidImmOk(m)&&kidOf(m).imm==="Incomplete"}).length;
   if(ik)f.push([ik===1?L("Usa ka bata wala ma-bakunahan og hingpit","One child not fully immunized"):L(ik+" ka bata wala ma-bakunahan og hingpit",ik+" children not fully immunized"),"Threat"]);
   DX.forEach(d=>{
-    const who=ms.filter(m=>dxOf(m).some(e=>e.k===d.k)).map(m=>smFirst(m,ms)),nm=d.short+(d.k==="other"&&x.fu&&x.fu.otherDis?" ("+x.fu.otherDis+")":"");
+    const has=ms.filter(m=>dxEff(m,x).some(e=>e.k===d.k)),who=has.map(m=>smFirst(m,ms)),nm=d.short;
+    if(d.k==="other"&&has.length){ /* one line per illness: "Anemia: Rosa", "Asthma: Rosa, Ana"; a ticked person with no name is on the "Other illness" line */
+      const g=othGroups(has.map(m=>({m,h:x})));
+      g.grp.forEach(({nm:n,l})=>f.push([n+": "+l.map(o=>smFirst(o.m,ms)).join(", "),"Deficit"]));
+      if(g.un.length)f.push([nm+": "+g.un.map(o=>smFirst(o.m,ms)).join(", "),"Deficit"]);
+      return;
+    }
     if(who.length)f.push([nm+": "+who.join(", "),"Deficit"]);else if(A(x,d.n)==="Oo")f.push([nm+L(" (wala pa gihingalan kinsa)"," (who not named yet)"),"Deficit"]);
   });
   const uw=ms.filter(m=>kidOf(m).nut==="Underweight").length;
@@ -2868,11 +2906,15 @@ function summaryHTML(x,o){
   const sec=(id,body)=>{const P=PARTS.find(q=>q.id===id);return `<section class="card sm-c" data-sec="${id}"><h3><span>${id}. ${esc(P.short)}</span><button type="button" class="sm-go sm-ed" data-pg="${partPage(x,id)}" aria-label="${L("Usba ang bahin ","Edit part ")}${id}">${ico(IC.edit,16)}</button></h3>${body}</section>`};
   const items=id=>ITEMS.filter(i=>i.part===id&&!i.hide&&!i.fus.some(f=>f.type==="roster")&&!(id==="F"&&DX.some(d=>d.n===i.n)));
   const am=ITEMS.filter(i=>i.part==="E"&&i.n&&!i.hide),ay=am.filter(i=>A(x,i.n)==="Oo").length,an=am.filter(i=>A(x,i.n)==="Wala").length,au=am.filter(i=>!A(x,i.n));
+  const dlab=(m,e)=>memLabel(m,ms)+(e.y?", "+e.y:"");
   const dxr=DX.map(d=>{
-    const who=ms.filter(m=>dxOf(m).some(e=>e.k===d.k)).map(m=>{const e=dxOf(m).find(z=>z.k===d.k);return memLabel(m,ms)+(e.y?", "+e.y:"")}),yes=A(x,d.n)==="Oo";
-    if(!yes&&!who.length)return "";
-    const nm=d.short+(d.k==="other"&&x.fu&&x.fu.otherDis?" ("+x.fu.otherDis+")":"");
-    return smRow(nm,who.length?smVal(who.join("; ")):smMiss(pageOfItem(DXITEM[d.k]),1,L("Kinsa?","Who?")));
+    const has=ms.map(m=>({m,h:x,e:dxEff(m,x).find(z=>z.k===d.k)})).filter(o=>o.e),yes=A(x,d.n)==="Oo";
+    if(!yes&&!has.length)return "";
+    const miss=smMiss(pageOfItem(DXITEM[d.k]),1,L("Kinsa?","Who?"));
+    if(d.k!=="other")return smRow(d.short,has.length?smVal(has.map(o=>dlab(o.m,o.e)).join("; ")):miss);
+    const g=othGroups(has),r=[...g.grp.values()].map(({nm,l})=>smRow(nm,smVal(l.map(o=>dlab(o.m,o.e)).join("; ")))); /* one row per illness */
+    if(g.un.length||!r.length)r.push(smRow(d.short,g.un.length?smVal(g.un.map(o=>dlab(o.m,o.e)).join("; ")):miss));
+    return r.join("");
   }).join("");
   const du=DX.filter(d=>!A(x,d.n)),notes=Object.keys(x.notes||{}).filter(k=>String(x.notes[k]||"").trim());
   const sub=[x.purok,fmtDate(x.date),ms.length+" "+(ms.length===1?L("miyembro","member"):L("ka miyembro","members"))].filter(Boolean).join(" · ");
@@ -2961,12 +3003,16 @@ function fuHTML(it){
 const itemBody=it=>(it.n?yesNoHTML(it,cur.ans[it.n]):"")+fuHTML(it);
 /* list pages: one card per item, the name with a small Yes/No; the disease cards also ask who has it */
 const firstName=(m,i)=>NM(String(m.name||"").trim().split(/\s+/)[0])||QT("Miyembro","Member")+" "+(i+1);
+/* the illnesses typed for one person as small chips, and for a name that is already a disease of the list a note with a button that moves it (nothing moves by itself) */
+const othOut=(raw,i)=>{const ns=illList(raw);return (ns.length?`<div class="tags">${ns.map(n=>`<span class="tag">${esc(n)}</span>`).join("")}</div>`:"")+ns.filter(illDx).map(n=>{const k=illDx(n),s=DXBY[k].short;return `<p class="note oth-mv">${QT("Naa na ang "+s+" sa lista.",s+" is already in the list.")} <button type="button" class="linkbtn" data-mv="${i}" data-k="${k}" data-nm="${esc(n)}">${QT("Ibalhin sa "+s,"Move to "+s)}</button></p>`}).join("")};
 function whoHTML(d){
   const ms=realMembers(cur),k=d.k;
   if(!ms.length)return `<p class="fq">${QT("Idugang una ang mga miyembro","Add the household members first")}</p><button type="button" class="btn ghost sm" data-page="${PG_FAMILY}">${QT("Adto sa mga miyembro","Go to members")}</button>`;
   const on=ms.map(m=>dxOf(m).some(e=>e.k===k)),named=on.filter(Boolean).length,old=dxOldOf(cur,k);
   let h=`<p class="fq">${QT("Kinsa ang naay sakit?","Who has it?")}</p>`+slideHTML("",ms.map((m,i)=>`<button type="button" class="who1${on[i]?" on":""}" data-who="${i}" data-k="${k}" aria-pressed="${on[i]}">${avHTML(m,true)}${esc(firstName(m,i))}${ico(IC.check,13)}</button>`).join(""));
-  if(named)h+=`<p class="fq">${QT("Tuig na-diagnose","Year diagnosed")}</p><div class="yrs">${ms.map((m,i)=>{if(!on[i])return "";const y=dxOf(m).find(e=>e.k===k).y;return `<button type="button" class="pick" data-yr="${i}" data-k="${k}"><small>${esc(firstName(m,i))}</small><b>${esc(y||QT("Tuig","Year"))}</b>${ico(IC.down,15)}</button>`}).join("")}</div>`;
+  if(named&&k==="other")h+=`<div class="oth">`+ms.map((m,i)=>{if(!on[i])return "";const y=dxOf(m).find(e=>e.k===k).y,raw=othRaw(m,cur); /* 2.2: a row per ticked person: name, year, and what illness (each person has their own) */
+    return `<div class="orow"><div class="orow-h"><b>${esc(firstName(m,i))}</b><button type="button" class="pick" data-yr="${i}" data-k="${k}" aria-label="${QT("Tuig na-diagnose","Year diagnosed")}"><b>${esc(y||QT("Tuig","Year"))}</b>${ico(IC.down,15)}</button></div><label class="fq" for="oth_${i}">${QT("Unsa nga sakit?","What illness?")}</label><input type="text" id="oth_${i}" data-oth="${i}" value="${esc(raw)}" autocomplete="off" autocapitalize="words"><div class="oth-out">${othOut(raw,i)}</div></div>`}).join("")+`<p class="note">${QT("Bahina sa koma ang duha o labaw pa nga sakit.","Separate two or more illnesses with a comma.")}</p></div>`;
+  else if(named)h+=`<p class="fq">${QT("Tuig na-diagnose","Year diagnosed")}</p><div class="yrs">${ms.map((m,i)=>{if(!on[i])return "";const y=dxOf(m).find(e=>e.k===k).y;return `<button type="button" class="pick" data-yr="${i}" data-k="${k}"><small>${esc(firstName(m,i))}</small><b>${esc(y||QT("Tuig","Year"))}</b>${ico(IC.down,15)}</button>`}).join("")}</div>`;
   if(old>named)h+=`<p class="fq">${L("Gi-save nga ihap: "+old+". Gi-ngalan na: "+named+".","Saved count: "+old+". Named so far: "+named+".")}</p>`+(named?`<button type="button" class="linkbtn" data-usecount="${k}">${L("Gamita ang "+named+" isip ihap","Use "+named+" as the count")}</button>`:"");
   return h;
 }
@@ -2981,6 +3027,11 @@ function dxRedraw(card){ /* only this card is drawn again, so the page does not 
   card.innerHTML=cardHTML(it);wireSlides(card);
   const r=card.querySelector(".srow");if(r&&x){r.scrollLeft=x}
 }
+$("#view").addEventListener("input",e=>{ /* typing a person's illness saves on the person and redraws only the chips below the box, so the box keeps focus */
+  const t=e.target;if(!t.matches||!t.matches("[data-oth]"))return;
+  const i=+t.dataset.oth,m=realMembers(cur)[i],a=m&&dxOf(m),en=a&&a.find(x=>x.k==="other");if(!en)return;
+  en.nm=t.value.trim();m.dx=a;const o=t.parentElement.querySelector(".oth-out");if(o)o.innerHTML=othOut(t.value,i);touch();
+});
 const pageItems=p=>p.kind==="q"?[p.item]:p.kind==="list"?p.items:[];
 function partFill(c,k){ /* the share of answered questions of a part: each item of a list page (Amenities, diseases) is one question, any other page is one (the Children page with no children is not counted) */
   const nk=!kidsOf(c).length;let t=0,d=0;
@@ -3245,6 +3296,12 @@ $("#view").addEventListener("click",e=>{
   if(wc){const card=wc.closest("[data-n]"),i=+wc.dataset.who,k=wc.dataset.k;cur.members=realMembers(cur);const m=cur.members[i];if(!m)return;const on=!dxOf(m).some(x=>x.k===k);setDx(cur,i,k,on);if(on){const y=dxYearHint(cur,k),en=dxOf(cur.members[i]).find(x=>x.k===k);if(y&&en&&!en.y)setDxYear(cur,i,k,y)}touch();dxRedraw(card);return}
   const yb=e.target.closest("[data-yr]");
   if(yb){const i=+yb.dataset.yr,k=yb.dataset.k,card=yb.closest("[data-n]"),en=dxOf(cur.members[i]).find(x=>x.k===k),opts=[{v:"",l:QT("Dili sigurado","Not sure")}];for(let y=new Date().getFullYear();y>=1950;y--)opts.push({v:String(y),l:String(y)});openPicker({title:QT("Tuig na-diagnose","Year diagnosed"),opts,value:en?en.y:"",search:true,onPick:v=>{setDxYear(cur,i,k,v);touch();dxRedraw(card)}});return}
+  const mv=e.target.closest("[data-mv]");
+  if(mv){const i=+mv.dataset.mv,k=mv.dataset.k,card=mv.closest("[data-n]");cur.members=realMembers(cur);const m=cur.members[i];if(!m||!DXBY[k])return;
+    const lo=cleanTx(mv.dataset.nm).toLowerCase(),keep=othRaw(m,cur).split(",").map(cleanTx).filter(t=>t&&t.toLowerCase()!==lo);
+    if(!dxOf(m).some(x=>x.k===k))setDx(cur,i,k,true); /* ticks the disease for this person; a year already set there stays */
+    if(keep.length){const a=dxOf(m);a.find(x=>x.k==="other").nm=keep.join(", ");m.dx=a;syncDx(cur)}else setDx(cur,i,"other",false); /* no name left: Other illness is unticked for this person */
+    touch();const tc=$('#view [data-n="'+DXITEM[k].n+'"]');dxRedraw(card);if(tc&&tc!==card)dxRedraw(tc);return}
   const uc=e.target.closest("[data-usecount]");if(uc){const card=uc.closest("[data-n]");useNamedCount(cur,uc.dataset.usecount);touch();dxRedraw(card);return}
   const mr=e.target.closest("[data-m]");if(mr){readPage();cur.members=realMembers(cur);openMember(+mr.dataset.m);return}
   if(e.target.closest("#btn-addm")){readPage();openMember(null);return}
@@ -3680,11 +3737,15 @@ function demoCaption(d){
 const yearsTxt=ys=>{const a=[...ys].map(Number).filter(Boolean).sort((x,y)=>x-y);return !a.length?TD:a.length>3?a[0]+" to "+a[a.length-1]:a.join(", ")}; /* up to three years are listed, more than three read as a range */
 function tallyDx(){
   const P=allPersons(),rows=[];let tm=0,tf=0,tt=0,oldN=0;
+  const cnt=l=>{let m=0,f=0,t=0;const ys=new Set();l.forEach(({m:mm,e})=>{t++;const s=sexK(mm);if(s==="M")m++;else if(s==="F")f++;if(e&&e.y)ys.add(e.y)});return {m,f,t,ys}};
+  const put=(label,c,extra)=>{const t=c.t+(extra||0);rows.push([label,[c.m,c.f,t,yearsTxt(c.ys)]]);tm+=c.m;tf+=c.f;tt+=t};
   DX.forEach(d=>{
-    let m=0,f=0,t=0;const ys=new Set();
-    P.forEach(({m:mm})=>{const e=dxOf(mm).find(x=>x.k===d.k);if(!e)return;t++;const s=sexK(mm);if(s==="M")m++;else if(s==="F")f++;if(e.y)ys.add(e.y)});
-    households.forEach(h=>{const o=dxOldOf(h,d.k),n=dxNamed(h,d.k);if(o>n){t+=o-n;oldN+=o-n}});
-    rows.push([d.short,[m,f,t,yearsTxt(ys)]]);tm+=m;tf+=f;tt+=t;
+    const l=P.map(x=>({m:x.m,h:x.h,e:dxEff(x.m,x.h).find(z=>z.k===d.k)})).filter(o=>o.e);
+    let old=0;households.forEach(h=>{const o=dxOldOf(h,d.k),n=dxNamed(h,d.k);if(o>n){old+=o-n;oldN+=o-n}});
+    if(d.k!=="other"){put(d.short,cnt(l),old);return}
+    const g=othGroups(l); /* Other illness: one row per illness name, persons counted in each */
+    [...g.grp.values()].sort((a,b)=>b.l.length-a.l.length).forEach(({nm,l:ll})=>put(nm,cnt(ll)));
+    if(g.un.length||old||!g.grp.size)put(d.short,cnt(g.un),old);
   });
   const wc=P.filter(({m,h})=>memComorb(m,h)==="Oo");
   return {rows,all:[tm,tf,tt,TD],n:wc.length,nodx:wc.filter(({m})=>!dxOf(m).length).length,unsexed:tt-tm-tf,oldN};
@@ -3754,7 +3815,12 @@ function diseaseTables(){
     T.push({title:Yr(sub.t[1]),rows});
     sub.items.forEach(([,,,fus])=>(fus||[]).forEach(f=>{
       if(f.type==="multi"){let base=0;const t=new Map(f.opts.map(r=>[r,0]));households.forEach(h=>{const v=selOf(h,f.key);if(!v.length)return;base++;v.forEach(x=>t.set(x,(t.get(x)||0)+1))});T.push({title:f.label,rows:[...t.entries()].map(([k,c])=>[k,c,base]),multi:true,base})}
-      if(f.type==="text"){const c=new Map();households.forEach(h=>{const x=spell(h.fu&&h.fu[f.key]);if(x)c.set(x,(c.get(x)||0)+1)});if(c.size){const b=[...c.values()].reduce((a,x)=>a+x,0);T.push({title:f.label,rows:[...c.entries()].map(([k,n])=>[k,n,b])})}}
+      if(f.type==="text"&&f.key==="otherDis"){ /* 2.2: the names typed for each person; an older house with only the household name counts too; each name once per household */
+        const nm=new Map(),hh=new Map(),add1=(n,h)=>{const k=n.toLowerCase();if(!nm.has(k)){nm.set(k,n);hh.set(k,new Set())}hh.get(k).add(h)};
+        households.forEach(h=>{let any=false;realMembers(h).forEach(m=>{if(othEntry(m)){any=true;othNames(m,h).forEach(n=>add1(n,h))}});if(!any)illList(h.fu&&h.fu.otherDis).filter(n=>!illDx(n)).forEach(n=>add1(n,h))});
+        const all=new Set();hh.forEach(s=>s.forEach(h=>all.add(h)));
+        if(nm.size)T.push({title:f.label,rows:[...nm.entries()].map(([k,n])=>[n,hh.get(k).size,all.size])});
+      }else if(f.type==="text"){const c=new Map();households.forEach(h=>{const x=spell(h.fu&&h.fu[f.key]);if(x)c.set(x,(c.get(x)||0)+1)});if(c.size){const b=[...c.values()].reduce((a,x)=>a+x,0);T.push({title:f.label,rows:[...c.entries()].map(([k,n])=>[k,n,b])})}}
     }));
   });
   return T;
@@ -3832,7 +3898,17 @@ const dayLabel=v=>{const d=new Date(v+"T00:00");return isNaN(d)?String(v):MONTHS
 const INC=[["Low income (10K & below)","10,000 and below","Income 10,000 and below"],["Middle income (11K - 20K)","10,001 to 20,000","Income 10,001 to 20,000"],["High income (21K above)","Above 20,000","Income above 20,000"]]; /* the saved answers keep their old text; only the words on screen changed */
 const SAN=[["Level 2 or 3 water","waterLevel",["Level 2","Level 3"]],["Water sealed or flush toilet","toiletType",["Water sealed type","Flush type"]],["Blind drainage","sewage",["Blind drainage"]],["Garbage collection","wasteHow",["Garbage collection"]],["Boils or filters water","sanitize",["Boiling","Filtration"]]];
 /* named people per condition: [short, all, male, female], most common first, ties in DX order */
-function dxPeople(){const P=allPersons();return DX.map((d,i)=>{const l=P.filter(({m})=>dxOf(m).some(e=>e.k===d.k));const ys=l.map(({m})=>+dxOf(m).find(e=>e.k===d.k).y).filter(Boolean),yr=ys.length?(Math.min(...ys)===Math.max(...ys)?String(ys[0]):Math.min(...ys)+" to "+Math.max(...ys)):"";return [d.short,l.length,l.filter(({m})=>sexK(m)==="M").length,l.filter(({m})=>sexK(m)==="F").length,i,yr]}).filter(x=>x[1]).sort((a,b)=>b[1]-a[1]||a[4]-b[4])} /* [5] is the range of the years of diagnosis ("2015 to 2026", one year, or "" when none is typed) */
+function dxPeople(){
+  const P=allPersons(),out=[];
+  DX.forEach((d,i)=>{
+    const l=P.map(x=>({m:x.m,h:x.h,e:dxEff(x.m,x.h).find(z=>z.k===d.k)})).filter(o=>o.e);
+    const one=(label,ll)=>{const ys=ll.map(({e})=>+e.y).filter(Boolean),yr=ys.length?(Math.min(...ys)===Math.max(...ys)?String(ys[0]):Math.min(...ys)+" to "+Math.max(...ys)):"";out.push([label,ll.length,ll.filter(({m})=>sexK(m)==="M").length,ll.filter(({m})=>sexK(m)==="F").length,i,yr])};
+    if(d.k!=="other"){one(d.short,l);return}
+    const g=othGroups(l);g.grp.forEach(({nm,l:ll})=>one(nm,ll)); /* one entry per illness name */
+    if(g.un.length)one(d.short,g.un);
+  });
+  return out.filter(x=>x[1]).sort((a,b)=>b[1]-a[1]||a[4]-b[4]);
+} /* [5] is the range of the years of diagnosis ("2015 to 2026", one year, or "" when none is typed) */
 /* 1.9: only the population pyramid, water, toilet and disease charts stay charts; every other chart is a plain table with the same numbers */
 const tblHTML=(head,rows)=>`<div class="tbox"><table class="ovt"><thead><tr>${head.map((h,i)=>`<th${i?' class="n"':""}>${esc(h)}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((c,i)=>i?`<td class="n${c===TD?" z":""}">${esc(c)}</td>`:`<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
 const ptc=(t,s,head,rows)=>gcard(t,s,rows.length?tblHTML(head,rows):NOANS);
@@ -4058,7 +4134,7 @@ const dxName=s=>/^[A-Z]{2,}/.test(s)?s:s.charAt(0).toLowerCase()+s.slice(1);
 const hhOf=l=>new Set(l.map(x=>x.h)).size;
 const finU1=p=>p.unit.split(" ")[0]; /* households, people or children */
 /* the problems the tally shows, highest share first: {id, name, tag (Typology of Nursing Problem), nat (3 health status, 2 health resources, 1 foreseeable crisis), y of b, p (percent), rest (the sentence after the percent), src (the table), unit (what y and b count), hh (households it touches)}.
-   Other illness is split by the name typed in the house (fu.otherDis): "Anemia" and "anemia" are one problem with the first spelling. The old "Other illness" problem (all of them together) stays only while it is picked, or while someone has no name typed. */
+   Other illness is split by the name typed for each person (2.2; an older record uses the household name fu.otherDis): "Anemia" and "anemia" are one problem with the first spelling, and it is counted by household (a house where two people have Asthma is one household). A typed name that is already a listed disease (DM, TB) counts under that disease. The old "Other illness" problem (all of them together) stays only while it is picked, or while someone has no name typed. */
 function finProblems(){
   const out=[],has=(v,a)=>v.some(x=>a.includes(x));
   const add=(id,name,tag,nat,yb,rest,src,unit,hh)=>{const y=yb[0],b=yb[1];if(b>0&&y>0)out.push({id,name,tag,nat,y,b,p:y/b*100,rest,src,unit,hh:hh||y})};
@@ -4073,13 +4149,13 @@ function finProblems(){
   const im=kidCount("imm"),nu=kidCount("nut"),P=allPersons(),kids=(f,v)=>households.filter(h=>realMembers(h).some(m=>inAges(m,TALLY_AGES[f])&&(f!=="imm"||kidImmOk(m))&&kidOf(m)[f]===v)).length;
   add("imm","Child not fully immunized","Threat",3,[im.t.get("Incomplete")||0,im.base],"of children "+IMM_TXT+" are not fully immunized.","Table C · Immunization status","children "+IMM_TXT,kids("imm","Incomplete"));
   add("nut","Underweight child","Deficit",3,[nu.t.get("Underweight")||0,nu.base],"of children "+agesTo(TALLY_AGES.nut)+" are underweight.","Table C · Nutritional status","children aged "+agesTo(TALLY_AGES.nut),kids("nut","Underweight"));
+  const HM=households.filter(h=>realMembers(h).length).length; /* Other illness is counted by household: out of the houses that have a member list */
   DX.forEach(d=>{
-    const mine=P.filter(({m})=>dxOf(m).some(e=>e.k===d.k));
+    const mine=P.filter(({m,h})=>dxEff(m,h).some(e=>e.k===d.k));
     if(d.k!=="other"){add("dx_"+d.k,d.short,"Deficit",3,[mine.length,P.length],"of people are diagnosed with "+dxName(d.short)+".","Table A2 · Diseases of persons with comorbidity","people",hhOf(mine));return}
-    const grp=new Map();let untyped=0;
-    mine.forEach(x=>{const nm=spell(x.h.fu&&x.h.fu.otherDis);if(!nm){untyped++;return}const k=nm.toLowerCase();if(!grp.has(k))grp.set(k,{nm,l:[]});grp.get(k).l.push(x)});
-    grp.forEach(({nm,l},k)=>add("dx_other~"+k,nm,"Deficit",3,[l.length,P.length],"of people are diagnosed with "+dxName(nm)+".","Table A2 · Other illness ("+nm+")","people",hhOf(l)));
-    if(untyped||finSt().pick.includes("dx_other"))add("dx_other",grp.size?"Other illness (all names)":"Other illness","Deficit",3,[mine.length,P.length],"of people are diagnosed with another illness.","Table A2 · Other illness","people",hhOf(mine));
+    const g=othGroups(mine);
+    g.grp.forEach(({nm,l},k)=>add("dx_other~"+k,nm,"Deficit",3,[hhOf(l),HM],"of households have someone diagnosed with "+dxName(nm)+".","Table A2 · Other illness ("+nm+")","households"));
+    if(g.un.length||finSt().pick.includes("dx_other"))add("dx_other",g.grp.size?"Other illness (all names)":"Other illness","Deficit",3,[hhOf(mine),HM],"of households have someone diagnosed with another illness.","Table A2 · Other illness","households");
   });
   add("preg","Pregnant or new mother","Crisis",1,yn("MC","Oo"),"of households have a pregnant or newly delivered member.","Table C · Maternal care","households");
   add("death","Death in the family","Crisis",1,yn(77,"Oo"),"of households had a death in "+calYear()+".","Table D · Vital statistics","households");
@@ -4283,7 +4359,7 @@ function teachTopics(P){
   const hm=cnt("delPlace",v=>v.includes("Home"));add("home","C",TEACH_TITLE.home,hhw(hm[0])+" with a delivery at home","C · "+pc(hm[0],hm[1])+" of households with a delivery had it at home",hm[0],hm[1]);
   /* A: persons */
   const hasOther=P.some(p=>p.id.startsWith("dx_other~"));
-  P.filter(p=>p.id.startsWith("dx_")&&!(p.id==="dx_other"&&hasOther)).forEach(p=>add(p.id,"A",TEACH_TITLE[p.id]||"Caring for "+dxName(p.name),p.y+" "+pl(p.y,"person","people")+" with "+dxName(p.name),"A · "+finPct(p)+" "+p.rest.replace(/\.$/,""),p.y,p.b,p.id));
+  P.filter(p=>p.id.startsWith("dx_")&&!(p.id==="dx_other"&&hasOther)).forEach(p=>add(p.id,"A",TEACH_TITLE[p.id]||"Caring for "+dxName(p.name),(p.unit==="households"?p.y+" "+pl(p.y,"household","households")+" with someone diagnosed with "+dxName(p.name):p.y+" "+pl(p.y,"person","people")+" with "+dxName(p.name)),"A · "+finPct(p)+" "+p.rest.replace(/\.$/,""),p.y,p.b,p.id));
   const ag=allPersons().map(({m})=>ageNum(m)).filter(a=>!isNaN(a)),old=ag.filter(a=>a>=65).length;
   add("old","A","Healthy aging",old+" "+pl(old,"person","people")+" aged 65 and over","A · "+pc(old,ag.length)+" of people are 65 and over",old,ag.length);
   /* D: vital statistics */
@@ -4665,8 +4741,10 @@ function fromWorkbook(wb){
   });
   const ms=wb.Sheets["Members"];if(ms){
     const mr=XLSX.utils.sheet_to_json(ms,{header:1,defval:""}),cond=(mr[0]||[]).some(x=>String(x).trim()==="Conditions"); /* sheets from older versions have no Conditions column */
-    const col=n=>(mr[0]||[]).findIndex(x=>String(x).trim().toLowerCase()===n),cH=col("head"),cW=col("weight"),cN=col("nutrition"),cI=col("immunization"),cR=col("other religion"),cP=col("pair"),cB=col("block"),cM=col("member id"),cMo=col("months"),o=cMo===3?1:0; /* MONTHS (1.8) sits right after Age; an older sheet has none, so Sex and the columns after it start one place earlier */ /* Pair and Block (1.4) sit at the end; a 1.3 Members sheet has neither */ /* the 1.3 columns are found by name; older sheets simply do not have them */
+    const col=n=>(mr[0]||[]).findIndex(x=>String(x).trim().toLowerCase()===n),cH=col("head"),cW=col("weight"),cN=col("nutrition"),cI=col("immunization"),cR=col("other religion"),cP=col("pair"),cB=col("block"),cM=col("member id"),cMo=col("months"),cOI=col("other illness"),o=cMo===3?1:0; /* MONTHS (1.8) sits right after Age; an older sheet has none, so Sex and the columns after it start one place earlier */ /* Pair and Block (1.4) sit at the end; a 1.3 Members sheet has neither */ /* the 1.3 columns are found by name; older sheets simply do not have them */
     mr.slice(1).forEach(r=>{const h=recs.find(x=>x.hh_no===String(r[0]));if(!h)return;const m={name:String(r[1]||""),age:r[2]===""?"":String(r[2]),sex:String(r[3+o]||""),civil:String(r[4+o]||""),educ:String(r[5+o]||""),occ:String(r[6+o]||""),comorb:String(r[7+o]||""),religion:String(r[8+o]||"")},dx=cond?dxParse(r[9+o]):[];if(dx.length)m.dx=dx;
+      if(cOI>=0){const oe=dx.find(e=>e.k==="other");if(oe)oe.nm=String(r[cOI]).trim()} /* 2.2: the person's other-illness name(s); a file without the column keeps the household name (fu.otherDis) as the fallback */
+     
       if(o&&/^\d+$/.test(String(r[cMo]).trim())&&Number(m.age)===0&&m.age!=="")m.ageMo=String(Math.min(11,+String(r[cMo]).trim())); /* a "-" or blank means no months */
       if(cH>=0&&/^(yes|head|true|1|x)$/i.test(String(r[cH]).trim()))m.head=true;
       const kid={},w=cW>=0&&r[cW]!==""?Number(r[cW]):NaN;if(isFinite(w)&&w>0)kid.w=w;if(cN>=0&&String(r[cN]).trim())kid.nut=String(r[cN]).trim();if(cI>=0&&String(r[cI]).trim())kid.imm=String(r[cI]).trim();if(Object.keys(kid).length)m.kid=kid;
@@ -4871,7 +4949,7 @@ function fuTxt(h,f){
 }
 function memText(m){
   const rel=m.religion==="Others"?(m.religionOther||"Others"):m.religion,k=kidOf(m);
-  return [NM(String(m.name||"").trim()),ageShow(m)||(m.age==null?"":String(m.age)),SEXEN[m.sex]||m.sex,m.civil,m.educ,rel,k.w!=null&&k.w!==""?k.w+" kg":"",k.nut,k.imm,dxText(m)].filter(x=>x!==""&&x!=null&&x!==undefined).join(", ");
+  return [NM(String(m.name||"").trim()),ageShow(m)||(m.age==null?"":String(m.age)),SEXEN[m.sex]||m.sex,m.civil,m.educ,rel,k.w!=null&&k.w!==""?k.w+" kg":"",k.nut,k.imm,dxTextN(m)].filter(x=>x!==""&&x!=null&&x!==undefined).join(", ");
 }
 const memKey=(m,h)=>JSON.stringify(canon({name:String(m.name||"").trim().toLowerCase(),age:m.age==null?"":String(m.age),ageMo:m.ageMo,sex:m.sex,civil:m.civil,educ:m.educ,comorb:memComorb(m,h),religion:m.religion,religionOther:m.religionOther,head:m.head===true?true:undefined,kid:m.kid,dx:dxOf(m)}));
 /* the rows that differ between two copies of one client, and how many compared answers are the same */
@@ -5455,7 +5533,7 @@ function xpDataXlsx(){
   add([["PAIR","BLOCK","CLIENTS","COMPLETE","DATE LOADED"],...pairRows().map(r=>[r.stamp||r.name,r.block,r.list.length,r.done,r.at?fmtDate(r.at):""])],"Pairs",{max:40,...plain});
   /* the sheets the import reads keep real blanks (dash:false), so a blank cell never turns into an answer */
   add([["HOUSEHOLD ID","Household No.","Pair","Block","Part D year","Migration",...PROFILE.map(f=>f.old),...nums.map(i=>(typeof i.n==="number"?i.n+". ":"")+Yr(i.label)),...fk.map(f=>Yr(f.label))],...households.map(h=>[HID.get(h),h.hh_no,h.pair||"",h.block||"",h.dYear||"",h.mig===13?"13":(h.migDone||""),...PROFILE.map(f=>f.key==="r_name"?NM(flat(h[f.key])):flat(h[f.key])),...nums.map(i=>A(h,i.n)||""),...fk.map(f=>flat(h.fu&&h.fu[f.key]))])],"Households",{dash:false,max:40,...plain});
-  add([["Household No.","Name","Age","MONTHS","Sex","Civil status","Education","Occupation","Comorbidity","Religion","Conditions","Head","Weight","Nutrition","Immunization","Other religion","Pair","Block","MEMBER ID","HOUSEHOLD ID"],...households.flatMap(h=>(h.members||[]).filter(m=>m&&typeof m==="object").map(m=>{const k=kidOf(m);return [h.hh_no,NM(m.name),numIf(m.age),ageNum(m)===0&&String(m.ageMo==null?"":m.ageMo).trim()!==""&&isFinite(Number(m.ageMo))?Number(m.ageMo):"",m.sex,m.civil,m.educ,m.occ,memComorb(m,h),m.religion||"",dxText(m),m.head===true?"Yes":"",k.w==null?"":k.w,k.nut||"",k.imm||"",m.religionOther||"",h.pair||"",h.block||"",memberId(HID.get(h),m),HID.get(h)]}))],"Members",{dash:false,dashc:[3],max:40,...plain}); /* only the MONTHS column shows "-" for a blank; the importer reads it back as blank */
+  add([["Household No.","Name","Age","MONTHS","Sex","Civil status","Education","Occupation","Comorbidity","Religion","Conditions","Head","Weight","Nutrition","Immunization","Other religion","Pair","Block","MEMBER ID","HOUSEHOLD ID","OTHER ILLNESS"],...households.flatMap(h=>(h.members||[]).filter(m=>m&&typeof m==="object").map(m=>{const k=kidOf(m);return [h.hh_no,NM(m.name),numIf(m.age),ageNum(m)===0&&String(m.ageMo==null?"":m.ageMo).trim()!==""&&isFinite(Number(m.ageMo))?Number(m.ageMo):"",m.sex,m.civil,m.educ,m.occ,memComorb(m,h),m.religion||"",dxText(m),m.head===true?"Yes":"",k.w==null?"":k.w,k.nut||"",k.imm||"",m.religionOther||"",h.pair||"",h.block||"",memberId(HID.get(h),m),HID.get(h),othEntry(m)?othRaw(m,h):""]}))],"Members",{dash:false,dashc:[3],max:40,...plain}); /* only the MONTHS column shows "-" for a blank; the importer reads it back as blank */
   add([["PAIR","HOUSEHOLD NO.","NAME","AGE","SEX","WEIGHT","NUTRITION","IMMUNIZATION"],...HH.flatMap(h=>kidsOf(h).map(m=>{const k=kidOf(m);return [h.pair||"",numIf(h.hh_no),NM(m.name),ageNum(m),{Lalaki:"Male",Babae:"Female"}[m.sex]||"",k.w==null?"":k.w,k.nut||"",k.imm||""]}))],"Children",plain);
   add([["HOUSEHOLD NO.","QUESTION NO.","QUESTION","NOTE"],...households.flatMap(h=>Object.keys(h.notes||{}).filter(k=>h.notes[k]).map(k=>[h.hh_no,/^\d+$/.test(k)?Number(k):k,noteLabel(k),h.notes[k]]))],"Notes",{dash:false,...plain});
   return new Uint8Array(XLSX.write(wb,{type:"array",bookType:"xlsx"}));
