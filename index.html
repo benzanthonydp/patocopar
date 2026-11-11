@@ -1362,16 +1362,31 @@ table.t30{table-layout:fixed}
 .t30 tr.zf td{padding:0 4px}
 .zb{min-height:44px;padding:0 8px;border:0;background:none;color:var(--accent);font:600 .82rem var(--font-body);text-align:left}
 .zb:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
-.t30 tr.rt{cursor:pointer}.t30 tr.rt td{min-height:44px;padding-top:12px;padding-bottom:12px;font-size:.88rem}
-.t30 tr.rt td.n{font-weight:600}
-.t30 tr.rt:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.rcs{display:grid;gap:10px}
+.rcard{display:grid;gap:6px}.card>h3.rh{margin:0;font:600 .95rem var(--font-body);letter-spacing:0;text-transform:none;color:var(--ink)}
+.rl{display:grid;gap:3px;font:400 .8rem/1.45 var(--font-data);color:var(--ink)}.rl p{margin:0;overflow-wrap:anywhere}
+.rl p.ra{font-weight:700;color:var(--ok)}.rl p.ra.z{color:var(--muted)}
+.t30pg{display:grid;gap:10px;min-width:0}.t30pa,.t30pb{display:grid;gap:10px;min-width:0;align-content:start}
+@media (min-width:700px){.t30pg{display:flex;align-items:flex-start;gap:12px}.t30pa{flex:0 0 45%;min-width:0}.t30pb{flex:1 1 0;min-width:0}}
 .t30.profile td b{font-weight:600}
 .rnum .gh .link{min-height:44px;padding:0}.rnum p{margin:0}
-.rbig{margin:0;font:700 1.6rem var(--font-data)}
 .allp .apl{display:flex;justify-content:space-between;align-items:center;gap:8px}.allp .apl .link{min-height:44px;padding:0}
 .ps4{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 @media (min-width:420px){.ps4{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .ps4 b{display:block;font:600 1.3rem var(--font-body)}.ps4 small{color:var(--muted);font-size:.78rem}
+/* 3.6 With and without comorbidity: By group or All in one; three numbers upright, the five Word columns from 700 px */
+.cms{margin:0 0 12px}
+.cmn{margin:4px 2px 8px;font-size:1rem;font-weight:700}
+.t30.com.cw{display:none}
+.t30.com th:first-child{width:40%}.t30.com th:not(:first-child){width:20%}#tl-body .t30.com th{white-space:nowrap;padding-left:4px;padding-right:6px}
+@media (max-width:399px){#tl-body .t30.com.cn th{font-size:11px}}
+.t30.com th.cmg{text-align:center;width:auto}
+@media (min-width:700px){.t30.com.cn{display:none}.t30.com.cw{display:table}#tl-body .t30.com.cw th{width:auto;border-radius:0;position:static}#tl-body .t30.com.cw th.cmg{text-align:center}}
+.cmnav{display:flex;align-items:center;justify-content:center;gap:18px;margin:8px 0 2px;color:var(--muted);font:500 .85rem var(--font-data)}
+.cmnav .link{min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center}
+.cmnav .link[disabled]{opacity:.3}
+.cmr{display:inline-flex;transform:rotate(180deg)}
+.whmf{margin:0 0 12px}
 
 /* ---------- 1.5 Profile and the welcome flow ---------- */
 /* Profile: the 12 colors are one row that slides sideways. Each tap target stays 44 px; the dot itself is 34 px. */
@@ -2072,7 +2087,7 @@ return {dV:dV,dK:dK,dS:dS,dT:dT,dH:dH,de:de,dU:dU,dE:dE,dp:dp,dm:dm};})();
 
 const LEGACY={"q":{"1":"Household located within the community","2":"Community divided into puroks or sitios","3":"Lived in the community 6 months or longer","4":"Member moved in (past 6 months)","5":"Member moved out (past 6 months)","9":"Household with a member currently studying","10":"All 15 and above can read and write","12":"Nuclear family","13":"More than one generation in the household","14":"Mainly uses one dialect","15":"Identifies with an ethnic or cultural group","16":"Identifies with a religious group","17":"House made mainly of strong materials (concrete)","19":"Enough space for household members","20":"Has electricity for lighting","21":"Has safe lighting during power outage","22":"Has own toilet","23":"Toilet covered or enclosed","24":"Water-sealed or flush-type toilet","25":"Toilet away from drinking water source","26":"Access to approved water supply","27":"Water available near the house","30":"Has drainage for wastewater","31":"Drainage is covered","32":"Wastewater flows without stagnant pools","33":"Has proper garbage container","34":"Regular garbage collection","38":"Practices recycling","39":"Reuses items","40":"Regular source of drinking water","43":"Treats water before drinking","46":"Illness in the household (past year)","48":"Consulted a trained health professional","50":"Took prescribed medicine","51":"Took medicine without prescription","52":"Aware of community health programs","53":"Used a community health program","54":"Knows where to access health services","55":"Currently using family planning","56":"Received family planning information","58":"Child weighed by a health worker","59":"Child's nutritional status assessed","61":"Child received routine vaccines","62":"Child has vaccination record","63":"Child completely vaccinated for age","64":"Pregnant woman in the household","65":"Received prenatal checkups","67":"Delivery attended by a health professional","68":"Community has a BHW","69":"Community has a BNS","70":"Community has a midwife","71":"Community has a nurse","72":"Community has a doctor","73":"Community has a dentist","74":"Health workers available when needed","76":"Live birth in the household (past year)","77":"Death in the household (past year)","80":"Church or chapel accessible","81":"Elementary school in or near the community","82":"Secondary school in or near the community","83":"College or tertiary school in or near the community","84":"Grocery store or market","85":"Hardware store","86":"Recreational facility","87":"Sports facility","88":"Cemetery accessible","89":"Transportation terminal accessible","90":"Birthing clinic accessible","91":"Barangay health center or RHU accessible","92":"Hospital accessible","93":"Tuberculosis","94":"Diabetes mellitus","95":"Hypertension","96":"Arthritis","97":"Glaucoma or other serious eye problem","98":"Dengue","99":"Filariasis or amoebiasis","100":"Malnutrition","101":"Cardiovascular problem","102":"Other diagnosed condition (past year)","103":"Unusually high number of cases (epidemic)","104":"Repeated cases over time (endemic)","105":"Few cases from time to time (sporadic)","110":"Accessible health services","112":"Access to emergency health services","114":"Enough health workers for basic services","PP":"Within 6 weeks postpartum","RI":"Community has a rural health inspector","CM":"Member with comorbidities","CD":"Member with a communicable disease"},"f":{"years":["single","Length of residence","Pila na ka tuig mo diri?"],"moveWhy":["text","Reason for moving out","Ngano ni-balhin?"],"illiterate":["num","Persons 15 and above who cannot read and write","Pila ang dili kahibalo mo-basa ug mo-sulat (15 years old pataas)?"],"familyType":["single","Type of family","Type of family"],"income":["single","Monthly family income","Monthly family income"],"dialect":["single","Dialect used","Unsa ang primary dialect?"],"ethnic":["single","Ethnic or cultural group","Unsa ang ethnic background?"],"religion":["multi","Religion","Unsa nga relihiyon? (pwede daghan)"],"race":["single","Race","Race"],"region":["single","Region of origin","Region of origin"],"houseType":["single","Type of materials used for house","Unsa ang materials sa balay?"],"altLight":["multi","Alternative lighting","Unsa ang gamit? (pwede daghan)"],"toiletShare":["multi","Households without own toilet","Kung wala: (pwede daghan)"],"toiletType":["multi","Types of excreta disposal","Unsa nga klase sa CR? (pwede daghan)"],"waterLevel":["multi","Water supply facility","Unsa nga level? (pwede daghan)"],"wasteHow":["multi","Types of waste disposal","Unsaon ninyo pag-dispose sa basura? (pwede daghan)"],"collectFreq":["single","Frequency of garbage collection","Pila ka beses sa usa ka semana?"],"drinkSrc":["multi","Source of drinking water","Asa gikan ang imnon nga tubig? (pwede daghan)"],"treatHow":["multi","Methods of sanitizing water","Unsaon? (pwede daghan)"],"illness":["text","Illnesses reported","Unsa nga sakit?"],"allCases":["num","Persons with illness (new and old cases)","Pila tanan ang naay sakit (bag-o ug dugay na)?"],"newCases":["num","Persons with new illness","Pila ang bag-o lang nagkasakit (new case)?"],"diagBy":["multi","Diagnosed by","Kinsa ang nag-diagnose? (pwede daghan)"],"rxBy":["multi","Prescribed by","Kinsa ang nagreseta? (pwede daghan)"],"programs":["text","Programs known","Unsa nga programs?"],"noUseWhy":["text","Reason for not using programs","Ngano wala?"],"fpMethod":["multi","Method of family planning used","Unsa nga method? (pwede daghan)"],"nutri":["multi","Nutritional status (0-6 years old)","Unsa ang resulta? (pwede daghan)"],"vaccines":["multi","Vaccines received","Unsa nga bakuna? (pwede daghan)"],"immuStatus":["multi","Immunization status","Immunization status (pwede daghan)"],"prenatalCount":["num","Number of prenatal visits","Pila ka beses?"],"delType":["multi","Type of delivery","Unsa nga klase sa pagpanganak? (pwede daghan)"],"attendant":["multi","Labor attendant","Kinsa ang nagpaanak? (pwede daghan)"],"delPlace":["multi","Place of delivery","Asa nanganak? (pwede daghan)"],"births":["num","Livebirths","Pila ka bata ang natawo?"],"deaths":["num","Deaths","Pila tanan ang namatay?"],"infant":["num","Infant deaths","Pila ang ubos sa 1 ka tuig ang edad?"],"under5":["num","Deaths below 5 years","Pila ang ubos sa 5 ka tuig ang edad?"],"maternal":["num","Maternal deaths","Pila ang inahan nga namatay tungod sa pagmabdos o pagpanganak (hangtod 42 ka adlaw human nanganak)?"],"cause":["text","Causes of death","Unsa ang hinungdan sa pagkamatay?"],"facility":["multi","Health facility used","Unsa nga health facility ang inyong ginaadtoan? (pwede daghan)"],"dz_tb":["num","Persons with Tuberculosis","Pila ka tawo?"],"dt_tb":["date","Date diagnosed: Tuberculosis","Kanus-a na-diagnose?"],"dz_dm":["num","Persons with Diabetes mellitus","Pila ka tawo?"],"dt_dm":["date","Date diagnosed: Diabetes mellitus","Kanus-a na-diagnose?"],"dz_htn":["num","Persons with Hypertension","Pila ka tawo?"],"dt_htn":["date","Date diagnosed: Hypertension","Kanus-a na-diagnose?"],"dz_arth":["num","Persons with Arthritis","Pila ka tawo?"],"dt_arth":["date","Date diagnosed: Arthritis","Kanus-a na-diagnose?"],"dz_eye":["num","Persons with Glaucoma or other serious eye problem","Pila ka tawo?"],"dt_eye":["date","Date diagnosed: Eye problem","Kanus-a na-diagnose?"],"dz_dengue":["num","Persons with Dengue","Pila ka tawo?"],"dt_dengue":["date","Date diagnosed: Dengue","Kanus-a na-diagnose?"],"dz_filam":["num","Persons with Filariasis or amoebiasis","Pila ka tawo?"],"dt_filam":["date","Date diagnosed: Filariasis or amoebiasis","Kanus-a na-diagnose?"],"dz_malnut":["num","Persons with Malnutrition","Pila ka tawo?"],"dt_malnut":["date","Date diagnosed: Malnutrition","Kanus-a na-diagnose?"],"dz_cvd":["num","Persons with Cardiovascular problem","Pila ka tawo?"],"dt_cvd":["date","Date diagnosed: Cardiovascular problem","Kanus-a na-diagnose?"],"otherDis":["text","Other diagnosed conditions","Unsa nga sakit?"],"dz_other":["num","Persons with Other diagnosed conditions","Pila ka tawo?"],"dt_other":["date","Date diagnosed: Other condition","Kanus-a na-diagnose?"],"dz_comorb":["num","Persons with Comorbidities","Pila ka tawo?"],"comorbList":["multi","Comorbidities reported","Unsa nga mga sakit ang dungan? (pwede daghan)"],"dt_comorb":["date","Date diagnosed: Comorbidities","Kanus-a na-diagnose?"],"dz_commun":["num","Persons with Communicable diseases","Pila ka tawo?"],"communList":["multi","Communicable diseases reported","Unsa nga sakit? (pwede daghan)"],"dt_commun":["date","Date diagnosed: Communicable disease","Kanus-a na-diagnose?"],"epidemicDis":["text","Epidemic diseases named","Unsa nga sakit?"]},"prof":{"Household No.":["hh_no","text"],"Purok o sitio":["purok","text"],"Petsa sa interview":["date","date"],"Interviewer":["interviewer","text"],"Pangalan o initials sa respondent":["r_name","text"],"Edad":["r_age","num"],"Sex":["r_sex","single"],"Civil status":["r_civil","single"],"Unsa man ka sa household head?":["r_relation","single"],"Educational attainment":["r_educ","single"],"Trabaho":["r_occ","text"]}}; /* questions from older versions: old backups and old Excel files still load through these */
 const DUCK=`<svg viewBox="0 0 20 30" shape-rendering="crispEdges" aria-hidden="true"><path fill="#111111" d="M5 0h5v1h-5zM4 1h1v1h-1zM10 1h1v1h-1zM3 2h1v1h-1zM11 2h1v1h-1zM3 3h1v1h-1zM11 3h1v1h-1zM3 4h1v1h-1zM11 4h1v1h-1zM3 5h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM12 5h1v1h-1zM3 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM13 6h1v1h-1zM2 7h1v1h-1zM10 7h1v1h-1zM13 7h1v1h-1zM1 8h1v1h-1zM10 8h3v1h-3zM2 9h3v1h-3zM9 9h1v1h-1zM5 10h1v1h-1zM9 10h1v1h-1zM5 11h1v1h-1zM9 11h1v1h-1zM5 12h1v1h-1zM9 12h1v1h-1zM4 13h1v1h-1zM9 13h1v1h-1zM4 14h1v1h-1zM9 14h1v1h-1zM3 15h1v1h-1zM10 15h1v1h-1zM15 15h3v1h-3zM2 16h1v1h-1zM11 16h2v1h-2zM14 16h1v1h-1zM17 16h1v1h-1zM1 17h1v1h-1zM13 17h2v1h-2zM17 17h2v1h-2zM0 18h1v1h-1zM15 18h2v1h-2zM19 18h1v1h-1zM0 19h1v1h-1zM14 19h1v1h-1zM17 19h1v1h-1zM19 19h1v1h-1zM0 20h1v1h-1zM17 20h1v1h-1zM19 20h1v1h-1zM0 21h1v1h-1zM16 21h1v1h-1zM18 21h1v1h-1zM0 22h1v1h-1zM17 22h2v1h-2zM1 23h1v1h-1zM18 23h1v1h-1zM2 24h1v1h-1zM4 24h1v1h-1zM13 24h1v1h-1zM16 24h2v1h-2zM3 25h3v1h-3zM12 25h4v1h-4zM5 26h1v1h-1zM7 26h5v1h-5zM13 26h1v1h-1zM4 27h1v1h-1zM6 27h1v1h-1zM10 27h1v1h-1zM12 27h1v1h-1zM4 28h1v1h-1zM6 28h1v1h-1zM10 28h1v1h-1zM12 28h1v1h-1zM3 29h1v1h-1zM6 29h1v1h-1zM9 29h1v1h-1zM12 29h1v1h-1z"></path><path fill="#ffffff" d="M5 1h4v1h-4zM4 2h1v1h-1zM8 2h2v1h-2zM5 4h4v1h-4zM4 5h4v1h-4zM9 5h1v1h-1zM6 6h2v1h-2zM9 6h1v1h-1zM7 7h3v1h-3zM7 8h3v1h-3zM6 9h3v1h-3zM6 10h3v1h-3zM6 11h3v1h-3zM6 12h3v1h-3zM6 13h3v1h-3zM5 14h4v1h-4zM4 15h6v1h-6zM3 16h8v1h-8zM15 16h2v1h-2zM2 17h11v1h-11zM15 17h2v1h-2zM1 18h14v1h-14zM17 18h1v1h-1zM1 19h13v1h-13zM15 19h2v1h-2zM1 20h15v1h-15zM1 21h15v1h-15zM1 22h16v1h-16zM3 23h14v1h-14zM5 24h7v1h-7z"></path><path fill="#d6d8de" d="M9 1h1v1h-1zM4 4h1v1h-1zM5 9h1v1h-1zM5 13h1v1h-1zM18 18h1v1h-1zM18 19h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM17 21h1v1h-1zM2 23h1v1h-1zM17 23h1v1h-1zM3 24h1v1h-1zM12 24h1v1h-1zM14 24h2v1h-2zM6 25h6v1h-6z"></path><path fill="#de5c26" d="M5 2h3v1h-3zM10 2h1v1h-1zM10 3h1v1h-1z"></path><path fill="#5ca0de" d="M4 3h6v1h-6zM10 4h1v1h-1z"></path><path fill="#22528c" d="M9 4h1v1h-1zM11 5h1v1h-1zM11 6h2v1h-2zM11 7h2v1h-2z"></path><path fill="#f0b642" d="M4 6h2v1h-2zM3 7h4v1h-4zM2 8h5v1h-5zM6 26h1v1h-1zM12 26h1v1h-1zM5 27h1v1h-1zM11 27h1v1h-1zM5 28h1v1h-1zM11 28h1v1h-1zM4 29h2v1h-2zM10 29h2v1h-2z"></path></svg>`;
-const APP_VERSION="3.4"; /* build.py bakes in the one version number (Profile > App shows it) */
+const APP_VERSION="3.6"; /* build.py bakes in the one version number (Profile > App shows it) */
 const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const ico=(p,s)=>`<svg class="ic" width="${s||22}" height="${s||22}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
@@ -4059,18 +4074,18 @@ function vital(members){
   /* Literacy counts only clients whose listed people aged 15 and above are at least the number who cannot read: a client with no member list, or one that says more cannot read than are listed, would only push the rate down */
   let p15=0,ill=0;
   own.forEach(h=>{const a=A(h,10);if(a!=="Oo"&&!(a==="Wala"&&h.fu&&h.fu.illiterate!==""&&h.fu.illiterate!=null))return;const n15=realMembers(h).filter(m=>ageNum(m)>=15).length,c=a==="Wala"?Number(h.fu.illiterate)||0:0;if(c>n15)return;p15+=n15;ill+=c});
-  const land=Number(community.landArea)||0,exposed=Number(community.exposed)||0;
+  const land=Number(community.landArea)||0,typedEx=String(community.exposed==null?"":community.exposed).trim()!=="",exposed=typedEx?Number(community.exposed)||0:pop; /* Persons exposed: what was typed, or everyone in the interviewed houses when the box is empty (auto, never saved) */
   const SAME="Same as guide",NOG="Not in the guide";
   const J=julyInfo(members),jp=J.pop,P1="population of the interviewed households (n = "+pop+")",LB=Yr("Livebirths in {Y}"),DE=Yr("Deaths in {Y}"); /* every rate divides by the people listed in the interviewed houses, the same houses the births, deaths and cases are counted in; the July 1 number (jp) is shown as information only */
-  return {inputs:[["Total population (from members lists)",pop],[Yr("Population as of July 1, {Y}")+" ("+(J.typed?"Typed number":"Estimated from interviews")+")",jp||"-"],["Women 15-49 years old",women],[Yr("Livebirths in {Y}"),B],[Yr("Deaths in {Y}"),D],["Infant deaths (below 1 year)",I],["Deaths below 5 years",U],["Maternal deaths",M],["New cases (morbidity)",NC],["New and old cases (morbidity)",AC],["Persons 15 and above (households with a literacy answer and a member list)",p15],["Persons 15 and above who cannot read and write",ill],["Below 15 years old",young],["15-64 years old",work],["65 years old and above",old],["Land area (sq. km)",land||"-"],["Persons exposed to the disease",exposed||"-"]],
+  return {n:{pop,B,women,D,I,M,NC,exposed,typedEx,hhN:own.length,p15,ill,young,work,old,land},inputs:[["Total population (from members lists)",pop],[Yr("Population as of July 1, {Y}")+" ("+(J.typed?"Typed number":"Estimated from interviews")+")",jp||"-"],["Women 15-49 years old",women],[Yr("Livebirths in {Y}"),B],[Yr("Deaths in {Y}"),D],["Infant deaths (below 1 year)",I],["Deaths below 5 years",U],["Maternal deaths",M],["New cases (morbidity)",NC],["New and old cases (morbidity)",AC],["Persons 15 and above (households with a literacy answer and a member list)",p15],["Persons 15 and above who cannot read and write",ill],["Below 15 years old",young],["15-64 years old",work],["65 years old and above",old],["Land area (sq. km)",land||"-"],["Persons exposed to the disease",exposed||"-"]],
    groups:[
     ["Fertility Rate",[["Crude Birth Rate",LB+" ÷ "+P1+" × 1,000",r(B,pop,1000),SAME,""],["General Fertility Rate",LB+" ÷ Women 15-49 × 1,000",r(B,women,1000),SAME,""]]],
     ["Mortality Rate",[["Crude Death Rate",DE+" ÷ "+P1+" × 1,000",r(D,pop,1000),SAME,""],["Infant Mortality Rate","Infant deaths ÷ "+P1+" × 1,000",r(I,pop,1000),"Infant deaths ÷ "+LB+" × 1,000",r(I,B,1000)],["Maternal Mortality Rate","Maternal deaths ÷ "+P1+" × 1,000",r(M,pop,1000),"Maternal deaths ÷ "+LB+" × 100,000",r(M,B,100000)],["Under-5 Mortality Rate",NOG,"-","Deaths below 5 ÷ "+LB+" × 1,000",r(U,B,1000)]]],
-    ["Morbidity Rate",[["Prevalence Rate","New and old cases ÷ "+P1+" × 100",r(AC,pop,100),"New and old cases ÷ "+P1+" × 1,000",r(AC,pop,1000)],["Incidence Rate","New cases ÷ "+P1+" × 100",r(NC,pop,100),"New cases ÷ "+P1+" × 1,000",r(NC,pop,1000)],["Attack Rate","Persons exposed ÷ "+P1+" × 100",r(exposed,pop,100),"New cases ÷ Persons exposed × 100",r(NC,exposed,100)],...dz.map(([l,c])=>[l+" ("+c+" "+(c===1?"person":"persons")+")","Cases ÷ "+P1+" × 100",r(c,pop,100),"Cases ÷ "+P1+" × 1,000",r(c,pop,1000)])]],
+    ["Morbidity Rate",[["Prevalence Rate","New and old cases ÷ "+P1+" × 100",r(AC,pop,100),"New and old cases ÷ "+P1+" × 1,000",r(AC,pop,1000)],["Incidence Rate","New cases ÷ "+P1+" × 100",r(NC,pop,100),"New cases ÷ "+P1+" × 1,000",r(NC,pop,1000)],["Attack Rate","New cases ÷ Persons exposed × 100",r(NC,exposed,100),SAME,""],...dz.map(([l,c])=>[l+" ("+c+" "+(c===1?"person":"persons")+")","Cases ÷ "+P1+" × 100",r(c,pop,100),"Cases ÷ "+P1+" × 1,000",r(c,pop,1000)])]],
     ["Other Rates",[["Literacy Rate","Persons 15+ who can read and write ÷ Persons 15+ (n = "+p15+") × 100",r(p15-ill,p15,100),SAME,""],["Dependency Ratio","(Below 15 + 65 and above) ÷ 15-64 × 100",r(young+old,work,100),SAME,""],["Population Density","Land area × 100 ÷ Total population",land&&pop?r(land*100,pop,1):"-","Total population ÷ Land area (per sq. km)",land?r(pop,land,1):"-"]]]]};
 }
 /* ---------- 3.0 tables: tables30() ----------
-   tables30() returns the 22 tables of the Tally in screen order, as plain data. The screen reads it now; the Excel and Word files read the same list later.
+   tables30() returns the 24 tables of the Tally in screen order, as plain data. The screen reads it now; the Excel and Word files read the same list later.
    [{part:"A".."F", id:"toilet", name:"Toilet", cap:"Table B · out of 99 households", unit:"households"|"people"|"mixed"|"",
      kind:"sections"|"profile"|"community"|"rates", cols:["ANSWER","TOTAL","%"], parts:2 (how many parts a joined table has),
      secs:[{title:"Type of toilet" ("" when the table has one part), key:"toiletType" (the question key; null for people, children and diseases),
@@ -4222,11 +4237,20 @@ function community30(){
     {label:"Not near "+COM_AREA,value:txt(far),of:"No"}]};
 }
 function rates30(){
-  const members=households.flatMap(realMembers),v=vital(members),all=v.groups.flatMap(g=>g[1]),j=julyInfo(members);
-  const lines=[["Crude birth rate","Crude Birth Rate"],["General fertility rate","General Fertility Rate"],["Crude death rate","Crude Death Rate"],["Infant mortality rate","Infant Mortality Rate"],["Maternal mortality rate","Maternal Mortality Rate"],["Literacy rate","Literacy Rate"],["Dependency ratio","Dependency Ratio"],["Population density","Population Density"]].map(([label,src])=>{
-    const r=all.find(x=>x[0]===src)||[src,"",TD,"",""],raw=String(r[2]);
-    return {label,value:src==="Literacy Rate"&&raw!==TD?raw+"%":raw,of:"",raw,formula:r[1],usualFormula:r[3],usualValue:String(r[4])};
-  });
+  const members=households.flatMap(realMembers),v=vital(members),n=v.n,all=v.groups.flatMap(g=>g[1]),j=julyInfo(members);
+  const f=x=>typeof x==="number"?x.toLocaleString("en-US",{maximumFractionDigits:6}):String(x),raw=src=>{const r=all.find(x=>x[0]===src);return r?String(r[2]):TD};
+  /* one card per rate: the formula line, the same line with this community's numbers (a second line when a step is worked out), then the answer */
+  const card=(label,ab,src,form,nums,o)=>{o=o||{};const rw=raw(src);return {label,ab,raw:rw,value:o.pct&&rw!==TD?rw+"%":rw,form:ab+" = "+form,nums:nums.map(x=>ab+" = "+x),hint:o.hint||"",lit:!!o.pct}};
+  const lines=[
+    card("Crude birth rate","CBR","Crude Birth Rate","Livebirths ÷ Population × 1,000",[f(n.B)+" ÷ "+f(n.pop)+" × 1,000"]),
+    card("General fertility rate","GFR","General Fertility Rate","Livebirths ÷ Women 15-49 × 1,000",[f(n.B)+" ÷ "+f(n.women)+" × 1,000"]),
+    card("Crude death rate","CDR","Crude Death Rate","Deaths ÷ Population × 1,000",[f(n.D)+" ÷ "+f(n.pop)+" × 1,000"]),
+    card("Infant mortality rate","IMR","Infant Mortality Rate","Infant deaths ÷ Population × 1,000",[f(n.I)+" ÷ "+f(n.pop)+" × 1,000"]),
+    card("Maternal mortality rate","MMR","Maternal Mortality Rate","Maternal deaths ÷ Population × 1,000",[f(n.M)+" ÷ "+f(n.pop)+" × 1,000"]),
+    card("Literacy rate","LR","Literacy Rate","Can read and write ÷ Persons 15+ × 100",["("+f(n.p15)+" − "+f(n.ill)+") ÷ "+f(n.p15)+" × 100",f(n.p15-n.ill)+" ÷ "+f(n.p15)+" × 100"],{pct:true}),
+    card("Dependency ratio","DR","Dependency Ratio","(Below 15 + 65 and up) ÷ 15-64 × 100",["("+f(n.young)+" + "+f(n.old)+") ÷ "+f(n.work)+" × 100",f(n.young+n.old)+" ÷ "+f(n.work)+" × 100"]),
+    card("Population density","PD","Population Density","Land area × 100 ÷ Population",[(n.land?f(n.land):TD)+" × 100 ÷ "+f(n.pop)],{hint:n.land?"":"type the land area"}),
+    {label:"Attack rate",ab:"AR",raw:raw("Attack Rate"),value:raw("Attack Rate"),form:"AR = New cases ÷ Persons exposed × 100",nums:["AR = "+f(n.NC)+" ÷ "+f(n.exposed)+" × 100"],hint:"",lit:false}];
   return {unit:"",kind:"rates",cap:j.hh?j.people+" "+plu(j.people,"person","people")+" in the "+j.hh+" interviewed "+plu(j.hh,"house","houses"):"No client has a member list yet",cols:["INDICATOR","RATE"],lines};
 }
 /* Table F: households with someone diagnosed, one row per disease and per named other illness, most first */
@@ -4253,12 +4277,35 @@ function diseases30(){
   });
   return {unit:"households",cols:["DISEASE","HOUSEHOLDS","%"],secs:[{title:"",key:null,sub:"",rows,total:null}]};
 }
+/* 3.6: the With and without comorbidity table of TALLY CONTENT.docx, back as the CI asked. Every person counts once in each group, by comorbidity and sex.
+   groups:[{title (CAPITALS, the table header), name, rows:[{label, wm, wf, nm, nf, n, grey, zero, who}], total:{...}}]; who.mf = [wm, wf, nm, nf, n] for the tap sheet.
+   Family type, ethnic, race, region, dialect and migration are asked once per house: each person counts under the answer of their own house. */
+const COM_GROUPS=[["AGE","Age"],["GENDER","Gender"],[T_CIVIL,"Civil status"],["RELIGION","Religion"],["EDUCATIONAL ATTAINMENT","Education"],["TYPES OF FAMILY","Types of family"],["ETHNIC BACKGROUND","Ethnic background"],["RACE","Race"],["REGIONAL ORIGIN","Regional origin"],["PRIMARY DIALECT SPOKEN","Dialect"],["PATTERNS OF MIGRATION","Migration"]];
+function comorb30(){
+  const P=allPersons(),d=tallyDemo(),head="Table A · With and without comorbidity";
+  const row=(g,label,l,grey)=>{const r=demoRow(l),gen=g==="GENDER",w=r.wh;w.key=null;w.val=null;w.head=head;w.mf=[r[0],r[1],r[2],r[3],r[4]];w.grp=COM_GROUPS.find(x=>x[0]===g)[1];
+    return {label,wm:gen&&label==="Female"?null:r[0],wf:gen&&label==="Male"?null:r[1],nm:gen&&label==="Female"?null:r[2],nf:gen&&label==="Male"?null:r[3],n:r[4],grey:!!grey,zero:r[4]===0,who:w}};
+  const tot=(g,rows)=>{const s={label:"TOTAL",wm:0,wf:0,nm:0,nf:0,n:0};rows.forEach(r=>{["wm","wf","nm","nf","n"].forEach(k=>{s[k]+=r[k]||0})});return s};
+  const fromDemo=(g,dg)=>dg.rows.filter(r=>r[2]!=="tot").map(([label,,f])=>{const pick=TA_PICK[g],l=P.filter(p=>((pick(p.m,p.h)||NA)===(f==="na"?NA:label))||(g==="AGE"&&f==="na"&&!pick(p.m,p.h)));return row(g,label,l,f==="na")});
+  const groups=COM_GROUPS.map(([g,name])=>{
+    let rows;
+    if(g==="AGE")rows=d.age?fromDemo(g,d.age):[];
+    else if(g==="GENDER"){const ns=P.filter(p=>!sexK(p.m));rows=[row(g,"Male",P.filter(p=>sexK(p.m)==="M")),row(g,"Female",P.filter(p=>sexK(p.m)==="F"))];if(ns.length)rows.push(row(g,"No sex recorded",ns,true))}
+    else if(TA_PICK[g]){const dg=d.groups.find(x=>x.title===g);rows=dg?fromDemo(g,dg):[]}
+    else{const key=TSRC[g],names=NAMES30(key),m=new Map(names.map(n=>[n,[]])),na=[];
+      P.forEach(p=>{const v=selTx(p.h,key).map(x=>String(x).trim()).filter(Boolean)[0],c=v?canon30(key,v,names):null;if(c==null){na.push(p);return}if(!m.has(c))m.set(c,[]);m.get(c).push(p)});
+      rows=[...m.entries()].map(([k,l])=>row(g,lab30(k),l));if(na.length)rows.push(row(g,NA,na,true))}
+    return {title:g===T_CIVIL?"CIVIL STATUS":g,name,rows,total:tot(g,rows)};
+  });
+  return {unit:"people",kind:"comorb",cols:["ANSWER","WITH","WITHOUT","TOTAL"],groups,lines:[]};
+}
 const T30=[];
 const add30=(part,id,name,parts,fn)=>T30.push({part,id,name,parts,fn});
 const HHU=secs=>({unit:"households",secs});
+add30("A","comorb","With and without comorbidity",11,comorb30);
 add30("A","age","Age",1,()=>({unit:"people",secs:[personSec("AGE",{fixed:true})]}));
-add30("A","civil","Civil status",1,()=>({unit:"people",secs:[personSec(T_CIVIL)]}));
 add30("A","fpages","Ages 18 to 45",2,ageSex30);
+add30("A","civil","Civil status",1,()=>({unit:"people",secs:[personSec(T_CIVIL)]}));
 add30("A","religion","Religion",1,()=>({unit:"people",secs:[personSec("RELIGION")]}));
 add30("A","education","Education",1,()=>({unit:"people",secs:[personSec("EDUCATIONAL ATTAINMENT",{fixed:true})]}));
 add30("A","family","Family type",1,()=>HHU([hhSec("familyType")]));
@@ -4283,7 +4330,7 @@ function build30(t){
   C30={part:t.part,name:t.name};
   const r=t.fn(),unit=r.unit||"",N=unit==="households"?households.length:unit==="people"?allPersons().length:0;
   const cap=r.cap||("Table "+t.part+" · out of "+N+" "+(unit==="people"?plu(N,"person","people"):plu(N,"household","households")));
-  return {part:t.part,id:t.id,name:t.name,cap,unit,kind:r.kind||"sections",cols:r.cols||["ANSWER","TOTAL","%"],parts:t.parts,secs:r.secs||[],lines:r.lines||[]};
+  return {part:t.part,id:t.id,name:t.name,cap,unit,kind:r.kind||"sections",cols:r.cols||["ANSWER","TOTAL","%"],parts:t.parts,secs:r.secs||[],lines:r.lines||[],groups:r.groups||[]};
 }
 const tables30=()=>T30.map(build30);
 
@@ -4291,7 +4338,7 @@ const FREQ_CAP="Counts households unless a group says otherwise (children, deliv
 const A3_CAP="Counts households: family type, ethnic group, race, region, dialect and migration are asked once for the whole house. Percentage = Frequency ÷ the n written under the group name.";
 /* ---------- 3.0 Tally screens: a short list of table names, then one table ---------- */
 const tcap=t=>`<p class="tcap">${esc(t)}</p>`;
-let ZN=0,RATES30=[];
+let ZN=0;
 const rowHTML30=(r,x)=>`<tr${r.grey?' class="gy"':""}${x||""}${whoAttr(r.label,r.who)}><td${r.ind?' class="ind"':""}>${r.bad&&!r.grey?'<i class="rm" role="img" aria-label="Counts as a problem"></i>':""}${esc(r.label)}</td><td class="n">${r.n}</td><td class="n${r.pct==null?" z":""}">${dpct(r.pct)}</td></tr>`;
 /* rows with 0 (and the long tail of Table F) fold into one line; a tap shows them */
 const foldHTML30=(rows,text)=>{
@@ -4309,22 +4356,52 @@ function secHTML30(s){
 }
 function linesHTML30(t){
   if(t.kind==="sex")return t.lines.map(l=>l.sub?`<tr class="sub"><td colspan="4">${esc(l.label)}</td></tr>`:`<tr class="${l.tot?"tot":l.grey?"gy":l.hh?"hh":""}"><td>${esc(l.label)}</td>${[l.m,l.f,l.t].map(v=>`<td class="n${v==null?" z":""}">${v==null?TD:v}</td>`).join("")}</tr>`).join("");
-  if(t.kind==="rates"){
-    RATES30=t.lines;
-    return t.lines.map((l,i)=>`<tr class="rt" data-rate="${i}" tabindex="0" role="button"><td>${esc(l.label)}</td><td class="n${l.value===TD?" z":""}">${esc(l.value)}</td></tr>`).join("");
-  }
   return t.lines.map(l=>`<tr${whoAttr(l.label,l.who)}><td><b>${esc(l.label)}</b></td><td>${esc(l.value)}${l.more?`<small class="gn">${esc(l.more)}</small>`:""}</td><td class="n${l.of?"":" z"}">${l.of?esc(l.of):TD}</td></tr>`).join("");
 }
 function ratesCard30(){
-  const j=julyInfo(households.flatMap(realMembers)),land=Number(community.landArea)||0,ex=Number(community.exposed)||0;
-  return `<section class="card sm rnum"><div class="gh"><span>Numbers for the rates</span><button type="button" class="link" id="rn-edit">Edit ${ico(IC.chev,16)}</button></div><p class="note">Year ${calYear()} · July 1 population ${j.pop||TD} (${j.typed?"typed":"estimate"})</p><p class="note">Land area ${land||TD} · Persons exposed ${ex||TD}</p></section>`;
+  const m=households.flatMap(realMembers),j=julyInfo(m),n=vital(m).n,land=Number(community.landArea)||0;
+  return `<section class="card sm rnum"><div class="gh"><span>Numbers for the rates</span><button type="button" class="link" id="rn-edit">Edit ${ico(IC.chev,16)}</button></div><p class="note">Year ${calYear()} · July 1 population ${j.pop||TD} (${j.typed?"typed":"estimate"})</p><p class="note">Land area ${land||TD} · Persons exposed ${n.exposed||TD}${n.typedEx?"":" (auto)"}</p></section>`;
 }
-function tableHTML30(t,back){
+/* one card per rate: the formula, the same line with the numbers, the answer */
+const rateCards30=t=>`<div class="rcs">${t.lines.map(l=>`<section class="card sm rcard" data-rate="${esc(l.ab)}"><h3 class="rh">${esc(l.label)}</h3><div class="rl"><p>${esc(l.form)}</p>${l.nums.map(x=>`<p>${esc(x)}</p>`).join("")}<p class="ra${l.raw===TD?" z":""}">${esc(l.ab)} = ${esc(l.value)}</p>${l.hint?`<small class="gn">${esc(l.hint)}</small>`:""}</div></section>`).join("")}</div>`;
+/* 3.6 With and without comorbidity: a switch (By group, All in one). An upright phone shows WITH, WITHOUT, TOTAL; from 700 px wide the five Word columns show. A tap on a row shows male and female and the people. */
+let comMode="g",comIdx=0;
+const comV=v=>v==null?`<td class="n z">${TD}</td>`:`<td class="n">${v}</td>`;
+const comSum=(a,b)=>a==null&&b==null?null:(a||0)+(b||0);
+function comRowsHTML(g,wide){
+  const cells=r=>wide?[r.wm,r.wf,r.nm,r.nf,r.n].map(comV).join(""):[comSum(r.wm,r.wf),comSum(r.nm,r.nf),r.n].map(comV).join("");
+  const nc=wide?6:4,sh=g.rows.filter(r=>!r.zero),zr=g.rows.filter(r=>r.zero),id="z"+(++ZN);
+  return sh.map(r=>`<tr${r.grey?' class="gy"':""}${whoAttr(g.name+" · "+r.label,r.who)}><td>${esc(r.label)}</td>${cells(r)}</tr>`).join("")
+    +(zr.length?`<tr class="zf"><td colspan="${nc}"><button type="button" class="zb" data-z="${id}" data-t="+ ${zr.length} ${zr.length===1?"answer":"answers"} with 0" aria-expanded="false">+ ${zr.length} ${zr.length===1?"answer":"answers"} with 0 · show</button></td></tr>`+zr.map(r=>`<tr data-zr="${id}" hidden><td>${esc(r.label)}</td>${cells(r)}</tr>`).join(""):"")
+    +`<tr class="tot"><td>TOTAL</td>${cells(g.total)}</tr>`;
+}
+const comHead=(first,wide)=>wide?`<thead><tr><th rowspan="2">${esc(first)}</th><th colspan="2" class="cmg">WITH COMORBIDITY</th><th colspan="2" class="cmg">WITHOUT COMORBIDITY</th><th rowspan="2" class="n">TOTAL</th></tr><tr><th class="n">MALE</th><th class="n">FEMALE</th><th class="n">MALE</th><th class="n">FEMALE</th></tr></thead>`:`<thead><tr><th>${esc(first)}</th><th class="n">WITH</th><th class="n">WITHOUT</th><th class="n">TOTAL</th></tr></thead>`;
+function comTables(gs,all){
+  const one=wide=>`<table class="t30 com ${wide?"cw":"cn"}">${wide?'<colgroup><col style="width:30%"><col span="5" style="width:14%"></colgroup>':""}${comHead(all?"ANSWER":gs[0].title,wide)}<tbody>${gs.map(g=>(all?`<tr class="sub"><td colspan="${wide?6:4}">${esc(g.title)}</td></tr>`:"")+comRowsHTML(g,wide)).join("")}</tbody></table>`;
+  return `<div class="tw">${one(false)}${one(true)}</div>`;
+}
+function comorbHTML30(t){
+  const G=t.groups,n=G.length;if(comIdx>=n)comIdx=0;
+  const sw=`<div class="sg cms" role="group" aria-label="Show the table">${[["g","By group"],["a","All in one"]].map(([k,l])=>`<button type="button" data-cm="${k}" aria-pressed="${comMode===k}">${l}</button>`).join("")}</div>`;
+  if(comMode==="a")return `<h2 class="t30h">${esc(t.name)}</h2>${sw}<section class="card flush t30c">${tcap(t.cap)}${comTables(G,true)}</section>`;
+  const g=G[comIdx];
+  return `<h2 class="t30h">${esc(t.name)}</h2>${sw}<div class="cmw"><h3 class="cmn">${esc(g.name)}</h3><section class="card flush t30c">${tcap(t.cap)}${comTables([g],false)}</section><div class="cmnav"><button type="button" class="link" data-cmi="-1" aria-label="Group before"${comIdx?"":" disabled"}>${ico(IC.back,18)}</button><span>${comIdx+1} of ${n}</span><button type="button" class="link" data-cmi="1" aria-label="Next group"${comIdx<n-1?"":" disabled"}><span class="cmr">${ico(IC.back,18)}</span></button></div></div>`;
+}
+function comGo(i){const t=T30.find(x=>x.id==="comorb"),n=COM_GROUPS.length;if(i<0||i>=n||i===comIdx)return;comIdx=i;$("#tl-body").innerHTML=tallyBody();twUp()}
+function tableInner30(t){
+  if(t.kind==="comorb")return comorbHTML30(t);
+  if(t.kind==="rates")return `<h2 class="t30h">${esc(t.name)}</h2>${ratesCard30()}${tcap(t.cap)}${rateCards30(t)}`;
   const two=t.cols.length===2,head=`<thead><tr>${t.cols.map((c,i)=>`<th${i===t.cols.length-1||(i&&!two&&(t.kind==="sections"||t.kind==="sex"))?' class="n"':""}>${esc(c)}</th>`).join("")}</tr></thead>`;
   const body=t.kind==="sections"?t.secs.map(secHTML30).join(""):linesHTML30(t);
-  return `<div class="t30w">${back?`<button type="button" class="link t30b" data-tback>${ico(IC.back,16)}${esc(T_PART[t.part])}</button>`:""}<h2 class="t30h">${esc(t.name)}</h2>${t.kind==="rates"?ratesCard30():""}`
-    +`<section class="card flush t30c">${tcap(t.cap)}<div class="tw"><table class="t30 k${t.cols.length}${t.kind==="sections"?(t.cols[1]==="HOUSEHOLDS"?" f":""):" "+t.kind}">${head}<tbody>${body}</tbody></table></div></section>`
-    +(t.kind==="rates"?`<p class="note">Tap a rate to see its formula.</p>`:"")+`</div>`;
+  return `<h2 class="t30h">${esc(t.name)}</h2><section class="card flush t30c">${tcap(t.cap)}<div class="tw"><table class="t30 k${t.cols.length}${t.kind==="sections"?(t.cols[1]==="HOUSEHOLDS"?" f":""):" "+t.kind}">${head}<tbody>${body}</tbody></table></div></section>`;
+}
+const backBtn30=t=>`<button type="button" class="link t30b" data-tback>${ico(IC.back,16)}${esc(T_PART[t.part])}</button>`;
+const tableHTML30=(t,back)=>`<div class="t30w">${back?backBtn30(t):""}${tableInner30(t)}</div>`;
+/* Age and Ages 18 to 45 open together: stacked on a narrow screen, side by side from 700 px wide */
+const PAIR30=["age","fpages"];
+function pairHTML30(ts){
+  const a=build30(ts.find(x=>x.id===PAIR30[0])),b=build30(ts.find(x=>x.id===PAIR30[1]));
+  return `<div class="t30w t30pair">${backBtn30(a)}<div class="t30pg"><div class="t30pa">${tableInner30(a)}</div><div class="t30pb">${tableInner30(b)}</div></div></div>`;
 }
 function listHTML30(part){
   const ts=T30.filter(t=>t.part===part);
@@ -4335,23 +4412,19 @@ function partHTML30(part){
   const ts=T30.filter(t=>t.part===part);
   if(ts.length===1)return tableHTML30(build30(ts[0]),false); /* a part with one table opens it right away */
   const t=tallyTbl&&tallyTblTab===tallyTab&&ts.find(x=>x.id===tallyTbl);
-  return t?tableHTML30(build30(t),true):listHTML30(part);
+  return t?(PAIR30.includes(t.id)?pairHTML30(ts):tableHTML30(build30(t),true)):listHTML30(part);
 }
 function tblGo(id){tallyTbl=id;tallyTblTab=tallyTab;delete spot["tally:"+tallyTab];$("#tl-body").innerHTML=tallyBody();twUp();window.scrollTo(0,0)}
-/* the rates: tap one for its formula, and Edit holds the numbers they use */
-function openRate(i){
-  const r=RATES30[i];if(!r)return;
-  const j=julyInfo(households.flatMap(realMembers)),diff=r.usualFormula&&r.usualValue!==""&&r.usualValue!==r.raw;
-  openSheet(sheetHead(r.label)+`<p class="rbig">${esc(r.value)}</p><p class="note"><b>Formula</b><br>${esc(r.formula)}</p>${diff?`<p class="note"><b>Usual formula</b><br>${esc(r.usualFormula)} = ${esc(r.usualValue)}</p>`:""}<p class="note">${esc(rateBasis(j))}</p><p class="note">School guide is the COPAR Assessment Guide. Usual is the common public health formula. Ask your CI which one to submit.</p>`);
-}
+/* the rates: each card shows its formula, and Edit holds the numbers they use */
 function openRatesEdit(){
-  const j=julyInfo(households.flatMap(realMembers));
+  const mm=households.flatMap(realMembers),j=julyInfo(mm),nv=vital(mm).n;
   const s=openSheet(sheetHead("Numbers for the rates")
     +`<div class="field"><label class="flabel" for="rn-y">Year</label><input type="number" id="rn-y" inputmode="numeric" min="2000" max="2999" value="${calYear()}"></div><p class="note">The births, deaths and cases in Parts D and F are counted for this year.</p>`
     +`<div class="field"><span class="flabel">July 1 population</span><div class="jp"><span>${j.typed?"Typed number":"Estimated from interviews"}</span><b class="res">${j.pop||TD}</b></div><button type="button" class="lnk" id="rn-jp">${j.typed?"Change the number":"Type a number instead"}</button></div>`
     +`<div class="field"><label class="flabel" for="rn-l">Land area (sq. km)</label><input type="number" id="rn-l" min="0" step="any" inputmode="decimal" value="${esc(community.landArea)}"></div>`
-    +`<div class="field"><label class="flabel" for="rn-e">Persons exposed to the disease</label><input type="number" id="rn-e" min="0" inputmode="numeric" value="${esc(community.exposed)}"></div>`
+    +`<div class="field"><label class="flabel" for="rn-e">Persons exposed to the disease</label><input type="number" id="rn-e" min="0" inputmode="numeric" value="${esc(community.exposed)}" placeholder="${nv.pop||""}"><small class="gn" id="rn-eh"${nv.typedEx?" hidden":""}>auto: everyone in the ${nv.hhN} ${plu(nv.hhN,"house","houses")}</small><p class="note">Type a number to replace it. Clear the box to go back to auto.</p></div>`
     +`<div class="btnrow"><button type="button" class="btn wide" id="rn-save">Save</button></div>`);
+  s.addEventListener("input",e=>{if(e.target.id==="rn-e"){const h=$("#rn-eh");if(h)h.hidden=e.target.value.trim()!==""}});
   s.addEventListener("click",e=>{
     if(e.target.closest("#rn-jp")){closeSheet();openJuly();return}
     if(!e.target.closest("#rn-save"))return;
@@ -4479,7 +4552,7 @@ function setTally(t){
 }
 /* the sheet of a tapped row: the households counted (and, for a person row, the people), and the ones with no answer */
 const whoSub=p=>{const H=p.who.length,hs=H+" "+plu(H,"household","households");return (p.noun?p.n+" "+(p.n===1?p.noun[0]:p.noun[1])+" in "+hs:p.base!=null?p.n+" of "+p.base+" "+plu(p.base,"household","households"):hs)+" · "+p.tbl};
-const whoMem=(h,m)=>{const f=NM(String(m.name||"").trim()).split(" ")[0]||memLabel(m,realMembers(h)),a=ageNum(m),mo=String(m.ageMo==null?"":m.ageMo).trim();return f+(a===0&&mo!==""?", "+mo+" mo":!isNaN(a)?", "+a:"")}; /* first name, age */
+const whoMem=(h,m)=>{const f=NM(String(m.name||"").trim()).split(" ")[0].replace(/,+$/,"")||memLabel(m,realMembers(h)),a=ageNum(m),mo=String(m.ageMo==null?"":m.ageMo).trim();return f+(a===0&&mo!==""?", "+mo+" mo":!isNaN(a)?", "+a:"")}; /* first name, age */
 const whoMeta=h=>{const st=isStamped(h),b0=String((st?h.block:blockCode())||"").trim().toUpperCase(),b=(b0.match(/-([A-Z])$/)||[])[1]||b0,pr=pairWords(st?h.pair:pairName()).toUpperCase();return [b?"Block "+b:"",pr].filter(Boolean).join(" · ")};
 const whoClear=()=>document.querySelectorAll(".who-on").forEach(x=>x.classList.remove("who-on"));
 function openWho(i,from){
@@ -4488,7 +4561,8 @@ function openWho(i,from){
   let tb="c";const up=typeof canUpdate==="function"&&typeof openUpdate==="function"&&(p.uk?canUpdate(p.uk,p.uv):p.key!=null&&p.val!=null&&canUpdate(p.key,p.val))?`<button type="button" class="btn ghost" id="who-up">Update answers</button>`:"";
   const rows=()=>[...(tb==="c"?p.who:p.miss)].sort((a,b)=>byName(a.h,b.h)).map(({h,ms})=>`<button type="button" class="prow wrow" data-hh="${esc(h.id)}"><span><b>${esc(nameOf(h))}</b>${whoMeta(h)?`<small>${esc(whoMeta(h))}</small>`:""}${ms.length?`<small class="wms">${esc(ms.map(m=>whoMem(h,m)).join(" · "))}</small>`:""}</span>${ico(IC.chev,18)}</button>`).join("");
   const tabs=p.miss.length?`<div class="sg wtabs" role="group" aria-label="Households">${[["c","Counted",p.who.length],["m","Not answered",p.miss.length]].map(([k,l,n])=>`<button type="button" data-wt="${k}" aria-pressed="${k==="c"}">${l} ${n}</button>`).join("")}</div>`:"";
-  const s=openSheet(sheetHead(p.t)+`<p class="note">${esc(whoSub(p))}</p>${up}${tabs}<div class="pcsl" id="who-list">${rows()}</div>`);
+  const mf=p.mf?`<section class="card flush whmf"><table class="t30 com"><thead><tr><th></th><th class="n">MALE</th><th class="n">FEMALE</th><th class="n">TOTAL</th></tr></thead><tbody>${[["With comorbidity",p.mf[0],p.mf[1]],["Without",p.mf[2],p.mf[3]]].map(([l,a,b])=>`<tr><td>${l}</td><td class="n">${a}</td><td class="n">${b}</td><td class="n">${a+b}</td></tr>`).join("")}<tr class="tot"><td>TOTAL</td><td class="n">${p.mf[0]+p.mf[2]}</td><td class="n">${p.mf[1]+p.mf[3]}</td><td class="n">${p.mf[4]}</td></tr></tbody></table></section>`:"";
+  const s=openSheet(sheetHead(p.t)+`<p class="note">${esc(whoSub(p))}</p>${mf}${up}${tabs}<div class="pcsl" id="who-list">${rows()}</div>`);
   sheetBack=whoClear;
   s.addEventListener("click",e=>{
     if(e.target.closest("#who-up")){closeSheet();openUpdate(p.uk||p.key,p.uk?p.uv:p.val,(p.head||"Table")+" · "+p.t,p.uk?p.who:null);return}
@@ -4498,15 +4572,15 @@ function openWho(i,from){
   });
 }
 $("#view").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&tab==="tally"&&e.target.matches&&e.target.matches("tr[data-who]")){e.preventDefault();openWho(+e.target.dataset.who,e.target)}});
-$("#view").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&tab==="tally"&&e.target.matches&&e.target.matches("tr[data-rate]")){e.preventDefault();openRate(+e.target.dataset.rate)}});
 $("#view").addEventListener("click",e=>{
   if(tab!=="tally")return;
+  const cmb=e.target.closest("[data-cm]");if(cmb){comMode=cmb.dataset.cm;keepPlace(()=>{$("#tl-body").innerHTML=tallyBody();twUp()});return}
+  const cmi=e.target.closest("[data-cmi]");if(cmi){comGo(comIdx+Number(cmi.dataset.cmi));return}
   const wr=e.target.closest("[data-who]");if(wr){openWho(+wr.dataset.who,wr);return}
   const b=e.target.closest("#tally-tabs [data-t]");if(b){setTally(b.dataset.t==="DT"?lastTbl:b.dataset.t);return}
   const tl=e.target.closest(".t30li[data-tbl]");if(tl){tblGo(tl.dataset.tbl);return}
   if(e.target.closest("[data-tback]")){tallyTbl=null;delete spot["tally:"+tallyTab];$("#tl-body").innerHTML=tallyBody();twUp();window.scrollTo(0,0);return}
   const zb=e.target.closest(".zb");if(zb){const on=zb.getAttribute("aria-expanded")!=="true";zb.setAttribute("aria-expanded",String(on));zb.textContent=zb.dataset.t+" · "+(on?"hide":"show");document.querySelectorAll('tr[data-zr="'+zb.dataset.z+'"]').forEach(r=>{r.hidden=!on});return}
-  const rr=e.target.closest("tr[data-rate]");if(rr){openRate(+rr.dataset.rate);return}
   if(e.target.closest("#rn-edit")){openRatesEdit();return}
   if(e.target.closest("#pairs-all")){openPairsAll();return}
   const mr=e.target.closest(".cmrow");if(mr){const d=mr.nextElementSibling,o=mr.getAttribute("aria-expanded")!=="true";mr.setAttribute("aria-expanded",String(o));d.hidden=!o;return}
@@ -4787,6 +4861,9 @@ $("#view").addEventListener("click",async e=>{
   if(e.target.closest("[data-fc]")){finEdit=null;again()}
 });
 $("#view").addEventListener("input",e=>{const t=e.target,id=t.dataset&&t.dataset.why;if(!id||tab!=="tally")return;finSetWhy(id,t.dataset.wk||"all",t.value);saveSet()}); /* a reason is saved as it is typed; the page is not redrawn, so the keyboard stays */
+let comSw=null; /* 3.6: swipe left for the next group of With and without comorbidity, right for the one before */
+$("#view").addEventListener("touchstart",e=>{comSw=null;if(tab!=="tally"||!e.target.closest(".cmw"))return;const w=e.target.closest(".tw");if(w&&w.scrollWidth>w.clientWidth+2)return;const t=e.touches[0];comSw=[t.clientX,t.clientY]},{passive:true});
+$("#view").addEventListener("touchend",e=>{if(!comSw)return;const t=e.changedTouches[0],dx=t.clientX-comSw[0],dy=t.clientY-comSw[1];comSw=null;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)comGo(comIdx+(dx<0?1:-1))},{passive:true});
 let finSw=null; /* swipe on the Score step: left for the next problem, right for the one before */
 $("#view").addEventListener("touchstart",e=>{finSw=null;if(tab!=="tally"||tallyTab!=="FIN"||finStep!==3||!e.target.closest(".fscore")||e.target.closest("input,textarea"))return;const t=e.touches[0];finSw=[t.clientX,t.clientY]},{passive:true});
 $("#view").addEventListener("touchend",e=>{if(!finSw)return;const t=e.changedTouches[0],dx=t.clientX-finSw[0],dy=t.clientY-finSw[1];finSw=null;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)finMove(dx<0?1:-1)},{passive:true});
@@ -6048,7 +6125,8 @@ function xp30Lines(t){
   const out=[];
   if(t.kind==="profile")t.lines.forEach(l=>out.push({k:"row",c:[l.label,l.value+(l.more?" (also "+l.more+")":""),l.of]}));
   else if(t.kind==="community")t.lines.forEach(l=>out.push({k:"row",c:[l.label,l.value,l.of]}));
-  else if(t.kind==="rates")t.lines.forEach(l=>out.push({k:"row",c:[l.label,l.value],raw:l.raw}));
+  else if(t.kind==="rates")t.lines.forEach(l=>{out.push({k:"sub",c:[l.label],rl:1});[l.form,...l.nums].forEach(x=>out.push({k:"note",c:[x],rl:1}));out.push({k:"row",c:[l.ab+" =",l.value],raw:l.raw,lit:l.lit});if(l.hint)out.push({k:"note",c:[l.hint],rl:1})}); /* each rate: its name, the formula line, the numbers line(s), then the answer */
+  else if(t.kind==="comorb")t.groups.forEach(g=>{if(t.groups.length>1)out.push({k:"sub",c:[g.title]});g.rows.forEach(r=>out.push({k:"row",c:[r.label,...[r.wm,r.wf,r.nm,r.nf,r.n].map(v=>v==null?TD:v)],grey:!!r.grey}));const s=g.total;out.push({k:"total",c:["TOTAL",s.wm,s.wf,s.nm,s.nf,s.n]})}); /* 3.6: the five columns of TALLY CONTENT.docx, every answer (zero rows too) */
   else if(t.kind==="sex")t.lines.forEach(l=>out.push(l.sub?{k:"sub",c:[l.label]}:{k:l.tot?"total":"row",c:[l.label,...[l.m,l.f,l.t].map(v=>v==null?TD:v)],grey:!!l.grey}));
   else t.secs.forEach(s=>{
     if(s.title)out.push({k:"sub",c:[s.title]});
@@ -6063,7 +6141,7 @@ const xp30Num=p=>p==null?TD:+(p/100).toFixed(6); /* a real percent for the sheet
 /* one part of the Excel report (A to F) as a sheet: the title row, then each table with its name, caption, header, rows and TOTAL */
 function xp30Sheet(add,tl,part,sheet,o){
   o=o||{};
-  const aoa=[[xlTitle()]],hdr=[],bold=[],ind=[],free=[0],lim={},names=[],caps=[],pcs=[],nop=[];
+  const aoa=[[xlTitle()]],hdr=[],bold=[],ind=[],free=[0],lim={},names=[],caps=[],pcs=[],nop=[],plain=[];
   tl.filter(t=>t.part===part).forEach(t=>{
     const nc=t.cols.length;
     aoa.push([]);free.push(aoa.length-1);
@@ -6072,13 +6150,13 @@ function xp30Sheet(add,tl,part,sheet,o){
     hdr.push(aoa.length);lim[aoa.length]=nc;aoa.push(t.cols.slice());
     xp30Lines(t).forEach(r=>{
       const i=aoa.length;
-      if(r.k==="note"){free.push(i);aoa.push([r.c[0]]);return}
+      if(r.k==="note"){free.push(i);if(r.rl)plain.push(i);aoa.push([r.c[0]]);return}
       lim[i]=nc;
       if(r.k==="sub"){bold.push(i);aoa.push([r.c[0]]);return}
       if(r.k==="total")bold.push(i);
       if(r.ind)ind.push(i);
-      if(t.kind==="rates"){aoa.push([r.c[0],rateNum(r.raw)]);o.rates&&o.rates.push([i,r.c[0]==="Literacy rate"]);return}
-      if(t.kind==="sex")nop.push(i); /* counts, not percents, in the third column */
+      if(t.kind==="rates"){aoa.push([r.c[0],rateNum(r.raw)]);o.rates&&o.rates.push([i,!!r.lit]);return}
+      if(t.kind==="sex"||t.kind==="comorb")nop.push(i); /* counts, not percents, in the third column */
       if(t.kind==="sections"){aoa.push([r.c[0],r.c[1],xp30Num(r.pct)]);pcs.push(i)}
       else aoa.push(r.c.slice());
     });
@@ -6088,15 +6166,19 @@ function xp30Sheet(add,tl,part,sheet,o){
   ws.A1.s={font:{bold:true,sz:13}};
   names.forEach(r=>{const c=ws[XLSX.utils.encode_cell({r,c:0})];if(c)c.s={font:{bold:true,sz:12}}});
   caps.forEach(r=>{const c=ws[XLSX.utils.encode_cell({r,c:0})];if(c)c.s={font:{italic:true}}});
-  aoa.forEach((row,r)=>{if(free.includes(r)&&r>0&&!names.includes(r)&&!caps.includes(r)&&row[0]){const c=ws[XLSX.utils.encode_cell({r,c:0})];if(c)c.s={font:{italic:true}}}}); /* the line under a part: "out of 36 children ..." */
+  aoa.forEach((row,r)=>{if(free.includes(r)&&r>0&&!names.includes(r)&&!caps.includes(r)&&!plain.includes(r)&&row[0]){const c=ws[XLSX.utils.encode_cell({r,c:0})];if(c)c.s={font:{italic:true}}}}); /* the line under a part: "out of 36 children ..." */
   return ws;
 }
 /* Tables A to F, with the chart data and the four charts: pyramid (A), water and toilet (B), diseases (F) */
 function xpTables(add,M,T,plans){
   const tl=tables30(),members=households.flatMap(realMembers),v=vital(members),est=rateBasis(julyInfo(members));
-  const wsA=xp30Sheet(add,tl,"A","A Demographic"),py=M.charts.pyramid;
+  const wsA=xp30Sheet(add,tl.filter(t=>t.kind!=="comorb"),"A","A Demographic"),py=M.charts.pyramid;
   if(py.some(r=>r.male||r.female))xpAside(wsA,"A Demographic",plans,2,4,{title:"Population by age and sex",head:["AGE GROUP","MALE","FEMALE","MALE (FOR THE LEFT BAR)"],rows:py.map(r=>[r.label,r.male,r.female,-r.male]),z:{3:"#,##0;#,##0"},w:[18,9,9,14],
     series:[{name:"Male",color:"00879E",col:3,fmt:"#,##0;#,##0"},{name:"Female",color:"B0561F",col:2,fmt:"#,##0"}],overlap:100,gap:40,valFmt:"#,##0;#,##0",sym:true});
+  const cm=tl.find(t=>t.kind==="comorb");
+  if(cm){const C6=["ANSWER","WITH COMORBIDITY: MALE","WITH COMORBIDITY: FEMALE","WITHOUT COMORBIDITY: MALE","WITHOUT COMORBIDITY: FEMALE","TOTAL"],w6={0:26,1:14,2:14,3:14,4:14,5:10};
+    xp30Sheet(add,[{...cm,cols:C6}],"A","A With and without",{pct:[],minc:w6}); /* 3.6: all in one, laid out like TALLY CONTENT.docx */
+    xp30Sheet(add,cm.groups.map(g=>({...cm,name:g.name,cols:[g.title,...C6.slice(1)],groups:[g]})),"A","A By group",{pct:[],minc:w6})} /* the same numbers, one small table per group */
   const wsB=xp30Sheet(add,tl,"B","B Social"),wa=M.charts.water,tt=M.charts.toilet;let row=2;
   if(wa.answered&&wa.supply.some(x=>x.count))row=xpAside(wsB,"B Social",plans,row,4,{title:"Water supply (highest level of each household)",head:["WATER SUPPLY","HOUSEHOLDS"],rows:wa.supply.map(x=>[x.label,x.count]),w:[22,12],series:[{name:"Households",color:"4E7A3B",col:1}],valFmt:"#,##0"});
   if(tt.answered&&tt.rows.length)xpAside(wsB,"B Social",plans,row,4,{title:"Type of toilet",head:["TYPE OF TOILET","HOUSEHOLDS"],rows:tt.rows.map(x=>[x.label,x.count]),w:[22,12],series:[{name:"Households",color:"4E7A3B",col:1}],valFmt:"#,##0",top:true});
@@ -6223,9 +6305,9 @@ function wTable(head,rows,widths,o){
 const XP_WID={2:[6360,3000],3:[5160,2100,2100],4:[4260,1700,1700,1700],5:[3360,1500,1500,1500,1500],6:[2760,1320,1320,1320,1320,1320]};
 /* a tables30 table as a Word table: a sub heading per part, every answer (zero rows too), a TOTAL row per part, "-" in the % of a grey row */
 function xpTable30(t){
-  const L=xp30Lines(t),k=t.kind,widths=k==="rates"?XP_WID[2]:k==="profile"?[2400,4560,2400]:k==="community"?[1900,5460,2000]:k==="sex"?XP_WID[4]:XP_WID[3];
-  const rows=L.map(r=>r.k==="sub"?{span:r.c[0]}:r.k==="note"?{span:r.c[0],fill:"FFFFFF",b:false}:r.k==="total"?{cells:k==="sex"?r.c.map(String):["TOTAL",String(r.c[1]),dpct(r.pct)],bold:true,fill:"DCE8D2"}:k==="sections"?[(r.ind?"    ":"")+r.c[0],String(r.c[1]),dpct(r.pct)]:r.c.map(String));
-  return wTable(t.cols,rows,widths,{left:k==="profile"?[1]:k==="community"?[1,2]:undefined,leftHead:k==="profile"||k==="community"});
+  const L=xp30Lines(t),k=t.kind,widths=k==="rates"?XP_WID[2]:k==="profile"?[2400,4560,2400]:k==="community"?[1900,5460,2000]:k==="sex"?XP_WID[4]:k==="comorb"?XP_WID[6]:XP_WID[3];
+  const rows=L.map(r=>r.k==="sub"?{span:r.c[0]}:r.k==="note"?{span:r.c[0],fill:"FFFFFF",b:false}:r.k==="total"?{cells:k==="sex"||k==="comorb"?r.c.map(String):["TOTAL",String(r.c[1]),dpct(r.pct)],bold:true,fill:"DCE8D2"}:k==="sections"?[(r.ind?"    ":"")+r.c[0],String(r.c[1]),dpct(r.pct)]:r.c.map(String));
+  return wTable(k==="comorb"?["ANSWER","WITH COMORBIDITY · MALE","WITH COMORBIDITY · FEMALE","WITHOUT COMORBIDITY · MALE","WITHOUT COMORBIDITY · FEMALE","TOTAL"]:t.cols,rows,widths,{left:k==="profile"?[1]:k==="community"?[1,2]:undefined,leftHead:k==="profile"||k==="community"});
 }
 /* the plain sentence under each part (A to F) */
 function xpFinding30(M,part,tl){
