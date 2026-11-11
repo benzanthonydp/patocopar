@@ -1350,6 +1350,7 @@ table.t30{table-layout:fixed}
 .t30.profile th:first-child{width:27%}.t30.profile th:nth-child(2){width:36%}.t30.profile th:nth-child(3){width:37%}
 .t30.f th:first-child{width:46%}.t30.f th:nth-child(2){width:30%}.t30.f th:nth-child(3){width:24%}
 #tl-body .t30 thead th{font-size:12.5px;letter-spacing:0}
+@media (max-width:359px){#tl-body .t30 thead th{font-size:10.5px;padding-left:4px;padding-right:4px;white-space:nowrap}#tl-body .t30.sex th:first-child{width:37%}#tl-body .t30.sex th:not(:first-child){width:21%}}
 .t30 td{overflow-wrap:anywhere}
 .t30 tr.sub td{background:var(--grp);font-weight:600;font-size:.8rem;padding-top:8px;padding-bottom:8px}
 .t30 tr.gy td{color:var(--muted)}
@@ -1459,6 +1460,9 @@ table.t30{table-layout:fixed}
 .flt td small{color:var(--muted)}
 .fleftout .tw{overflow-x:visible}
 .fleftout .rkt{min-width:0}
+/* 3.4: a picked problem under 50% keeps its rank but is not in the Top 3 */
+.fpd.flo small.fund{grid-column:2;font-size:.72rem;color:var(--muted)}
+.rkt small.fund{color:var(--muted)}
 
 /* upd30.css (3.0): Profile Community and Data parts, Update answers, Changes */
 
@@ -1627,7 +1631,7 @@ const OPT_TEXT={
  "Doctors":["Doctor","Doctors"],"Self prescription":["Kaugalingon, walay reseta","Self prescription"],"Prescribed by the doctor":["Gireseta sa doctor","Prescribed by the doctor"],"Prescribed by others":["Gireseta sa uban (nurse, midwife, pharmacist, pamilya)","Prescribed by others (nurse, midwife, pharmacist, family)"],
  "Aware":["Nahibalo","Aware"],"Unaware":["Wala nahibalo","Unaware"],
  "Artificial":["Artificial (pills, injectable, implant, IUD, condom, ligation)","Artificial (pills, injectable, implant, IUD, condom, ligation)"],
- "Complete":["Kompleto","Complete"],"Incomplete":["Dili kompleto","Incomplete"],
+ "Fully immunized":["Hingpit nga nabakunahan","Fully immunized"],"Complete":["Kompleto","Complete"],"Incomplete":["Dili kompleto","Incomplete"],
  "Currently pregnant":["Mabdos karon","Currently pregnant"],"6 weeks postpartum":["Nanganak sulod sa 6 ka semana","Within 6 weeks postpartum"],"With prenatal checkup":["Naay prenatal checkup","With prenatal checkup"],"Without prenatal checkup":["Walay prenatal checkup","Without prenatal checkup"],
  "NSVD":["NSVD (normal)","NSVD (normal delivery)"],"Home":["Balay","Home"],
  "Measles (tipdas)":["Measles (tipdas)","Measles"],"Chickenpox (bugas-bugas)":["Chickenpox (bugas-bugas)","Chickenpox"],"Influenza (trangkaso)":["Influenza (trangkaso)","Influenza"],"Asthma o COPD":["Asthma o COPD","Asthma or COPD"],
@@ -2068,7 +2072,7 @@ return {dV:dV,dK:dK,dS:dS,dT:dT,dH:dH,de:de,dU:dU,dE:dE,dp:dp,dm:dm};})();
 
 const LEGACY={"q":{"1":"Household located within the community","2":"Community divided into puroks or sitios","3":"Lived in the community 6 months or longer","4":"Member moved in (past 6 months)","5":"Member moved out (past 6 months)","9":"Household with a member currently studying","10":"All 15 and above can read and write","12":"Nuclear family","13":"More than one generation in the household","14":"Mainly uses one dialect","15":"Identifies with an ethnic or cultural group","16":"Identifies with a religious group","17":"House made mainly of strong materials (concrete)","19":"Enough space for household members","20":"Has electricity for lighting","21":"Has safe lighting during power outage","22":"Has own toilet","23":"Toilet covered or enclosed","24":"Water-sealed or flush-type toilet","25":"Toilet away from drinking water source","26":"Access to approved water supply","27":"Water available near the house","30":"Has drainage for wastewater","31":"Drainage is covered","32":"Wastewater flows without stagnant pools","33":"Has proper garbage container","34":"Regular garbage collection","38":"Practices recycling","39":"Reuses items","40":"Regular source of drinking water","43":"Treats water before drinking","46":"Illness in the household (past year)","48":"Consulted a trained health professional","50":"Took prescribed medicine","51":"Took medicine without prescription","52":"Aware of community health programs","53":"Used a community health program","54":"Knows where to access health services","55":"Currently using family planning","56":"Received family planning information","58":"Child weighed by a health worker","59":"Child's nutritional status assessed","61":"Child received routine vaccines","62":"Child has vaccination record","63":"Child completely vaccinated for age","64":"Pregnant woman in the household","65":"Received prenatal checkups","67":"Delivery attended by a health professional","68":"Community has a BHW","69":"Community has a BNS","70":"Community has a midwife","71":"Community has a nurse","72":"Community has a doctor","73":"Community has a dentist","74":"Health workers available when needed","76":"Live birth in the household (past year)","77":"Death in the household (past year)","80":"Church or chapel accessible","81":"Elementary school in or near the community","82":"Secondary school in or near the community","83":"College or tertiary school in or near the community","84":"Grocery store or market","85":"Hardware store","86":"Recreational facility","87":"Sports facility","88":"Cemetery accessible","89":"Transportation terminal accessible","90":"Birthing clinic accessible","91":"Barangay health center or RHU accessible","92":"Hospital accessible","93":"Tuberculosis","94":"Diabetes mellitus","95":"Hypertension","96":"Arthritis","97":"Glaucoma or other serious eye problem","98":"Dengue","99":"Filariasis or amoebiasis","100":"Malnutrition","101":"Cardiovascular problem","102":"Other diagnosed condition (past year)","103":"Unusually high number of cases (epidemic)","104":"Repeated cases over time (endemic)","105":"Few cases from time to time (sporadic)","110":"Accessible health services","112":"Access to emergency health services","114":"Enough health workers for basic services","PP":"Within 6 weeks postpartum","RI":"Community has a rural health inspector","CM":"Member with comorbidities","CD":"Member with a communicable disease"},"f":{"years":["single","Length of residence","Pila na ka tuig mo diri?"],"moveWhy":["text","Reason for moving out","Ngano ni-balhin?"],"illiterate":["num","Persons 15 and above who cannot read and write","Pila ang dili kahibalo mo-basa ug mo-sulat (15 years old pataas)?"],"familyType":["single","Type of family","Type of family"],"income":["single","Monthly family income","Monthly family income"],"dialect":["single","Dialect used","Unsa ang primary dialect?"],"ethnic":["single","Ethnic or cultural group","Unsa ang ethnic background?"],"religion":["multi","Religion","Unsa nga relihiyon? (pwede daghan)"],"race":["single","Race","Race"],"region":["single","Region of origin","Region of origin"],"houseType":["single","Type of materials used for house","Unsa ang materials sa balay?"],"altLight":["multi","Alternative lighting","Unsa ang gamit? (pwede daghan)"],"toiletShare":["multi","Households without own toilet","Kung wala: (pwede daghan)"],"toiletType":["multi","Types of excreta disposal","Unsa nga klase sa CR? (pwede daghan)"],"waterLevel":["multi","Water supply facility","Unsa nga level? (pwede daghan)"],"wasteHow":["multi","Types of waste disposal","Unsaon ninyo pag-dispose sa basura? (pwede daghan)"],"collectFreq":["single","Frequency of garbage collection","Pila ka beses sa usa ka semana?"],"drinkSrc":["multi","Source of drinking water","Asa gikan ang imnon nga tubig? (pwede daghan)"],"treatHow":["multi","Methods of sanitizing water","Unsaon? (pwede daghan)"],"illness":["text","Illnesses reported","Unsa nga sakit?"],"allCases":["num","Persons with illness (new and old cases)","Pila tanan ang naay sakit (bag-o ug dugay na)?"],"newCases":["num","Persons with new illness","Pila ang bag-o lang nagkasakit (new case)?"],"diagBy":["multi","Diagnosed by","Kinsa ang nag-diagnose? (pwede daghan)"],"rxBy":["multi","Prescribed by","Kinsa ang nagreseta? (pwede daghan)"],"programs":["text","Programs known","Unsa nga programs?"],"noUseWhy":["text","Reason for not using programs","Ngano wala?"],"fpMethod":["multi","Method of family planning used","Unsa nga method? (pwede daghan)"],"nutri":["multi","Nutritional status (0-6 years old)","Unsa ang resulta? (pwede daghan)"],"vaccines":["multi","Vaccines received","Unsa nga bakuna? (pwede daghan)"],"immuStatus":["multi","Immunization status","Immunization status (pwede daghan)"],"prenatalCount":["num","Number of prenatal visits","Pila ka beses?"],"delType":["multi","Type of delivery","Unsa nga klase sa pagpanganak? (pwede daghan)"],"attendant":["multi","Labor attendant","Kinsa ang nagpaanak? (pwede daghan)"],"delPlace":["multi","Place of delivery","Asa nanganak? (pwede daghan)"],"births":["num","Livebirths","Pila ka bata ang natawo?"],"deaths":["num","Deaths","Pila tanan ang namatay?"],"infant":["num","Infant deaths","Pila ang ubos sa 1 ka tuig ang edad?"],"under5":["num","Deaths below 5 years","Pila ang ubos sa 5 ka tuig ang edad?"],"maternal":["num","Maternal deaths","Pila ang inahan nga namatay tungod sa pagmabdos o pagpanganak (hangtod 42 ka adlaw human nanganak)?"],"cause":["text","Causes of death","Unsa ang hinungdan sa pagkamatay?"],"facility":["multi","Health facility used","Unsa nga health facility ang inyong ginaadtoan? (pwede daghan)"],"dz_tb":["num","Persons with Tuberculosis","Pila ka tawo?"],"dt_tb":["date","Date diagnosed: Tuberculosis","Kanus-a na-diagnose?"],"dz_dm":["num","Persons with Diabetes mellitus","Pila ka tawo?"],"dt_dm":["date","Date diagnosed: Diabetes mellitus","Kanus-a na-diagnose?"],"dz_htn":["num","Persons with Hypertension","Pila ka tawo?"],"dt_htn":["date","Date diagnosed: Hypertension","Kanus-a na-diagnose?"],"dz_arth":["num","Persons with Arthritis","Pila ka tawo?"],"dt_arth":["date","Date diagnosed: Arthritis","Kanus-a na-diagnose?"],"dz_eye":["num","Persons with Glaucoma or other serious eye problem","Pila ka tawo?"],"dt_eye":["date","Date diagnosed: Eye problem","Kanus-a na-diagnose?"],"dz_dengue":["num","Persons with Dengue","Pila ka tawo?"],"dt_dengue":["date","Date diagnosed: Dengue","Kanus-a na-diagnose?"],"dz_filam":["num","Persons with Filariasis or amoebiasis","Pila ka tawo?"],"dt_filam":["date","Date diagnosed: Filariasis or amoebiasis","Kanus-a na-diagnose?"],"dz_malnut":["num","Persons with Malnutrition","Pila ka tawo?"],"dt_malnut":["date","Date diagnosed: Malnutrition","Kanus-a na-diagnose?"],"dz_cvd":["num","Persons with Cardiovascular problem","Pila ka tawo?"],"dt_cvd":["date","Date diagnosed: Cardiovascular problem","Kanus-a na-diagnose?"],"otherDis":["text","Other diagnosed conditions","Unsa nga sakit?"],"dz_other":["num","Persons with Other diagnosed conditions","Pila ka tawo?"],"dt_other":["date","Date diagnosed: Other condition","Kanus-a na-diagnose?"],"dz_comorb":["num","Persons with Comorbidities","Pila ka tawo?"],"comorbList":["multi","Comorbidities reported","Unsa nga mga sakit ang dungan? (pwede daghan)"],"dt_comorb":["date","Date diagnosed: Comorbidities","Kanus-a na-diagnose?"],"dz_commun":["num","Persons with Communicable diseases","Pila ka tawo?"],"communList":["multi","Communicable diseases reported","Unsa nga sakit? (pwede daghan)"],"dt_commun":["date","Date diagnosed: Communicable disease","Kanus-a na-diagnose?"],"epidemicDis":["text","Epidemic diseases named","Unsa nga sakit?"]},"prof":{"Household No.":["hh_no","text"],"Purok o sitio":["purok","text"],"Petsa sa interview":["date","date"],"Interviewer":["interviewer","text"],"Pangalan o initials sa respondent":["r_name","text"],"Edad":["r_age","num"],"Sex":["r_sex","single"],"Civil status":["r_civil","single"],"Unsa man ka sa household head?":["r_relation","single"],"Educational attainment":["r_educ","single"],"Trabaho":["r_occ","text"]}}; /* questions from older versions: old backups and old Excel files still load through these */
 const DUCK=`<svg viewBox="0 0 20 30" shape-rendering="crispEdges" aria-hidden="true"><path fill="#111111" d="M5 0h5v1h-5zM4 1h1v1h-1zM10 1h1v1h-1zM3 2h1v1h-1zM11 2h1v1h-1zM3 3h1v1h-1zM11 3h1v1h-1zM3 4h1v1h-1zM11 4h1v1h-1zM3 5h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM12 5h1v1h-1zM3 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM13 6h1v1h-1zM2 7h1v1h-1zM10 7h1v1h-1zM13 7h1v1h-1zM1 8h1v1h-1zM10 8h3v1h-3zM2 9h3v1h-3zM9 9h1v1h-1zM5 10h1v1h-1zM9 10h1v1h-1zM5 11h1v1h-1zM9 11h1v1h-1zM5 12h1v1h-1zM9 12h1v1h-1zM4 13h1v1h-1zM9 13h1v1h-1zM4 14h1v1h-1zM9 14h1v1h-1zM3 15h1v1h-1zM10 15h1v1h-1zM15 15h3v1h-3zM2 16h1v1h-1zM11 16h2v1h-2zM14 16h1v1h-1zM17 16h1v1h-1zM1 17h1v1h-1zM13 17h2v1h-2zM17 17h2v1h-2zM0 18h1v1h-1zM15 18h2v1h-2zM19 18h1v1h-1zM0 19h1v1h-1zM14 19h1v1h-1zM17 19h1v1h-1zM19 19h1v1h-1zM0 20h1v1h-1zM17 20h1v1h-1zM19 20h1v1h-1zM0 21h1v1h-1zM16 21h1v1h-1zM18 21h1v1h-1zM0 22h1v1h-1zM17 22h2v1h-2zM1 23h1v1h-1zM18 23h1v1h-1zM2 24h1v1h-1zM4 24h1v1h-1zM13 24h1v1h-1zM16 24h2v1h-2zM3 25h3v1h-3zM12 25h4v1h-4zM5 26h1v1h-1zM7 26h5v1h-5zM13 26h1v1h-1zM4 27h1v1h-1zM6 27h1v1h-1zM10 27h1v1h-1zM12 27h1v1h-1zM4 28h1v1h-1zM6 28h1v1h-1zM10 28h1v1h-1zM12 28h1v1h-1zM3 29h1v1h-1zM6 29h1v1h-1zM9 29h1v1h-1zM12 29h1v1h-1z"></path><path fill="#ffffff" d="M5 1h4v1h-4zM4 2h1v1h-1zM8 2h2v1h-2zM5 4h4v1h-4zM4 5h4v1h-4zM9 5h1v1h-1zM6 6h2v1h-2zM9 6h1v1h-1zM7 7h3v1h-3zM7 8h3v1h-3zM6 9h3v1h-3zM6 10h3v1h-3zM6 11h3v1h-3zM6 12h3v1h-3zM6 13h3v1h-3zM5 14h4v1h-4zM4 15h6v1h-6zM3 16h8v1h-8zM15 16h2v1h-2zM2 17h11v1h-11zM15 17h2v1h-2zM1 18h14v1h-14zM17 18h1v1h-1zM1 19h13v1h-13zM15 19h2v1h-2zM1 20h15v1h-15zM1 21h15v1h-15zM1 22h16v1h-16zM3 23h14v1h-14zM5 24h7v1h-7z"></path><path fill="#d6d8de" d="M9 1h1v1h-1zM4 4h1v1h-1zM5 9h1v1h-1zM5 13h1v1h-1zM18 18h1v1h-1zM18 19h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM17 21h1v1h-1zM2 23h1v1h-1zM17 23h1v1h-1zM3 24h1v1h-1zM12 24h1v1h-1zM14 24h2v1h-2zM6 25h6v1h-6z"></path><path fill="#de5c26" d="M5 2h3v1h-3zM10 2h1v1h-1zM10 3h1v1h-1z"></path><path fill="#5ca0de" d="M4 3h6v1h-6zM10 4h1v1h-1z"></path><path fill="#22528c" d="M9 4h1v1h-1zM11 5h1v1h-1zM11 6h2v1h-2zM11 7h2v1h-2z"></path><path fill="#f0b642" d="M4 6h2v1h-2zM3 7h4v1h-4zM2 8h5v1h-5zM6 26h1v1h-1zM12 26h1v1h-1zM5 27h1v1h-1zM11 27h1v1h-1zM5 28h1v1h-1zM11 28h1v1h-1zM4 29h2v1h-2zM10 29h2v1h-2z"></path></svg>`;
-const APP_VERSION="3.3"; /* build.py bakes in the one version number (Profile > App shows it) */
+const APP_VERSION="3.4"; /* build.py bakes in the one version number (Profile > App shows it) */
 const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const ico=(p,s)=>`<svg class="ic" width="${s||22}" height="${s||22}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
@@ -2182,7 +2186,7 @@ function canon(x){
 }
 const realMembers=h=>(Array.isArray(h.members)?h.members:[]).filter(m=>m&&(m.name||m.age||m.age===0||m.sex||(m.head===true&&(m.religion||m.civil||m.educ))));
 const ageNum=m=>{const a=m&&m.age;if(a==null||String(a).trim()==="")return NaN;const n=Number(a);return isFinite(n)&&n>=0?n:NaN}; /* 0 is an age; NaN means no age yet */
-const KID_NUT=["Underweight","Normal","Overweight"],KID_IMM=["Complete","Incomplete"];
+const KID_NUT=["Underweight","Normal","Overweight"],KID_IMM=["Fully immunized","Complete","Incomplete"];
 const kidOf=m=>m&&m.kid&&typeof m.kid==="object"?m.kid:{};
 /* the head of the house: the flagged member, else the member named like r_name, else the first real member */
 function headOf(h){
@@ -2198,8 +2202,7 @@ const headNamed=(h,m)=>{if(!m||String(m.name||"").trim()||!String(h&&h.r_name||"
 const headDone=h=>{const m=headNamed(h,headOf(h));return !!m&&HEAD_REQ.every(([k])=>hasField(m,k))};
 const headLocked=h=>!headDone(h)&&realMembers(h).length<=1; /* an old client with two or more members is never locked, it only shows Missing */
 const kidsOf=h=>realMembers(h).filter(m=>{const a=ageNum(m);return a>=0&&a<=8});
-/* immunization applies only to children at least 9 months old: a baby of age 0 with months below 9, or with no months typed (cannot judge), is left out of the immunization count and is not asked for it in Balikan */
-const kidImmOk=m=>{if(ageNum(m)!==0)return true;const s=String(m&&m.ageMo!=null?m.ageMo:"").trim(),n=Number(s);return s!==""&&isFinite(n)&&n>=9};
+/* 3.2: immunization is asked for every child 0 to 8 years, a baby too (no age limit in months). Three stored values, in this order: Fully immunized, Complete, Incomplete. */
 /* ---------- diagnosed conditions: member.dx=[{k,y}] names who has what (y is the year or ""); h.dxOld={k:n} keeps an older household count that is higher than the people named so far ---------- */
 const DXK=new Set(DX.map(d=>d.k)),DXBY={},DXITEM={},DXLONG=[...DX].sort((a,b)=>b.short.length-a.short.length);DX.forEach(d=>{DXBY[d.k]=d;DXITEM[d.k]=ITEMS.find(i=>i.n===d.n)});
 const isYear=y=>/^\d{4}$/.test(y);
@@ -2603,7 +2606,7 @@ function personGaps(h){
 /* ages 0 to 6 need nutrition and immunization, ages 7 and 8 only immunization; weight is optional */
 function kidGaps(h){
   const o=[],ms=realMembers(h),pg=pageKids();
-  kidsOf(h).forEach(m=>{const k=kidOf(m),nm=memLabel(m,ms);if(ageNum(m)<=6&&!k.nut)o.push([`${nm}: ${L("nutrisyon","nutrition")}`,pg]);if(!k.imm&&kidImmOk(m))o.push([`${nm}: ${L("bakuna","immunization")}`,pg])});
+  kidsOf(h).forEach(m=>{const k=kidOf(m),nm=memLabel(m,ms);if(ageNum(m)<=6&&!k.nut)o.push([`${nm}: ${L("nutrisyon","nutrition")}`,pg]);if(!k.imm)o.push([`${nm}: ${L("bakuna","immunization")}`,pg])});
   return o;
 }
 function gaps(h){
@@ -2621,7 +2624,7 @@ const REQ_TOTAL=h=>{
   const hd=headOf(h);let t=HEAD_REQ.length+realMembers(h).filter(m=>m!==hd).length*4+DX.length;
   REQ.forEach(i=>{if(i.n)t++;i.fus.forEach(f=>{if(f.type==="roster"||f.opt)return;if(!i.n||f.when==="any"||f.when===A(h,i.n))t++})});
   DX.forEach(d=>{if(A(h,d.n)==="Oo")t++});
-  kidsOf(h).forEach(m=>{t+=(ageNum(m)<=6?1:0)+(kidImmOk(m)?1:0)});
+  kidsOf(h).forEach(m=>{t+=(ageNum(m)<=6?1:0)+1});
   if(hasDAnswer(h))t++;
   return t;
 };
@@ -2995,7 +2998,7 @@ function smMembers(x){
     const rel=mm.religion==="Others"?(mm.religionOther||"Others"):mm.religion,meta=[mm.civil,rel].filter(Boolean).join(" · ");
     const e=memComorb(m,x),dx=e==="Oo"?dxText(m):e==="Wala"?"No condition":"";
     const a=ageNum(m),kid=a>=0&&a<=8,kd=kidOf(m),ky=kid?[kd.w!=null&&kd.w!==""?kd.w+" kg":"",kd.nut,kd.imm].filter(Boolean).join(" · "):"";
-    const ks=kid?[a<=6&&!kd.nut?L("Nutrisyon","Nutrition"):"",!kd.imm&&kidImmOk(m)?L("Bakuna","Immunization"):""].filter(Boolean):[];
+    const ks=kid?[a<=6&&!kd.nut?L("Nutrisyon","Nutrition"):"",!kd.imm?L("Bakuna","Immunization"):""].filter(Boolean):[];
     const ms2=memMiss(mm,isH).map(fldCap);
     return `<div class="sm-m"><div class="sm-mh">${avHTML(mm,true,true)}<b>${esc(line)}</b>${isH?`<span class="sm-head">${L("Pangulo","Head")}</span>`:""}</div>${meta?`<div class="sm-s">${esc(meta)}</div>`:""}${dx?`<div class="sm-s">${esc(dx)}</div>`:""}${ky?`<div class="sm-s">${esc(ky)}</div>`:""}${ms2.length?smMiss(isH?PG_HEAD:PG_FAMILY,ms2.length,ms2.join(", ")):""}${ks.length?smMiss(pk,ks.length,ks.join(", ")):""}</div>`;
   }).join("");
@@ -3029,7 +3032,7 @@ function smHouse(x){
     dxEff(m,x).forEach(e=>{const d=DX.find(z=>z.k===e.k);if(!d)return;if(e.k==="other"){const ns=othNames(m,x);(ns.length?ns:[d.short]).forEach(n=>tags.push([n,1]))}else tags.push([d.short,1])}); /* each illness of Other illness is its own tag */
     if(memComorb(m,x)==="Oo"&&!dxOf(m).length)tags.push([L("May sakit","Has a condition"),1]);
     if(kd.nut==="Underweight")tags.push([L("Kulang sa timbang","Underweight"),1]);else if(kd.nut==="Overweight")tags.push([L("Sobra sa timbang","Overweight"),0]);
-    if(kd.imm==="Complete")tags.push([L("Kompleto ang bakuna","Fully immunized"),0]);else if(kd.imm==="Incomplete")tags.push([L("Kulang ang bakuna","Not fully immunized"),1]);
+    if(kd.imm==="Fully immunized")tags.push([L("Hingpit ang bakuna","Fully immunized"),0]);else if(kd.imm==="Complete")tags.push([L("Kompleto ang bakuna","Complete immunization"),0]);else if(kd.imm==="Incomplete")tags.push([L("Kulang ang bakuna","Not fully immunized"),1]);
     return `<div class="sm-hm"><span class="sm-av" aria-hidden="true">${ini}</span><span class="sm-hn"><b>${esc(smFirst(mm,ms))}</b><small>${esc([isNaN(a)?"":a,lb].filter(v=>v!=="").join(" · "))}</small></span>${tags.length?`<span class="sm-tags">${tags.map(t=>`<span class="sm-tag${t[1]?" bad":""}">${esc(t[0])}</span>`).join("")}</span>`:""}</div>`;
   }).join("");
   return `<section class="card sm-x" data-sm="house">${smSH(L("Panimalay","Household"))}${rows}</section>`;
@@ -3043,7 +3046,7 @@ function smWatchList(x){
   if(has("sewage","None"))f.push([L("Walay drainage","No drainage"),"Threat"]);
   const wd=sel("wasteHow");if(wd.length&&!wd.includes("Garbage collection")){const bad=wd.filter(s=>s==="Open dumping"||s==="Open burning").map(s=>s.toLowerCase());f.push([L("Dili makolekta ang basura","Garbage is not collected")+(bad.length?" ("+bad.join(", ")+")":""),"Threat"])}
   if(has("income","Low income (10K & below)"))f.push([L("Income 10,000 ug ubos","Income 10,000 and below"),"Threat"]);
-  const ri=TALLY_AGES.imm,ik=ms.filter(m=>{const a=ageNum(m);return a>=ri[0]&&a<=ri[1]&&kidImmOk(m)&&kidOf(m).imm==="Incomplete"}).length;
+  const ri=TALLY_AGES.imm,ik=ms.filter(m=>{const a=ageNum(m);return a>=ri[0]&&a<=ri[1]&&kidOf(m).imm==="Incomplete"}).length;
   if(ik)f.push([ik===1?L("Usa ka bata wala ma-bakunahan og hingpit","One child not fully immunized"):L(ik+" ka bata wala ma-bakunahan og hingpit",ik+" children not fully immunized"),"Threat"]);
   DX.forEach(d=>{
     const has=ms.filter(m=>dxEff(m,x).some(e=>e.k===d.k)),who=has.map(m=>smFirst(m,ms)),nm=d.short;
@@ -3324,7 +3327,7 @@ function refreshFamily(){ /* the list is drawn again in place, so the page keeps
 }
 /* children at home: one card per member aged 0 to 8, written straight into m.kid */
 const setKid=(m,k)=>{Object.keys(k).forEach(x=>{if(k[x]===undefined||k[x]==="")delete k[x]});if(Object.keys(k).length)m.kid=k;else delete m.kid};
-const kidNeed=m=>{const a=ageNum(m),k=kidOf(m);return (a<=6&&!k.nut?1:0)+(k.imm||!kidImmOk(m)?0:1)};
+const kidNeed=m=>{const a=ageNum(m),k=kidOf(m);return (a<=6&&!k.nut?1:0)+(k.imm?0:1)};
 function kidCardHTML(m,i){
   const a=ageNum(m),k=kidOf(m),young=a<=6,nm=NM(String(m.name||"").trim())||QT("Miyembro","Member")+" "+(i+1);
   const chips=(key,list,sel)=>`<div class="chipw" data-kk="${key}">${list.map(x=>`<button type="button" class="chip" data-v="${esc(x)}" aria-pressed="${sel===x}">${esc(optL(x))}</button>`).join("")}</div>`;
@@ -3866,12 +3869,12 @@ const allPersons=()=>households.flatMap(h=>realMembers(h).map(m=>({m,h})));
 /* Age limits the owner may still change: [low, high] in whole years, both included.
    fp: women counted in Family planning. imm and nut: children counted in Immunization and Nutrition.
    babyEd: ages that read "Not yet school age" in Education. */
-const TALLY_AGES={fp:[18,45],imm:[0,8],nut:[0,6],babyEd:[0,2]}; /* 1.9: immunization counts children 9 months to 8 years (a baby under 9 months is left out by kidImmOk) */
+const TALLY_AGES={fp:[18,45],imm:[0,8],nut:[0,6],babyEd:[0,2]}; /* 3.2: immunization counts every child 0 to 8 years, a baby too */
 const agesTo=a=>a[0]+" to "+a[1];
-const IMM_TXT="9 months to "+TALLY_AGES.imm[1]+" years",plu=(n,a,b)=>n===1?a:b;
+const IMM_TXT=agesTo(TALLY_AGES.imm)+" years",plu=(n,a,b)=>n===1?a:b;
 const inAges=(m,a)=>{const n=ageNum(m);return n>=a[0]&&n<=a[1]};
 const T_CIVIL="CIVIL STATUS (0 TO 64 AND UP)",T_BABY="Not yet school age ("+TALLY_AGES.babyEd[0]+" - "+TALLY_AGES.babyEd[1]+")";
-const T_FP="METHODS OF FAMILY PLANNING ("+TALLY_AGES.fp[0]+"-"+TALLY_AGES.fp[1]+" YEARS OLD)",T_NUT="NUTRITIONAL STATUS OF TARGET AGE GROUP ("+TALLY_AGES.nut[0]+" - "+TALLY_AGES.nut[1]+" YEARS OLD)",T_IMM="IMMUNIZATION STATUS (9 MONTHS - "+TALLY_AGES.imm[1]+" YEARS OLD)";
+const T_FP="METHODS OF FAMILY PLANNING ("+TALLY_AGES.fp[0]+"-"+TALLY_AGES.fp[1]+" YEARS OLD)",T_NUT="NUTRITIONAL STATUS OF TARGET AGE GROUP ("+TALLY_AGES.nut[0]+" - "+TALLY_AGES.nut[1]+" YEARS OLD)",T_IMM="IMMUNIZATION STATUS ("+TALLY_AGES.imm[0]+" - "+TALLY_AGES.imm[1]+" YEARS OLD)";
 const MULTI_NOTE="More than one answer, % can go over 100";
 /* one row of Table A, worked out from the persons in it: [With Male, With Female, Without Male, Without Female, Total]. With is memComorb "Oo", Without is "Wala"; Total is everybody in the row. */
 function demoRow(list){
@@ -3887,7 +3890,7 @@ function demoRow(list){
 const TW={A:[["AGE","(0 - 9)","(10 - 18)","(19 - 27)","(28 - 36)","(37 - 45)","(46 - 54)","(55 - 63)","(64 and above)"],[T_CIVIL,"Single","Married","Common law","Widowed","Separated / Annulled"],["RELIGION","Roman Catholic","Born Again","Iglesia ni Cristo","Mormons","Islam","Seventh-day Adventist","No religion","Others"],["EDUCATIONAL ATTAINMENT",T_BABY,"No formal education","Pre school","Kindergarten","Elementary level","Elementary graduate","Highschool level","Highschool graduate","Senior high school level","Senior high school graduate","Vocational","ALS","College level","College graduate","Post grad / Masteral"]],
  A3:[["TYPES OF FAMILY","Nuclear","Single parent family","Extended family","Blended family","Childless family","Grandparent led family","Adoptive family","Dyad family"],["ETHNIC BACKGROUND","Waray","Cebuano","Boholano","Hiligaynon","Subanen","Maranao","Maguindanaon","Tausug","Higaonon","Manobo","Tagalog","Ilocano","Bicolano","Kapampangan","Others"],["RACE","Asian","Non-Asian"],["REGIONAL ORIGIN","Luzon","Visayas","Mindanao"],["PRIMARY DIALECT SPOKEN","Bisaya","English","Tagalog","Others"],["PATTERNS OF MIGRATION","Permanent residents","Transient residents"]],
  B:[["TYPES OF MATERIALS USED FOR HOUSE","Light","Strong","Mixed"],["LIGHTING FACILITIES","Electricity","Kerosene","Candles","Solar","None","Shared from a neighbor","Rechargeable lamp","Flashlight","Generator","Others"],["TYPES OF EXCRETA DISPOSAL","Pail system","Open pit system","Closed pit system","Bored-hole latrine","Overhung latrine","Antipolo type","Water sealed type","Flush type","None (no toilet)"],["SEPTIC TANK","Own septic tank","Shared septic tank","Pit only","Canal or river","No toilet"],["APPROVED TYPES OF WATER SUPPLY FACILITIES","Level 1","Level 2","Level 3","Others"],["SEWAGE SYSTEM","Blind drainage","Open drainage","None"],["TYPES OF WASTE DISPOSAL","Hog feeding","Open dumping","Open burning","Burial pit","Composting","Garbage collection","Others"],["TYPES OF WASTE MANAGEMENT","Recycling","Reusing","None"],["SOURCE OF DRINKING WATER","Local water system","Artesian well","Surface water","Ground water","Rain water","Commercially prepared water","Others"],["INCOME / MONTH","10,000 and below","10,001 to 20,000","above 20,000"]],
- C:[["HEALTH MANAGEMENT AUTHORITY","Doctors","Albularyo","Hilot","Others"],["HOW TO DECIDE MEDICATION TAKEN DURING ILLNESS","Self prescription","Prescribe by the doctor","Prescribe by others","None"],["COMMUNITY HEALTH PROGRAMS","Aware","Unaware"],[T_FP,"Natural","Artificial","Others"],[T_NUT,"Underweight","Normal","Overweight"],[T_IMM,"Complete","Incomplete"],["MATERNAL CARE","~Pregnancy","Currently pregnant","6 weeks postpartum","~Perinatal","With prenatal checkup","Without prenatal checkup","Complete prenatal checkup","~Types of delivery","NSVD","Cesarean","~Ante-partum labor attendant","Doctor","Nurse","Midwife","Hilot","Albularyo","Others","~Location of delivery","Home","Lying in","Hospital"],["PROVISION OF GOVERNMENT AND PRIVATE HEALTH MANPOWER RESOURCES","Rural health physician","Public health nurse","Rural health midwife","Rural health inspector","Rural health dentist","Barangay nutrition scholar","None"]]};
+ C:[["HEALTH MANAGEMENT AUTHORITY","Doctors","Albularyo","Hilot","Others"],["HOW TO DECIDE MEDICATION TAKEN DURING ILLNESS","Self prescription","Prescribe by the doctor","Prescribe by others","None"],["COMMUNITY HEALTH PROGRAMS","Aware","Unaware"],[T_FP,"Natural","Artificial","Others"],[T_NUT,"Underweight","Normal","Overweight"],[T_IMM,"Fully immunized","Complete","Incomplete"],["MATERNAL CARE","~Pregnancy","Currently pregnant","6 weeks postpartum","~Perinatal","With prenatal checkup","Without prenatal checkup","Complete prenatal checkup","~Types of delivery","NSVD","Cesarean","~Ante-partum labor attendant","Doctor","Nurse","Midwife","Hilot","Albularyo","Others","~Location of delivery","Home","Lying in","Hospital"],["PROVISION OF GOVERNMENT AND PRIVATE HEALTH MANPOWER RESOURCES","Rural health physician","Public health nurse","Rural health midwife","Rural health inspector","Rural health dentist","Barangay nutrition scholar","None"]]};
 /* a row's name where it is not the saved value (saved values never change); the old saved income answers read as the new income rows */
 const TLAB={"Prescribed by the doctor":"Prescribe by the doctor","Prescribed by others":"Prescribe by others","Born Again Christian":"Born Again","Senior Highschool level":"Senior high school level","Senior Highschool graduate":"Senior high school graduate","Pre-school":"Pre school","Lying-in":"Lying in","Separated/Annulled":"Separated / Annulled","Post grad/Masteral":"Post grad / Masteral","Yes, own septic tank":"Own septic tank","Yes, shared with neighbors":"Shared septic tank","No, pit only":"Pit only","No, goes to a canal or river":"Canal or river","Low income (10K & below)":"10,000 and below","Middle income (11K - 20K)":"10,001 to 20,000","High income (21K above)":"above 20,000"};
 const tlab=x=>TLAB[x]||x;
@@ -3976,15 +3979,17 @@ function tgFollow(key,names,ok){
   });
   return {base,rows:tgRows(names,t,()=>0),wh,miss};
 }
-/* nutrition and immunization count children in the age ranges of TALLY_AGES: each child's answer is one. A house with no child answer yet still counts its old household answers, one per value. */
-function kidCount(field){
-  const rg=TALLY_AGES[field],old=field==="nut"?"nutri":"immuStatus";let base=0;const t=new Map(),wh=new Map(),miss=[];
+/* nutrition and immunization count children in the age ranges of TALLY_AGES: each child's answer is one. A house with no child answer yet still counts its old household answers, one per value.
+   3.2: range (optional) narrows the count to one age group (Table C splits immunization into 0 to 12 months and 1 to 8 years). prev (with range) lists the groups before this one: a house's old household answer is counted once, in the first group where the house has a child (rest: the group that also takes a house with no child 0 to 8 at all). */
+function kidCount(field,range,prev,rest){
+  const rg=range||TALLY_AGES[field],old=field==="nut"?"nutri":"immuStatus";let base=0;const t=new Map(),wh=new Map(),miss=[];
   households.forEach(h=>{
-    const inr=realMembers(h).filter(m=>inAges(m,rg)&&(field!=="imm"||kidImmOk(m))),given=realMembers(h).filter(m=>inAges(m,rg)&&kidOf(m)[field]),ov=h.fu&&h.fu[old];
-    const ks=given.filter(m=>field!=="imm"||kidImmOk(m)).map(m=>[kidOf(m)[field],{h,m}]); /* immunization: a baby under 9 months (or age 0 with no months) is left out, but its answer still stops the old household answer from being used */
-    const ents=given.length?ks:ov&&typeof ov==="object"?selArr(ov).map(x=>String(x).trim()).filter(Boolean).map(x=>[x,h]):[];
+    const all=realMembers(h),inr=all.filter(m=>inAges(m,rg)),given=inr.filter(m=>kidOf(m)[field]),anyGiven=all.some(m=>inAges(m,TALLY_AGES[field])&&kidOf(m)[field]),ov=h.fu&&h.fu[old];
+    const oe=!anyGiven&&ov&&typeof ov==="object"?selArr(ov).map(x=>String(x).trim()).filter(Boolean).map(x=>[x,h]):[];
+    const own=!prev||(inr.length>0&&!prev.some(p=>all.some(m=>inAges(m,p))))||(!!rest&&!all.some(m=>inAges(m,TALLY_AGES[field])));
+    const ents=anyGiven?given.map(m=>[kidOf(m)[field],{h,m}]):own?oe:[];
     ents.forEach(([x,w])=>{base++;t.set(x,(t.get(x)||0)+1);if(!wh.has(x))wh.set(x,[]);wh.get(x).push(w)});
-    if(given.length||!ents.length)inr.filter(m=>!kidOf(m)[field]).forEach(m=>miss.push({h,m})); /* children in the age range with no answer (an old household answer covers the house) */
+    if(anyGiven||!oe.length)inr.filter(m=>!kidOf(m)[field]).forEach(m=>miss.push({h,m})); /* children in the age range with no answer (an old household answer covers the house) */
   });
   return {base,t,wh,miss};
 }
@@ -4109,7 +4114,7 @@ function sec30(o){
   const ent=o.ent,tot=ent.reduce((s,e)=>s+(e.ind?0:e.l.length),0),ans=ent.reduce((s,e)=>s+(e.ind||e.na?0:e.l.length),0),real=ent.reduce((s,e)=>s+(e.ind||e.grey||e.na?0:e.l.length),0),miss=o.miss||[];
   const rows=ent.map(e=>{
     const n=e.l.length,b=e.ind?e.pbase:real,w=mkW(o.tbl,n,e.l,{base:o.noun?undefined:(e.ind?e.pbase:ans),miss:e.na?[]:miss,noun:o.noun});
-    w.key=o.key==null?null:o.key;w.val=e.na||e.ind?null:e.val;w.head=o.head;
+    w.key=o.key==null?null:o.key;w.val=e.na||e.ind?null:e.val;w.head=o.head;w.uk=e.uk||null;w.uv=e.uk?e.uv:null; /* uk and uv: the row can be updated from its tap (Update answers, app6.js); key and val stay for the household questions */
     return {label:e.label,n,pct:e.grey||e.na||!b?null:r2(n/b*100),grey:!!(e.grey||e.na),bad:!!e.bad&&!e.grey&&!e.na,zero:n===0,...(e.ind?{ind:true}:{}),who:w};
   });
   const s={title:o.title||"",key:o.key==null?null:o.key,sub:o.sub||"",rows,total:{n:tot,pct:tot?100:null}};
@@ -4135,20 +4140,24 @@ function hhSec(key,o){
   const ans=ent.reduce((s,e)=>s+(e.ind||e.na?0:e.l.length),0);
   return sec30({title:o.title,key,tbl:tb30(),head:hd30(o.title),ent,miss:na,sub:o.noNA?tinfo({unit:TUNIT(key),base:ans})[0]:"",expect:o.noNA||o.ok?null:households.length});
 }
-/* a question asked of every person: Age, Civil status, Religion, Education */
+/* a question asked of every person: Age, Civil status, Religion, Education. UPK_P: the rows of these three can be updated (Age cannot). */
+const UPK_P={[T_CIVIL]:"@civil","RELIGION":"@religion","EDUCATIONAL ATTAINMENT":"@educ"};
 function personSec(title,o){
   o=o||{};const pick=TA_PICK[title],names=TW.A.find(g=>g[0]===title).slice(1),m=new Map(names.map(n=>[n,[]])),na=[],P=allPersons();
   P.forEach(p=>{let k=pick(p.m,p.h)||"";if(!k){na.push(p);return}if(k.startsWith("Others")||(!m.has(k)&&names.includes("Others")))k="Others";if(!m.has(k))m.set(k,[]);m.get(k).push(p)});
-  const ent=order30([...m.entries()].map(([k,l])=>({label:k,val:k,l})),o.fixed);
+  const uk=UPK_P[title]||null,ent=order30([...m.entries()].map(([k,l])=>({label:k,val:k,l,...(uk?{uk,uv:k}:{})})),o.fixed);
   if(na.length)ent.push({label:title==="AGE"?"No age yet":NA,val:null,l:na,na:true});
   return sec30({title:"",key:null,tbl:tb30(),head:hd30(),ent,noun:PPL,expect:P.length});
 }
-/* Children: nutrition (0 to 6) and immunization (9 months to 8 years), counted by child */
-function kidSec(field,key,names,title){
-  const k=kidCount(field),ent=names.map(n=>({label:n,val:n,l:k.wh.get(n)||[],bad:isBad30(key,n)}));
+/* Children: nutrition (0 to 6) and immunization (0 to 12 months, 1 to 8 years), counted by child. o: range, prev (see kidCount), unit (what the sub line counts), na (add the grey No answer yet row: the children with no answer) */
+function kidSec(field,key,names,title,o){
+  o=o||{};const k=kidCount(field,o.range,o.prev,o.rest),uk="@"+field,ent=names.map(n=>({label:n,val:n,l:k.wh.get(n)||[],bad:isBad30(key,n),uk,uv:n}));
   k.wh.forEach((l,n)=>{if(!names.includes(n))ent.push({label:n,val:n,l,bad:false})});
-  return sec30({title,key:null,tbl:tb30(),head:hd30(title),ent,miss:k.miss,noun:KIDS,sub:tinfo({unit:TUNIT(key),base:k.base})[0]});
+  if(o.na&&k.miss.length)ent.push({label:NA,val:null,l:k.miss,na:true});
+  return sec30({title,key:null,tbl:tb30(),head:hd30(title),ent,miss:k.miss,noun:KIDS,sub:tinfo({unit:o.unit||TUNIT(key),base:k.base})[0]});
 }
+const IMM_G=[[0,0],[1,TALLY_AGES.imm[1]]]; /* the two immunization groups of Table C: age 0 (any months), age 1 to the top of TALLY_AGES.imm */
+const immSecs30=()=>[["Immunization, 0 to 12 months","Children 0 to 12 months",IMM_G[0],[]],["Immunization, "+IMM_G[1][0]+" to "+IMM_G[1][1]+" years","Children "+IMM_G[1][0]+" to "+IMM_G[1][1]+" years",IMM_G[1],[IMM_G[0]],true]].map(([ti,u,r,p,rest])=>kidSec("imm","~imm",KID_IMM,ti,{range:r,prev:p,rest,unit:u,na:true}));
 /* Family planning, two counts of households, using it (Oo) or not (Wala), anything else is "No answer yet".
    1) fp30: a member of any sex aged 18 to 45 who is Married, Single or Common law (the stored civil values). Table C part 1 and the Overview read this one.
    2) fpW30: a woman aged 18 to 45 (womenFp), Table C part 2. */
@@ -4161,13 +4170,13 @@ function fpSplit(ok){
 }
 const fp30=()=>fpSplit(fpMember),fpW30=()=>fpSplit(h=>womenFp(h)>0);
 function fpOne(f,title,sub){
-  const ent=[{label:"Yes",val:"Oo",l:f.yes}],pb=f.yes.length,m=k=>f.yes.filter(h=>(selOf(h,"fpType")[0]||"")===k);
+  const ent=[{label:"Yes",val:"Oo",l:f.yes,uk:"@fp",uv:"Oo"}],pb=f.yes.length,m=k=>f.yes.filter(h=>(selOf(h,"fpType")[0]||"")===k);
   /* 3.1: under Yes, the method each household picked (fpType): Natural and Artificial always, Others and Method not given only when there are some; percent of the Yes households */
   const oth=f.yes.filter(h=>{const v=selOf(h,"fpType")[0]||"";return v&&v!=="Natural"&&v!=="Artificial"}),none=f.yes.filter(h=>!(selOf(h,"fpType")[0]||""));
-  ent.push({label:"Natural",ind:true,pbase:pb,l:m("Natural")},{label:"Artificial",ind:true,pbase:pb,l:m("Artificial")});
+  ent.push({label:"Natural",ind:true,pbase:pb,l:m("Natural"),uk:"@fpType",uv:"Natural"},{label:"Artificial",ind:true,pbase:pb,l:m("Artificial"),uk:"@fpType",uv:"Artificial"});
   if(oth.length)ent.push({label:"Others",ind:true,pbase:pb,l:oth});
   if(none.length)ent.push({label:"Method not given",ind:true,pbase:pb,l:none});
-  ent.push({label:"No",val:"Wala",l:f.no});
+  ent.push({label:"No",val:"Wala",l:f.no,uk:"@fp",uv:"Wala"});
   if(f.na.length)ent.push({label:NA,val:null,l:f.na,na:true});
   return sec30({title,key:55,tbl:tb30(),head:hd30("Family planning"),ent,miss:f.na,sub});
 }
@@ -4233,12 +4242,12 @@ function diseases30(){
     }
     const hs=new Set(mine.map(x=>x.h));
     households.forEach(h=>{if(dxOldOf(h,d.k)>dxNamed(h,d.k))hs.add(h)}); /* an older household count with nobody named still counts the house */
-    ent.push({label:DXNAME[d.k]||d.short,l:[...hs]});
+    ent.push({label:DXNAME[d.k]||d.short,l:[...hs],uk:"@dx:"+d.k,uv:"Oo"});
   });
   ent.sort((a,b)=>(a.grey?1:0)-(b.grey?1:0)||b.l.length-a.l.length||a.label.localeCompare(b.label));
   const live=ent.filter(e=>e.l.length).length;let seen=0;
   const rows=ent.map(e=>{
-    const n=e.l.length,w=mkW("Table F",n,e.l,{base:HN});w.key=null;w.val=null;w.head=hd30("Diseases");
+    const n=e.l.length,w=mkW("Table F",n,e.l,{base:HN});w.key=null;w.val=null;w.head=hd30("Diseases");w.uk=e.uk||null;w.uv=e.uk?e.uv:null;
     if(n)seen++;
     return {label:e.label,n,pct:e.grey||!HN?null:r2(n/HN*100),grey:!!e.grey,bad:false,zero:n===0,...(n&&live>8&&seen>6?{fold:true}:{}),who:w};
   });
@@ -4265,7 +4274,7 @@ add30("B","income","Income",1,()=>HHU([hhSec("income",{fixed:true})]));
 add30("C","health","Health care",2,()=>HHU([hhSec("diagBy",{title:"Who diagnoses or treats"}),hhSec("medication",{title:"Medication decision"})]));
 add30("C","programs","Programs",1,()=>HHU([hhSec("programAware")]));
 add30("C","fp","Family planning",2,()=>HHU(fpSec()));
-add30("C","children","Children",2,()=>({unit:"mixed",cap:"Table C · children",secs:[kidSec("nut","~nut",["Underweight","Normal","Overweight"],"Nutritional status"),kidSec("imm","~imm",["Complete","Incomplete"],"Immunization status")]}));
+add30("C","children","Children",3,()=>({unit:"mixed",cap:"Table C · children",secs:[kidSec("nut","~nut",["Underweight","Normal","Overweight"],"Nutritional status"),...immSecs30()]}));
 add30("C","mothers","Mothers",5,()=>({unit:"mixed",cap:"Table C · mothers and deliveries",secs:[hhSec("pregnancy",{title:"Pregnancy",noNA:true,fixed:true}),hhSec("prenatal",{title:"Prenatal checkup",noNA:true}),hhSec("delType",{title:"Type of delivery",noNA:true,fixed:true}),hhSec("attendant",{title:"Who attended the delivery",noNA:true}),hhSec("delPlace",{title:"Place of delivery",noNA:true})]}));
 add30("D","rates","Rates",1,rates30);
 add30("E","community","Community",1,community30);
@@ -4369,7 +4378,7 @@ function ovHTML(){
 function covRows(){
   const first=(k,o)=>{let b=0,y=0;households.forEach(h=>{const v=selOf(h,k);if(!v.length)return;b++;if(o.includes(v[0]))y++});return [y,b]};
   const [ty,tb]=first("toiletType",SAN[1][2]),[wy,wb]=first("waterLevel",SAN[0][2]),im=kidCount("imm"),fp=fp30();
-  const rows=[["Sanitary toilet",ty,tb],["Fully immunized ("+IMM_TXT+")",im.t.get("Complete")||0,im.base],["Safe water (Level 2 or 3)",wy,wb]];
+  const rows=[["Sanitary toilet",ty,tb],["Immunized ("+IMM_TXT+")",(im.t.get("Fully immunized")||0)+(im.t.get("Complete")||0),im.base],["Safe water (Level 2 or 3)",wy,wb]];
   if(fp.yes.length+fp.no.length)rows.push(["Family planning",fp.yes.length,fp.yes.length+fp.no.length]);
   return rows;
 }
@@ -4476,13 +4485,13 @@ const whoClear=()=>document.querySelectorAll(".who-on").forEach(x=>x.classList.r
 function openWho(i,from){
   const p=WHO[i];if(!p)return;
   whoClear();const tr=from&&from.closest("tr");if(tr)tr.classList.add("who-on");
-  let tb="c";const up=typeof canUpdate==="function"&&typeof openUpdate==="function"&&p.key!=null&&p.val!=null&&canUpdate(p.key,p.val)?`<button type="button" class="btn ghost" id="who-up">Update answers</button>`:"";
+  let tb="c";const up=typeof canUpdate==="function"&&typeof openUpdate==="function"&&(p.uk?canUpdate(p.uk,p.uv):p.key!=null&&p.val!=null&&canUpdate(p.key,p.val))?`<button type="button" class="btn ghost" id="who-up">Update answers</button>`:"";
   const rows=()=>[...(tb==="c"?p.who:p.miss)].sort((a,b)=>byName(a.h,b.h)).map(({h,ms})=>`<button type="button" class="prow wrow" data-hh="${esc(h.id)}"><span><b>${esc(nameOf(h))}</b>${whoMeta(h)?`<small>${esc(whoMeta(h))}</small>`:""}${ms.length?`<small class="wms">${esc(ms.map(m=>whoMem(h,m)).join(" · "))}</small>`:""}</span>${ico(IC.chev,18)}</button>`).join("");
   const tabs=p.miss.length?`<div class="sg wtabs" role="group" aria-label="Households">${[["c","Counted",p.who.length],["m","Not answered",p.miss.length]].map(([k,l,n])=>`<button type="button" data-wt="${k}" aria-pressed="${k==="c"}">${l} ${n}</button>`).join("")}</div>`:"";
   const s=openSheet(sheetHead(p.t)+`<p class="note">${esc(whoSub(p))}</p>${up}${tabs}<div class="pcsl" id="who-list">${rows()}</div>`);
   sheetBack=whoClear;
   s.addEventListener("click",e=>{
-    if(e.target.closest("#who-up")){closeSheet();openUpdate(p.key,p.val,(p.head||"Table")+" · "+p.t);return}
+    if(e.target.closest("#who-up")){closeSheet();openUpdate(p.uk||p.key,p.uk?p.uv:p.val,(p.head||"Table")+" · "+p.t,p.uk?p.who:null);return}
     const t=e.target.closest("[data-wt]");if(t){tb=t.dataset.wt;s.querySelectorAll("[data-wt]").forEach(b=>b.setAttribute("aria-pressed",String(b===t)));$("#who-list").innerHTML=rows();return}
     const b=e.target.closest("[data-hh]");if(!b)return;const h=households.find(x=>x.id===b.dataset.hh);if(!h)return;
     closeSheet();if(isOurs(h)){if(p.key!=null&&typeof openHHAt==="function")openHHAt(h.id,p.key);else openHH(h.id)}else openSummary(h.id,{k:"tally",tab:"tally"}); /* the same two ways as Home and the Pairs card */
@@ -4544,6 +4553,7 @@ function finSt(){
 const FIN_FLAW_WHY=["A choice was missing","The choices were unclear","It is a community fact, not a household answer"];
 const FIN_FLAW_HINT={lighthouse:"Wood and plywood had no choice. They were picked as Light."}; /* only a suggestion in the text box: the pair still has to mark it */
 const FIN_HW_TX=["The barangay has a BHW. The question had no BHW choice.","Health workers are a community fact, answered once in Community."];
+const FIN_UNDER="Under 50%, not in Top 3",FIN_MAXPICK=10;
 const finHalf=p=>Math.ceil(p.b/2),finNeed=p=>Math.max(0,finHalf(p)-p.y);
 function finFlaw(id){
   if(id==="hw"){const w=comWorkers();if(w.some(x=>x!=="None")){const b=w.includes(COM_BHW);return {why:FIN_FLAW_WHY[b?0:2],tx:FIN_HW_TX[b?0:1],reason:FIN_HW_TX[b?0:1],auto:true}}}
@@ -4552,7 +4562,7 @@ function finFlaw(id){
   return {why,tx,reason:tx||why,auto:false};
 }
 /* the problems left out as flawed questions: [{id,label,n,base,pct (0 to 100, two decimals),reason}], highest share first. Word and Excel print this as "Left out of Pick". */
-function finLeftOut(P){return (P||finProblems()).filter(p=>p.flaw).map(p=>({id:p.id,label:p.name,n:p.y,base:p.b,pct:Math.round(p.p*100)/100,reason:p.flaw.reason}))}
+function finLeftOut(P){P=P||finProblems();const pk=finSt().pick;return P.filter(p=>p.flaw||(!p.can&&pk.includes(p.id))).map(p=>({id:p.id,label:p.name,n:p.y,base:p.b,pct:Math.round(p.p*100)/100,reason:p.flaw?p.flaw.reason:FIN_UNDER}))} /* 3.4: a flawed question, or a picked problem under 50% (it can be scored but never takes a Top slot) */
 const finU=(p,n)=>{const u=finU1(p);return n===1?({households:"household",people:"person",children:"child"}[u]||u):u}; /* the problem's own unit word */
 /* a reason per criterion; an older whole-problem justification (a plain string) is kept as the "all" note */
 const finWhy=(id,k)=>{const w=finSt().why[id];return typeof w==="string"?(k==="all"?w:""):w&&typeof w==="object"&&!Array.isArray(w)&&typeof w[k]==="string"?w[k]:""};
@@ -4585,7 +4595,7 @@ function finProblems(){
   add("selfrx","Self prescription or prescribed by others","Threat",3,cnt("medication",v=>v[0]==="Self prescription"||v[0]==="Prescribed by others"),"of households choose their own medicines or take what others prescribe when ill.","Table C · Medication decision","households");
   add("trad","Consults albularyo or hilot","Threat",2,cnt("diagBy",v=>has(v,["Albularyo","Hilot"])),"of households go to an albularyo or hilot when sick.","Table C · Health management authority","households");
   {let b=0;const yl=[];households.forEach(h=>{const d=selOf(h,"delPlace"),t=selOf(h,"attendant");if(!d.length&&!t.length)return;b++;if(d.includes("Home")||has(t,["Hilot","Albularyo"]))yl.push(h)});add("homedel","Home delivery or delivered by hilot/albularyo","Threat",3,wl([yl.length,b],yl),"of households with a delivery had it at home or with a hilot or albularyo.","Table C · Place of delivery and labor attendant","households")}
-  const im=kidCount("imm"),nu=kidCount("nut"),kw=(k,v)=>wl([k.t.get(v)||0,k.base],k.wh.get(v),k.miss),P=allPersons(),kids=(f,v)=>households.filter(h=>realMembers(h).some(m=>inAges(m,TALLY_AGES[f])&&(f!=="imm"||kidImmOk(m))&&kidOf(m)[f]===v)).length;
+  const im=kidCount("imm"),nu=kidCount("nut"),kw=(k,v)=>wl([k.t.get(v)||0,k.base],k.wh.get(v),k.miss),P=allPersons(),kids=(f,v)=>households.filter(h=>realMembers(h).some(m=>inAges(m,TALLY_AGES[f])&&kidOf(m)[f]===v)).length;
   add("imm","Child not fully immunized","Threat",3,kw(im,"Incomplete"),"of children "+IMM_TXT+" are not fully immunized.","Table C · Immunization status","children "+IMM_TXT,kids("imm","Incomplete"));
   add("nut","Underweight child","Deficit",3,kw(nu,"Underweight"),"of children "+agesTo(TALLY_AGES.nut)+" are underweight.","Table C · Nutritional status","children aged "+agesTo(TALLY_AGES.nut),kids("nut","Underweight"));
   add("overwt","Overweight child","Deficit",3,kw(nu,"Overweight"),"of children "+agesTo(TALLY_AGES.nut)+" are overweight.","Table C · Nutritional status","children aged "+agesTo(TALLY_AGES.nut),kids("nut","Overweight"));
@@ -4650,22 +4660,22 @@ function finFactsHTML(P){
    <div class="fsec"><span>Key findings</span><span>${P.length?shown.length+" of "+P.length:0}</span></div>${P.length?FIN_GROUPS.map(([n,t])=>{const g=shown.filter(p=>finNat(p)===n);return g.length?`<div class="fgt" data-n="${g.length}">${t}</div>`+g.map(finFindRow).join(""):""}).join("")+(P.length>key.length?`<button type="button" class="btn ghost sm" data-fall="1">${finAllF?"Show only the key findings":"Show all "+P.length+" findings"}</button>`:"")+``:`<p class="note">No findings yet. They appear as households are interviewed.</p>`}
    <button type="button" class="btn fnext" data-fstep="2">Next: pick the problems</button>`];
 }
-/* 2 Pick (3.0): only a problem in 50% or more of its base can be picked. Below the "50% line" the others sit in grey with how many more households they need; a problem marked as a flawed question sits in "Left out · flawed question". Tap a name for its source and "Mark as flawed". */
+/* 2 Pick (3.4): any problem that is not a flawed question can be picked (up to 10), but only a picked problem in 50% or more of its base can be Top 1, 2 or 3. Below the "50% line" the others sit in grey with how many more households they need and a tick box of their own; a problem marked as a flawed question sits in "Left out · flawed question". Tap a name for its source and "Mark as flawed". */
 const finOrder=P=>FIN_AREAS.flatMap(([k])=>P.filter(p=>finArea(p)===k)); /* P is already highest first, so each group keeps that order */
-const finPicked=P=>finOrder(P).filter(p=>p.can&&finSt().pick.includes(p.id)); /* the picks that count: a saved pick that is now under 50% or flawed stays saved but is not here */
+const finPicked=P=>finOrder(P).filter(p=>!p.flaw&&finSt().pick.includes(p.id)); /* the picks that count (they are scored): a saved pick that is now flawed stays saved but is not here; one under 50% is here but never takes a Top slot */
 const finP2=p=>pct(p.y,p.b);
 function finPickHTML(P){
-  const f=finSt(),can=P.filter(p=>p.can),under=P.filter(p=>!p.flaw&&!p.can),left=P.filter(p=>p.flaw),n=can.filter(p=>f.pick.includes(p.id)).length;
+  const f=finSt(),can=P.filter(p=>p.can),under=P.filter(p=>!p.flaw&&!p.can),left=P.filter(p=>p.flaw),n=P.filter(p=>!p.flaw&&f.pick.includes(p.id)).length;
   const head=`<div class="fcnt"><span><b>${n}</b> of 10 picked</span><span class="fmeter" aria-hidden="true">${[...Array(10)].map((_,i)=>`<i${i<n?' class="on"':""}></i>`).join("")}</span></div>`;
   const src=p=>finSrc.has(p.id)?`<span class="fpsrc">${esc(finSrcTx(p))}</span>`:"";
   const flagBtn=p=>finSrc.has(p.id)&&!p.flaw?`<button type="button" class="link fpflag" data-fflaw="${esc(p.id)}">Mark as flawed</button>`:"";
   const name=p=>`<button type="button" class="fpn" data-fsrc="${esc(p.id)}" aria-expanded="${finSrc.has(p.id)}">${esc(p.name)}${p.comm?`<span class="ftg fcomm">${FIN_COMM_TAG}</span>`:""}</button>`;
   const row=p=>{const on=f.pick.includes(p.id);return `<div class="fpr${on?"":" off"}"><button type="button" class="fck${on?" on":""}" data-fp="${esc(p.id)}" aria-pressed="${on}" aria-label="Pick ${esc(p.name)}"><span>${on?ico(IC.check,14):""}</span></button>${name(p)}<span class="fpp">${finP2(p)}</span><span class="fbar"><i style="width:${Math.max(1,Math.min(100,p.p)).toFixed(1)}%"></i></span><span class="fpm">${p.y} of ${p.b} ${esc(finU1(p))}</span>${src(p)}${flagBtn(p)}</div>`};
-  const low=p=>`<div class="fpr low"><span class="fck-sp" aria-hidden="true"></span>${name(p)}<span class="fpp">${finP2(p)}</span><span class="fpm">${p.y} of ${p.b} ${esc(finU1(p))}</span><span class="fpneed">${p.need} more ${esc(finU(p,p.need))} needed</span>${src(p)}${flagBtn(p)}</div>`;
+  const low=p=>{const on=f.pick.includes(p.id);return `<div class="fpr low${on?"":" off"}"><button type="button" class="fck${on?" on":""}" data-fp="${esc(p.id)}" aria-pressed="${on}" aria-label="Pick ${esc(p.name)}"><span>${on?ico(IC.check,14):""}</span></button>${name(p)}<span class="fpp">${finP2(p)}</span><span class="fpm">${p.y} of ${p.b} ${esc(finU1(p))}</span><span class="fpneed">${p.need} more ${esc(finU(p,p.need))} needed</span>${src(p)}${flagBtn(p)}</div>`};
   const out=p=>`<div class="fpr lft"><span class="fpn fpn-s">${esc(p.name)}</span><span class="fpp">${finP2(p)}</span><span class="fpm">${p.y} of ${p.b} ${esc(finU1(p))}</span><span class="ftg fflawtg">Flawed question</span><span class="fpwhy">${esc(p.flaw.reason)}</span>${p.flaw.auto?"":`<button type="button" class="link fpback" data-fback="${esc(p.id)}">Put back</button>`}</div>`;
   const HN=households.length,line=under.length?`<div class="fline" role="separator"><span>50% line · ${Math.ceil(HN/2)} of ${HN}</span></div>`:"";
   const list=(can.length?can.map(row).join(""):`<p class="note fpnone">No problem reaches 50% yet.</p>`)+line+under.map(low).join("");
-  return [head,P.length?`<p class="note">Only problems in 50% or more of the households count.</p><section class="card sm fpl">${list}</section>${left.length?`<section class="card sm fpl fleft"><div class="fgt" data-n="${left.length}">Left out · flawed question</div>${left.map(out).join("")}</section>`:""}<button type="button" class="btn fnext" data-fstep="3">Next: score the picked problems</button>`:`<p class="note">No problems to pick yet.</p>`];
+  return [head,P.length?`<p class="note">You can pick up to 10. Only problems in 50% or more of the households can be Top 3.</p><section class="card sm fpl">${list}</section>${left.length?`<section class="card sm fpl fleft"><div class="fgt" data-n="${left.length}">Left out · flawed question</div>${left.map(out).join("")}</section>`:""}<button type="button" class="btn fnext" data-fstep="3">Next: score the picked problems</button>`:`<p class="note">No problems to pick yet.</p>`];
 }
 /* the Mark as flawed sheet */
 let finFlawId=null,finFlawWhy="";
@@ -4706,13 +4716,15 @@ function finScoreHTML(P){
 /* 4 Top 3: every picked problem ranked by its score, the top 3 highlighted, and the NCP box of the chosen one */
 const finAct=(c,v)=>v/c[4]*c[3]; /* the actual score of one criterion */
 function finRank(P){
-  const pick=finSt().pick,list=P.filter(p=>p.can&&pick.includes(p.id)).map(p=>({p,s:finScores(p)}));
+  const pick=finSt().pick,list=P.filter(p=>!p.flaw&&pick.includes(p.id)).map(p=>({p,s:finScores(p)}));
   list.forEach(x=>{x.t12=FIN_CRIT.every(c=>x.s[c[0]]!=null)?FIN_CRIT.reduce((t,c)=>t+FIN_T12[c[0]]*x.s[c[0]],0):null});
   const done=list.filter(x=>x.t12!=null);done.forEach(x=>{x.rank=1+done.filter(y=>y.t12>x.t12).length}); /* equal totals share a rank: the guide gives no tie rule */
   const sorted=[...done.sort((a,b)=>b.t12-a.t12||b.p.p-a.p.p),...list.filter(x=>x.t12==null)];
-  sorted.forEach((x,i)=>{x.top3=x.t12!=null&&i<3}); /* the three highest of all the picked problems */
-  return {list,sorted};
+  const tops=sorted.filter(x=>x.t12!=null&&x.p.can).slice(0,3); /* the three highest of the picks that reach 50%: a pick under 50% keeps its rank in the list but never takes a Top slot */
+  sorted.forEach(x=>{x.top3=tops.includes(x);x.under=!x.p.can});
+  return {list,sorted,tops};
 }
+const finTop=R=>R.tops;
 const finOk=(k,v)=>{const c=FIN_CRIT.find(x=>x[0]===k);return c&&c[5].includes(v)?v:undefined};
 function finScores(p){
   const f=finSt(),g=k=>finOk(k,Number(f[k][p.id])),r=p.p; /* the unrounded percent: 74.6% is still under 75 */
@@ -4732,14 +4744,14 @@ function finLeftHTML(P){
   return `<section class="card flush fleftout"><p class="tcap">Left out of Pick</p><div class="tw"><table class="rkt flt"><thead><tr><th class="c0">PROBLEM</th><th class="c0">REASON</th></tr></thead><tbody>${L.map(x=>`<tr><td class="c0"><b>${esc(x.label)}</b><br><small>${x.n} of ${x.base} · ${x.pct.toFixed(2)}%</small></td><td class="c0">${esc(x.reason)}</td></tr>`).join("")}</tbody></table></div></section>`;
 }
 function finTopHTML(P){
-  const R=finRank(P),done=R.sorted.filter(x=>x.t12!=null),top=done.slice(0,3),n=R.list.length,lo=finLeftHTML(P);
+  const R=finRank(P),done=R.sorted.filter(x=>x.t12!=null),top=finTop(R),n=R.list.length,lo=finLeftHTML(P);
   if(finSel>=top.length)finSel=0;
   const head=`<div class="fcnt"><span>${n?`All <b>${n}</b> picked ranked`:"Nothing ranked yet"}</span><span class="fsub">top 3 highlighted</span></div>`;
   if(!n)return [head,`<div class="empty"><b>No problems picked yet.</b><br>Pick and score them first.</div>${lo}<button type="button" class="btn fnext" data-fstep="2">Go to Pick</button>`];
   const sub=p=>finPct(p)+" of "+finU1(p)+" · "+p.tag+(p.comm?" · "+FIN_COMM_TAG:"");
-  const card=(x,i)=>x.t12==null?`<div class="fpd flo fun"><span class="frk">-</span><b>${esc(x.p.name)}</b><button type="button" class="link" data-fgo="${esc(x.p.id)}">Score it</button></div>`:x.top3?`<button type="button" class="fpd fn1${i===finSel?" on":""}" data-ftop="${i}" aria-pressed="${i===finSel}"><span class="frk">${x.rank}</span><b>${esc(x.p.name)}</b><small>${esc(sub(x.p))}</small><span class="fsv">${(x.t12/12).toFixed(2)}</span></button>`:`<div class="fpd flo"><span class="frk">${x.rank}</span><b>${esc(x.p.name)}</b><span class="fsv">${(x.t12/12).toFixed(2)}</span></div>`;
-  const ncp=top.length?(()=>{const m=finNcp(top[finSel],finSel);return `<div class="ftabs" role="tablist" aria-label="Top 3 problems">${top.map((x,i)=>`<button type="button" role="tab" class="ftab${i===finSel?" on":""}" data-ftop="${i}" aria-selected="${i===finSel}">${i===0?"Top 1 · main":"Top "+(i+1)}</button>`).join("")}</div><section class="fncp" role="tabpanel" aria-label="For your NCP, ${esc(m.label)}"><h4>For your NCP · ${esc(m.label)}</h4><p class="fnm"><b>${esc(m.name)}</b> · ${(top[finSel].t12/12).toFixed(2)} of 10</p><p><b>Cues:</b> ${esc(m.cues)}</p><p><b>Problem:</b> ${esc(m.problem)}.</p><p><b>Affects:</b> ${esc(m.affects)}.</p></section><button type="button" class="btn" data-fcopy="1">Copy for NCP</button>`})():`<p class="note">Score at least one problem to see the top 3.</p>`;
-  const tb=`<details class="fdet"><summary>Full scoring table</summary><section class="card flush"><p class="tcap">Priority ranking · ${n} ${n===1?"problem":"problems"}</p><div class="tw"><table class="rkt"><thead><tr><th class="c0">Problem</th>${FIN_CRIT.map(c=>`<th class="n">${c[2]}</th>`).join("")}<th class="n">Total</th><th class="n">Rank</th></tr></thead><tbody>${R.sorted.map(x=>`<tr><td class="c0">${esc(x.p.name)}</td>${FIN_CRIT.map(c=>x.s[c[0]]==null?`<td class="n z">${TD}</td>`:`<td class="n">${finAct(c,x.s[c[0]]).toFixed(2)}</td>`).join("")}${x.t12==null?`<td class="n z">${TD}</td><td class="n z">${TD}</td>`:`<td class="n t">${(x.t12/12).toFixed(2)}</td><td class="n t">${x.rank}</td>`}</tr>`).join("")}</tbody></table></div></section><p class="note">Highest total is rank 1. Equal totals share a rank. A problem with a missing score has no rank yet.</p></details>`;
+  const card=x=>x.t12==null?`<div class="fpd flo fun"><span class="frk">-</span><b>${esc(x.p.name)}</b><button type="button" class="link" data-fgo="${esc(x.p.id)}">Score it</button></div>`:x.top3?(ti=>`<button type="button" class="fpd fn1${ti===finSel?" on":""}" data-ftop="${ti}" aria-pressed="${ti===finSel}"><span class="frk">${x.rank}</span><b>${esc(x.p.name)}</b><small>${esc(sub(x.p))}</small><span class="fsv">${(x.t12/12).toFixed(2)}</span></button>`)(top.indexOf(x)):`<div class="fpd flo"><span class="frk">${x.rank}</span><b>${esc(x.p.name)}</b><span class="fsv">${(x.t12/12).toFixed(2)}</span>${x.under?`<small class="fund">${FIN_UNDER}</small>`:""}</div>`;
+  const ncp=top.length?(()=>{const m=finNcp(top[finSel],finSel);return `<div class="ftabs" role="tablist" aria-label="Top 3 problems">${top.map((x,i)=>`<button type="button" role="tab" class="ftab${i===finSel?" on":""}" data-ftop="${i}" aria-selected="${i===finSel}">${i===0?"Top 1 · main":"Top "+(i+1)}</button>`).join("")}</div><section class="fncp" role="tabpanel" aria-label="For your NCP, ${esc(m.label)}"><h4>For your NCP · ${esc(m.label)}</h4><p class="fnm"><b>${esc(m.name)}</b> · ${(top[finSel].t12/12).toFixed(2)} of 10</p><p><b>Cues:</b> ${esc(m.cues)}</p><p><b>Problem:</b> ${esc(m.problem)}.</p><p><b>Affects:</b> ${esc(m.affects)}.</p></section><button type="button" class="btn" data-fcopy="1">Copy for NCP</button>`})():`<p class="note">Score at least one problem in 50% or more of the households to see the top 3.</p>`;
+  const tb=`<details class="fdet"><summary>Full scoring table</summary><section class="card flush"><p class="tcap">Priority ranking · ${n} ${n===1?"problem":"problems"}</p><div class="tw"><table class="rkt"><thead><tr><th class="c0">Problem</th>${FIN_CRIT.map(c=>`<th class="n">${c[2]}</th>`).join("")}<th class="n">Total</th><th class="n">Rank</th></tr></thead><tbody>${R.sorted.map(x=>`<tr><td class="c0">${esc(x.p.name)}${x.under?`<br><small class="fund">${FIN_UNDER}</small>`:""}</td>${FIN_CRIT.map(c=>x.s[c[0]]==null?`<td class="n z">${TD}</td>`:`<td class="n">${finAct(c,x.s[c[0]]).toFixed(2)}</td>`).join("")}${x.t12==null?`<td class="n z">${TD}</td><td class="n z">${TD}</td>`:`<td class="n t">${(x.t12/12).toFixed(2)}</td><td class="n t">${x.rank}</td>`}</tr>`).join("")}</tbody></table></div></section><p class="note">Highest total is rank 1. Equal totals share a rank. A problem with a missing score has no rank yet. A problem under 50% keeps its rank here but is not in the Top 3.</p></details>`;
   return [head,`<div class="pod">${R.sorted.map(card).join("")}</div>${ncp}${tb}${lo}<button type="button" class="btn fnext" data-fstep="5">Next: health teaching</button>`];
 }
 function finHTML(){
@@ -4757,7 +4769,7 @@ $("#view").addEventListener("click",async e=>{
   if(tab!=="tally"||tallyTab!=="FIN")return;
   const f=finSt(),again=()=>{saveSet();keepPlace(()=>{$("#tl-body").innerHTML=tallyBody();twUp()})};let b;
   if(b=e.target.closest("[data-fstep]")){finStep=Number(b.dataset.fstep)||1;finGo();return}
-  if(b=e.target.closest("[data-fp]")){const id=b.dataset.fp,i=f.pick.indexOf(id),p=finProblems().find(x=>x.id===id);if(!p||!p.can)return; /* under 50% or flawed: it cannot be picked */if(i<0)f.pick.push(id);else f.pick.splice(i,1);again();return}
+  if(b=e.target.closest("[data-fp]")){const id=b.dataset.fp,i=f.pick.indexOf(id),P=finProblems(),p=P.find(x=>x.id===id);if(!p||p.flaw)return; /* a flawed question cannot be picked */if(i<0){if(finPicked(P).length>=FIN_MAXPICK){toast("You can pick up to 10");return}f.pick.push(id)}else f.pick.splice(i,1);again();return}
   if(b=e.target.closest("[data-fflaw]")){finOpenFlaw(b.dataset.fflaw);return}
   if(b=e.target.closest("[data-fback]")){delete f.flaw[b.dataset.fback];again();return}
   if(b=e.target.closest("[data-fsrc]")){const id=b.dataset.fsrc;if(!finSrc.delete(id))finSrc.add(id);keepPlace(()=>{$("#tl-body").innerHTML=tallyBody();twUp()});return}
@@ -4766,7 +4778,7 @@ $("#view").addEventListener("click",async e=>{
   if(e.target.closest("[data-fnext]")){finMove(1);return}
   if(b=e.target.closest("[data-fgo]")){const pk=finPicked(finProblems()),i=pk.findIndex(p=>p.id===b.dataset.fgo);if(i>=0)finIdx=i;finStep=3;finGo();return}
   if(b=e.target.closest("[data-ftop]")){finSel=Number(b.dataset.ftop)||0;again();return}
-  if(e.target.closest("[data-fcopy]")){const P=finProblems(),top=finRank(P).sorted.filter(x=>x.t12!=null).slice(0,3);if(!top.length)return;const ok=await copyText(finNcp(top[Math.min(finSel,top.length-1)],Math.min(finSel,top.length-1)).text);toast(ok?"Copied. Paste it into your NCP.":"Could not copy. Select the box and copy it.",!ok);return}
+  if(e.target.closest("[data-fcopy]")){const P=finProblems(),top=finTop(finRank(P));if(!top.length)return;const ok=await copyText(finNcp(top[Math.min(finSel,top.length-1)],Math.min(finSel,top.length-1)).text);toast(ok?"Copied. Paste it into your NCP.":"Could not copy. Select the box and copy it.",!ok);return}
   if(b=e.target.closest("[data-fo]")){const id=b.dataset.fo;if(!finOpen.delete(id))finOpen.add(id);if(finEdit===id)finEdit=null;again();return}
   if(e.target.closest("[data-fall]")){finAllF=!finAllF;again();return}
   if(b=e.target.closest("[data-fe]")){finEdit=b.dataset.fe;again();const t=$("#fin-ed");if(t){t.focus();t.setSelectionRange(t.value.length,t.value.length)}return}
@@ -4854,7 +4866,7 @@ function teachTopics(P){
 const teachSort=(a,b)=>(a.top||9)-(b.top||9)||b.pct-a.pct; /* Top 1 topics first, then Top 2 and 3, then the highest share */
 /* the topics with what the person did (ticked, edited points) and the star from the current Top 3 */
 function finTeach(P){
-  const ids=finRank(P).sorted.filter(x=>x.t12!=null).slice(0,3).map(x=>x.p.id);
+  const ids=finTop(finRank(P)).map(x=>x.p.id);
   return teachTopics(P).map(t=>({...t,on:teachOn(t.key),points:teachPts(t.key).slice(),top:t.link?ids.indexOf(t.link)+1:0}));
 }
 const topTag=n=>n?`<span class="ftg ttop t${n}">TOP ${n}</span>`:"";
@@ -4932,8 +4944,8 @@ function reportModel(){
     water:{answered:W.b,supply:W.lv.map((c,i)=>({label:"Level "+(i+1),count:c})),meters:W.mt.map(mp)},
     toilet:{answered:TD2.base,rows:TD2.rows.map(([l,c])=>({label:tlab(l),count:c,pct:pct(c,TD2.base)})),sanitary:mp(TD2.san)},
     diseases:dxPeople().map(x=>({label:x[0],total:x[1],male:x[2],female:x[3],years:x[5]}))};
-  const problems=R.sorted.map(x=>{const p=x.p,sc={};FIN_CRIT.forEach(c=>{const v=x.s[c[0]];sc[c[0]]={score:v==null?null:v,label:v==null?"":FIN_LBL[c[0]][v],weight:c[3],max:c[4],actual:v==null?null:finAct(c,v),reason:c[0]==="mag"?"":finWhy(p.id,c[0])}});return {id:p.id,name:p.name,comm:!!p.comm,area:finAreaName(p),typology:p.tag,pct:Math.round(p.p*100)/100,pctText:finPct(p),y:p.y,b:p.b,unit:p.unit,magnitude:x.s.mag,scores:sc,total:x.t12==null?null:x.t12/12,rank:x.t12==null?null:x.rank,top3:!!x.top3,scored:x.t12!=null,note:finWhy(p.id,"all")}});
-  const top=R.sorted.filter(x=>x.t12!=null).slice(0,3),ncp=top.map((x,i)=>{const m=finNcp(x,i),pm=problems.find(q=>q.id===x.p.id);return {...m,tier:i===0?"main":"top"+(i+1),pct:pm.pct,pctText:pm.pctText,score:pm.total,magnitude:pm.magnitude,scores:pm.scores}});
+  const problems=R.sorted.map(x=>{const p=x.p,sc={};FIN_CRIT.forEach(c=>{const v=x.s[c[0]];sc[c[0]]={score:v==null?null:v,label:v==null?"":FIN_LBL[c[0]][v],weight:c[3],max:c[4],actual:v==null?null:finAct(c,v),reason:c[0]==="mag"?"":finWhy(p.id,c[0])}});return {id:p.id,name:p.name,comm:!!p.comm,area:finAreaName(p),typology:p.tag,pct:Math.round(p.p*100)/100,pctText:finPct(p),y:p.y,b:p.b,unit:p.unit,magnitude:x.s.mag,scores:sc,total:x.t12==null?null:x.t12/12,rank:x.t12==null?null:x.rank,top3:!!x.top3,under50:!!x.under,scored:x.t12!=null,note:finWhy(p.id,"all")}});
+  const top=finTop(R),ncp=top.map((x,i)=>{const m=finNcp(x,i),pm=problems.find(q=>q.id===x.p.id);return {...m,tier:i===0?"main":"top"+(i+1),pct:pm.pct,pctText:pm.pctText,score:pm.total,magnitude:pm.magnitude,scores:pm.scores}});
   const T=finTeach(P),teach={reporters:Object.fromEntries(TEACH_PARTS.map(([k])=>[k,teachRep(k)])),sections:TEACH_PARTS.map(([k,title])=>({part:k,title,reporter:teachRep(k),topics:T.filter(t=>t.part===k).sort(teachSort).map(t=>({key:t.key,title:t.title,on:t.on,top:t.top,topTag:t.top?"TOP "+t.top:"",who:t.who,why:t.why,pct:Math.round(t.pct*100)/100,points:t.points.slice()}))}))};
   const leftOut=(typeof finLeftOut==="function"?finLeftOut():[]);
   return {info,keyNumbers,vitalRates,findings,tables,charts,problems,ncp,teach,leftOut};
@@ -5016,7 +5028,7 @@ $("#view").addEventListener("click",e=>{
 });
 
 /* ---------- guides (from the COPAR Assessment Guide, always English) ---------- */
-const GUIDE=[["Civil status",[["Single (S)","Person is not and has never been married."],["Married (M)","Person living with another person bound by legal rites."],["Common law (CL)","Person living with another person without the benefit of a legal marriage."],["Widowed (W)","Person whose spouse has died, and has not remarried."],["Separated/Annulled","Person whose bond of marriage has been dissolved and can therefore remarry."]]],["Religion and education",[["Religion","Indicate the religion in the locality. Children 0-14 assume the mother's religion. Indicate the religious sect."],["Educational status","Indicate status for each family member (7 and above): degree holder or college graduate, presently studying and highest completed level, stopped studying and highest completed level, or no formal education."]]],["Literacy rate",[["Who is illiterate","In the Philippines, a person aged 15 and above who is unable to read and write is considered illiterate."],["Formula","Number of people 15 and above who can read and write x 100, divided by the number of people aged 15 and above."]]],["Ethnic background, race, origin",[["Ethnic background","Selected cultural and sometimes physical characteristics used to divide people into groups."],["Race","A population with anatomical traits that distinguish it from others."],["Regional origin","Luzon, Visayas, or Mindanao, or per region to be specific."],["Primary dialect spoken","The primary dialect used by the family."]]],["Patterns of migration",[["Permanent","Living in the community 6 months and above."],["Transient","Living in the community below 6 months."],["What to determine","Whether there is a large in-migration or out-migration, and the reasons behind the trend."]]],["Density and dependency",[["Population density","Land area (sq. km) x 100, divided by total population, as written in the guide. Compute per purok if the barangay has puroks."],["Dependency ratio","The economically dependent part of the population (under 15 and over 65) compared to the productive part (15-64)."]]],["Type of materials used for house",[["Light","Materials such as bamboo, nipa, sawali, coconut leaves, or cardboard."],["Strong","A predominantly concrete house."],["Mixed","A combination of light materials, wood and/or concrete. Typically a concrete floor with light walls, or a concrete 1st floor and a light 2nd floor."]]],["Lighting facilities",[["Lighting","Artificial means of providing light, such as electricity, kerosene, candles, or none. It reflects adequacy and safety for the family."]]],["Types of excreta disposal",[["Pail system","A pail or box receives the excreta, disposed later when filled. Includes the ballot system."],["Open pit privy","A pit covered by a platform with a hole that is usually not covered."],["Closed pit privy","A pit privy where the hole is provided with a cover."],["Bored-hole latrine","A deep, relatively narrow hole made with boring equipment."],["Overhung latrine","A toilet house built over a body of water, where excreta falls freely."],["Antipolo type","A toilet house that is elevated, with the shallow pit extended up to the platform by a chute or pipe."],["Water sealed latrine","An Antipolo type, bored-hole latrine, or any pit privy with a water sealed bowl and septic tank."],["Flush type","Waste is flushed with water through pipes into a public sewer or an individual septic tank."]]],["Approved water supply facilities",[["Level I (point source)","A protected well or developed spring with an outlet but no distribution system. Serves about 15 households, the farthest not more than 25 meters."],["Level II (communal faucet)","A source, reservoir, piped network, and communal faucets. One faucet serves 4 to 6 households, not more than 25 meters from the farthest house."],["Level III (waterworks)","A source, reservoir, piped network, and household taps. Suited for densely populated urban areas."]]],["Sewerage system",[["Blind drainage","Waste water flows through closed pipes to an underground pit or covered canal."],["Open drainage","Waste water flows through pipes to an open pit canal."],["None","No drainage system. Waste water flows directly to the ground, often forming a nearly permanent pool."]]],["Types of waste disposal",[["Hog feeding","Garbage is used as feed for hogs, chickens, and other livestock."],["Open dumping","Garbage piled in a dumping place with no soil covering."],["Open burning","Garbage regularly piled and burned in open air."],["Burial pit","Garbage placed in a pit and covered when filled. It should be 25 meters away from any well used for water supply."],["Composting","Alternating layers of organic refuse and treated soil that decompose into compost for fertilizer."],["Garbage collection","Garbage collected by a garbage truck or any collection in the community."]]],["Types of waste management",[["Recycling","Converting waste material for reuse in the future."],["Reusing","Using something again, often for a different purpose, as an alternative to throwing it out."]]],["Source of drinking water",[["Commercially prepared water","Bottled water treated with purification techniques, usually bought in stores."],["Local water system","Faucet or gripo connected to a Level II or Level III system."],["Artesian well","Commonly known as the poso, Level I."],["Deep well","An excavation made by digging, driving, boring, or drilling to withdraw underground water."],["Surface water","From streams and rivers. Depends on the season and may be contaminated if untreated."],["Ground water","Wells and springs. Contamination occurs at the point of seepage."],["Rain water","Basically free from impurities, but may be contaminated at collection and storage points."]]],["Methods of sanitizing water",[["Boiling","The safest way. Boil for at least 2 minutes after reaching the boiling point."],["Filtration","Done before boiling or disinfecting. Sand, cloth, or intermittent water filters."],["Sedimentation","Let impurities settle for 30 minutes to 1 hour, then pour the top part into a clean container."],["Chemical disinfection","Chlorination (normal dose 1.5 mg/L) or tincture of iodine (2 drops/L)."]]],["Health management",[["Authority","Those with formal or informal training recognized by the people, such as doctors, albularyo, or hilot. Ask first about illness in the family for the year."],["Deciding on medication","Self prescription, prescribed by the doctor, or prescribed by others such as a nurse, midwife, pharmacist, or family member."],["Community health programs","Presence, awareness, and utilization of programs."]]],["Family planning",[["Method used","Natural or artificial. Ask first if they use family planning, since this does not apply to all. For families with a mother aged 15-45 in the guide."]]],["Nutrition and immunization",[["Nutritional status (0-6 years)","Weigh children 0-6 years old and identify malnutrition with its category."],["Fully immunized","Applies only to children at least 9 months old."],["Complete","The child completed the required vaccinations scheduled in the EPI."],["Incomplete","The child has not yet received all required vaccinations in the EPI."]]],["Maternal care",[["Who","Women who are presently pregnant or 6 weeks postpartum."],["Prenatal checkups","At least 4 times during the entire pregnancy."],["Delivery","Labor attendant present, such as doctor, nurse, hilot, or albularyo, and the location of delivery."]]],["Health manpower ratio",[["Rural health physician","1 : 20,000"],["Public health nurse","1 : 20,000"],["Rural health midwife","1 : 5,000"],["Rural health inspector","1 : 20,000"],["Rural health dentist","1 : 50,000"]]],["Vital statistics formulas",[["Crude Birth Rate","Livebirths x 1000, divided by the estimated population as of July 1."],["General Fertility Rate","Livebirths x 1000, divided by the total number of reproductive age."],["Crude Death Rate","Deaths x 1000, divided by the estimated population as of July 1."],["Infant Mortality Rate","Deaths below 1 year x 1000, divided by the estimated population as of July 1."],["Maternal Mortality Rate","Deaths among maternal cases x 1000, divided by the estimated population as of July 1."],["Prevalence Rate","New and old cases x 100, divided by the estimated population as of July 1."],["Incidence Rate","New cases x 100, divided by the estimated population as of July 1."],["Attack Rate","Persons exposed to the disease x 100, divided by the estimated population as of July 1."]]],["Amenities and facilities",[["What to describe","Availability of facilities as to location, accessibility, and number: churches, schools, parks, groceries or markets, hardware, recreation and sports centers, cemetery, terminals, birthing clinics, health centers, and hospitals."]]],["Disease patterns",[["Epidemic","High incidence of new cases of a specific disease in excess of what is expected."],["Epidemic potential","An area becomes vulnerable to a disease upsurge due to climatic, ecologic, or socio-economic changes."],["Endemic","Habitual presence of a disease in a given location. The causative factor is constantly present."],["Sporadic","A disease occurs now and then, affecting a small number of people."],["Pandemic","Global occurrence of a disease."]]]];
+const GUIDE=[["Civil status",[["Single (S)","Person is not and has never been married."],["Married (M)","Person living with another person bound by legal rites."],["Common law (CL)","Person living with another person without the benefit of a legal marriage."],["Widowed (W)","Person whose spouse has died, and has not remarried."],["Separated/Annulled","Person whose bond of marriage has been dissolved and can therefore remarry."]]],["Religion and education",[["Religion","Indicate the religion in the locality. Children 0-14 assume the mother's religion. Indicate the religious sect."],["Educational status","Indicate status for each family member (7 and above): degree holder or college graduate, presently studying and highest completed level, stopped studying and highest completed level, or no formal education."]]],["Literacy rate",[["Who is illiterate","In the Philippines, a person aged 15 and above who is unable to read and write is considered illiterate."],["Formula","Number of people 15 and above who can read and write x 100, divided by the number of people aged 15 and above."]]],["Ethnic background, race, origin",[["Ethnic background","Selected cultural and sometimes physical characteristics used to divide people into groups."],["Race","A population with anatomical traits that distinguish it from others."],["Regional origin","Luzon, Visayas, or Mindanao, or per region to be specific."],["Primary dialect spoken","The primary dialect used by the family."]]],["Patterns of migration",[["Permanent","Living in the community 6 months and above."],["Transient","Living in the community below 6 months."],["What to determine","Whether there is a large in-migration or out-migration, and the reasons behind the trend."]]],["Density and dependency",[["Population density","Land area (sq. km) x 100, divided by total population, as written in the guide. Compute per purok if the barangay has puroks."],["Dependency ratio","The economically dependent part of the population (under 15 and over 65) compared to the productive part (15-64)."]]],["Type of materials used for house",[["Light","Materials such as bamboo, nipa, sawali, coconut leaves, or cardboard."],["Strong","A predominantly concrete house."],["Mixed","A combination of light materials, wood and/or concrete. Typically a concrete floor with light walls, or a concrete 1st floor and a light 2nd floor."]]],["Lighting facilities",[["Lighting","Artificial means of providing light, such as electricity, kerosene, candles, or none. It reflects adequacy and safety for the family."]]],["Types of excreta disposal",[["Pail system","A pail or box receives the excreta, disposed later when filled. Includes the ballot system."],["Open pit privy","A pit covered by a platform with a hole that is usually not covered."],["Closed pit privy","A pit privy where the hole is provided with a cover."],["Bored-hole latrine","A deep, relatively narrow hole made with boring equipment."],["Overhung latrine","A toilet house built over a body of water, where excreta falls freely."],["Antipolo type","A toilet house that is elevated, with the shallow pit extended up to the platform by a chute or pipe."],["Water sealed latrine","An Antipolo type, bored-hole latrine, or any pit privy with a water sealed bowl and septic tank."],["Flush type","Waste is flushed with water through pipes into a public sewer or an individual septic tank."]]],["Approved water supply facilities",[["Level I (point source)","A protected well or developed spring with an outlet but no distribution system. Serves about 15 households, the farthest not more than 25 meters."],["Level II (communal faucet)","A source, reservoir, piped network, and communal faucets. One faucet serves 4 to 6 households, not more than 25 meters from the farthest house."],["Level III (waterworks)","A source, reservoir, piped network, and household taps. Suited for densely populated urban areas."]]],["Sewerage system",[["Blind drainage","Waste water flows through closed pipes to an underground pit or covered canal."],["Open drainage","Waste water flows through pipes to an open pit canal."],["None","No drainage system. Waste water flows directly to the ground, often forming a nearly permanent pool."]]],["Types of waste disposal",[["Hog feeding","Garbage is used as feed for hogs, chickens, and other livestock."],["Open dumping","Garbage piled in a dumping place with no soil covering."],["Open burning","Garbage regularly piled and burned in open air."],["Burial pit","Garbage placed in a pit and covered when filled. It should be 25 meters away from any well used for water supply."],["Composting","Alternating layers of organic refuse and treated soil that decompose into compost for fertilizer."],["Garbage collection","Garbage collected by a garbage truck or any collection in the community."]]],["Types of waste management",[["Recycling","Converting waste material for reuse in the future."],["Reusing","Using something again, often for a different purpose, as an alternative to throwing it out."]]],["Source of drinking water",[["Commercially prepared water","Bottled water treated with purification techniques, usually bought in stores."],["Local water system","Faucet or gripo connected to a Level II or Level III system."],["Artesian well","Commonly known as the poso, Level I."],["Deep well","An excavation made by digging, driving, boring, or drilling to withdraw underground water."],["Surface water","From streams and rivers. Depends on the season and may be contaminated if untreated."],["Ground water","Wells and springs. Contamination occurs at the point of seepage."],["Rain water","Basically free from impurities, but may be contaminated at collection and storage points."]]],["Methods of sanitizing water",[["Boiling","The safest way. Boil for at least 2 minutes after reaching the boiling point."],["Filtration","Done before boiling or disinfecting. Sand, cloth, or intermittent water filters."],["Sedimentation","Let impurities settle for 30 minutes to 1 hour, then pour the top part into a clean container."],["Chemical disinfection","Chlorination (normal dose 1.5 mg/L) or tincture of iodine (2 drops/L)."]]],["Health management",[["Authority","Those with formal or informal training recognized by the people, such as doctors, albularyo, or hilot. Ask first about illness in the family for the year."],["Deciding on medication","Self prescription, prescribed by the doctor, or prescribed by others such as a nurse, midwife, pharmacist, or family member."],["Community health programs","Presence, awareness, and utilization of programs."]]],["Family planning",[["Method used","Natural or artificial. Ask first if they use family planning, since this does not apply to all. For families with a mother aged 15-45 in the guide."]]],["Nutrition and immunization",[["Nutritional status (0-6 years)","Weigh children 0-6 years old and identify malnutrition with its category."],["Fully immunized","Applies to children 0 to 8 years old, babies too."],["Complete","The child completed the required vaccinations scheduled in the EPI."],["Incomplete","The child has not yet received all required vaccinations in the EPI."]]],["Maternal care",[["Who","Women who are presently pregnant or 6 weeks postpartum."],["Prenatal checkups","At least 4 times during the entire pregnancy."],["Delivery","Labor attendant present, such as doctor, nurse, hilot, or albularyo, and the location of delivery."]]],["Health manpower ratio",[["Rural health physician","1 : 20,000"],["Public health nurse","1 : 20,000"],["Rural health midwife","1 : 5,000"],["Rural health inspector","1 : 20,000"],["Rural health dentist","1 : 50,000"]]],["Vital statistics formulas",[["Crude Birth Rate","Livebirths x 1000, divided by the estimated population as of July 1."],["General Fertility Rate","Livebirths x 1000, divided by the total number of reproductive age."],["Crude Death Rate","Deaths x 1000, divided by the estimated population as of July 1."],["Infant Mortality Rate","Deaths below 1 year x 1000, divided by the estimated population as of July 1."],["Maternal Mortality Rate","Deaths among maternal cases x 1000, divided by the estimated population as of July 1."],["Prevalence Rate","New and old cases x 100, divided by the estimated population as of July 1."],["Incidence Rate","New cases x 100, divided by the estimated population as of July 1."],["Attack Rate","Persons exposed to the disease x 100, divided by the estimated population as of July 1."]]],["Amenities and facilities",[["What to describe","Availability of facilities as to location, accessibility, and number: churches, schools, parks, groceries or markets, hardware, recreation and sports centers, cemetery, terminals, birthing clinics, health centers, and hospitals."]]],["Disease patterns",[["Epidemic","High incidence of new cases of a specific disease in excess of what is expected."],["Epidemic potential","An area becomes vulnerable to a disease upsurge due to climatic, ecologic, or socio-economic changes."],["Endemic","Habitual presence of a disease in a given location. The causative factor is constantly present."],["Sporadic","A disease occurs now and then, affecting a small number of people."],["Pandemic","Global occurrence of a disease."]]]];
 const GM=[["Demographic","Civil status","note"],["Demographic","Religion and education","book"],["Demographic","Literacy rate","file"],["Demographic","Ethnicity and origin","users"],["Demographic","Migration","pin"],["Demographic","Density and dependency","stats"],["Social","House materials","house"],["Social","Lighting facilities","bolt"],["Social","Excreta disposal","toilet"],["Social","Water supply","drop"],["Social","Sewerage system","waves"],["Social","Waste disposal","trash"],["Social","Waste management","redo"],["Social","Drinking water","tube"],["Social","Sanitizing water","flask"],["Health","Health management","steth"],["Health","Family planning","heart"],["Health","Nutrition and immunization","clip"],["Health","Maternal care","users"],["Health","Health manpower ratio","user"],["Vital","Vital formulas","pulse"],["Amenities","Amenities and facilities","build"],["Disease","Disease patterns","germ"]]; /* topic index -> [section, short label, icon], checked at build time */
 const GSEC=[["Demographic","Demographic Data","T1"],["Social","Social System","T2"],["Health","Health Status","T3"],["Vital","Vital Statistics","V"],["Amenities","Amenities and Facilities","E"],["Disease","Disease Patterns","F"]];
 /* icons: PatoStudy 24x24 line icons (drop, bolt, tube, flask, pulse, file, book, stats, user, t_resp, t_preop, t_infection) and the draft's set for the rest */
@@ -5394,7 +5406,7 @@ function loadChanges(j){
   for(const c of list){
     if(!c||typeof c!=="object"||typeof c.id!=="string"||!c.id||typeof c.hid!=="string"||typeof c.key!=="string")continue;
     const mine=changes.find(x=>x.id===c.id);
-    if(!mine){changes.push({id:c.id,hid:c.hid,name:String(c.name==null?"":c.name),key:c.key,label:String(c.label==null?"":c.label),from:String(c.from==null?"":c.from),to:String(c.to==null?"":c.to),why:String(c.why==null?"":c.why),at:String(c.at==null?"":c.at),pair:String(c.pair==null?"":c.pair),...(c.undone?{undone:true}:{})});any=true}
+    if(!mine){changes.push({id:c.id,hid:c.hid,name:String(c.name==null?"":c.name),key:c.key,label:String(c.label==null?"":c.label),from:String(c.from==null?"":c.from),to:String(c.to==null?"":c.to),why:String(c.why==null?"":c.why),at:String(c.at==null?"":c.at),pair:String(c.pair==null?"":c.pair),...["mname","ft","tt","note"].reduce((o,k)=>typeof c[k]==="string"?{...o,[k]:c[k]}:o,{}),...(Number.isInteger(c.mno)?{mno:c.mno}:{}),...(c.snap&&typeof c.snap==="object"&&!Array.isArray(c.snap)?{snap:c.snap}:{}),...(c.undone?{undone:true}:{})});any=true} /* 3.1: a person or child, the shown words and what Undo needs travel with the entry */
     else if(c.undone&&!mine.undone){mine.undone=true;any=true}
   }
   if(any){changes.sort((a,b)=>String(a.at).localeCompare(String(b.at)));chgSave()}
@@ -6110,11 +6122,11 @@ function xpPriority(add,M){
   b.row(["RANK","PROBLEM","AREA","TYPOLOGY","PERCENT","OUT OF",...FIN_CRIT.map(c=>c[2].toUpperCase()+" (X"+c[3]+")"),"TOTAL (OUT OF 10)"],12,"h");
   if(!P.length)b.row(["No problems picked yet. Pick and score them in the Final report."],1,"c");
   P.forEach(p=>{
-    const i=b.row([p.scored?p.rank:"",p.name,p.area,p.typology,p.pct/100,xpOut(p),...FIN_CRIT.map(c=>{const s=p.scores[c[0]];return s&&s.actual!=null?s.actual:""}),p.total==null?"":p.total],12);
+    const i=b.row([p.scored?p.rank:"",p.name+(p.under50&&p.scored?" ("+FIN_UNDER+")":""),p.area,p.typology,p.pct/100,xpOut(p),...FIN_CRIT.map(c=>{const s=p.scores[c[0]];return s&&s.actual!=null?s.actual:""}),p.total==null?"":p.total],12);
     b.fmt.push([i,4,"0.00%"]);for(let c=6;c<=11;c++)b.fmt.push([i,c,"0.00"]);
     const t=topOf(p.id);if(t>=0)b.tint.push([i,0,11,XP_TOP[t]]);
   });
-  if(M.ncp.length)b.row(["Rows 1 to 3 are the top 3 problems (Top 1 in red, Top 2 in amber, Top 3 in green). Equal totals share a rank. A problem with a missing score has no rank yet."],1,"c");
+  if(M.ncp.length)b.row(["The top 3 problems are tinted (Top 1 in red, Top 2 in amber, Top 3 in green). Equal totals share a rank. A problem under 50% keeps its rank but is not in the Top 3. A problem with a missing score has no rank yet."],1,"c");
   b.gap();b.row(["SCORES AND REASONS"],1,"b");
   b.row(["PROBLEM","CRITERION","SCORE","MEANING","WEIGHT","ACTUAL SCORE","REASON"],7,"h");
   P.forEach(p=>{
@@ -6300,8 +6312,8 @@ async function xpReportDocx(){
   body.push(wPara(wRun("Priority ranking. ",{b:true})+wRun(P.filter(p=>p.scored).length+" of "+P.length+" problems scored. Each score is out of its weight; the total is out of 10."),{keep:true,sp:[0,60]}));
   if(!P.length)body.push(wText("No problems picked yet."));
   else{
-    body.push(wTable(["RANK","PROBLEM","PERCENT","NATURE","MAGNITUDE","MODIF.","PREVENT.","CONCERN","TOTAL"],P.map(p=>({cells:[p.scored?p.rank:"",p.name,p.pctText,...FIN_CRIT.map(c=>{const s=p.scores[c[0]];return s&&s.actual!=null?s.actual.toFixed(2):""}),p.total==null?"":p.total.toFixed(2)],fill:topOf(p.id)>=0?TF[topOf(p.id)]:undefined,bold:topOf(p.id)>=0})),[600,2300,800,780,1000,1000,1040,940,900],{sz:18,left:[1]}));
-    body.push(wText("Weights: "+FIN_CRIT.map(c=>c[2]+" x"+c[3]).join(", ")+". Rows 1 to 3 are the top 3 problems. Equal totals share a rank. A problem with a missing score has no rank yet.",{run:{i:true,sz:20},sp:[0,160]}));
+    body.push(wTable(["RANK","PROBLEM","PERCENT","NATURE","MAGNITUDE","MODIF.","PREVENT.","CONCERN","TOTAL"],P.map(p=>({cells:[p.scored?p.rank:"",p.name+(p.under50&&p.scored?" ("+FIN_UNDER+")":""),p.pctText,...FIN_CRIT.map(c=>{const s=p.scores[c[0]];return s&&s.actual!=null?s.actual.toFixed(2):""}),p.total==null?"":p.total.toFixed(2)],fill:topOf(p.id)>=0?TF[topOf(p.id)]:undefined,bold:topOf(p.id)>=0})),[600,2300,800,780,1000,1000,1040,940,900],{sz:18,left:[1]}));
+    body.push(wText("Weights: "+FIN_CRIT.map(c=>c[2]+" x"+c[3]).join(", ")+". The top 3 problems are shaded. Equal totals share a rank. A problem under 50% keeps its rank but is not in the Top 3. A problem with a missing score has no rank yet.",{run:{i:true,sz:20},sp:[0,160]}));
     if(M.ncp.length){
       body.push(wText("Reasons for the scores of the top 3",{run:{b:true},keep:true,sp:[120,60]}));
       M.ncp.forEach((n,i)=>{
@@ -6349,7 +6361,30 @@ async function xpReportDocx(){
    Rules: every client on this phone is listed (our pair first, then other pairs), one tap changes one house, a reason is required, every change is logged with the old answer. There is no "change all". */
 
 /* can this question be updated from a table row? True for a pick-one question with fixed choices (a retired question never). When the row's answer is given too, it must be one of those fixed choices, so an "Others: text" row is never offered. Read at run time from the question's type, so a question that is turned from multi to single works without a change here. */
-const canUpdate=(key,val)=>{const f=FK[key];if(!f||f.type!=="single"||f.hide||!Array.isArray(f.opts)||!f.opts.length)return false;return val==null||f.opts.some(o=>o===val||tlab(o)===val)};
+/* 3.1: the rows of Civil status, Religion, Education (people), Family planning (households), Children nutrition and immunization (children) and Diseases (households) can be updated too. They use keys that start with "@" (a household question uses its own question key). UPD kinds: person = one member field, kid = one field of the child's kid, hh = a household answer, dx = a disease of a household.
+   The list is the households, people or children the tapped row counted (the row hands it over), so the list always matches the number in the table. */
+const UP_YN={Oo:"Yes",Wala:"No"},UP_DX={Oo:"Has it",Wala:"Does not have it"};
+function upDef(key){
+  key=String(key==null?"":key);
+  const P={"@civil":["civil","Civil status",CIVIL],"@religion":["religion","Religion",RELIGION],"@educ":["educ","Education",EDUC]},K={"@nut":["nut","Nutritional status",KID_NUT],"@imm":["imm","Immunization status",KID_IMM]};
+  if(P[key]){const [f,label,opts]=P[key];return {kind:"person",f,label,opts,noun:PPL,get:(h,m)=>f==="religion"?String(m.religion||selTx(h,"religion")[0]||""):String(m[f]||"")}}
+  if(K[key]){const [f,label,opts]=K[key];return {kind:"kid",f,label,opts,noun:KIDS,get:(h,m)=>String(kidOf(m)[f]||"")}}
+  if(key==="@fp")return {kind:"hh",label:"Family planning",opts:["Oo","Wala"],txt:UP_YN,get:h=>String(A(h,55)||"")};
+  if(key==="@fpType")return {kind:"hh",label:"Method of family planning",opts:["Natural","Artificial"],get:h=>String(selOf(h,"fpType")[0]||"")};
+  const x=/^@dx:(\w+)$/.exec(key),dd=x&&DXBY[x[1]];
+  if(dd&&dd.k!=="other")return {kind:"dx",k:dd.k,n:dd.n,label:DXNAME[dd.k]||dd.short,opts:["Oo","Wala"],txt:UP_DX,get:h=>A(h,dd.n)==="Wala"?"Wala":"Oo"}; /* a house in the Diseases table has the disease; Wala is what the interview saves for "does not have it" */
+  return null;
+}
+const memByNo=(h,no)=>(Array.isArray(h.members)?h.members:[]).find(m=>m&&typeof m==="object"&&m.mno===no)||null;
+/* a person or child by first name (the whole label when there is no name) */
+const upMem=(h,m)=>NM(String(m.name||"").trim()).split(" ")[0]||memLabel(m,realMembers(h));
+const upTx=(d,v)=>v===""||v==null?NA:((d&&d.txt&&d.txt[v])||tlab(v));
+/* does a house still count for this disease once its answer is No? (a name typed under Other illness that is the same disease keeps counting it) */
+function dxAfterNo(h,d){
+  const c=JSON.parse(JSON.stringify(h));c.ans=c.ans||{};c.ans[d.n]="Wala";const h2=normalize(c);
+  return realMembers(h2).some(m=>dxEff(m,h2).some(e=>e.k===d.k))||dxOldOf(h2,d.k)>dxNamed(h2,d.k);
+}
+const canUpdate=(key,val)=>{const u=upDef(key);if(u)return val==null||u.opts.some(o=>o===val||tlab(o)===val);const f=FK[key];if(!f||f.type!=="single"||f.hide||!Array.isArray(f.opts)||!f.opts.length)return false;return val==null||f.opts.some(o=>o===val||tlab(o)===val)};
 /* the one current answer of a house: the first answer, so a record that still holds a list also works */
 const upAns=(h,key)=>selOf(h,key)[0]||"";
 const UP_WHY=["Re-asked the family","Seen during the visit","Typing mistake"];
@@ -6359,11 +6394,19 @@ const chgDate=at=>{const d=String(at||"").slice(0,10);return /^\d{4}-\d{2}-\d{2}
 const chgStamp=at=>{const d=chgDate(at);return d?d.slice(5,7)+"-"+d.slice(8,10)+"-"+d.slice(0,4):""};
 
 /* ---- Update answers ---- */
-function openUpdate(key,val,title){
+function openUpdate(key,val,title,who){
   if(!canUpdate(key,val))return;
   closeSheet();
   const ret=tab==="profile"?(profileFrom||"home"):tab;profileFrom=ret;
-  uqSt={key,val:String(val==null?"":val),title:String(title||""),pend:{},why:"",all:false};
+  uqSt={key,val:String(val==null?"":val),title:String(title||""),pend:{},why:"",all:false,ids:[],legacy:0,skip:0};
+  const d=upDef(key);
+  if(d){ /* the rows the tapped line counted: a person or child by house id and member number, a house by id */
+    (Array.isArray(who)?who:[]).forEach(({h,ms})=>{
+      if(d.kind==="person"||d.kind==="kid"){const l=(ms||[]).filter(m=>m&&m.mno);if(!l.length&&d.kind==="kid")uqSt.legacy++;l.forEach(m=>uqSt.ids.push([h.id,m.mno]))}
+      else if(d.kind==="dx"&&dxAfterNo(h,d))uqSt.skip++;
+      else uqSt.ids.push([h.id,0]);
+    });
+  }
   tab="profile";pfOpen("update",ret);
 }
 /* every house that gave this answer: our own pair first, then other pairs' (each sorted by name) */
@@ -6373,35 +6416,79 @@ function upHouses(){
   const all=households.filter(hit);
   return {mine:[...all.filter(isOurs).sort(byName),...all.filter(h=>!isOurs(h)).sort(byName)],others:0};
 }
+/* what the screen lists: for a household question every house with the answer; for the other tables the households, people or children of the row. Each is {id,h,m,cur}; our own pair first, then the others, each by name */
+function upItems(){
+  if(!uqSt)return [];
+  const d=upDef(uqSt.key);
+  if(!d)return upHouses().mine.map(h=>({id:h.id,h,m:null,cur:upAns(h,uqSt.key)}));
+  const out=[];
+  uqSt.ids.forEach(([hid,no])=>{
+    const h=households.find(x=>x.id===hid);if(!h)return;
+    if(d.kind==="person"||d.kind==="kid"){const m=memByNo(h,no);if(m)out.push({id:hid+"#"+no,h,m,cur:d.get(h,m),no})}
+    else out.push({id:hid,h,m:null,cur:d.get(h)});
+  });
+  return [...out.filter(x=>isOurs(x.h)),...out.filter(x=>!isOurs(x.h))].sort((a,b)=>(isOurs(b.h)-isOurs(a.h))||byName(a.h,b.h)||(a.no||0)-(b.no||0));
+}
 const upCount=()=>uqSt?Object.keys(uqSt.pend).length:0;
 const SHOWN_ROWS=8;
+const upNoun=(d,n)=>d&&d.noun?d.noun[n===1?0:1]:(n===1?"household":"households");
 function renderUpdate(){
   subBar("Update answers");
   if(!uqSt||!canUpdate(uqSt.key)){$("#view").innerHTML=`<div class="empty">Nothing to update here.</div>`;return}
-  const f=FK[uqSt.key],{mine,others}=upHouses(),n=upCount(),shown=uqSt.all?mine:mine.slice(0,SHOWN_ROWS);
-  const row=h=>{const to=uqSt.pend[h.id],ch=to!=null;
-    return `<div class="uq-row${ch?" ch":""}" data-h="${esc(h.id)}"><div class="uq-who"><b>${esc(nameOf(h))}</b><small>${ch?`was ${esc(tlab(uqSt.val))}`:`Household ${esc(h.hh_no||"")}${isOurs(h)?"":" · "+esc(String(pairFirst(h.pair)||"Another pair").toUpperCase())}`}</small></div>
-     <div class="uq-seg" role="group" aria-label="${esc(nameOf(h))}">${f.opts.map(o=>`<button type="button" data-v="${esc(o)}" aria-pressed="${ch?to===o:o===uqSt.val}"${!ch&&o===uqSt.val?' class="cur"':""}>${esc(tlab(o))}</button>`).join("")}</div></div>`};
-  $("#view").innerHTML=`<div class="uq-wrap"><p class="uq-title">${esc(uqSt.title)}${uqSt.title?" · ":""}${mine.length} ${mine.length===1?"household":"households"}</p>
+  const d=upDef(uqSt.key),f=d||FK[uqSt.key],opts=d?d.opts:f.opts,tx=v=>d?upTx(d,v):tlab(v);
+  const items=upItems(),n=upCount(),shown=uqSt.all?items:items.slice(0,SHOWN_ROWS);
+  const who=it=>it.m?upMem(it.h,it.m):"";
+  const row=it=>{const h=it.h,to=uqSt.pend[it.id],ch=to!=null;
+    return `<div class="uq-row${ch?" ch":""}" data-h="${esc(it.id)}"><div class="uq-who"><b>${esc(nameOf(h))}</b><small>${ch?`${it.m?esc(who(it))+" · ":""}was ${esc(upTx(d,it.cur)||tx(uqSt.val))}`:`${it.m?esc(who(it))+" · ":""}Household ${esc(h.hh_no||"")}${isOurs(h)?"":" · "+esc(String(pairFirst(h.pair)||"Another pair").toUpperCase())}`}</small></div>
+     <div class="uq-seg" role="group" aria-label="${esc(nameOf(h)+(it.m?" "+who(it):""))}">${opts.map(o=>{const cur=o===it.cur||(it.cur!==""&&tlab(o)===tlab(it.cur));return `<button type="button" data-v="${esc(o)}" aria-pressed="${ch?to===o:cur}"${!ch&&cur?' class="cur"':""}>${esc(tx(o))}</button>`}).join("")}</div></div>`};
+  const notes=[uqSt.legacy?`${uqSt.legacy} ${uqSt.legacy===1?"household is":"households are"} counted from an older household answer. Change ${uqSt.legacy===1?"it":"those"} in the interview.`:"",uqSt.skip?`${uqSt.skip} ${uqSt.skip===1?"household counts":"households count"} it through an illness typed under Other illness. Change ${uqSt.skip===1?"it":"those"} in the interview.`:""].filter(Boolean);
+  $("#view").innerHTML=`<div class="uq-wrap"><p class="uq-title">${esc(uqSt.title)}${uqSt.title?" · ":""}${items.length} ${upNoun(d,items.length)}</p>
   <section class="form"><div class="field"><span class="flabel" id="uq-wl">Why are you changing them? (needed)</span>
    <div class="chips-w" id="uq-why" role="group" aria-labelledby="uq-wl">${UP_WHY.map(w=>`<button type="button" data-why="${esc(w)}" aria-pressed="${uqSt.why===w}">${esc(w)}</button>`).join("")}</div></div></section>
-  ${mine.length?`<section class="form uq-list" id="uq-list">${shown.map(row).join("")}${shown.length<mine.length?`<button type="button" class="btn ghost sm" id="uq-more">+ ${mine.length-shown.length} more</button>`:""}</section>`:`<div class="empty">No household has this answer.</div>`}
+  ${items.length?`<section class="form uq-list" id="uq-list">${shown.map(row).join("")}${shown.length<items.length?`<button type="button" class="btn ghost sm" id="uq-more">+ ${items.length-shown.length} more</button>`:""}</section>`:`<div class="empty">${d?"Nothing to update here.":"No household has this answer."}</div>`}
+  ${notes.map(t=>`<p class="note">${esc(t)}</p>`).join("")}
   <div class="uq-foot"><button type="button" class="btn" id="uq-save"${n>0&&uqSt.why&&!upBusy?"":" disabled"}>${n>0?`Save ${n} ${n===1?"change":"changes"}`:"Save changes"}</button></div></div>`;
 }
 pfSubs.update=renderUpdate;
+/* the new value written into a copy of the record, the way the interview stores it. snap keeps what a later Undo needs (an answer the normalizing removes by itself). */
+function upApply(d,key,h2,it,to,snap){
+  if(!d){h2.fu=h2.fu||{};h2.fu[key]={sel:to,other:""};return}
+  if(d.kind==="person"){const m=memByNo(h2,it.no);if(m)m[d.f]=to;return}
+  if(d.kind==="kid"){const m=memByNo(h2,it.no);if(m)m.kid={...kidOf(m),[d.f]:to};return}
+  h2.ans=h2.ans||{};h2.fu=h2.fu||{};
+  if(d.kind==="hh"){
+    if(key==="@fp"){
+      /* saving No drops the method (the interview does the same); the log keeps it for Undo */
+      if(to==="Wala"&&h2.fu.fpType&&typeof h2.fu.fpType==="object")snap.fpType=JSON.parse(JSON.stringify(h2.fu.fpType));
+      h2.ans[55]=to;
+    }else h2.fu.fpType={sel:to,other:""};
+    return;
+  }
+  /* dx: "does not have it" is the answer No, which removes the disease from every member and the older count, as in the interview */
+  snap.n=A(it.h,d.n)||"";snap.old=it.h.dxOld&&it.h.dxOld[d.k]||0;snap.dz=it.h.fu&&it.h.fu["dz_"+d.k];snap.dt=it.h.fu&&it.h.fu["dt_"+d.k];
+  snap.ms=realMembers(it.h).map(m=>[m.mno,dxOf(m).find(e=>e.k===d.k)]).filter(x=>x[1]);
+  h2.ans[d.n]="Wala";dxClear(h2,d.k);
+}
 async function upSave(){
   if(!uqSt||upBusy)return;
-  const {key,pend,why}=uqSt,f=FK[key];
+  const {key,pend,why}=uqSt,d=upDef(key),f=d||FK[key];
   if(!why||!Object.keys(pend).length||!f)return;
   upBusy=true;
-  const at=new Date().toISOString(),recs=[],ents=[],pair=pairName();
-  for(const [hid,to] of Object.entries(pend)){
-    const h=households.find(x=>x.id===hid);
-    if(!h||!f.opts.includes(to))continue; /* only a listed choice */
-    const from=upAns(h,key);if(from===to)continue;
-    recs.push(normalize({...h,fu:{...(h.fu||{}),[key]:{sel:to,other:""}},updatedAt:at})); /* the same record the interview saves: normalized, with a new updatedAt */
-    ents.push({id:chgNewId(),hid:h.id,name:nameOf(h),key,label:f.label||key,from,to,why,at,pair});
+  const at=new Date().toISOString(),ents=[],pair=pairName(),byH=new Map(),items=upItems();
+  for(const [id,to] of Object.entries(pend)){
+    const it=items.find(x=>x.id===id);
+    if(!it||!f.opts.includes(to))continue; /* only a listed choice */
+    const from=it.cur;if(from===to)continue;
+    let h2=byH.get(it.h.id);if(!h2){h2=JSON.parse(JSON.stringify(it.h));byH.set(it.h.id,h2)}
+    const snap={},e={id:chgNewId(),hid:it.h.id,name:nameOf(it.h),key,label:f.label||key,from,to,why,at,pair};
+    if(d){e.ft=upTx(d,from);e.tt=upTx(d,to)}
+    if(it.m){e.mno=it.no;e.mname=upMem(it.h,it.m)}
+    upApply(d,key,h2,it,to,snap);
+    if(d&&d.kind==="dx"){const n=snap.ms.length;e.note=n?"removed from "+n+" "+(n===1?"member":"members"):"older count removed"}
+    if(Object.keys(snap).length)e.snap=snap;
+    ents.push(e);
   }
+  const recs=[...byH.values()].map(h2=>normalize({...h2,updatedAt:at})); /* the same record the interview saves: normalized, with a new updatedAt */
   if(!recs.length){upBusy=false;redraw();return}
   try{await putMany(recs)}catch(err){upBusy=false;toast("Could not save. Nothing was changed.",true);redraw();return}
   changes.push(...ents);chgSave();
@@ -6414,32 +6501,62 @@ $("#view").addEventListener("click",e=>{
   const w=e.target.closest("#uq-why [data-why]");
   if(w){uqSt.why=uqSt.why===w.dataset.why?"":w.dataset.why;redraw();return}
   const b=e.target.closest("#uq-list .uq-row [data-v]");
-  if(b){ /* one tap = one house */
-    const hid=b.closest(".uq-row").dataset.h,h=households.find(x=>x.id===hid);if(!h)return;
+  if(b){ /* one tap = one house, person or child */
+    const id=b.closest(".uq-row").dataset.h,it=upItems().find(x=>x.id===id);if(!it)return;
     const v=b.dataset.v;
-    if(v===upAns(h,uqSt.key))delete uqSt.pend[hid];else uqSt.pend[hid]=v;
+    if(v===it.cur)delete uqSt.pend[id];else uqSt.pend[id]=v;
     redraw();return;
   }
   if(e.target.closest("#uq-save")){const s=$("#uq-save");if(s&&!s.disabled)upSave()}
 });
 
 /* ---- Changes log ---- */
+/* the record with one change taken back, or {err} when it cannot be (the item is gone or was changed again) */
+function chgBack(h,c){
+  const d=upDef(c.key),h2=JSON.parse(JSON.stringify(h)),again="Not undone: this answer was changed again.";
+  if(!d){
+    if(upAns(h,c.key)!==c.to)return {err:again};
+    h2.fu=h2.fu||{};h2.fu[c.key]={sel:c.from,other:""};return {rec:h2};
+  }
+  if(d.kind==="person"||d.kind==="kid"){
+    const m=memByNo(h,c.mno),m2=memByNo(h2,c.mno);
+    if(!m||!m2)return {err:"Not undone: that person is no longer listed."};
+    if(d.get(h,m)!==c.to)return {err:again};
+    if(d.kind==="person")m2[d.f]=c.from;else{const k={...kidOf(m2)};if(c.from)k[d.f]=c.from;else delete k[d.f];m2.kid=k}
+    return {rec:h2};
+  }
+  if(d.get(h)!==c.to)return {err:again};
+  h2.ans=h2.ans||{};h2.fu=h2.fu||{};const s=c.snap||{};
+  if(d.kind==="hh"){
+    if(c.key==="@fp"){h2.ans[55]=c.from;if(s.fpType)h2.fu.fpType=s.fpType}
+    else h2.fu.fpType={sel:c.from,other:""};
+    return {rec:h2};
+  }
+  h2.ans[d.n]=s.n||"Oo";
+  (s.ms||[]).forEach(([no,e])=>{const m=memByNo(h2,no);if(m)m.dx=[...dxOf(m).filter(x=>x.k!==d.k),e]});
+  if(s.old){h2.dxOld=h2.dxOld||{};h2.dxOld[d.k]=s.old}
+  ["dz","dt"].forEach(p=>{if(s[p]!==undefined&&s[p]!==null)h2.fu[p+"_"+d.k]=s[p]});
+  return {rec:h2};
+}
 async function chgUndo(id){
   const c=changes.find(x=>x.id===id);if(!c||c.undone)return;
   const h=households.find(x=>x.id===c.hid);
   if(!h||!isOurs(h)){toast("That client is not on this phone.",true);return}
-  if(upAns(h,c.key)!==c.to){toast("Not undone: this answer was changed again.",true);return}
-  try{await putRecord(normalize({...h,fu:{...(h.fu||{}),[c.key]:{sel:c.from,other:""}},updatedAt:new Date().toISOString()}))}
+  const r=chgBack(h,c);
+  if(r.err){toast(r.err,true);return}
+  try{await putRecord(normalize({...r.rec,updatedAt:new Date().toISOString()}))}
   catch(err){toast("Could not undo.",true);return}
   c.undone=true;chgSave();redraw();toast("Undone");
 }
+/* old entries have no ft, tt, mname or note: they read from, to and name as before */
+const chgFrom=c=>c.ft!=null?c.ft:tlab(c.from),chgTo=c=>c.tt!=null?c.tt:tlab(c.to),chgWho=c=>(c.name||"")+(c.mname?(c.name?" · ":"")+c.mname:"");
 function renderChanges(){
   subBar("Changes");
   const list=changes.map((c,i)=>[c,i]).sort((a,b)=>String(b[0].at).localeCompare(String(a[0].at))||b[1]-a[1]).map(x=>x[0]);
   const can=c=>{if(c.undone)return false;const h=households.find(x=>x.id===c.hid);return !!h&&isOurs(h)};
   $("#view").innerHTML=`<div class="cg-wrap"><p class="note">Every change, with the old answer. Also a sheet in the Excel file.</p>
-  ${list.length?`<div class="cg-list">${list.map(c=>`<div class="cg${c.undone?" un":""}" data-id="${esc(c.id)}"><div class="cg-top"><b>${esc(c.name||"Client")}</b><span>${esc(c.at?dayLabel(chgDate(c.at)):"")}</span></div>
-   <div class="cg-q">${esc(c.label)}: <s>${esc(tlab(c.from))}</s> → <b>${esc(tlab(c.to))}</b></div>
+  ${list.length?`<div class="cg-list">${list.map(c=>`<div class="cg${c.undone?" un":""}" data-id="${esc(c.id)}"><div class="cg-top"><b>${esc(chgWho(c)||"Client")}</b><span>${esc(c.at?dayLabel(chgDate(c.at)):"")}</span></div>
+   <div class="cg-q">${esc(c.label)}: <s>${esc(chgFrom(c))}</s> → <b>${esc(chgTo(c))}</b>${c.note?` <small>(${esc(c.note)})</small>`:""}</div>
    <div class="cg-bot"><small>${esc(c.why)}${c.pair?" · "+esc(c.pair):""}</small>${c.undone?`<span class="cg-un">Undone</span>`:can(c)?`<button type="button" class="btn ghost sm" data-undo="${esc(c.id)}">Undo</button>`:""}</div></div>`).join("")}</div>`:`<div class="empty">No changes yet.</div>`}</div>`;
 }
 pfSubs.changes=renderChanges;
@@ -6450,7 +6567,7 @@ $("#view").addEventListener("click",e=>{
 
 /* rows of the "Changes" sheet of the Excel file: a header, then one row per change, oldest first. Blank cells are "-". */
 const changesRows=()=>[["HOUSEHOLD","QUESTION","OLD ANSWER","NEW ANSWER","REASON","DATE","PAIR","STATUS"],
-  ...changes.map((c,i)=>[c,i]).sort((a,b)=>String(a[0].at).localeCompare(String(b[0].at))||a[1]-b[1]).map(([c])=>[c.name,c.label,tlab(c.from),tlab(c.to),c.why,chgStamp(c.at),c.pair,c.undone?"Undone":"Active"].map(x=>x==null||String(x).trim()===""?"-":String(x)))];
+  ...changes.map((c,i)=>[c,i]).sort((a,b)=>String(a[0].at).localeCompare(String(b[0].at))||a[1]-b[1]).map(([c])=>[chgWho(c),c.label,chgFrom(c),chgTo(c)+(c.note?" ("+c.note+")":""),c.why,chgStamp(c.at),c.pair,c.undone?"Undone":"Active"].map(x=>x==null||String(x).trim()===""?"-":String(x)))];
 
 
 /* ===== WEB BUILD ONLY (iPhone and iPad home screen app). build.py --web adds this block to index.html; the APK file never has it. ===== */
