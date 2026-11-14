@@ -621,6 +621,9 @@ body.in-client .lang-sw button{min-height:44px;min-width:42px}
 .vlist{display:grid;gap:6px}.vl{display:flex;align-items:center;width:100%;min-height:46px;padding:8px 14px;border:1px solid var(--line);border-radius:14px;background:var(--paper);color:var(--ink);font-weight:600;text-align:left}
 .vl[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
 .tour-block{position:fixed;inset:0;z-index:79}.tour-dim{position:fixed;inset:0;z-index:80;background:rgba(20,14,8,.55)}
+/* 4.2 dark spotlight: a darker shade and a plain cream line around the lit part (no glow); light stays as it was */
+:root[data-theme="dark"] #tour-hole{box-shadow:0 0 0 9999px rgba(0,0,0,.74);outline:2px solid #f3ecdf;outline-offset:0}
+:root[data-theme="dark"] .tour-dim{background:rgba(0,0,0,.74)}
 /* 1.3 final audit fixes */
 @media (max-width:359px){.grid-m [data-hf="age"]{grid-column:1/-1}.crow{flex-wrap:wrap}.crow>b{flex:1 1 100%}.cmrow{grid-template-columns:minmax(0,1fr) 40px 54px 40px}.cmh{grid-template-columns:minmax(0,1fr) 40px 54px 40px}}
 .crow>b,.cmrow .ml{overflow-wrap:break-word}
@@ -750,13 +753,12 @@ html.prac{--prh:56px}
 html.prac body{padding-top:var(--prh)}
 html.prac .appbar{top:calc(env(safe-area-inset-top,0px) + var(--prh))}
 html.prac[data-lay="split"] body.in-client #side{top:var(--prh)}
-#pr-bar{position:fixed;z-index:84;left:12px;right:12px;top:calc(env(safe-area-inset-top,0px) + 6px);min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:0 4px 0 14px;border:1px solid var(--line);border-radius:16px;background:var(--paper);box-shadow:var(--shadow)}
-.pr-bt{font:600 .74rem var(--font-data);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#pr-bar .iconbtn{flex:none;width:44px;height:44px;min-width:44px;min-height:44px}
+#pr-x{position:fixed;z-index:84;top:calc(env(safe-area-inset-top,0px) + 6px);right:calc(env(safe-area-inset-right,0px) + 12px);width:44px;height:44px;min-width:44px;min-height:44px;padding:0;border-radius:50%;border:2px solid var(--accent);background:var(--paper);color:var(--ink);display:grid;place-items:center} /* 4.2: only the X, no bar and no label; it sits above the shade, in the room html.prac reserves at the top */
 .pr-bl{position:fixed;z-index:79;touch-action:none;overscroll-behavior:contain}
 .pr-bl[data-bl="f"]{inset:0}
 #tour-root .tour-dim{pointer-events:none}
 .pr-card .pr-t{color:var(--ink);font-size:1rem}
+.pr-card .pr-nu{color:var(--ink);font-size:1rem;font-weight:700} /* 4.2: "Swipe it, don't tap." */
 .pr-k{font:600 .86rem var(--font-data);color:var(--accent)}
 .pr-w{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:.84rem}
 .pr-w i{flex:none;width:8px;height:8px;border-radius:50%;background:var(--accent);opacity:.7}
@@ -1867,7 +1869,7 @@ html[data-lay="side"] .tour-card{left:calc(var(--rl) + (100vw - var(--rl) - var(
 .ht-steps li{display:flex;gap:10px;align-items:flex-start}
 .ht-steps li>span:last-child{display:grid;gap:2px;min-width:0}
 .ht-steps small,.ht-after small{color:var(--muted);font-size:.85rem}
-.ht-n{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--btn-ink);font-weight:700;font-size:.85rem}
+.ht-n{flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--on-accent);font-weight:700;font-size:.85rem}
 .ht-after{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:14px;background:color-mix(in srgb,var(--ok) 14%,transparent);color:var(--ink)}
 .ht-after svg{flex:none;color:var(--ok);margin-top:2px}.ht-after>span{display:grid;gap:2px}
 .ht-hint{text-align:center;margin:0}
@@ -1893,7 +1895,7 @@ html[data-lay="side"] .tour-card{left:calc(var(--rl) + (100vw - var(--rl) - var(
 body:has(.uq-wrap) #appbar .ab-title{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:break-word;line-height:1.1}
 
 /* 4.1 Home client row: the two buttons are real buttons; on a narrow tile they cover the whole tile and the content stays; a held tile dims a little */
-.swa>button{flex:1;display:grid;place-items:center;padding:0 4px;margin:0;border:0;border-radius:0;font:600 .8rem var(--font-body);background:var(--soft);color:var(--accent);min-height:44px;cursor:pointer}
+.swa>button{flex:1;display:grid;place-items:center;padding:0 4px;margin:0;border:0;border-radius:0;font:600 .8rem var(--font-body);background:linear-gradient(var(--soft),var(--soft)),var(--paper);color:var(--accent);min-height:44px;cursor:pointer} /* 4.2: solid, never see-through: the soft tint over the tile colour (--paper) */
 .swa>button+button{background:var(--accent);color:var(--on-accent)}
 .tile.sw.swfull>:not(.swa){transform:none}
 .swa>button{font-size:.9rem}
@@ -2535,7 +2537,7 @@ return {dV:dV,dK:dK,dS:dS,dT:dT,dH:dH,de:de,dU:dU,dE:dE,dp:dp,dm:dm};})();
 
 const LEGACY={"q":{"1":"Household located within the community","2":"Community divided into puroks or sitios","3":"Lived in the community 6 months or longer","4":"Member moved in (past 6 months)","5":"Member moved out (past 6 months)","9":"Household with a member currently studying","10":"All 15 and above can read and write","12":"Nuclear family","13":"More than one generation in the household","14":"Mainly uses one dialect","15":"Identifies with an ethnic or cultural group","16":"Identifies with a religious group","17":"House made mainly of strong materials (concrete)","19":"Enough space for household members","20":"Has electricity for lighting","21":"Has safe lighting during power outage","22":"Has own toilet","23":"Toilet covered or enclosed","24":"Water-sealed or flush-type toilet","25":"Toilet away from drinking water source","26":"Access to approved water supply","27":"Water available near the house","30":"Has drainage for wastewater","31":"Drainage is covered","32":"Wastewater flows without stagnant pools","33":"Has proper garbage container","34":"Regular garbage collection","38":"Practices recycling","39":"Reuses items","40":"Regular source of drinking water","43":"Treats water before drinking","46":"Illness in the household (past year)","48":"Consulted a trained health professional","50":"Took prescribed medicine","51":"Took medicine without prescription","52":"Aware of community health programs","53":"Used a community health program","54":"Knows where to access health services","55":"Currently using family planning","56":"Received family planning information","58":"Child weighed by a health worker","59":"Child's nutritional status assessed","61":"Child received routine vaccines","62":"Child has vaccination record","63":"Child completely vaccinated for age","64":"Pregnant woman in the household","65":"Received prenatal checkups","67":"Delivery attended by a health professional","68":"Community has a BHW","69":"Community has a BNS","70":"Community has a midwife","71":"Community has a nurse","72":"Community has a doctor","73":"Community has a dentist","74":"Health workers available when needed","76":"Live birth in the household (past year)","77":"Death in the household (past year)","80":"Church or chapel accessible","81":"Elementary school in or near the community","82":"Secondary school in or near the community","83":"College or tertiary school in or near the community","84":"Grocery store or market","85":"Hardware store","86":"Recreational facility","87":"Sports facility","88":"Cemetery accessible","89":"Transportation terminal accessible","90":"Birthing clinic accessible","91":"Barangay health center or RHU accessible","92":"Hospital accessible","93":"Tuberculosis","94":"Diabetes mellitus","95":"Hypertension","96":"Arthritis","97":"Glaucoma or other serious eye problem","98":"Dengue","99":"Filariasis or amoebiasis","100":"Malnutrition","101":"Cardiovascular problem","102":"Other diagnosed condition (past year)","103":"Unusually high number of cases (epidemic)","104":"Repeated cases over time (endemic)","105":"Few cases from time to time (sporadic)","110":"Accessible health services","112":"Access to emergency health services","114":"Enough health workers for basic services","PP":"Within 6 weeks postpartum","RI":"Community has a rural health inspector","CM":"Member with comorbidities","CD":"Member with a communicable disease"},"f":{"years":["single","Length of residence","Pila na ka tuig mo diri?"],"moveWhy":["text","Reason for moving out","Ngano ni-balhin?"],"illiterate":["num","Persons 15 and above who cannot read and write","Pila ang dili kahibalo mo-basa ug mo-sulat (15 years old pataas)?"],"familyType":["single","Type of family","Type of family"],"income":["single","Monthly family income","Monthly family income"],"dialect":["single","Dialect used","Unsa ang primary dialect?"],"ethnic":["single","Ethnic or cultural group","Unsa ang ethnic background?"],"religion":["multi","Religion","Unsa nga relihiyon? (pwede daghan)"],"race":["single","Race","Race"],"region":["single","Region of origin","Region of origin"],"houseType":["single","Type of materials used for house","Unsa ang materials sa balay?"],"altLight":["multi","Alternative lighting","Unsa ang gamit? (pwede daghan)"],"toiletShare":["multi","Households without own toilet","Kung wala: (pwede daghan)"],"toiletType":["multi","Types of excreta disposal","Unsa nga klase sa CR? (pwede daghan)"],"waterLevel":["multi","Water supply facility","Unsa nga level? (pwede daghan)"],"wasteHow":["multi","Types of waste disposal","Unsaon ninyo pag-dispose sa basura? (pwede daghan)"],"collectFreq":["single","Frequency of garbage collection","Pila ka beses sa usa ka semana?"],"drinkSrc":["multi","Source of drinking water","Asa gikan ang imnon nga tubig? (pwede daghan)"],"treatHow":["multi","Methods of sanitizing water","Unsaon? (pwede daghan)"],"illness":["text","Illnesses reported","Unsa nga sakit?"],"allCases":["num","Persons with illness (new and old cases)","Pila tanan ang naay sakit (bag-o ug dugay na)?"],"newCases":["num","Persons with new illness","Pila ang bag-o lang nagkasakit (new case)?"],"diagBy":["multi","Diagnosed by","Kinsa ang nag-diagnose? (pwede daghan)"],"rxBy":["multi","Prescribed by","Kinsa ang nagreseta? (pwede daghan)"],"programs":["text","Programs known","Unsa nga programs?"],"noUseWhy":["text","Reason for not using programs","Ngano wala?"],"fpMethod":["multi","Method of family planning used","Unsa nga method? (pwede daghan)"],"nutri":["multi","Nutritional status (0-6 years old)","Unsa ang resulta? (pwede daghan)"],"vaccines":["multi","Vaccines received","Unsa nga bakuna? (pwede daghan)"],"immuStatus":["multi","Immunization status","Immunization status (pwede daghan)"],"prenatalCount":["num","Number of prenatal visits","Pila ka beses?"],"delType":["multi","Type of delivery","Unsa nga klase sa pagpanganak? (pwede daghan)"],"attendant":["multi","Labor attendant","Kinsa ang nagpaanak? (pwede daghan)"],"delPlace":["multi","Place of delivery","Asa nanganak? (pwede daghan)"],"births":["num","Livebirths","Pila ka bata ang natawo?"],"deaths":["num","Deaths","Pila tanan ang namatay?"],"infant":["num","Infant deaths","Pila ang ubos sa 1 ka tuig ang edad?"],"under5":["num","Deaths below 5 years","Pila ang ubos sa 5 ka tuig ang edad?"],"maternal":["num","Maternal deaths","Pila ang inahan nga namatay tungod sa pagmabdos o pagpanganak (hangtod 42 ka adlaw human nanganak)?"],"cause":["text","Causes of death","Unsa ang hinungdan sa pagkamatay?"],"facility":["multi","Health facility used","Unsa nga health facility ang inyong ginaadtoan? (pwede daghan)"],"dz_tb":["num","Persons with Tuberculosis","Pila ka tawo?"],"dt_tb":["date","Date diagnosed: Tuberculosis","Kanus-a na-diagnose?"],"dz_dm":["num","Persons with Diabetes mellitus","Pila ka tawo?"],"dt_dm":["date","Date diagnosed: Diabetes mellitus","Kanus-a na-diagnose?"],"dz_htn":["num","Persons with Hypertension","Pila ka tawo?"],"dt_htn":["date","Date diagnosed: Hypertension","Kanus-a na-diagnose?"],"dz_arth":["num","Persons with Arthritis","Pila ka tawo?"],"dt_arth":["date","Date diagnosed: Arthritis","Kanus-a na-diagnose?"],"dz_eye":["num","Persons with Glaucoma or other serious eye problem","Pila ka tawo?"],"dt_eye":["date","Date diagnosed: Eye problem","Kanus-a na-diagnose?"],"dz_dengue":["num","Persons with Dengue","Pila ka tawo?"],"dt_dengue":["date","Date diagnosed: Dengue","Kanus-a na-diagnose?"],"dz_filam":["num","Persons with Filariasis or amoebiasis","Pila ka tawo?"],"dt_filam":["date","Date diagnosed: Filariasis or amoebiasis","Kanus-a na-diagnose?"],"dz_malnut":["num","Persons with Malnutrition","Pila ka tawo?"],"dt_malnut":["date","Date diagnosed: Malnutrition","Kanus-a na-diagnose?"],"dz_cvd":["num","Persons with Cardiovascular problem","Pila ka tawo?"],"dt_cvd":["date","Date diagnosed: Cardiovascular problem","Kanus-a na-diagnose?"],"otherDis":["text","Other diagnosed conditions","Unsa nga sakit?"],"dz_other":["num","Persons with Other diagnosed conditions","Pila ka tawo?"],"dt_other":["date","Date diagnosed: Other condition","Kanus-a na-diagnose?"],"dz_comorb":["num","Persons with Comorbidities","Pila ka tawo?"],"comorbList":["multi","Comorbidities reported","Unsa nga mga sakit ang dungan? (pwede daghan)"],"dt_comorb":["date","Date diagnosed: Comorbidities","Kanus-a na-diagnose?"],"dz_commun":["num","Persons with Communicable diseases","Pila ka tawo?"],"communList":["multi","Communicable diseases reported","Unsa nga sakit? (pwede daghan)"],"dt_commun":["date","Date diagnosed: Communicable disease","Kanus-a na-diagnose?"],"epidemicDis":["text","Epidemic diseases named","Unsa nga sakit?"]},"prof":{"Household No.":["hh_no","text"],"Purok o sitio":["purok","text"],"Petsa sa interview":["date","date"],"Interviewer":["interviewer","text"],"Pangalan o initials sa respondent":["r_name","text"],"Edad":["r_age","num"],"Sex":["r_sex","single"],"Civil status":["r_civil","single"],"Unsa man ka sa household head?":["r_relation","single"],"Educational attainment":["r_educ","single"],"Trabaho":["r_occ","text"]}}; /* questions from older versions: old backups and old Excel files still load through these */
 const DUCK=`<svg viewBox="0 0 20 30" shape-rendering="crispEdges" aria-hidden="true"><path fill="#111111" d="M5 0h5v1h-5zM4 1h1v1h-1zM10 1h1v1h-1zM3 2h1v1h-1zM11 2h1v1h-1zM3 3h1v1h-1zM11 3h1v1h-1zM3 4h1v1h-1zM11 4h1v1h-1zM3 5h1v1h-1zM8 5h1v1h-1zM10 5h1v1h-1zM12 5h1v1h-1zM3 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM13 6h1v1h-1zM2 7h1v1h-1zM10 7h1v1h-1zM13 7h1v1h-1zM1 8h1v1h-1zM10 8h3v1h-3zM2 9h3v1h-3zM9 9h1v1h-1zM5 10h1v1h-1zM9 10h1v1h-1zM5 11h1v1h-1zM9 11h1v1h-1zM5 12h1v1h-1zM9 12h1v1h-1zM4 13h1v1h-1zM9 13h1v1h-1zM4 14h1v1h-1zM9 14h1v1h-1zM3 15h1v1h-1zM10 15h1v1h-1zM15 15h3v1h-3zM2 16h1v1h-1zM11 16h2v1h-2zM14 16h1v1h-1zM17 16h1v1h-1zM1 17h1v1h-1zM13 17h2v1h-2zM17 17h2v1h-2zM0 18h1v1h-1zM15 18h2v1h-2zM19 18h1v1h-1zM0 19h1v1h-1zM14 19h1v1h-1zM17 19h1v1h-1zM19 19h1v1h-1zM0 20h1v1h-1zM17 20h1v1h-1zM19 20h1v1h-1zM0 21h1v1h-1zM16 21h1v1h-1zM18 21h1v1h-1zM0 22h1v1h-1zM17 22h2v1h-2zM1 23h1v1h-1zM18 23h1v1h-1zM2 24h1v1h-1zM4 24h1v1h-1zM13 24h1v1h-1zM16 24h2v1h-2zM3 25h3v1h-3zM12 25h4v1h-4zM5 26h1v1h-1zM7 26h5v1h-5zM13 26h1v1h-1zM4 27h1v1h-1zM6 27h1v1h-1zM10 27h1v1h-1zM12 27h1v1h-1zM4 28h1v1h-1zM6 28h1v1h-1zM10 28h1v1h-1zM12 28h1v1h-1zM3 29h1v1h-1zM6 29h1v1h-1zM9 29h1v1h-1zM12 29h1v1h-1z"></path><path fill="#ffffff" d="M5 1h4v1h-4zM4 2h1v1h-1zM8 2h2v1h-2zM5 4h4v1h-4zM4 5h4v1h-4zM9 5h1v1h-1zM6 6h2v1h-2zM9 6h1v1h-1zM7 7h3v1h-3zM7 8h3v1h-3zM6 9h3v1h-3zM6 10h3v1h-3zM6 11h3v1h-3zM6 12h3v1h-3zM6 13h3v1h-3zM5 14h4v1h-4zM4 15h6v1h-6zM3 16h8v1h-8zM15 16h2v1h-2zM2 17h11v1h-11zM15 17h2v1h-2zM1 18h14v1h-14zM17 18h1v1h-1zM1 19h13v1h-13zM15 19h2v1h-2zM1 20h15v1h-15zM1 21h15v1h-15zM1 22h16v1h-16zM3 23h14v1h-14zM5 24h7v1h-7z"></path><path fill="#d6d8de" d="M9 1h1v1h-1zM4 4h1v1h-1zM5 9h1v1h-1zM5 13h1v1h-1zM18 18h1v1h-1zM18 19h1v1h-1zM16 20h1v1h-1zM18 20h1v1h-1zM17 21h1v1h-1zM2 23h1v1h-1zM17 23h1v1h-1zM3 24h1v1h-1zM12 24h1v1h-1zM14 24h2v1h-2zM6 25h6v1h-6z"></path><path fill="#de5c26" d="M5 2h3v1h-3zM10 2h1v1h-1zM10 3h1v1h-1z"></path><path fill="#5ca0de" d="M4 3h6v1h-6zM10 4h1v1h-1z"></path><path fill="#22528c" d="M9 4h1v1h-1zM11 5h1v1h-1zM11 6h2v1h-2zM11 7h2v1h-2z"></path><path fill="#f0b642" d="M4 6h2v1h-2zM3 7h4v1h-4zM2 8h5v1h-5zM6 26h1v1h-1zM12 26h1v1h-1zM5 27h1v1h-1zM11 27h1v1h-1zM5 28h1v1h-1zM11 28h1v1h-1zM4 29h2v1h-2zM10 29h2v1h-2z"></path></svg>`;
-const APP_VERSION="4.1"; /* build.py bakes in the one version number (Profile > App shows it) */
+const APP_VERSION="4.2"; /* build.py bakes in the one version number (Profile > App shows it) */
 const $=s=>document.querySelector(s);
 const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const ico=(p,s)=>`<svg class="ic" width="${s||22}" height="${s||22}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${p}</svg>`;
@@ -3766,9 +3768,9 @@ $("#view").addEventListener("click",e=>{
 const swipeOn=()=>settings.swipe!==false;
 const isIOS=()=>/iPad|iPhone|iPod/.test(navigator.userAgent||"")||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
 const canBack=()=>!gateOn()&&!!($("#sheet-root").firstChild||$("#tour-root").firstChild||!$("#qbar").hidden||tab!=="home");
-let G=null,supClick=0,swOpen=null; /* the touch now, a time until which a click is swallowed, the Home client whose actions show */
+let G=null,supClick=0,supBtn=0,swOpen=null; /* the touch now, a time until which a click is swallowed, the Home client whose actions show */
 const supNow=ms=>{supClick=Date.now()+(ms||350)};
-window.addEventListener("click",e=>{if(Date.now()<supClick&&!(e.target.closest&&e.target.closest(".swa [data-sw]"))){e.preventDefault();e.stopImmediatePropagation()}},true); /* the click that follows a drag or a hold never reaches the app; 4.1: the Summary and Continue buttons are never swallowed, so the first tap works */
+window.addEventListener("click",e=>{if(Date.now()<supClick&&(Date.now()<supBtn||!(e.target.closest&&e.target.closest(".swa [data-sw]")))){e.preventDefault();e.stopImmediatePropagation()}},true); /* the click that follows a drag or a hold never reaches the app; 4.1: the Summary and Continue buttons are never swallowed, so the first tap works; 4.2: except right after a drag that started on them (supBtn) */
 /* 4.1 a click (mouse, keyboard) or a scroll anywhere outside the open client row closes its actions; a touch does it in touchstart below */
 window.addEventListener("click",e=>{const t=swTile();if(t&&!t.contains(e.target)&&!(e.target.closest&&e.target.closest("#tour-root"))){e.preventDefault();e.stopImmediatePropagation();swClose(true)}},true);
 window.addEventListener("scroll",()=>{if(!swOpen)return;if($("#tour-root").firstChild){swOpen.y=null;return} /* the tour and lessons scroll the tile into view themselves */if(swOpen.y==null)swOpen.y=window.scrollY;if(Math.abs(window.scrollY-swOpen.y)>40)swClose(true)},{passive:true,capture:true}); /* 4.1: a real scroll closes the open tile; a small move (the page settling, a lesson bringing the tile into view) does not */
@@ -3810,7 +3812,8 @@ window.addEventListener("touchstart",e=>{
   const sh=tg.closest("#sheet-root .sheet");if(sh){g.kind="sheet";g.el=sh;return}
   if($("#sheet-root").firstChild)return;
   const tile=tab==="home"&&tg.closest("#hh-tiles .tile");
-  if(tile&&!tg.closest(".swa")){g.kind="tile";g.el=tile;g.open=same&&open===tile;if(!g.open){g.lp=setTimeout(()=>gLong(g),500);g.pr=setTimeout(()=>{if(G===g&&!g.dir&&g.kind==="tile"){tile.classList.add("pressing");buzz(15)}},180)}return}
+  if(tile&&tg.closest(".swa")){if(open===tile){g.kind="tile";g.el=tile;g.open=true;g.btn=true}return} /* 4.2: a drag that starts on the buttons of the open row slides it back (swipe right); a plain tap on a button is left to the click handler */
+  if(tile){g.kind="tile";g.el=tile;g.open=same&&open===tile;if(!g.open){g.lp=setTimeout(()=>gLong(g),500);g.pr=setTimeout(()=>{if(G===g&&!g.dir&&g.kind==="tile"){tile.classList.add("pressing");buzz(15)}},180)}return}
   const c=gFollow(tg);if(c){g.kind="fol";g.ctx=c}
 },{passive:true,capture:true});
 function gLock(g,dx,dy){
@@ -3853,9 +3856,9 @@ window.addEventListener("touchmove",e=>{
 function gEnd(e,cancel){
   const g=G;G=null;if(!g)return;clearTimeout(g.lp);pressOff(g);
   if(g.sup)supNow();
-  if(g.kind==="tile"&&g.open&&!g.on&&!cancel){swClose(true);supNow();return} /* a tap on the row that shows its actions closes it */
+  if(g.kind==="tile"&&g.open&&!g.on&&!cancel){if(g.btn)return;swClose(true);supNow();return} /* a tap on the row that shows its actions closes it */
   if(!g.on)return;
-  supNow();
+  supNow();if(g.btn)supBtn=Date.now()+350; /* the click after a drag that began on a button never presses it */
   if(g.kind==="tile"){
     const x=g.tx==null?g.base:g.tx,rw=g.rw,tl=g.el,op=!cancel&&(g.vx<-.35?true:g.vx>.35?false:x<-rw/2);
     if(op){swOpen={tile:tl,y:window.scrollY};swSet(tl,-rw,true)}else{swOpen=null;swSet(tl,0,true);setTimeout(()=>swDone(tl),animOn()?240:0)}
@@ -4610,12 +4613,12 @@ function drawMember(){
   +(dxs.length||cm?`<div class="field wide"><span class="flabel">${QT("Mga sakit","Conditions")}</span><div class="tags big">${dxs.map(e=>`<span class="tag">${esc(DXBY[e.k].short+(e.y?" "+e.y:""))}</span>`).join("")}${cm?`<span class="tag warn">${QT("Naay comorbidity","With comorbidity")}</span>`:""}</div></div>`:"")
   +`<div class="btnrow">${hd?"":`<button type="button" class="btn danger" data-rm="1">${QT("Kuhaa","Remove")}</button>`}<button type="button" class="btn" data-x>${QT("Human","Done")}</button></div>`); /* the head cannot be removed */
   wireSlides(s);
-  sheetBack=()=>{cur.members=realMembers(cur);touch();if(PAGES[step].kind==="family")refreshFamily()};
+  sheetBack=()=>{cur.members=realMembers(cur);if(PAGES[step].kind==="family")refreshFamily()}; /* 4.2 closing the sheet is not an edit: every edit inside it already marks the client changed (and Remove does below), so just looking never changes updatedAt */
   const getM=()=>{saveMembers();return cur.members[msIdx]};
   s.addEventListener("click",e=>{
     if(personTap(e,getM,{ids:MIDS,after:()=>needRefresh(s,mv(),req),back:drawMember}))return;
     const st=e.target.closest("[data-st]");if(st){step1(st);return}
-    if(e.target.closest("[data-rm]")){cur.members.splice(msIdx,1);syncDx(cur);closeSheet()}
+    if(e.target.closest("[data-rm]")){cur.members.splice(msIdx,1);syncDx(cur);touch();closeSheet()}
   });
   s.addEventListener("input",e=>{
     const m2=cur.members[msIdx];if(!m2)return;
@@ -4810,6 +4813,96 @@ function openHHAt(id,key){
   openClient(id,pg<0,pg<0?undefined:pg);
   if(cur)hhBack={tab:from,step};
   return pg>=0;
+}
+/* 4.2 A row of a table opens our own client on the exact question behind it: never the client sheet, never the Summary. a is the row's w.at (app3.js atDerive: {q} a household question, {f} a person field, {kid}, {wm}, {dx}, {cm}, {prog}, {com}; ot = the Others box, nap = Not applicable), no is the member number of the first person the row counted in this house. Back returns to the same table like openHHAt (hhBack). A question with no page in the interview (Part E, a retired one) opens Update answers for the row, else the client sheet. */
+const atItem=q=>{const num=/^\d+$/.test(String(q));return ITEMS.find(i=>num?i.n===+q:i.fus.some(f=>f.key===q))};
+const atPg=it=>it?pageOfItem(it):-1; /* pageOfItem(undefined) would match the head page */
+const atDxKey=(m,a)=>a.cm?((m&&dxOf(m)[0])||{}).k||DX[0].k:a.dx;
+function atPage(x,a,mem){
+  if(a.f)return mem&&mem===headOf(x)?PG_HEAD:PG_FAMILY;
+  if(a.kid)return PAGES.findIndex(p=>p.kind==="kids");
+  if(a.wm)return atPg(ITEMS.find(i=>i.n==="MC"));
+  if(a.dx||a.cm)return atPg(DXITEM[atDxKey(mem,a)]);
+  if(a.prog)return atPg(atItem("programAware"));
+  if(a.q!=null)return atPg(atItem(a.q));
+  return -1;
+}
+function openAtRow(h,p,ms){
+  const x=households.find(z=>z.id===h.id);if(!x)return false;
+  if(!isOurs(x)){openSummary(x.id,{k:"tally",tab:"tally"});return true} /* another pair's house stays read only */
+  const a=p.at||{},m0=(ms||[]).find(m=>m&&m.mno!=null),no=m0?m0.mno:null,mem=no!=null?memByNo(x,no):null,pg=atPage(x,a,mem);
+  if(pg<0){ /* Part E, a retired question: no page holds it */
+    toast("This question is not in the interview anymore.");
+    if(p.ux&&typeof uxOk==="function"&&uxOk(p))openUpdateX(p,x.id);
+    else if(p.uk&&typeof canUpdate==="function"&&canUpdate(p.uk,p.uv)&&typeof openUpdate==="function")openUpdate(p.uk,p.uv,(p.head||"Table")+" · "+p.t,p.who,x.id);
+    else openHH(x.id);
+    return false;
+  }
+  const from=tab==="client"?(hhBack?hhBack.tab:"home"):tab; /* already inside a client: keep the screen it was first opened from */
+  openClient(x.id,false,pg);
+  if(!cur||editingId!==x.id)return false;
+  hhBack={tab:from,step}; /* the step is not moved after this, so Back leaves at once */
+  if(pg>0&&step===0){restoreY.t++;window.scrollTo(0,0);toast("Finish the head of the house first.");return true} /* the head is not complete: the interview stays on page 0 */
+  atGo(a,no);
+  return true;
+}
+/* bring the answer into view and put the cursor on it (a text or number box is ready to type); no highlight, the normal focus ring is enough */
+function atGo(a,no){
+  const V=$("#view"),ms=cur.members=realMembers(cur),i=no==null?-1:ms.findIndex(m=>m.mno===no),m=i>=0?ms[i]:null;
+  let root=V,box=null,foc=null,sheet=false;
+  const q=(s,r)=>{const e=(r||root).querySelector(s);return e&&!e.closest("[hidden]")?e:null},pick=(r,s)=>r?(q(s+'[aria-pressed="true"]',r)||q(s,r)):null,first=r=>r?(q("input:not([type=hidden]),select,textarea",r)||q("button",r)):null;
+  if(a.f){
+    const hd=m&&m===headOf(cur),I=hd?HIDS:MIDS;
+    if(m&&!hd){openMember(i);root=$("#sheet-root");sheet=true}else if(hd)root=q("#head-card")||V;
+    if(!m){box=q("#roster")||q(".qcard")}
+    else{
+      box=q('[data-hf="'+a.f+'"]');
+      if(a.f==="age")foc=q("#"+I.age);
+      else if(a.f==="educ")foc=q("#"+I.educ);
+      else if(a.f==="religion"&&a.ot)foc=q("#"+I.relo)||pick(box,"[data-v]");
+      else foc=pick(box,"[data-v]");
+    }
+  }else if(a.kid){
+    box=q('.kid[data-km="'+i+'"]');
+    if(a.kid==="nut")foc=pick(box,'[data-kk="nut"] [data-v]');
+    else if(a.kid==="imm")foc=pick(box,'[data-kk="imm"] [data-v]')||pick(box,"[data-vxm]");
+    else if(a.kid==="vx")foc=q('.vxdot[data-vx="'+a.v+'"]',box)||pick(box,"[data-vxm]");
+    else foc=pick(box,"[data-vxm]");
+    if(!box)box=q(".kid");
+  }else if(a.wm){
+    const mc=q('.qcard[data-n="MC"]');box=i>=0?q('.mw[data-wm="'+i+'"]'):[...V.querySelectorAll(".mw")].find(c=>c.querySelector('[data-mf="'+a.wm+'"]'))||q(".mw"); /* no person (an older house answer): the first woman that has this answer */
+    if(!box){box=mc;foc=i>=0?q('[data-mw="'+i+'"]',mc):null}
+    else if(a.wm==="cnt")foc=q("[data-mcnt]",box);
+    else if(a.wm==="at"&&a.ot)foc=q("[data-mto]",box)||pick(q('[data-mf="at"]',box),"[data-v]");
+    else foc=pick(q('[data-mf="'+a.wm+'"]',box),"[data-v]");
+  }else if(a.dx||a.cm){
+    const k=atDxKey(m,a),d=DXBY[k];box=d?q('.qcard[data-n="'+d.n+'"]'):null;
+    if(box){
+      const chip=i>=0?q('.who1[data-who="'+i+'"]',box):null;
+      if(a.which&&i>=0)foc=(a.ot&&q('[data-who-o="'+i+'"]',box))||pick(q('.whrow[data-whrow="'+i+'"]',box),"[data-wh]");
+      else if(k==="other"&&i>=0)foc=q("#oth_"+i,box)||chip;
+      else foc=chip;
+      if(!foc)foc=q('input[name="q'+d.n+'"]:checked',box)||q('input[name="q'+d.n+'"]',box);
+    }
+  }else if(a.prog){
+    box=q(".progs");
+    if(box&&typeof a.prog==="string"){const l=[...box.querySelectorAll('input[name="'+(a.col||"pk")+'"]')].find(e=>e.value===a.prog&&!e.disabled)||[...box.querySelectorAll('input[name="pk"]')].find(e=>e.value===a.prog);foc=l||null}
+    if(box&&!foc)foc=q("input:checked:not([disabled])",box)||q("input:not([disabled])",box);
+  }else if(a.q!=null){
+    const key=String(a.q),num=/^\d+$/.test(key),it=atItem(key);
+    box=num?q('.qcard[data-n="'+key+'"]'):q('.fu[data-fk="'+key+'"]');
+    if(!box&&it)box=q('.qcard[data-n="'+(it.n||"")+'"]');
+    if(box){
+      const nm=num?"q"+key:"f_"+key;
+      if(a.nap)foc=q('input[value="Not applicable"]',box)||q(".napbox",box);
+      else if(a.ot&&!num)foc=q("#f_"+key+"_ot",box);
+      if(!foc)foc=q('input[name="'+nm+'"]:checked',box)||first(box);
+    }
+  }
+  const tgt=(foc&&foc.closest(".field,.vx,.whrow,.orow,.pgr"))||box||foc;
+  const typed=foc&&foc.matches("input[type=text],input[type=number]"); /* a box to type in sits a third of the way down, so the keyboard does not cover it */
+  if(tgt){if(sheet)tgt.scrollIntoView({block:"center"});else{restoreY.t++;window.scrollTo(0,Math.max(0,typed?docTop(foc)-Math.round(window.innerHeight*.3):docTop(tgt)-90))}}
+  if(foc&&foc.focus&&!foc.disabled)foc.focus({preventScroll:true});
 }
 document.addEventListener("visibilitychange",()=>{if(document.hidden&&cur){leavePage();autosave()}});
 window.addEventListener("pagehide",()=>{if(cur){leavePage();autosave()}});
@@ -5365,12 +5458,24 @@ function bucket30(key,names,pairs){
 const othEnt30=(key,b)=>[...b.typed.values()].map(t=>({label:t.label,val:null,l:t.l,typed:true,bad:isBad30(key,"Others")})).concat(b.nt.length?[{label:OTH_NT,val:null,l:b.nt,grey:true}]:[]);
 const rk30=e=>e.na?4:e.grey?3:/^None\b/.test(e.val||"")?2:e.label==="Others"?1:0;
 const order30=(ent,fixed)=>ent.map((e,i)=>({e,i})).sort((a,b)=>rk30(a.e)-rk30(b.e)||(fixed?0:b.e.l.length-a.e.l.length)||a.i-b.i).map(x=>x.e); /* most first (or the order of the list), then Others, None, the grey rows, No answer yet */
+/* 4.2 where a tapped row goes in the interview (openAtRow, app2.js). w.at = {q: question key or item number} a household answer, {f} a person field (age, sex, civil, religion, educ), {kid: nut|imm|vx|vxm, v} a child field, {wm} a woman field, {dx} a disease card (which: the "which one" answer), {cm} the illness question of a person, {prog: name, col} the program grid, {com} Part E (no page). ot: the Others box of that answer, nap: the Not applicable choice. */
+const UK_AT={"@civil":{f:"civil"},"@religion":{f:"religion"},"@educ":{f:"educ"},"@nut":{kid:"nut"},"@imm":{kid:"imm"},"@fp":{q:55},"@fpType":{q:"fpType"}};
+function atDerive(w,e){
+  const x=w.ux||{},dk=/^@dx:(\w+)$/.exec(w.uk||"");let a=null;
+  if(dk)a={dx:dk[1]};else if(w.uk&&UK_AT[w.uk])a={...UK_AT[w.uk]};
+  else if(x.t==="hh")a={q:x.key};else if(x.t==="prog")a={prog:1};else if(x.t==="num")a={q:x.f};else if(x.t==="mem")a={f:x.f};
+  else if(x.t==="dxname")a={dx:"other"};else if(x.t==="dxwhich")a={dx:x.k,which:1};else if(x.t==="woman")a={wm:x.f};
+  else if(x.t==="child")a=x.f==="vx"?{kid:"vx",v:x.v}:{kid:"vxm"};else if(x.t==="com")a={com:1};
+  else if(w.key!=null)a={q:w.key};
+  return a;
+}
+const atFlags=(a,e)=>a?{...a,...(e&&(e.typed||e.label===OTH_NT||e.ot)?{ot:1}:{}),...(e&&e.after?{nap:1}:{})}:null;
 /* one part of a table from its entries [{label,val,l (households or {h,m}),grey,na,bad,ind,pbase}] */
 function sec30(o){
   const all=o.ent,aft=all.filter(e=>e.after),ent=all.filter(e=>!e.after),tot=ent.reduce((s,e)=>s+(e.ind?0:e.l.length),0),ans=ent.reduce((s,e)=>s+(e.ind||e.na?0:e.l.length),0),real=ent.reduce((s,e)=>s+(e.ind||e.grey||e.na?0:e.l.length),0),miss=o.miss||[];
   const mk=e=>{
     const n=e.l.length,b=e.ind?e.pbase:o.base!=null?o.base:real,w=mkW(o.tbl,n,e.l,{base:o.noun?undefined:(e.ind?e.pbase:ans),miss:e.na||e.after?[]:miss,noun:o.noun});
-    w.key=o.key==null?null:o.key;w.val=e.na||e.ind||e.after?null:e.val;w.head=o.head;w.uk=e.uk||null;w.uv=e.uk?e.uv:null;w.ux=e.ux||(o.key!=null&&FK[o.key]&&!e.after&&!e.ind&&(FK[o.key].type==="multi"||e.typed||e.label===OTH_NT||(e.na&&(FK[o.key].type==="single")))?{t:"hh",key:o.key}:null); /* 4.0 ux: see app6.js */ /* uk and uv: the row can be updated from its tap (Update answers, app6.js); key and val stay for the household questions */
+    w.key=o.key==null?null:o.key;w.val=e.na||e.ind||e.after?null:e.val;w.head=o.head;w.uk=e.uk||null;w.uv=e.uk?e.uv:null;w.ux=e.ux||(o.key!=null&&FK[o.key]&&!e.after&&!e.ind&&(FK[o.key].type==="multi"||e.typed||e.label===OTH_NT||(e.na&&(FK[o.key].type==="single")))?{t:"hh",key:o.key}:null); /* 4.0 ux: see app6.js */ w.at=atFlags(e.at||o.at||atDerive(w,e),e); /* 4.2 the question behind the row */ /* uk and uv: the row can be updated from its tap (Update answers, app6.js); key and val stay for the household questions */
     return {label:e.label,n,pct:e.grey||e.na||!b?null:r2(n/b*100),grey:!!(e.grey||e.na),bad:!!e.bad&&!e.grey&&!e.na,zero:n===0&&!e.after&&!e.ind,...(e.ind?{ind:true}:{}),...(e.typed?{typed:true}:{}),who:w};
   };
   const s={title:o.title||"",key:o.key==null?null:o.key,sub:o.sub||"",rows:ent.map(mk),total:{n:tot,pct:tot?100:null}};
@@ -5427,16 +5532,16 @@ function personSec(title,o){
   P.forEach(p=>{let k=pick(p.m,p.h)||"";if(!k){na.push(p);return}
     if(hasO&&(k.startsWith("Others")||!m.has(k))){const t=spell(k.startsWith("Others: ")?k.slice(8):k.startsWith("Others")?"":k);if(!t){nt.push(p);return}const lk=t.toLowerCase();if(!typed.has(lk))typed.set(lk,{label:t,l:[]});typed.get(lk).l.push(p);return} /* a typed Others is its own row (Others, not typed is grey) */
     if(!m.has(k))m.set(k,[]);m.get(k).push(p)});
-  const uk=UPK_P[title]||null,rx=title==="RELIGION"?{ux:{t:"mem",f:"religion"}}:{},ent=order30([...m.entries()].map(([k,l])=>({label:k,val:k,l,...(uk?{uk,uv:k}:{})})).concat([...typed.values()].map(t=>({label:t.label,val:null,l:t.l,typed:true,...rx})),nt.length?[{label:OTH_NT,val:null,l:nt,grey:true,...rx}]:[]),o.fixed);
-  if(na.length)ent.push({label:title==="AGE"?"No age yet":NA,val:null,l:na,na:true});
-  return sec30({title:"",key:null,tbl:tb30(),head:hd30(),ent,noun:PPL,expect:P.length});
+  const uk=UPK_P[title]||null,rx=title==="RELIGION"?{ux:{t:"mem",f:"religion"}}:title==="AGE"?{ux:{t:"mem",f:"age"}}:{},ent=order30([...m.entries()].map(([k,l])=>({label:k,val:k,l,...(uk?{uk,uv:k}:{}),...(title==="AGE"?rx:{})})).concat([...typed.values()].map(t=>({label:t.label,val:null,l:t.l,typed:true,...rx})),nt.length?[{label:OTH_NT,val:null,l:nt,grey:true,...rx}]:[]),o.fixed);
+  if(na.length)ent.push({label:title==="AGE"?"No age yet":NA,val:null,l:na,na:true,...(title==="AGE"?rx:{})}); /* 4.2 Age: every row, No age yet too, can be updated (app6.js) */
+  return sec30({title:"",key:null,tbl:tb30(),head:hd30(),ent,noun:PPL,expect:P.length,at:{f:{AGE:"age",[T_CIVIL]:"civil",RELIGION:"religion","EDUCATIONAL ATTAINMENT":"educ"}[title]}});
 }
 /* Children: nutrition (0 to 6) and immunization (0 to 12 months, 1 to 8 years), counted by child. o: range, prev (see kidCount), unit (what the sub line counts), na (add the grey No answer yet row: the children with no answer) */
 function kidSec(field,key,names,title,o){
   o=o||{};const k=kidCount(field,o.range,o.prev,o.rest),uk="@"+field,ent=names.map(n=>({label:n,val:n,l:k.wh.get(n)||[],bad:isBad30(key,n),uk,uv:n}));
   k.wh.forEach((l,n)=>{if(!names.includes(n))ent.push({label:n,val:n,l,bad:false})});
   if(o.na&&k.miss.length)ent.push({label:NA,val:null,l:k.miss,na:true});
-  return sec30({title,key:null,tbl:tb30(),head:hd30(title),ent,miss:k.miss,noun:KIDS,sub:tinfo({unit:o.unit||TUNIT(key),base:k.base})[0]});
+  return sec30({title,key:null,tbl:tb30(),head:hd30(title),ent,miss:k.miss,noun:KIDS,sub:tinfo({unit:o.unit||TUNIT(key),base:k.base})[0],at:{kid:field}});
 }
 /* Table C, Mothers: one section of women. names: the choices in order; delivery sections list a pregnant woman as the grey Not applicable yet row. */
 function matSec(title,key,names,o){
@@ -5473,10 +5578,10 @@ function vxSec30(){
     VX_LIST.forEach(v=>{if((vx[v]||0)>=need[v])got.get(v).push(x)});
   }));
   const N=card.length,rows=VX_LIST.map(v=>{
-    const l=got.get(v),n=l.length,w=mkW(tb30(),n,l,{base:N,noun:KIDS});w.key=null;w.val=null;w.head=hd30("Immunization by vaccine");w.uk=null;w.uv=null;w.ux={t:"child",f:"vx",v}; /* 4.0: the doses of this vaccine for each child */
+    const l=got.get(v),n=l.length,w=mkW(tb30(),n,l,{base:N,noun:KIDS});w.key=null;w.val=null;w.head=hd30("Immunization by vaccine");w.uk=null;w.uv=null;w.ux={t:"child",f:"vx",v};w.at={kid:"vx",v}; /* 4.0: the doses of this vaccine for each child */
     return {label:VX_SCHED[v].doses>1?VX_NAME[v]+", "+VX_SCHED[v].doses+" doses":VX_NAME[v],n,pct:N?r2(n/N*100):null,grey:false,bad:false,zero:false,who:w};
   });
-  const g=(label,l)=>{const w=mkW(tb30(),l.length,l,{noun:KIDS});w.key=null;w.val=null;w.head=hd30("Immunization by vaccine");w.uk=null;w.uv=null;w.ux={t:"child",f:"vxm"};return {label,n:l.length,pct:null,grey:true,bad:false,zero:false,who:w}};
+  const g=(label,l)=>{const w=mkW(tb30(),l.length,l,{noun:KIDS});w.key=null;w.val=null;w.head=hd30("Immunization by vaccine");w.uk=null;w.uv=null;w.ux={t:"child",f:"vxm"};w.at={kid:"vxm"};return {label,n:l.length,pct:null,grey:true,bad:false,zero:false,who:w}};
   rows.push(g("No card",nc));
   if(old.length)rows.push(g("Status only, no doses",old));
   return {title:"Immunization by vaccine",key:null,sub:"out of "+N+" "+plu(N,"child","children")+" with a card. A child counts when every dose due for the age is in.",rows,total:null};
@@ -5596,16 +5701,16 @@ function diseases30(){
     }
     const hs=new Set(mine.map(x=>x.h));
     households.forEach(h=>{if(dxOldOf(h,d.k)>dxNamed(h,d.k))hs.add(h)}); /* an older household count with nobody named still counts the house */
-    ent.push({label:DXNAME[d.k]||d.short,l:[...hs],uk:"@dx:"+d.k,uv:"Oo",dk:d.k,subs:DXWHICH[d.k]?dxWhichSubs(d.k,mine):null});
+    ent.push({label:DXNAME[d.k]||d.short,l:[...hs],pl:[...mine,...[...hs].filter(h=>!mine.some(x=>x.h===h))],uk:"@dx:"+d.k,uv:"Oo",dk:d.k,subs:DXWHICH[d.k]?dxWhichSubs(d.k,mine):null}); /* 4.2 pl: the people named, so a tap opens that person's chip; a house with only an older count stays in the list with no person */
   });
   ent.sort((a,b)=>(a.grey?1:0)-(b.grey?1:0)||b.l.length-a.l.length||a.label.localeCompare(b.label));
   const live=ent.filter(e=>e.l.length).length;let seen=0;
   const rows=ent.flatMap(e=>{
-    const n=e.l.length,w=mkW("Table F",n,e.pl||e.l,{base:HN});w.key=null;w.val=null;w.head=hd30("Diseases");w.uk=e.uk||null;w.uv=e.uk?e.uv:null;w.ux=e.ux||null;
+    const n=e.l.length,w=mkW("Table F",n,e.pl||e.l,{base:HN});w.key=null;w.val=null;w.head=hd30("Diseases");w.uk=e.uk||null;w.uv=e.uk?e.uv:null;w.ux=e.ux||null;w.at=atFlags(atDerive(w,e),e);
     if(n)seen++;
     const fold=n&&live>8&&seen>6?{fold:true}:{},r={label:e.label,n,pct:e.grey||!HN?null:r2(n/HN*100),grey:!!e.grey,bad:false,zero:n===0,...fold,who:w};
     /* 3.9: Filariasis or amoebiasis and the eye problem keep their line (the sum of the houses) and list the answers under it, indented; an older entry with no "which" is only in the sum */
-    const sub=(n&&e.subs?e.subs:[]).map(x=>{const sw=mkW("Table F",x.l.length,x.pl||x.l,{base:n});sw.key=null;sw.val=null;sw.head=hd30("Diseases");sw.uk=null;sw.uv=null;sw.ux={t:"dxwhich",k:e.dk};return {label:x.label,n:x.l.length,pct:x.grey?null:r2(x.l.length/n*100),grey:!!x.grey,bad:false,zero:false,ind:true,...(x.typed?{typed:true}:{}),...fold,who:sw}});
+    const sub=(n&&e.subs?e.subs:[]).map(x=>{const sw=mkW("Table F",x.l.length,x.pl||x.l,{base:n});sw.key=null;sw.val=null;sw.head=hd30("Diseases");sw.uk=null;sw.uv=null;sw.ux={t:"dxwhich",k:e.dk};sw.at=atFlags(atDerive(sw,x),x);return {label:x.label,n:x.l.length,pct:x.grey?null:r2(x.l.length/n*100),grey:!!x.grey,bad:false,zero:false,ind:true,...(x.typed?{typed:true}:{}),...fold,who:sw}});
     return [r,...sub];
   });
   return {unit:"households",cols:["DISEASE","HOUSEHOLDS","%"],secs:[{title:"",key:null,sub:"",rows,total:null}]};
@@ -5616,7 +5721,7 @@ function diseases30(){
 const COM_GROUPS=[["AGE","Age"],["GENDER","Gender"],[T_CIVIL,"Civil status"],["RELIGION","Religion"],["EDUCATIONAL ATTAINMENT","Education"],["TYPES OF FAMILY","Types of family"],["ETHNIC BACKGROUND","Ethnic background"],["RACE","Race"],["REGIONAL ORIGIN","Regional origin"],["PRIMARY DIALECT SPOKEN","Dialect"],["PATTERNS OF MIGRATION","Migration"]];
 function comorb30(){
   const P=allPersons(),d=tallyDemo(),head="Table A · Comorbidities";
-  const row=(g,label,l,grey)=>{const r=demoRow(l),gen=g==="GENDER",w=r.wh;w.key=null;w.val=null;w.head=head;w.mf=[r[0],r[1],r[2],r[3],r[4]];w.grp=COM_GROUPS.find(x=>x[0]===g)[1];
+  const row=(g,label,l,grey)=>{const r=demoRow(l),gen=g==="GENDER",w=r.wh;w.key=null;w.val=null;w.head=head;w.mf=[r[0],r[1],r[2],r[3],r[4]];w.grp=COM_GROUPS.find(x=>x[0]===g)[1];w.ux={t:"mem",f:"comorb"};w.at={cm:1}; /* 4.2 the person's illness question; Update answers lists each person (app6.js) */
     return {label,wm:gen&&label==="Female"?null:r[0],wf:gen&&label==="Male"?null:r[1],nm:gen&&label==="Female"?null:r[2],nf:gen&&label==="Male"?null:r[3],n:r[4],grey:!!grey,zero:r[4]===0,who:w}};
   const tot=(g,rows)=>{const s={label:"TOTAL",wm:0,wf:0,nm:0,nf:0,n:0};rows.forEach(r=>{["wm","wf","nm","nf","n"].forEach(k=>{s[k]+=r[k]||0})});return s};
   const fromDemo=(g,dg)=>dg.rows.filter(r=>r[2]!=="tot").map(([label,,f])=>{const pick=TA_PICK[g],l=P.filter(p=>((pick(p.m,p.h)||NA)===(f==="na"?NA:label))||(g==="AGE"&&f==="na"&&!pick(p.m,p.h)));const ty=/^Others: /.test(label),r=row(g,ty?label.slice(8):label==="Others"?OTH_NT:label,l,f==="na"||label==="Others");if(ty)r.typed=true;return r});
@@ -5643,8 +5748,8 @@ function progRows(){ /* the programs the barangay runs (all of PROGRAMS when non
   return base;
 }
 function progBy30(){
-  const hs=progHH(),pw=l=>{const w=mkW("Table C",l.length,l,{base:hs.length});w.key=null;w.val=null;w.head=hd30("By program");w.ux={t:"prog"};return w}, /* 4.0: tap Know or Use to change what the house knows and uses */
-    lines=progRows().map(p=>{const ka=hs.filter(h=>progKnown(h).includes(p)),ua=hs.filter(h=>progUsed(h).includes(p));return {label:p,a:ka.length,b:ua.length,wa:pw(ka),wb:pw(ua)}});
+  const hs=progHH(),pw=(l,p,col)=>{const w=mkW("Table C",l.length,l,{base:hs.length});w.key=null;w.val=null;w.head=hd30("By program");w.ux={t:"prog"};w.at={prog:p,col};return w}, /* 4.0: tap Know or Use to change what the house knows and uses. 4.2 at: the program and its column (pk know, pu use) in the interview's grid */
+    lines=progRows().map(p=>{const ka=hs.filter(h=>progKnown(h).includes(p)),ua=hs.filter(h=>progUsed(h).includes(p));return {label:p,a:ka.length,b:ua.length,wa:pw(ka,p,"pk"),wb:pw(ua,p,"pu")}});
   return {unit:"",kind:"duo",cap:"Table C · out of "+hs.length+" "+plu(hs.length,"household","households")+" that answered by program",cols:["PROGRAM","KNOW","USE"],lines};
 }
 function progWhy30(){
@@ -5653,7 +5758,7 @@ function progWhy30(){
   const oAll=oth.concat(other);
   ent.push({label:"Others",val:"Others",l:oAll});
   const t=new Map();oAll.forEach(h=>{const x=spell(h.fu.progWhy.other)||(first(h)!=="Others"?first(h):"");if(!x)return;const k=x.toLowerCase();if(!t.has(k))t.set(k,{label:x,l:[]});t.get(k).l.push(h)});
-  [...t.values()].sort((a,b)=>b.l.length-a.l.length).forEach(e=>ent.push({label:e.label,val:null,l:e.l,ind:true,pbase:oAll.length}));
+  [...t.values()].sort((a,b)=>b.l.length-a.l.length).forEach(e=>ent.push({label:e.label,val:null,l:e.l,ind:true,pbase:oAll.length,ot:true}));
   if(na.length)ent.push({label:NA,val:null,l:na,na:true});
   ent.forEach(e=>{e.ux={t:"hh",key:"progWhy"}}); /* 4.0 */
   const sec=sec30({title:"",key:"progWhy",tbl:tb30(),head:hd30("Why not used"),ent,miss:na,sub:"Households with a known program they do not use"});
@@ -6021,8 +6126,9 @@ function openWho(i,from){
     if(e.target.closest("#who-up")){closeSheet();if(upX)openUpdateX(p);else openUpdate(p.uk||p.key,p.uk?p.uv:p.val,(p.head||"Table")+" · "+p.t,p.uk?p.who:null);return}
     const t=e.target.closest("[data-wt]");if(t){tb=t.dataset.wt;s.querySelectorAll("[data-wt]").forEach(b=>b.setAttribute("aria-pressed",String(b===t)));$("#who-list").innerHTML=rows();return}
     const b=e.target.closest("[data-hh]");if(!b)return;const h=households.find(x=>x.id===b.dataset.hh);if(!h)return;
-    if(upX&&tb==="c"&&isOurs(h)){closeSheet();openUpdateX(p,h.id);return} /* 4.0: one house of our own pair opens its Update screen */
-    closeSheet();if(isOurs(h)){if(p.key!=null&&typeof openHHAt==="function")openHHAt(h.id,p.key);else openHH(h.id)}else openSummary(h.id,{k:"tally",tab:"tally"}); /* our own house opens the question; 4.0: another pair's house is view only, so it opens its read-only Summary */
+    closeSheet();
+    if(isOurs(h)){const en=(tb==="c"?p.who:p.miss).find(x=>x.h.id===h.id);openAtRow(h,p,en?en.ms:[])} /* 4.2: our own house opens the interview on the exact question behind the row (the first person counted opens); Update answers is the button above */
+    else openSummary(h.id,{k:"tally",tab:"tally"}); /* 4.0: another pair's house is view only, so it opens its read-only Summary */
   });
 }
 $("#view").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&tab==="tally"&&e.target.matches&&e.target.matches("tr[data-who]")){e.preventDefault();openWho(+e.target.dataset.who,e.target)}});
@@ -6113,9 +6219,12 @@ function matHH(ans,bad){
   households.forEach(h=>{const ws=matWomen(h).filter(w=>ans(w.mat));if(!ws.length)return;b++;const bw=ws.filter(w=>bad(w.mat));if(bw.length)y.push(...bw.map(w=>({h,m:w.m})))});
   const hs=[...new Set(y.map(x=>x.h))],r=[hs.length,b];r.w=hs;r.m=[];return r;
 }
+/* 4.2 the question behind each Report problem (a tap on the source line opens it in the interview, like a table row) */
+const PROBLEM_AT={inc:{q:"income"},toilet:{q:"toiletType"},garb:{q:"wasteHow"},drain:{q:"sewage"},wlvl1:{q:"waterLevel"},unsafesrc:{q:"drinkSrc"},nowmgmt:{q:"wasteMgmt"},light:{q:"lighting"},lighthouse:{q:"houseType"},selfrx:{q:"medication"},trad:{q:"diagBy"},homedel:{wm:"pl"},imm:{kid:"imm"},nut:{kid:"nut"},overwt:{kid:"nut"},preg:{wm:"st"},death:{q:"deaths"},prenat:{wm:"pre"},prog:{prog:1},am91:{q:91}};
+const finAtOf=id=>{const d=/^dx_([a-z]+)(~)?/.exec(id);if(d)return {dx:d[1],...(d[2]&&DXWHICH[d[1]]?{which:1}:{})};return PROBLEM_AT[id]||null};
 function finProblems(){
   const out=[],has=(v,a)=>v.some(x=>a.includes(x));
-  const add=(id,name,tag,nat,yb,rest,src,unit,hh)=>{const y=yb[0],b=yb[1];if(b>0&&y>0)out.push({id,name,tag,nat,y,b,p:y/b*100,rest,src,unit,hh:hh||y,wh:mkW(src.split(" · ")[0],y,yb.w,{base:b,miss:yb.m,noun:unit.startsWith("children")?KIDS:unit.startsWith("people")?PPL:undefined})})}; /* wh: the households behind y, for the tap on the source line */
+  const add=(id,name,tag,nat,yb,rest,src,unit,hh)=>{const y=yb[0],b=yb[1];if(b>0&&y>0){const wh=mkW(src.split(" · ")[0],y,yb.w,{base:b,miss:yb.m,noun:unit.startsWith("children")?KIDS:unit.startsWith("people")?PPL:undefined});wh.at=finAtOf(id);out.push({id,name,tag,nat,y,b,p:y/b*100,rest,src,unit,hh:hh||y,wh})}}; /* wh: the households behind y, for the tap on the source line */
   const wl=(a,w,m)=>{a.w=w;a.m=m||[];return a}; /* [y, b] with the households (or people) counted in y and the houses with no answer */
   const cnt=(key,pred)=>{let b=0;const y=[],m=[];households.forEach(h=>{const v=selOf(h,key);if(!v.length){m.push(h);return}if(v[0]===NAP)return;b++;if(pred(v))y.push(h)});return wl([y.length,b],y,m)}; /* 3.9 Not applicable is left out of the base */
   const yn=(n,want)=>{let b=0;const y=[],m=[];households.forEach(h=>{const a=A(h,n);if(!a){m.push(h);return}if(a===NAP)return;b++;if(a===want)y.push(h)});return wl([y.length,b],y,m)};
@@ -7525,7 +7634,7 @@ function showWelcome(){setTimeout(startTour,0)} /* the Welcome pages are gone: a
 let tourI=0,tourShown=-1,tourBusy=false,tourSteps=null; /* tourSteps: the steps now shown (TOUR, or the steps of one lesson); tourBusy: a step is being drawn, so nothing counts yet */
 const tourFirst=sel=>[...document.querySelectorAll(sel)].find(e=>e.getClientRects().length)||null;
 const tgtOf=s=>{if(!s||!s.sel)return null;if(typeof s.sel==="function"){try{return s.sel()}catch(e){return null}}return tourFirst(s.sel)}; /* the real element a step points at (sel is a CSS selector or a function) */
-let prKind="",prN=-1,prSt="",prPlace=null,prReal=null,prReplay=false,prFrom=null,prHit=-1,prWatchN=0,prRun=0; /* prKind: "lesson" | "tour" | ""; prN: the lesson; prSt: "step" | "done" | ""; prPlace: {n,k} where a stopped lesson stands; prReal: the real data while the practice space is open; prFrom: where How to was opened from */
+let prKind="",prN=-1,prSt="",prPlace=null,prReal=null,prReplay=false,prFrom=null,prHit=-1,prWatchN=0,prRun=0,prNu=-1; /* prKind: "lesson" | "tour" | ""; prN: the lesson; prSt: "step" | "done" | ""; prPlace: {n,k} where a stopped lesson stands; prReal: the real data while the practice space is open; prFrom: where How to was opened from */
 const PR_ID="pr-dalisay",PR_KEY="copar-practice"; /* PR_KEY: sessionStorage only, so a reload keeps the place and nothing in the saved data changes */
 const prClone=o=>JSON.parse(JSON.stringify(o));
 try{const o=JSON.parse(sessionStorage.getItem(PR_KEY)||"null");if(o&&Number.isInteger(o.n)&&o.n>=0&&o.n<9&&Number.isInteger(o.k)&&o.k>=0)prPlace={n:o.n,k:o.k}}catch(e){}
@@ -7676,7 +7785,6 @@ const TOUR=[
  {t:["Home, Tally, Report, Guides","Home, Tally, Report, Guides"],how:"tap",sel:'#tabbar [data-tab="report"]',go:()=>tourTab("home"),p:["Mapuno ra ang mga table sa Tally. Ang {{Report}} mo-dala nimo gikan sa Facts hangtod sa Teach. Ang Guides naay mga pulong sa porma.","The Tally tables fill in by themselves. {{Report}} takes you from Facts to Teach. Guides explains the words on the form."],ok:()=>tabId()==="report"},
  {t:["I-download ang Excel o Word","Download Excel or Word"],how:"tap",sel:'#sheet-root [data-dl="report"]',go:()=>{tourTab("tally");openDownload()},p:["I-tap ang {{Excel report}}. Ang Excel report para sa imong CI, ang Word report para sa pag-print.","Tap {{Excel report}}. The Excel report is for your CI. The Word report is for printing."],hit:true,ok:()=>prHit===tourI,act:()=>{prHit=tourI}}
 ];
-const prLabel=()=>prKind==="tour"?L("Tour","Tour")+" · "+(tourI+1)+" "+L("sa","of")+" "+TOUR.length:L("Praktis","Practice")+" · "+L("Ang pamilya Dalisay","The Dalisay family");
 const prText=t=>String(t).split(/\{\{|\}\}/).map((x,i)=>i%2?`<code class="pr-k">${esc(x)}</code>`:esc(x)).join(""); /* {{word}} marks a word on the screen */
 const prWait=s=>s.how==="type"?L("Mo-sunod sa iyang kaugalingon kung na-type na","Goes on by itself when it is typed"):s.how==="swipe"?L("Naghulat sa imong swipe","Waiting for your swipe"):L("Naghulat sa imong tap","Waiting for your tap");
 
@@ -7733,7 +7841,7 @@ const tourMoves=()=>animOn()&&!reduced(); /* the spotlight fades and the card mo
 let tourTok=0,tourRaf=0;
 function tourBars(){ /* the room the target must sit in: below the top bar and above the bottom bars, measured live */
   let top=0,bot=window.innerHeight;
-  const pb=$("#pr-bar");if(pb)top=Math.max(top,pb.getBoundingClientRect().bottom);
+  const pb=$("#pr-x");if(pb)top=Math.max(top,pb.getBoundingClientRect().bottom); /* 4.2: the X at the top right; no bar */
   const ab=$("#appbar");if(ab&&ab.getClientRects().length)top=Math.max(top,ab.getBoundingClientRect().bottom);
   ["#tabbar","#qbar"].forEach(q=>{const e=$(q);if(!e||e.hidden||!e.getClientRects().length)return;const r=e.getBoundingClientRect();if(r.width>window.innerWidth*.5&&r.top>window.innerHeight*.4)bot=Math.min(bot,r.top)});
   return [top,bot];
@@ -7771,15 +7879,18 @@ function tourSettle(s,tok,min){ /* wait until the target's box has not moved for
 }
 function tourStop(){ /* a step starts: the old card fades out, the app moves when the stop says so, the new card is drawn once the screen has settled */
   if(!tourSteps)return;
-  const tok=++tourTok,s=tourSteps[tourI];tourBusy=true;prSt="step";
+  const tok=++tourTok,s=tourSteps[tourI];tourBusy=true;prSt="step";prNu=-1;
   prFrame();prBlock(null,"full"); /* while a step is being drawn, nothing can be tapped */
   const h0=$("#tour-hole");if(h0&&tourMoves())h0.classList.add("hz");
   const c0=$("#tour-root .tour-card");if(c0&&tourMoves())c0.classList.add("tf");
   if(s.go){try{s.go()}catch(e){}const v=$("#view");v.classList.add("tour-swap");setTimeout(()=>v.classList.remove("tour-swap"),320)}
   tourSettle(s,tok,tourMoves()?170:70).then(ok=>{if(ok)drawTour()});
 }
-function placeTour(c,hole,r,pad){ /* put the card where it never covers the spotlight: above or below by the room there is, else beside; 16 px from every screen edge, and below the practice bar */
-  const vw=window.innerWidth,vh=window.innerHeight,g=12,m=16,mt=m+(pracOn?52:0);
+const prTop=()=>{ /* the top limit for a card: 16 px from the edge, and in practice 12 px under the X so the card never covers it */
+  if(!pracOn)return 16;const x=$("#pr-x");return Math.max(16+52,x?Math.round(x.getBoundingClientRect().bottom)+12:0);
+};
+function placeTour(c,hole,r,pad){ /* put the card where it never covers the spotlight: above or below by the room there is, else beside; 16 px from every screen edge, and below the X of the practice */
+  const vw=window.innerWidth,vh=window.innerHeight,g=12,m=16,mt=prTop();
   const reset=()=>{c.style.width="";c.style.maxHeight="";c.style.overflowY=""};
   const box=p=>({L:Math.max(0,r.left-p),T:Math.max(0,r.top-p),R:Math.min(vw,r.right+p),B:Math.min(vh,r.bottom+p)}); /* the spotlight stays on screen */
   const fit=p=>{
@@ -7806,10 +7917,10 @@ function placeTour(c,hole,r,pad){ /* put the card where it never covers the spot
   c.style.top=pos.top+"px";if(pos.x!=null)c.style.left=pos.x+"px";
   hole.style.cssText=`left:${L}px;top:${T}px;width:${R-L}px;height:${B-T}px`;
 }
-/* the frame of the practice: the bar with the X, the blockers (they stop every tap and scroll outside the spotlight), the spotlight and the card */
+/* the frame of the practice: the X, the blockers (they stop every tap and scroll outside the spotlight), the spotlight and the card */
 function prFrame(){
-  const root=$("#tour-root");if(root.querySelector("#pr-bar"))return;
-  root.innerHTML=`<div class="pr-bl" data-bl="t"></div><div class="pr-bl" data-bl="l"></div><div class="pr-bl" data-bl="r"></div><div class="pr-bl" data-bl="b"></div><div class="pr-bl" data-bl="f"></div><div id="pr-bar" role="group" aria-label="${esc(L("Praktis","Practice"))}"><span class="pr-bt">${esc(prLabel())}</span><button type="button" class="iconbtn sm" id="pr-x" aria-label="${L("Undangi ang praktis","Stop practice")}">${ico(IC.x,18)}</button></div>`;
+  const root=$("#tour-root");if(root.querySelector("#pr-x"))return;
+  root.innerHTML=`<div class="pr-bl" data-bl="t"></div><div class="pr-bl" data-bl="l"></div><div class="pr-bl" data-bl="r"></div><div class="pr-bl" data-bl="b"></div><div class="pr-bl" data-bl="f"></div><button type="button" class="iconbtn" id="pr-x" aria-label="${L("Undangi ang praktis","Stop practice")}">${ico(IC.x,20)}</button>`;
   root.querySelectorAll(".pr-bl").forEach(b=>{["touchstart","touchmove","touchend","pointerdown","click"].forEach(n=>b.addEventListener(n,e=>{e.stopPropagation()},{passive:true}));b.addEventListener("wheel",e=>{e.preventDefault();e.stopPropagation()},{passive:false})});
 }
 function prBlock(r,mode){ /* mode: "full" nothing can be tapped, "hole" only the target can, "none" the app is free (a step whose target is not on the screen) */
@@ -7822,10 +7933,11 @@ function prBlock(r,mode){ /* mode: "full" nothing can be tapped, "hole" only the
   const set=(k,l,t,w,h)=>{const e=b(k);e.hidden=false;e.style.cssText=`left:${l}px;top:${t}px;width:${Math.max(0,w)}px;height:${Math.max(0,h)}px`};
   set("t",0,0,vw,T0);set("b",0,B0,vw,vh-B0);set("l",0,T0,L0,B0-T0);set("r",R0,T0,vw-R0,B0-T0);
 }
+const prNuHTML=()=>`<b class="pr-nu">${esc(L("I-swipe, ayaw i-tap.","Swipe it, don't tap."))}</b>`; /* 4.2: the extra line on a swipe step after a tap */
 function prCardHTML(s){
   const n=tourSteps.length,kick=prKind==="tour"?`${tourI+1} ${L("sa","of")} ${n} · ${L(s.t[0],s.t[1])}`:`${L("Leksyon","Lesson")} ${prN+1} · ${L(PRAC[prN].t[0],PRAC[prN].t[1])}`;
   const foot=s.how==="ack"?`<div class="tour-row"><button type="button" class="btn sm" id="pr-ack">${L("Nakuha ko","Got it")}</button></div>`:`<span class="pr-w"><i></i>${esc(prWait(s))}</span>`;
-  return `<span class="tour-n">${esc(kick)}</span><p class="pr-t">${prText(L(s.p[0],s.p[1]))}</p>${foot}`;
+  return `<span class="tour-n">${esc(kick)}</span><p class="pr-t">${prText(L(s.p[0],s.p[1]))}</p>${prNu===tourI&&s.how==="swipe"?prNuHTML():""}${foot}`;
 }
 function drawDone(root){ /* the end of a lesson (or of the tour): a card with what is next */
   const last=prKind==="tour"||prN>=PRAC.length-1,lt=prKind==="tour"?[L("Human na ang tour","Tour done"),L("Mahimo nimo sulayan ang mga leksyon sa Profile, Tabang, Unsaon. Ang matag usa nagtudlo sa Tally, sa Report ug sa uban pa.","You can try the practice lessons any time in Profile, Help, How to.")]:[L("Human na ang Leksyon ","Lesson ")+(prN+1)+L(""," done"),L(PRAC[prN].end[0],PRAC[prN].end[1])];
@@ -7833,12 +7945,12 @@ function drawDone(root){ /* the end of a lesson (or of the tour): a card with wh
   const old=root.querySelector(".tour-card"),hole=root.querySelector("#tour-hole");if(hole)hole.remove();if(old)old.remove();
   if(!root.querySelector(".tour-dim"))root.insertAdjacentHTML("beforeend",'<div class="tour-dim"></div>');
   root.insertAdjacentHTML("beforeend",`<div class="tour-card coach pr-card pr-done" role="dialog" aria-label="${esc(lt[0])}" style="top:16px"><span class="pr-ck" aria-hidden="true">${ico(IC.check,34)}</span><b>${esc(lt[0])}</b><p class="pr-t">${esc(lt[1])}</p><button type="button" class="btn" id="pr-next">${esc(btn)}</button>${last?"":`<span class="pr-or">${L("o i-tap ang X aron mohunong. Gitipigan ang imong dapit.","or tap X to stop. Your place is kept.")}</span>`}</div>`);
-  const c=root.querySelector(".tour-card");c.style.top=Math.max(16+52,(window.innerHeight-c.offsetHeight)/2)+"px";
+  const c=root.querySelector(".tour-card");c.style.top=Math.max(prTop(),(window.innerHeight-c.offsetHeight)/2)+"px";
   prBlock(null,"full");tourBusy=false;tourShown=tourI;
 }
 function drawTour(){
   const root=$("#tour-root");if(!tourSteps||!pracOn)return;
-  prFrame();root.querySelector(".pr-bt").textContent=prLabel();
+  prFrame();
   if(prSt==="done"){drawDone(root);return}
   const s=tourSteps[tourI],el=tgtOf(s);
   if(el)tourReveal(el); /* the target is fully in view before the spotlight is placed */
@@ -7850,7 +7962,7 @@ function drawTour(){
     if(jump)root.classList.add("jump");
     c.setAttribute("aria-label",title);c.innerHTML=prCardHTML(s);
     c.style.width="";c.style.maxHeight="";c.style.overflowY="";c.style.left="";
-    if(!r)c.style.top=Math.max(16+52,(window.innerHeight-c.offsetHeight)/2)+"px";
+    if(!r)c.style.top=Math.max(prTop(),(window.innerHeight-c.offsetHeight)/2)+"px";
     else placeTour(c,hole,r,6);
     void c.offsetWidth;c.classList.remove("tf");
     if(hole){void hole.offsetWidth;hole.classList.remove("hz")} /* fade the spotlight back in at its new place */
@@ -7860,7 +7972,7 @@ function drawTour(){
     root.querySelector(".tour-card.pr-done")&&root.querySelector(".tour-card.pr-done").remove();
     root.insertAdjacentHTML("beforeend",(r?`<div id="tour-hole" class="hz"></div>`:"")+`<div class="tour-card coach pr-card" role="dialog" aria-modal="false" aria-label="${esc(title)}" style="top:16px">${prCardHTML(s)}</div>`);
     const c=root.querySelector(".tour-card");
-    if(!r)c.style.top=Math.max(16+52,(window.innerHeight-c.offsetHeight)/2)+"px"; /* no target on this screen: a centered card */
+    if(!r)c.style.top=Math.max(prTop(),(window.innerHeight-c.offsetHeight)/2)+"px"; /* no target on this screen: a centered card */
     else{const hz=root.querySelector("#tour-hole");placeTour(c,hz,r,6);void hz.offsetWidth;hz.classList.remove("hz")}
   }
   if(!r&&!root.querySelector(".tour-dim"))root.insertAdjacentHTML("beforeend",'<div class="tour-dim"></div>');
@@ -7891,11 +8003,19 @@ window.addEventListener("scroll",tourWatch,{passive:true});window.addEventListen
 /* ---- listening for the real action ---- */
 function prCheck(){ /* is the app where the step wanted it? Then the step is done and the next one comes */
   if(!pracOn||prSt!=="step"||tourBusy||prReplay||!tourSteps)return false;
-  const s=tourSteps[tourI];if(!s||!s.ok)return false;
-  let ok=false;try{ok=!!s.ok()}catch(e){}
+  const s=tourSteps[tourI];if(!s)return false;
+  let ok=false;if(s.ok){try{ok=!!s.ok()}catch(e){}}
   if(ok)prAdvance();
-  else if(s.need&&tourI>0){let n=true;try{n=!!s.need()}catch(e){}if(!n){tourI--;if(prKind==="lesson")prPlaceSet({n:prN,k:tourI});tourStop()}} /* the pane this step needs was closed (a stray tap): go back one step and ask again */
+  else{
+    prSheetGuard(s);
+    if(s.ok&&s.need&&tourI>0){let n=true;try{n=!!s.need()}catch(e){}if(!n){tourI--;if(prKind==="lesson")prPlaceSet({n:prN,k:tourI});tourStop()}} /* the pane this step needs was closed (a stray tap): go back one step and ask again */
+  }
   return ok;
+}
+function prSheetGuard(s){ /* 4.2: a sheet the step did not ask for (a stray tap or a hold opened it) closes by itself, so the spotlight never points at something hidden under a sheet. The step stays. A step whose target is inside the sheet, or has no target now, is left alone. */
+  const sr=$("#sheet-root");if(!sr||!sr.firstChild)return;
+  const t=tgtOf(s);if(!t||sr.contains(t))return;
+  closeSheet();
 }
 function prWatch(){ /* after a real event the app finishes its own work (a sheet closes, a screen is drawn): look now, then once a frame for a short while */
   if(!pracOn||prSt!=="step")return;
@@ -7905,6 +8025,15 @@ function prWatch(){ /* after a real event the app finishes its own work (a sheet
   requestAnimationFrame(tick);
 }
 ["click","input","change","focusin","touchend","keyup"].forEach(n=>window.addEventListener(n,()=>prWatch()));
+new MutationObserver(()=>{if(pracOn)prWatch()}).observe($("#sheet-root"),{childList:true}); /* a sheet that opens by itself (a hold on a tile) is looked at too */
+window.addEventListener("click",e=>{ /* 4.2: a tap on the tile of a swipe step does not open the client: the tile gives a short nudge and the card says to swipe */
+  if(!pracOn||prSt!=="step"||tourBusy||prReplay)return;
+  const s=tourSteps&&tourSteps[tourI];if(!s||s.how!=="swipe")return;
+  const t=tgtOf(s);if(!t||!t.contains(e.target)||e.target.closest(".swa"))return;
+  e.preventDefault();e.stopImmediatePropagation();
+  if(tourMoves())try{t.animate([{transform:"translateX(0)"},{transform:"translateX(-12px)"},{transform:"translateX(0)"}],{duration:250,easing:"ease-out"})}catch(x){}
+  if(prNu!==tourI){prNu=tourI;const c=$("#tour-root .tour-card:not(.pr-done)"),p=c&&c.querySelector(".pr-t");if(p){p.insertAdjacentHTML("afterend",prNuHTML());tourReplace()}}
+},true);
 window.addEventListener("click",e=>{ /* a caught tap (a file, a share): it counts for the step, the real action never runs */
   if(!pracOn||prSt!=="step"||tourBusy||prReplay)return;
   const s=tourSteps&&tourSteps[tourI];if(!s||!s.hit)return;
@@ -9037,6 +9166,32 @@ function uxSpec(ux){
       apply:(r,it,v)=>{const m=memByNo(r,it.no);if(!m)return;m.religion=v.v;if(v.v==="Others")m.religionOther=PC(v.o).trim();else delete m.religionOther},
       show:v=>v.v==="Others"&&PC(v.o).trim()?"Others: "+PC(v.o).trim():tlab(v.v)||NA};
   }
+  if(t==="mem"&&ux.f==="age"){ /* 4.2 Age: the age in years, and below 1 year the months, as the interview takes them (m.age, m.ageMo); a baby's education follows the age (educSync) */
+    return {target:"mem",label:"Age",
+      init:it=>({a:it.m.age==null?"":String(it.m.age),mo:ageNum(it.m)===0&&it.m.ageMo!=null?String(it.m.ageMo):""}),
+      fields:(it,v)=>[uxF("a","num","Age in years",{min:0}),...(String(v.a).trim()!==""&&Number(v.a)===0?[uxF("mo","num","Months (below 1 year)",{min:0})]:[])],
+      check:(it,v)=>{const e=uxNumCheck(v.a,0,120);if(e)return e;if(Number(v.a)===0&&String(v.mo==null?"":v.mo).trim()!=="")return uxNumCheck(v.mo,0,11);return ""},
+      apply:(r,it,v)=>{const m=memByNo(r,it.no);if(!m)return;m.age=String(Number(v.a));if(Number(v.a)===0&&String(v.mo==null?"":v.mo).trim()!=="")m.ageMo=String(Number(v.mo));else delete m.ageMo;educSync(m)},
+      show:v=>String(v.a).trim()===""?NA:Number(v.a)===0&&String(v.mo==null?"":v.mo).trim()!==""?"0 · "+Number(v.mo)+" "+plu(Number(v.mo),"month","months"):String(Number(v.a))};
+  }
+  if(t==="mem"&&ux.f==="comorb"){ /* 4.2 With or Without comorbidity of one person: With names the illnesses (the interview's list, Other illness typed), Without clears them and marks the person Without (m.comorb) */
+    const DXL=DX.filter(d=>d.k!=="commun"); /* Communicable disease needs its list of names, which the interview asks */
+    return {target:"mem",label:"Comorbidity",
+      init:it=>({c:memComorb(it.m,it.h),v:dxOf(it.m).map(e=>e.k).filter(k=>k!=="commun"),o:othAll(it.m,it.h).join(", ")}),
+      fields:(it,v)=>[uxF("c","one","Comorbidity",{opts:[["Oo","With comorbidity"],["Wala","Without"]]}),...(v.c==="Oo"?[uxF("v","many","Illness",{opts:DXL.map(d=>[d.k,d.short])}),...(v.v.includes("other")?[uxF("o","text","Illness names (separate with commas)",{ill:true})]:[])]:[])],
+      check:(it,v)=>!v.c?"Pick With or Without.":v.c==="Oo"?(!v.v.length&&!dxOf(it.m).some(e=>e.k==="commun")?"Pick the illness.":v.v.includes("other")&&!illList(v.o).length?"Type the illness name.":""):"",
+      apply:(r,it,v)=>{
+        const m=memByNo(r,it.no);if(!m)return;const i=r.members.indexOf(m),w=v.c==="Oo",want=new Set(w?v.v:[]);
+        DX.forEach(d=>{
+          if(d.k==="commun"&&w)return; /* kept as it is */
+          const has=dxOf(m).some(e=>e.k===d.k),on=want.has(d.k);
+          if(has&&!on){setDx(r,i,d.k,false);if(!dxNamed(r,d.k)&&!dxOldOf(r,d.k)&&A(r,d.n)==="Oo"){r.ans[d.n]="Wala";syncDx(r)}} /* nobody has it any more: the house answers No, as the interview's No does */
+          else if(!has&&on)setDx(r,i,d.k,true);
+        });
+        if(w&&want.has("other")){const a=dxOf(m),e=a.find(x=>x.k==="other");if(e){e.nm=illList(v.o).join(", ");m.dx=a}}
+        if(w)delete m.comorb;else m.comorb="Wala"},
+      show:(v,it)=>v.c==="Wala"?"Without":v.c==="Oo"?"With: "+(uxList(v.v.filter(k=>k!=="other").map(k=>DXBY[k].short).concat(v.v.includes("other")?["Other illness"+(illList(v.o).length?": "+illList(v.o).join(", "):"")]:[]),x=>x)):NA};
+  }
   if(t==="dxname"){
     return {target:"mem",label:"Other illness names",ok:it=>dxOf(it.m).some(e=>e.k==="other"),
       init:it=>({s:othRaw(it.m,it.h)}),
@@ -9235,6 +9390,7 @@ $("#view").addEventListener("input",e=>{
   const t=e.target,id=t.dataset&&(t.dataset.fn||t.dataset.ft);if(!id)return;
   uxSt.vals[id]=t.value;uxSt.touched=true;
   if(uxSt.ux.t==="com"&&uxSt.ux.k==="worker"&&t.dataset.fn){const was=$("#view [data-f='d']")!=null,now=Number(t.value)>0;if(was!==now){redraw();const n=$("#ux-n");if(n)n.focus();return}} /* a number box has no caret to move */
+  if(uxSt.ux.t==="mem"&&uxSt.ux.f==="age"&&t.dataset.fn==="a"){const was=!!$("#ux-mo"),now=t.value.trim()!==""&&Number(t.value)===0;if(was!==now){redraw();const n=$("#ux-a");if(n)n.focus();return}} /* 4.2 the Months box shows only while the age is 0 */
   uxPaint();
 });
 $("#view").addEventListener("change",e=>{ /* a typed answer is changed to Proper Case when the box is left */
